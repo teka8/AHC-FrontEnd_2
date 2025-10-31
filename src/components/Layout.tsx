@@ -1,0 +1,22 @@
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
+import ChatbotWidget from './chatbot/ChatbotWidget'
+
+export default function Layout() {
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className={`flex-1 pt-12 md:pt-16 ${isHome ? 'bg-gradient-to-b from-ahc-green/15 to-transparent' : ''}`}>
+        <div key={location.pathname} className="animate-fade">
+          <Outlet />
+        </div>
+      </main>
+      <Footer />
+      <ChatbotWidget />
+      <ScrollRestoration />
+    </div>
+  )
+}
