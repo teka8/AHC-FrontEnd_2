@@ -11,6 +11,128 @@ body { @apply antialiased; font-family: Poppins, ui-sans-serif, system-ui, -appl
 .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium bg-ahc-green text-black hover:brightness-95 transition; }
 .card { @apply rounded-xl border border-slate-200 bg-white shadow-sm; }
 
+/* Button glowing rotating border (opt-in) */
+@keyframes rotate360 { to { transform: rotate(360deg); } }
+.btn-glow, .glow-border { position: relative; z-index: 0; }
+.btn-glow::before, .glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(122,201,67,.0) 0deg,
+    rgba(122,201,67,.7) 90deg,
+    rgba(56,189,248,.6) 180deg,
+    rgba(148,163,184,.55) 270deg,
+    rgba(122,201,67,.0) 360deg
+  );
+  filter: blur(4px) saturate(1.05);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px; /* border thickness */
+  opacity: 0;
+  transition: opacity .25s ease;
+  animation: rotate360 6s linear infinite;
+  animation-play-state: paused;
+  pointer-events: none;
+}
+.dark .btn-glow::before, .dark .glow-border::before {
+  background: conic-gradient(
+    from 0deg,
+    rgba(122,201,67,.0) 0deg,
+    rgba(122,201,67,.75) 90deg,
+    rgba(56,189,248,.65) 180deg,
+    rgba(148,163,184,.6) 270deg,
+    rgba(122,201,67,.0) 360deg
+  );
+}
+.btn-glow:hover::before, .btn-glow:focus-visible::before,
+.glow-border:hover::before, .glow-border:focus-visible::before {
+  opacity: .9;
+  animation-play-state: running;
+}
+
+/* Button 180° sweep border (opt-in) */
+@property --sweep {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes sweep-180 {
+  0% { --sweep: 0deg; }
+  100% { --sweep: 180deg; }
+}
+.btn-sweep { position: relative; z-index: 0; --sweep: 0deg; }
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background:
+    conic-gradient(from var(--sweep),
+      rgba(122,201,67,0) 0deg,
+      rgba(122,201,67,.0) 176deg,
+      rgba(122,201,67,.65) 179deg,
+      rgba(56,189,248,.75) 181deg,
+      rgba(122,201,67,.0) 184deg,
+      rgba(122,201,67,0) 360deg);
+  filter: saturate(1.05);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+}
+.btn-sweep::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background:
+    conic-gradient(from var(--sweep),
+      transparent 0deg,
+      transparent 178deg,
+      rgba(122,201,67,.18) 180deg,
+      transparent 182deg,
+      transparent 360deg);
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+}
+.btn-sweep:hover::before, .btn-sweep:focus-visible::before { opacity: 1; animation: sweep-180 1.6s ease-out forwards; }
+.btn-sweep:hover::after, .btn-sweep:focus-visible::after { opacity: 1; animation: sweep-180 1.6s ease-out forwards; }
+.dark .btn-sweep::before {
+  background:
+    conic-gradient(from var(--sweep),
+      rgba(122,201,67,0) 0deg,
+      rgba(122,201,67,.0) 176deg,
+      rgba(122,201,67,.7) 179deg,
+      rgba(56,189,248,.8) 181deg,
+      rgba(122,201,67,.0) 184deg,
+      rgba(122,201,67,0) 360deg);
+}
+.dark .btn-sweep::after {
+  background:
+    conic-gradient(from var(--sweep),
+      transparent 0deg,
+      transparent 178deg,
+      rgba(122,201,67,.22) 180deg,
+      transparent 182deg,
+      transparent 360deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow::before, .glow-border::before { animation: none; }
+  .btn-sweep:hover::before, .btn-sweep:focus-visible::before,
+  .btn-sweep:hover::after, .btn-sweep:focus-visible::after { animation: none; opacity: .6; }
+}
+
 /* Dark mode base */
 .dark body { background-color: #0B0F19; color: #E5E7EB; }
 .dark .prose { color: #CBD5E1; }
@@ -202,49 +324,23 @@ body { animation: fade-slide-up .45s ease-out; }
 .hero-orb--1 { width: 22rem; height: 22rem; top: -8%; left: -8%; animation: drift-1 24s ease-in-out infinite; }
 .hero-orb--2 { width: 18rem; height: 18rem; bottom: -6%; right: -6%; animation: drift-2 28s ease-in-out infinite; }
 
-/* ECG waveform overlay */
-@keyframes ecg-move {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -400; }
+/* Integrated gradient wave at bottom */
+@keyframes wave-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-.hero-ecg {
+.hero-wave {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 90px;
-  opacity: .75;
+  height: 140px;
   pointer-events: none;
+  overflow: hidden;
 }
-.hero-ecg svg { width: 100%; height: 100%; display: block; }
-.hero-ecg .ecg-base {
-  fill: none;
-  stroke: url(#ecg-grad);
-  stroke-width: 2;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-dasharray: 10 12;
-  animation: ecg-move 6s linear infinite;
-}
-.hero-ecg .ecg-glow {
-  fill: none;
-  stroke: url(#ecg-grad);
-  filter: blur(6px);
-  opacity: .35;
-  stroke-width: 8;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-dasharray: 10 12;
-  animation: ecg-move 6s linear infinite;
-}
-.hero-ecg .ecg-highlight {
-  fill: none;
-  stroke: rgba(255,255,255,.85);
-  mix-blend-mode: screen;
-  stroke-width: 3;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-dasharray: 40 380;
-  animation: ecg-move 3s linear infinite;
-}
+.hero-wave svg { width: 200%; height: 100%; display: block; }
+.hero-wave .wave-1 { opacity: .28; animation: wave-scroll 42s linear infinite; }
+.hero-wave .wave-2 { opacity: .18; animation: wave-scroll 56s linear infinite; }
+.dark .hero-wave .wave-1 { opacity: .32; }
+.dark .hero-wave .wave-2 { opacity: .22; }
 
 /* Africa continent watermark */
 .hero-africa {

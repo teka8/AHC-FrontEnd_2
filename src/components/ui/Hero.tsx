@@ -24,18 +24,22 @@ export default function Hero() {
           <circle className="net-node" cx="1040" cy="350" r="3" fill="rgba(148,163,184,.95)" />
         </svg>
       </div>
-      <div className="hero-ecg">
-        <svg viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true">
+      <div className="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1200 140" preserveAspectRatio="none">
           <defs>
-            <linearGradient id="ecg-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(122,201,67,1)" />
-              <stop offset="40%" stopColor="rgba(56,189,248,0.95)" />
-              <stop offset="100%" stopColor="rgba(122,201,67,1)" />
+            <linearGradient id="wave-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(122,201,67,0.9)" />
+              <stop offset="50%" stopColor="rgba(56,189,248,0.7)" />
+              <stop offset="100%" stopColor="rgba(122,201,67,0.9)" />
+            </linearGradient>
+            <linearGradient id="wave-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(122,201,67,0.6)" />
+              <stop offset="60%" stopColor="rgba(148,163,184,0.5)" />
+              <stop offset="100%" stopColor="rgba(56,189,248,0.6)" />
             </linearGradient>
           </defs>
-          <polyline className="ecg-glow" points="0,60 80,60 100,60 110,40 120,80 140,10 160,90 180,60 260,60 280,60 290,40 300,80 320,10 340,90 360,60 440,60 460,60 470,40 480,80 500,10 520,90 540,60 620,60 640,60 650,40 660,80 680,10 700,90 720,60 800,60 820,60 830,40 840,80 860,10 880,90 900,60 980,60 1000,60 1010,40 1020,80 1040,10 1060,90 1080,60 1160,60 1200,60" />
-          <polyline className="ecg-base" points="0,60 80,60 100,60 110,40 120,80 140,10 160,90 180,60 260,60 280,60 290,40 300,80 320,10 340,90 360,60 440,60 460,60 470,40 480,80 500,10 520,90 540,60 620,60 640,60 650,40 660,80 680,10 700,90 720,60 800,60 820,60 830,40 840,80 860,10 880,90 900,60 980,60 1000,60 1010,40 1020,80 1040,10 1060,90 1080,60 1160,60 1200,60" />
-          <polyline className="ecg-highlight" points="0,60 80,60 100,60 110,40 120,80 140,10 160,90 180,60 260,60 280,60 290,40 300,80 320,10 340,90 360,60 440,60 460,60 470,40 480,80 500,10 520,90 540,60 620,60 640,60 650,40 660,80 680,10 700,90 720,60 800,60 820,60 830,40 840,80 860,10 880,90 900,60 980,60 1000,60 1010,40 1020,80 1040,10 1060,90 1080,60 1160,60 1200,60" />
+          <path className="wave-1" fill="url(#wave-grad-1)" d="M0,100 C150,80 300,110 450,95 C600,80 750,120 900,100 C1050,80 1200,110 1350,95 L1350,140 L0,140 Z" />
+          <path className="wave-2" fill="url(#wave-grad-2)" d="M0,115 C160,95 320,125 480,110 C640,95 800,135 960,115 C1120,95 1280,125 1440,110 L1440,140 L0,140 Z" />
         </svg>
       </div>
       <div className="relative container grid gap-8 md:grid-cols-2 items-center py-12 md:py-20">
@@ -48,8 +52,8 @@ export default function Hero() {
             Collaboration, knowledge exchange, and scholarship across Addis Ababa University and partner universities.
           </p>
           <div className="mt-6 flex gap-3">
-            <a href="/resources" className="btn">Explore Resources</a>
-            <a href="/events" className="px-4 py-2 text-sm font-medium border rounded-md hover:bg-slate-50">Upcoming Events</a>
+            <a href="/resources" className="btn btn-sweep">Explore Resources</a>
+            <a href="/events" className="px-4 py-2 text-sm font-medium border rounded-md hover:bg-slate-50 btn-sweep">Upcoming Events</a>
           </div>
         </div>
         <div className="flex justify-center">
