@@ -6,7 +6,7 @@ export default function EventCard({ item }: { item: EventItem }) {
   const plain = (item.description ?? '').replace(/<[^>]+>/g, '').trim()
   const previewHtml = plain.length === 0 ? 'Details coming soon.' : (item.description as string)
   return (
-    <a href={`/events/${item.id}`} className="group card p-5 hover:shadow-md transition">
+    <a href={`/events/${item.id}`} className="group card card-hover p-5 transition">
       <div className="flex items-start gap-4">
         <div className="shrink-0 grid place-content-center w-14 h-14 rounded-lg bg-ahc-green text-black text-xs font-bold text-center">
           <div>{dateStr}</div>

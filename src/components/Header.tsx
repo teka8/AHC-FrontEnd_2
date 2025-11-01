@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useGetNavigationQuery } from '../features/navigation/navigationApi'
 import { useEffect, useState } from 'react'
+import { Moon, Sun } from 'lucide-react'
 
 export default function Header() {
   const { data } = useGetNavigationQuery()
@@ -68,21 +69,15 @@ export default function Header() {
             </NavLink>
           ))}
           <button
-            className="ml-4 px-3 py-2 rounded-md border text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+            className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-md border text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 transition"
             onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
             aria-label="Toggle theme"
-            title="Toggle theme"
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? (
-              <span className="inline-flex items-center gap-2">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M21.64 13A9 9 0 1 1 11 2.36 7 7 0 0 0 21.64 13z"/></svg>
-                Dark
-              </span>
+              <Sun className="h-4 w-4" aria-hidden="true" />
             ) : (
-              <span className="inline-flex items-center gap-2">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 7.95-1.41-1.41M6.46 6.46 5.05 5.05m12.9 0-1.41 1.41M6.46 17.54 5.05 18.95"/></svg>
-                Light
-              </span>
+              <Moon className="h-4 w-4" aria-hidden="true" />
             )}
           </button>
         </nav>
@@ -100,10 +95,12 @@ export default function Header() {
                 <NavLink key={l.path} to={l.path} onClick={() => setOpen(false)} className={({isActive}) => `px-3 py-2 rounded-md transition-colors ${isActive ? 'bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-white' : 'hover:bg-slate-50 dark:hover:bg-slate-800'}`}>{l.label}</NavLink>
               ))}
               <button
-                className="mt-2 px-3 py-2 rounded-md border text-left hover:bg-slate-50 dark:hover:bg-slate-800"
+                className="mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-md border text-left hover:bg-slate-50 dark:hover:bg-slate-800"
                 onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
+                aria-label="Toggle theme"
               >
-                Toggle {theme === 'dark' ? 'Light' : 'Dark'} Mode
+                {theme === 'dark' ? <Sun className="h-4 w-4" aria-hidden="true" /> : <Moon className="h-4 w-4" aria-hidden="true" />}
+                <span>Theme</span>
               </button>
             </div>
           </div>
