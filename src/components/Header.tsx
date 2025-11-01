@@ -42,16 +42,21 @@ export default function Header() {
         ? 'bg-white/95 dark:bg-ahc-dark/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 supports-[backdrop-filter]:dark:bg-ahc-dark/60 border-slate-200 dark:border-slate-800'
         : 'bg-transparent border-transparent'
     }`}>
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-14 md:h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="/ahc-logo.png"
+            src="/images/ahc-logo.png"
             alt="AHC Logo"
-            className="h-8 w-8 object-contain"
+            className="h-[115%] w-8 object-contain"
             onError={(e) => {
               const img = e.currentTarget as HTMLImageElement
-              if (img.dataset.fallback !== '1') { img.src = '/ahc-logo.svg'; img.dataset.fallback = '1'; }
-              else { img.src = '/favicon.svg'; }
+              if (img.dataset.fallback !== '1') { 
+                img.src = '/images/ahc-logo.jpg'; 
+                img.dataset.fallback = '1'; 
+              }
+              else { 
+                img.src = '/images/favicon.png'; 
+              }
             }}
           />
           <span className="font-semibold">Africa Health Collaborative</span>

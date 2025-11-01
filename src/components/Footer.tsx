@@ -11,13 +11,18 @@ export default function Footer() {
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <img
-                src="/ahc-logo.png"
+                src="/images/ahc-logo.png"
                 alt="AHC Logo"
-                className="h-8 w-8 object-contain"
+                className="h-[115%] w-8 object-contain"
                 onError={(e) => {
                   const img = e.currentTarget as HTMLImageElement
-                  if (img.dataset.fallback !== '1') { img.src = '/ahc-logo.svg'; img.dataset.fallback = '1'; }
-                  else { img.src = '/favicon.svg'; }
+                  if (img.dataset.fallback !== '1') { 
+                    img.src = '/images/ahc-logo.jpg'; 
+                    img.dataset.fallback = '1'; 
+                  }
+                  else { 
+                    img.src = '/images/favicon.png'; 
+                  }
                 }}
               />
               <span className="text-lg font-semibold">Africa Health Collaborative</span>

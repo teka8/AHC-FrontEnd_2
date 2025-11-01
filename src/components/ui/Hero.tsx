@@ -1,14 +1,30 @@
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex items-center hero-aurora">
+    <section className="relative overflow-hidden min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-4rem)] hero-aurora">
+      <div className="h-full flex flex-col">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/15 to-transparent" />
 
       {/* Africa outline watermark */}
-      <div className="hero-africa" aria-hidden="true">
-        <svg viewBox="0 0 1000 1000" role="img" aria-label="Africa outline">
-          <path d="M384 72l64 34 64-6 40 28 38 8 36 64 70 28 42 74-18 48 12 46-36 56-22 44-62 24-24 28-24 34-44-6-34 20-18 42-52 10-20 40 26 40-6 44-40 20-34-8-20-30-34-10-18-26-48-14-30-28-40-18-38-58-26-86 14-66 40-46 22-58 66-58 44-62 30-34 38-20 20-30z" />
-        </svg>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img 
+          src="/images/africa-map.png" 
+          alt="Africa map" 
+          className="h-[115%] w-auto object-cover dark:opacity-5 opacity-10"
+          style={{
+            animation: 'float 8s ease-in-out infinite',
+            filter: 'brightness(1.5)'
+          }}
+          onError={(e) => {
+            const img = e.currentTarget as HTMLImageElement
+            if (img.dataset.fallback !== '1') { 
+              img.src = '/images/africa-map.jpg';
+              img.dataset.fallback = '1';
+            } else {
+              img.src = '/images/ahc-logo.png';
+            }
+          }}
+        />
       </div>
 
       {/* Africa health network overlay */}
@@ -47,7 +63,7 @@ export default function Hero() {
       </div>
 
       {/* Content Section */}
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 grid gap-8 md:grid-cols-2 items-center">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 md:pt-12 md:pb-20 grid gap-6 md:grid-cols-2 items-start flex-grow">
         {/* Text content */}
         <div className="text-center md:text-left">
           <div className="text-xs sm:text-sm tracking-wider uppercase text-ahc-green font-semibold mb-2 sm:mb-3">
@@ -73,15 +89,23 @@ export default function Hero() {
         </div>
 
         {/* Logo section */}
-        <div className="flex justify-center mt-8 md:mt-0">
-          <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 rounded-full bg-white dark:bg-slate-800/80 border-2 border-slate-200/80 dark:border-slate-600/80 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 grid place-content-center backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-slate-300/50 dark:hover:shadow-slate-900/70 hover:scale-[1.02] group">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-ahc-green/10 via-white/10 to-ahc-green/10 dark:from-ahc-green/30 dark:via-slate-800/40 dark:to-ahc-green/30 animate-pulse"></div>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/50 via-white/10 to-transparent opacity-40 dark:opacity-30 group-hover:opacity-60 dark:group-hover:opacity-40 transition-opacity"></div>
-            <div className="absolute inset-0 rounded-full shadow-[inset_0_2px_12px_rgba(0,0,0,0.08)] dark:shadow-[inset_0_2px_12px_rgba(0,0,0,0.4)]"></div>
+        <div className="flex justify-center mt-4 md:mt-0">
+          <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 rounded-full bg-white/80 dark:bg-slate-800/80 border-2 border-slate-200/80 dark:border-slate-600/80 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 grid place-content-center backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-ahc-green/20 dark:hover:shadow-ahc-green/30 hover:scale-[1.02] group glow-border">
+            {/* Pulsing gradient background */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-ahc-green/20 via-white/20 to-ahc-green/20 dark:from-ahc-green/30 dark:via-slate-800/40 dark:to-ahc-green/30 animate-pulse"></div>
+            
+            {/* Glow effect - visible in both light and dark modes */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-ahc-green/20 via-transparent to-ahc-green/20 dark:from-ahc-green/30 dark:via-transparent dark:to-ahc-green/30 opacity-50 dark:opacity-50 group-hover:opacity-80 dark:group-hover:opacity-80 transition-opacity duration-300"></div>
+            
+            {/* Shine effect - enhanced for better visibility */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/70 via-transparent to-transparent opacity-50 dark:opacity-30 group-hover:opacity-70 dark:group-hover:opacity-40 transition-opacity duration-300"></div>
+            
+            {/* Inner shadow */}
+            <div className="absolute inset-0 rounded-full shadow-[inset_0_2px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_12px_rgba(0,0,0,0.4)]"></div>
             <img
-              src="/ahc-logo.png"
+              src="/images/ahc-logo.png"
               alt="AHC Logo"
-              className="relative z-10 h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-36 lg:w-36 object-contain transition-transform duration-300 group-hover:scale-105 dark:brightness-110"
+              className="h-[115%] relative z-10 w-24 sm:w-28 md:w-32 lg:w-36 object-contain transition-transform duration-300 group-hover:scale-105 dark:brightness-110"
               onError={(e) => {
                 const img = e.currentTarget as HTMLImageElement;
                 if (img.dataset.fallback !== '1') {
@@ -94,6 +118,7 @@ export default function Hero() {
             />
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
