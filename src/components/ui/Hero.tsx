@@ -10,7 +10,7 @@ export default function Hero() {
         <img 
           src="/images/africa-map.png" 
           alt="Africa map" 
-          className="h-[115%] w-auto object-cover dark:opacity-5 opacity-10"
+          className="h-[110%] w-auto object-cover dark:opacity-5 opacity-10"
           style={{
             animation: 'float 8s ease-in-out infinite',
             filter: 'brightness(1.5)'

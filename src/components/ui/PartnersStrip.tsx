@@ -9,7 +9,7 @@ export default function PartnersStrip() {
   ]
 
   return (
-    <section className="py-12">
+    <section className="py-12 bg-gray-200 dark:bg-gray-900 transition-colors duration-300">
       <div className="container">
         <div className="text-xs tracking-wider uppercase text-center text-slate-500">In partnership with</div>
         <div className="mt-6 marquee">
@@ -20,9 +20,9 @@ export default function PartnersStrip() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer"
-                className="mx-3 h-16 px-4 rounded-xl border bg-white/80 backdrop-blur grid grid-cols-[auto,1fr] items-center gap-3 text-sm text-slate-700 hover:text-ahc-green card-hover"
+                className="mx-3 mt-3 h-16 px-4 rounded-xl border bg-white/80 dark:bg-gray-900 border-[#8dc965] backdrop-blur grid grid-cols-[auto,1fr] items-center gap-3 text-sm text-slate-700 dark:text-slate-200 hover:text-ahc-green dark:hover:text-ahc-green card-hover"
               >
-                <div className="h-10 w-10 rounded-full grid place-content-center border bg-white overflow-hidden">
+                <div className="h-10 w-10 rounded-full grid place-content-center border-2 border-[#8dc965] bg-white overflow-hidden">
                   {p.logo ? (
                     <img
                       src={p.logo}
@@ -31,10 +31,10 @@ export default function PartnersStrip() {
                       loading="lazy"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
                     />
-                  ) : (
+                  ) : ( 
                     <svg className="w-5 h-5 text-ahc-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="3"/>
-                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 3.6 15a1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 3.6 8a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 8 3.6 1.65 1.65 0 0 0 9 2.09V2a2 2 0 1 1 4 0v.09A1.65 1.65 0 0 0 15 3.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 20.4 8c.36.3.59.75.6 1.23V9a1.65 1.65 0 0 0 1 1.51c.36.15.76.23 1.17.23H23a2 2 0 1 1 0 4h-.09c-.41 0-.81.08-1.17.23A1.65 1.65 0 0 0 20.4 15z"/>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 3.6 15a1.65 1.65 0 0 0-1.82-.33l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 8 3.6a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 15 2.09V2a2 2 0 1 1 4 0v.09A1.65 1.65 0 0 0 15 3.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 20.4 8c.36.3.59.75.6 1.23V9a1.65 1.65 0 0 0 1 1.51c.36.15.76.23 1.17.23H23a2 2 0 1 1 0 4h-.09c-.41 0-.81.08-1.17.23A1.65 1.65 0 0 0 20.4 15z"/>
                     </svg>
                   )}
                 </div>

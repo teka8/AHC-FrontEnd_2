@@ -12,7 +12,7 @@ export default function EventCard({ item }: { item: EventItem }) {
           <div>{dateStr}</div>
         </div>
         <div>
-          <h3 className="font-semibold group-hover:text-slate-900">{item.title}</h3>
+          <h3 className="font-semibold">{item.title}</h3>
           {item.location && <div className="mt-1 text-xs text-slate-600">{item.location}</div>}
           <p className="mt-1 text-sm text-slate-600 line-clamp-3" dangerouslySetInnerHTML={{ __html: previewHtml }} />
         </div>

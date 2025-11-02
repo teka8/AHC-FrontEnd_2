@@ -5,13 +5,16 @@ import { HelmetProvider } from 'react-helmet-async'
 import { RouterProvider } from 'react-router-dom'
 import { store } from './app/store'
 import { router } from './app/routes'
+import { ThemeProvider } from './features/theme/ThemeProvider'
 import './styles/globals.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
       </Provider>
     </HelmetProvider>
   </React.StrictMode>

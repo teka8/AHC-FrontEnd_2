@@ -303,7 +303,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container py-12">
+      <section className="container py-12 bg-gray-200 dark:bg-gray-900 transition-colors duration-300">
         <SectionHeader
           eyebrow="Highlights"
           title="Latest News"
@@ -370,8 +370,7 @@ export default function Home() {
         )}
       </section>
 
-      <section className="bg-slate-50">
-        <div className="container py-12">
+      <section className="container py-12 animate-page">
           <SectionHeader
             eyebrow="What’s Next"
             title="Upcoming Events"
@@ -397,11 +396,11 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
+        
       </section>
 
       {/* Mission & Vision */}
-      <section className="container py-12 animate-page">
+      <section className="container py-12 bg-gray-200 dark:bg-gray-900 transition-colors duration-300">
         <SectionHeader eyebrow="Our Direction" title="Mission & Vision" />
         <div className="grid gap-6 md:grid-cols-2">
           <div className="card card-hover p-6 sunshine-edge">

@@ -59,9 +59,9 @@ export default function EventsList() {
           <div className="flex items-center justify-between mb-3">
             <div className="text-sm text-slate-600">{selectedLabel}</div>
             <div className="flex items-center gap-2">
-              <button className="px-3 py-1 rounded border hover:bg-slate-50" onClick={()=>setMonth(m=>m.subtract(1,'month'))}>Prev</button>
-              <button className="px-3 py-1 rounded border hover:bg-slate-50" onClick={()=>setMonth(dayjs())}>Today</button>
-              <button className="px-3 py-1 rounded border hover:bg-slate-50" onClick={()=>setMonth(m=>m.add(1,'month'))}>Next</button>
+              <button className="px-3 py-1 rounded border hover:bg-slate-50 hover:dark:bg-slate-800" onClick={()=>setMonth(m=>m.subtract(1,'month'))}>Prev</button>
+              <button className="px-3 py-1 rounded border hover:bg-slate-50 hover:dark:bg-slate-800" onClick={()=>setMonth(dayjs())}>Today</button>
+              <button className="px-3 py-1 rounded border hover:bg-slate-50 hover:dark:bg-slate-800" onClick={()=>setMonth(m=>m.add(1,'month'))}>Next</button>
             </div>
           </div>
           <div className="grid grid-cols-7 text-xs text-slate-500 mb-2">
@@ -73,14 +73,14 @@ export default function EventsList() {
               const key = d.format('YYYY-MM-DD')
               const dayEvents = byDate[key] || []
               return (
-                <div key={key} className={`min-h-[96px] rounded-lg border p-2 ${isCurrentMonth ? 'bg-white' : 'bg-slate-50 text-slate-400'}`}>
+                <div key={key} className={`min-h-[96px] rounded-lg border p-2 ${isCurrentMonth ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800 text-slate-400'}`}>
                   <div className="flex items-center justify-between">
                     <div className="text-xs">{d.date()}</div>
                     {!!dayEvents.length && <span className="inline-block rounded-full bg-ahc-green/80 text-black text-[10px] px-2 py-0.5">{dayEvents.length}</span>}
                   </div>
                   <div className="mt-1 space-y-1">
                     {dayEvents.slice(0,2).map(ev => (
-                      <a key={ev.id} href={`/events/${ev.id}`} className="block text-[11px] truncate rounded px-2 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100">{ev.title}</a>
+                      <a key={ev.id} href={`/events/${ev.id}`} className="block text-[11px] truncate rounded px-2 py-1 bg-emerald-50 dark:bg-gray-400 text-emerald-700 hover:bg-emerald-100 hover:dark:bg-emerald-100">{ev.title}</a>
                     ))}
                     {dayEvents.length > 2 && (
                       <a href={`/events?date=${key}`} className="block text-[11px] text-slate-500 hover:text-slate-700">+{dayEvents.length - 2} more</a>
