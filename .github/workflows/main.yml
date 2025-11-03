@@ -22,7 +22,7 @@ jobs:
       run: npm install --force
 
     - name: Build the React app
-      run: CI=false TSC_COMPILE_ON_ERROR=true npm run build
+      run: CI=false npm run build
 
     - name: Deploy to FTP server
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -32,4 +32,3 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/
         server-dir: /
-        
