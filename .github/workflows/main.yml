@@ -1,0 +1,50 @@
+name: Deploy React App via FTP
+
+on:
+  push:
+    branches:
+      - main  # or your deploy branch
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run tests (optional)
+      run: npm test -- --watchAll=false
+
+    - name: Build project
+      run: npm run build
+
+    - name: Upload build files via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftp
+        server-dir: /
+        local-dir: ./build/  # Upload only the build folder
+        exclude: |
+          **/.git*
+          **/.gitignore
+          **/.github/**
+          **/node_modules/**
+          **/src/**
+          **/public/**
+          package.json
+          package-lock.json
+          README.md
