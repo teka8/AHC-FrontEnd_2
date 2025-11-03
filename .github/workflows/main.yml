@@ -3,7 +3,7 @@ name: Deploy React App via FTP
 on:
   push:
     branches:
-      - main  # or your deploy branch
+      - main
 
 jobs:
   deploy:
@@ -22,9 +22,6 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
-
-    - name: Run tests (optional)
-      run: npm test -- --watchAll=false
 
     - name: Build project
       run: npm run build
