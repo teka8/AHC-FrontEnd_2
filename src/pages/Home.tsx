@@ -308,9 +308,9 @@ export default function Home() {
           eyebrow="Highlights"
           title="Latest News"
           cta={
-            <a href="/news" className="text-sm text-ahc-green sunshine-edge">
+            <Link to="/news" className="text-sm text-ahc-green sunshine-edge">
               View all
-            </a>
+            </Link>
           }
         />
         {loadingNews ? (
