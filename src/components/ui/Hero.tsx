@@ -79,11 +79,11 @@ export default function Hero() {
             Collaboration, knowledge exchange, and scholarship across Addis Ababa University and partner universities.
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-            <a href="/resources" className="btn px-6 py-3 text-sm sm:text-base hover:shadow-md transition-all duration-300">
-              Explore Resources
+            <a href="https://www.ahc.tewostech.com/admin/login" className="btn px-6 py-3 text-sm sm:text-base hover:shadow-md transition-all duration-300">
+              Portal
             </a>
-            <a href="/events" className="px-6 py-3 text-sm sm:text-base font-medium border border-slate-200 dark:border-slate-700 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-center">
-              Upcoming Events
+            <a href="/health-innovation" className="px-6 py-3 text-sm sm:text-base font-medium border border-slate-200 dark:border-slate-700 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-center">
+              Health Innovation & Entrepreneurship
             </a>
           </div>
         </div>
