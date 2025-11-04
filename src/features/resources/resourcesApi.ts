@@ -25,6 +25,7 @@ export interface OthersItem {
   description?: string | null
   resource_type?: string | null
   subject_area?: string | null
+  tags?: string[]
   file_url?: string | null
   is_featured?: boolean
   published_at?: string | null
@@ -141,6 +142,18 @@ export const resourcesApi = baseApi.injectEndpoints({
       transformResponse: (res: any) => (res?.data ?? res ?? null) as OthersItem | null,
       providesTags: ['Page'],
     }),
+    incrementDocumentDownload: build.mutation<{ success: boolean; download_count: number }, number>({
+      query: (id) => ({ url: `/v1/public/resources/documents/${id}/download`, method: 'POST' }),
+      invalidatesTags: ['Page'],
+    }),
+    incrementEducationalDownload: build.mutation<{ success: boolean; download_count: number }, number>({
+      query: (id) => ({ url: `/v1/public/resources/educational/${id}/download`, method: 'POST' }),
+      invalidatesTags: ['Page'],
+    }),
+    incrementOthersDownload: build.mutation<{ success: boolean; download_count: number }, number>({
+      query: (id) => ({ url: `/v1/public/resources/others/${id}/download`, method: 'POST' }),
+      invalidatesTags: ['Page'],
+    }),
   }),
 })
 
@@ -154,4 +167,7 @@ export const {
   useGetEducationalByIdQuery,
   useGetOthersQuery,
   useGetOtherByIdQuery,
+  useIncrementDocumentDownloadMutation,
+  useIncrementEducationalDownloadMutation,
+  useIncrementOthersDownloadMutation,
 } = resourcesApi

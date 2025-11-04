@@ -240,11 +240,11 @@ export default function Home() {
 
       <Hero />
 
-      {/* About HCC */}
+      {/* About AHC */}
       <section className="container py-12 animate-page">
         <SectionHeader
           eyebrow="Who we are"
-          title="About HCC"
+          title="About AHC"
           cta={
             <a
               href="/about"
@@ -308,9 +308,9 @@ export default function Home() {
           eyebrow="Highlights"
           title="Latest News"
           cta={
-            <a href="/news" className="text-sm text-ahc-green sunshine-edge">
+            <Link to="/news" className="text-sm text-ahc-green sunshine-edge">
               View all
-            </a>
+            </Link>
           }
         />
         {loadingNews ? (
@@ -371,32 +371,28 @@ export default function Home() {
       </section>
 
       <section className="container py-12 animate-page">
-          <SectionHeader
-            eyebrow="What’s Next"
-            title="Upcoming Events"
-            cta={
-              <a
-                href="/events"
-                className="text-sm text-ahc-green sunshine-edge"
-              >
-                View all
-              </a>
-            }
-          />
-          {loadingEvents ? (
-            <Loader />
-          ) : eventsArray.length === 0 ? (
-            <div className="text-sm text-slate-600">
-              No upcoming events yet. Please check back soon.
-            </div>
-          ) : (
-            <div className="grid gap-4 md:grid-cols-3">
-              {eventsArray.slice(0, 3).map((e) => (
-                <EventCard key={e.id} item={e} />
-              ))}
-            </div>
-          )}
-        
+        <SectionHeader
+          eyebrow="What’s Next"
+          title="Upcoming Events"
+          cta={
+            <a href="/events" className="text-sm text-ahc-green sunshine-edge">
+              View all
+            </a>
+          }
+        />
+        {loadingEvents ? (
+          <Loader />
+        ) : eventsArray.length === 0 ? (
+          <div className="text-sm text-slate-600">
+            No upcoming events yet. Please check back soon.
+          </div>
+        ) : (
+          <div className="grid gap-4 md:grid-cols-3">
+            {eventsArray.slice(0, 3).map((e) => (
+              <EventCard key={e.id} item={e} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Mission & Vision */}

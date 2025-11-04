@@ -11,7 +11,10 @@ export const pagesApi = baseApi.injectEndpoints({
     }),
     getPageBySlug: build.query<PageItem, string>({
       query: (slug) => ({ url: `/v1/pages/slug/${slug}` }),
-      transformResponse: (response: any) => (response?.data ? response.data as PageItem : response as PageItem),
+      transformResponse: (response: any) => {
+        console.log('getPageBySlug raw response:', response)
+        return response?.page ? response.page as PageItem : (response?.data ? response.data as PageItem : response as PageItem)
+      },
       providesTags: (_r, _e, arg) => [{ type: 'Page', id: arg }] as any,
     }),
     getPagesBySection: build.query<PageItem[], string>({

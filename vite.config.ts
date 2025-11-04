@@ -5,6 +5,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    host: true
+    host: true,
+    proxy: {
+      '/api': {
+        target: 'https://ahc.tewostech.com',  // Local Laravel backend
+        changeOrigin: true,
+        secure: false,
+      }
+    }
   }
 })

@@ -1,199 +1,784 @@
 import { Helmet } from 'react-helmet-async'
 import Loader from '../components/Loader'
 import SectionHeader from '../components/ui/SectionHeader'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Download, FileText, Calendar, User, Search, Filter, X, SlidersHorizontal } from 'lucide-react'
 import {
-  useGetDocumentCategoriesQuery,
   useGetDocumentsQuery,
-  useGetEducationalCategoriesQuery,
   useGetEducationalQuery,
+  useGetOthersQuery,
+  useIncrementDocumentDownloadMutation,
+  useIncrementEducationalDownloadMutation,
+  useIncrementOthersDownloadMutation,
   type DocumentItem,
   type EducationalItem,
-  useGetOthersCategoriesQuery,
-  useGetOthersQuery,
   type OthersItem,
 } from '../features/resources/resourcesApi'
 
+type SortOption = 'date-newest' | 'date-oldest' | 'title-asc' | 'title-desc' | 'downloads'
+
+type UnifiedResource = {
+  id: number
+  title: string
+  abstract?: string | null
+  description?: string | null
+  author?: string | null
+  creator?: string | null
+  category?: string | null
+  subject_area?: string | null
+  document_type?: string | null
+  resource_type?: string | null
+  publication_date?: string | null
+  published_at?: string | null
+  file_url?: string | null
+  download_count?: number
+  view_count?: number
+  is_featured?: boolean
+  tags?: string[]
+  sourceType: 'documents' | 'educational' | 'others'
+  sourceTypeName: string
+}
+
+const RESOURCE_TYPE_NAMES = {
+  documents: 'Document Repository',
+  others: 'Other Resources'
+}
+
+// Hardcoded document types
+const DOCUMENT_TYPES = [
+  'Research Paper',
+  'Policy Brief',
+  'Report',
+  'Guideline',
+  'Educational Content',
+  'Other'
+]
+
 export default function Resources() {
-  const [section, setSection] = useState<'documents' | 'educational' | 'others'>('documents')
   const [search, setSearch] = useState('')
-  const [category, setCategory] = useState<string>('')
-  const [showCatsMobile, setShowCatsMobile] = useState(false)
+  const [selectedResourceTypes, setSelectedResourceTypes] = useState<string[]>([])
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([])
+  const [dateRange, setDateRange] = useState<{ start: string; end: string }>({ start: '', end: '' })
+  const [showFiltersMobile, setShowFiltersMobile] = useState(false)
+  const [sortBy, setSortBy] = useState<SortOption>('date-newest')
 
-  const { data: docCats, isLoading: catsLoading1 } = useGetDocumentCategoriesQuery()
-  const { data: eduCats, isLoading: catsLoading2 } = useGetEducationalCategoriesQuery()
-  const { data: othCats, isLoading: catsLoading3 } = useGetOthersCategoriesQuery()
-  const { data: docs, isLoading: docsLoading } = useGetDocumentsQuery({ search, category, perPage: 100, page: 1 })
-  const { data: edu, isLoading: eduLoading } = useGetEducationalQuery({ search, category, perPage: 100, page: 1 })
-  const { data: oth, isLoading: othLoading } = useGetOthersQuery({ search, category, perPage: 100, page: 1 })
+  const { data: docs, isLoading: docsLoading } = useGetDocumentsQuery({ search, perPage: 200, page: 1 })
+  const { data: edu, isLoading: eduLoading } = useGetEducationalQuery({ search, perPage: 200, page: 1 })
+  const { data: oth, isLoading: othLoading } = useGetOthersQuery({ search, perPage: 200, page: 1 })
+  
+  const [incrementDocumentDownload] = useIncrementDocumentDownloadMutation()
+  const [incrementEducationalDownload] = useIncrementEducationalDownloadMutation()
+  const [incrementOthersDownload] = useIncrementOthersDownloadMutation()
 
-  useEffect(() => { setCategory('') }, [section])
-
-  const categories = useMemo(() => {
-    if (section === 'documents') {
-      const dc = docCats ?? []
-      if (Array.isArray(dc) && dc.length > 0) return dc
-      const items = (docs as any[]) ?? []
-      const names = Array.from(new Set(items.map((x:any)=>x?.category).filter(Boolean)))
-      return names.map((name:string)=>({ id: null, name, slug: name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') }))
+  // Combine all resources into unified format
+  const allResources = useMemo(() => {
+    const unified: UnifiedResource[] = []
+    
+    // Add documents
+    if (docs) {
+      docs.forEach((doc: DocumentItem) => {
+        unified.push({
+          ...doc,
+          sourceType: 'documents',
+          sourceTypeName: RESOURCE_TYPE_NAMES.documents
+        })
+      })
     }
-    if (section === 'educational') {
-      const ec = eduCats ?? []
-      if (Array.isArray(ec) && ec.length > 0) return ec
-      const items = (edu as any[]) ?? []
-      const names = Array.from(new Set(items.map((x:any)=>x?.subject_area).filter(Boolean)))
-      return names.map((name:string)=>({ id: null, name, slug: name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') }))
+    
+    // Add educational (not displayed in filters but kept in data)
+    if (edu) {
+      edu.forEach((item: EducationalItem) => {
+        unified.push({
+          ...item,
+          sourceType: 'educational',
+          sourceTypeName: 'Educational Resource Hub'
+        })
+      })
     }
-    // others
-    const oc = othCats ?? []
-    if (Array.isArray(oc) && oc.length > 0) return oc
-    const items = (oth as any[]) ?? []
-    const names = Array.from(new Set(items.map((x:any)=>x?.subject_area).filter(Boolean)))
-    return names.map((name:string)=>({ id: null, name, slug: name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') }))
-  }, [section, docCats, eduCats, othCats, edu, oth])
-  const items = useMemo(() => (section === 'documents' ? ((docs as any) ?? []) : section==='educational' ? ((edu as any) ?? []) : ((oth as any) ?? [])), [section, docs, edu, oth])
-  const isLoading = (section === 'documents' ? docsLoading : section==='educational' ? eduLoading : othLoading) || catsLoading1 || catsLoading2 || catsLoading3
+    
+    // Add others
+    if (oth) {
+      oth.forEach((item: OthersItem) => {
+        unified.push({
+          ...item,
+          sourceType: 'others',
+          sourceTypeName: RESOURCE_TYPE_NAMES.others
+        })
+      })
+    }
+    
+    return unified
+  }, [docs, edu, oth])
 
-  const getExt = (url: string) => {
-    const m = (url || '').match(/\.([a-z0-9]+)(?:\?|#|$)/i)
-    return (m?.[1] || '').toLowerCase()
+  // Extract unique categories, tags, and authors (document types are hardcoded)
+  const { categories, othersTypes, tags, authors } = useMemo(() => {
+    const catSet = new Set<string>()
+    const othTypeSet = new Set<string>()
+    const tagSet = new Set<string>()
+    const authorSet = new Set<string>()
+    
+    allResources.forEach(resource => {
+      const cat = resource.category || resource.subject_area
+      if (cat) catSet.add(cat)
+      
+      // Extract others resource types only
+      if (resource.sourceType === 'others' && resource.resource_type) {
+        othTypeSet.add(resource.resource_type)
+      }
+      
+      // Extract tags
+      if (resource.tags && Array.isArray(resource.tags)) {
+        resource.tags.forEach(tag => tagSet.add(tag))
+      }
+      
+      // Extract authors/creators
+      const authorName = resource.author || resource.creator
+      if (authorName) authorSet.add(authorName)
+    })
+    
+    return {
+      categories: Array.from(catSet).sort(),
+      othersTypes: Array.from(othTypeSet).sort(),
+      tags: Array.from(tagSet).sort(),
+      authors: Array.from(authorSet).sort()
+    }
+  }, [allResources])
+  
+  // Get types to display based on selected resource types
+  const displayedTypes = useMemo(() => {
+    // Always show hardcoded document types (they are the main filter)
+    if (selectedResourceTypes.length === 0) {
+      return DOCUMENT_TYPES
+    }
+    
+    const types: string[] = []
+    if (selectedResourceTypes.includes(RESOURCE_TYPE_NAMES.documents)) {
+      types.push(...DOCUMENT_TYPES)
+    }
+    if (selectedResourceTypes.includes(RESOURCE_TYPE_NAMES.others)) {
+      types.push(...othersTypes)
+    }
+    
+    return Array.from(new Set(types)).sort()
+  }, [selectedResourceTypes, othersTypes])
+  
+  // Get dynamic label for types filter
+  const typesLabel = useMemo(() => {
+    if (selectedResourceTypes.length === 0) return 'Document Type'
+    if (selectedResourceTypes.length === 1) {
+      if (selectedResourceTypes.includes(RESOURCE_TYPE_NAMES.documents)) return 'Document Type'
+      if (selectedResourceTypes.includes(RESOURCE_TYPE_NAMES.others)) return 'Resource Type'
+    }
+    return 'Document/Resource Type'
+  }, [selectedResourceTypes])
+  
+  // Clear invalid type selections when resource types change
+  useEffect(() => {
+    if (selectedResourceTypes.length === 0 || selectedTypes.length === 0) return
+    
+    // Remove types that are no longer in displayedTypes
+    const newSelectedTypes = selectedTypes.filter(t => displayedTypes.includes(t))
+    if (newSelectedTypes.length !== selectedTypes.length) {
+      setSelectedTypes(newSelectedTypes)
+    }
+  }, [displayedTypes, selectedResourceTypes])
+
+  // Apply filters
+  const filteredResources = useMemo(() => {
+    let filtered = [...allResources]
+    
+    // Filter by resource source type (Documents, Educational, Others)
+    if (selectedResourceTypes.length > 0) {
+      filtered = filtered.filter(r => selectedResourceTypes.includes(r.sourceTypeName))
+    }
+    
+    // Filter by categories
+    if (selectedCategories.length > 0) {
+      filtered = filtered.filter(r => {
+        const cat = r.category || r.subject_area
+        return cat && selectedCategories.includes(cat)
+      })
+    }
+    
+    // Filter by types
+    if (selectedTypes.length > 0) {
+      filtered = filtered.filter(r => {
+        const type = r.document_type || r.resource_type
+        return type && selectedTypes.includes(type)
+      })
+    }
+    
+    // Filter by tags
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter(r => {
+        if (!r.tags || !Array.isArray(r.tags)) return false
+        return selectedTags.some(tag => r.tags!.includes(tag))
+      })
+    }
+    
+    // Filter by authors
+    if (selectedAuthors.length > 0) {
+      filtered = filtered.filter(r => {
+        const authorName = r.author || r.creator
+        return authorName && selectedAuthors.includes(authorName)
+      })
+    }
+    
+    // Filter by date range
+    if (dateRange.start || dateRange.end) {
+      filtered = filtered.filter(r => {
+        const dateStr = r.publication_date || r.published_at
+        if (!dateStr) return false
+        
+        const resourceDate = dateStr.split('T')[0] // Get YYYY-MM-DD part
+        
+        if (dateRange.start && resourceDate < dateRange.start) return false
+        if (dateRange.end && resourceDate > dateRange.end) return false
+        
+        return true
+      })
+    }
+    
+    return filtered
+  }, [allResources, selectedResourceTypes, selectedCategories, selectedTypes, selectedTags, selectedAuthors, dateRange])
+
+  // Sort resources
+  const sortedResources = useMemo(() => {
+    const sorted = [...filteredResources]
+    
+    switch (sortBy) {
+      case 'date-newest':
+        return sorted.sort((a, b) => {
+          const dateA = a.publication_date || a.published_at || ''
+          const dateB = b.publication_date || b.published_at || ''
+          return dateB.localeCompare(dateA)
+        })
+      case 'date-oldest':
+        return sorted.sort((a, b) => {
+          const dateA = a.publication_date || a.published_at || ''
+          const dateB = b.publication_date || b.published_at || ''
+          return dateA.localeCompare(dateB)
+        })
+      case 'title-asc':
+        return sorted.sort((a, b) => a.title.localeCompare(b.title))
+      case 'title-desc':
+        return sorted.sort((a, b) => b.title.localeCompare(a.title))
+      case 'downloads':
+        return sorted.sort((a, b) => (b.download_count || 0) - (a.download_count || 0))
+      default:
+        return sorted
+    }
+  }, [filteredResources, sortBy])
+
+  const isLoading = docsLoading || eduLoading || othLoading
+
+  const toggleResourceType = (typeName: string) => {
+    setSelectedResourceTypes(prev => 
+      prev.includes(typeName) 
+        ? prev.filter(t => t !== typeName)
+        : [...prev, typeName]
+    )
   }
-  const isPreviewable = (mime?: string | null, url?: string | null) => {
-    const mt = (mime || '').toLowerCase()
-    const ext = getExt(url || '')
-    return mt.startsWith('image/') || mt.startsWith('video/') || mt.startsWith('audio/') || mt.includes('pdf') ||
-      ['png','jpg','jpeg','webp','gif','mp4','webm','ogg','mp3','wav','pdf'].includes(ext)
+
+  const toggleCategory = (categoryName: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(categoryName) 
+        ? prev.filter(c => c !== categoryName)
+        : [...prev, categoryName]
+    )
   }
-  const FileTypeBadge = ({ url, mime }: { url?: string | null; mime?: string | null }) => {
-    const ext = getExt(url || '')
-    const label = (ext || (mime || '').split('/').pop() || 'file').toUpperCase()
-    return <div className="w-full aspect-video rounded bg-slate-100 border flex items-center justify-center text-sm text-slate-600">{label}</div>
+
+  const toggleType = (typeName: string) => {
+    setSelectedTypes(prev => 
+      prev.includes(typeName) 
+        ? prev.filter(t => t !== typeName)
+        : [...prev, typeName]
+    )
   }
-  return (
-    <div className="container py-10">
-      <Helmet><title>Resources – AHC</title></Helmet>
-      <SectionHeader eyebrow="Knowledge Hub" title="Resources" />
-      <div className="flex flex-col gap-3 mt-2 md:flex-row md:items-center">
-        <div className="grid grid-cols-1 gap-2 md:inline-flex md:gap-0 rounded md:border md:overflow-hidden">
-          <button className={`px-3 py-2 w-full md:w-auto text-left md:text-center ${section==='documents'?'bg-ahc-green text-black':''}`} onClick={()=>setSection('documents')}>Document Repository</button>
-          <button className={`px-3 py-2 w-full md:w-auto text-left md:text-center ${section==='educational'?'bg-ahc-green text-black':''}`} onClick={()=>setSection('educational')}>Educational Resource Hub</button>
-          <button className={`px-3 py-2 w-full md:w-auto text-left md:text-center ${section==='others'?'bg-ahc-green text-black':''}`} onClick={()=>setSection('others')}>Others</button>
+
+  const toggleTag = (tagName: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tagName) 
+        ? prev.filter(t => t !== tagName)
+        : [...prev, tagName]
+    )
+  }
+
+  const toggleAuthor = (authorName: string) => {
+    setSelectedAuthors(prev => 
+      prev.includes(authorName) 
+        ? prev.filter(a => a !== authorName)
+        : [...prev, authorName]
+    )
+  }
+
+  const clearFilters = () => {
+    setSelectedResourceTypes([])
+    setSelectedCategories([])
+    setSelectedTypes([])
+    setSelectedTags([])
+    setSelectedAuthors([])
+    setDateRange({ start: '', end: '' })
+  }
+
+  const hasActiveFilters = selectedResourceTypes.length > 0 || selectedCategories.length > 0 || selectedTypes.length > 0 || selectedTags.length > 0 || selectedAuthors.length > 0 || dateRange.start !== '' || dateRange.end !== ''
+
+  const handleDownload = async (resource: UnifiedResource) => {
+    if (!resource.file_url) return
+    
+    try {
+      if (resource.sourceType === 'documents') {
+        await incrementDocumentDownload(resource.id).unwrap()
+      } else if (resource.sourceType === 'educational') {
+        await incrementEducationalDownload(resource.id).unwrap()
+      } else {
+        await incrementOthersDownload(resource.id).unwrap()
+      }
+    } catch (error) {
+      console.error('Error tracking download:', error)
+    }
+    
+    try {
+      const link = document.createElement('a')
+      link.href = resource.file_url
+      link.download = resource.title || resource.file_url.split('/').pop() || 'download'
+      link.target = '_blank'
+      link.rel = 'noopener noreferrer'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (error) {
+      console.error('Error downloading file:', error)
+      window.open(resource.file_url, '_blank')
+    }
+  }
+
+  const renderFilterSidebar = (isMobile: boolean = false) => (
+    <div className={isMobile ? "p-6" : "card p-6 sticky top-4"}>
+      {isMobile && (
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <Filter className="h-5 w-5" />
+            Filters
+          </h3>
+          <button 
+            onClick={() => setShowFiltersMobile(false)}
+            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"
+          >
+            <X className="h-5 w-5" />
+          </button>
         </div>
-        <input value={search} onChange={(e)=>setSearch(e.target.value)} placeholder="Search resources" className="input w-full md:flex-1 md:max-w-md" />
-        <button className="btn md:hidden" onClick={()=>setShowCatsMobile(v=>!v)}>
-          {showCatsMobile ? 'Hide Categories' : 'Show Categories'}
+      )}
+      
+      {!isMobile && (
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <Filter className="h-5 w-5" />
+            Filters
+          </h3>
+          {hasActiveFilters && (
+            <button 
+              onClick={clearFilters} 
+              className="flex items-center gap-1 text-xs text-ahc-green hover:underline"
+            >
+              <X className="h-3 w-3" />
+              Clear All
+            </button>
+          )}
+        </div>
+      )}
+      
+      {isMobile && hasActiveFilters && (
+        <button 
+          onClick={clearFilters} 
+          className="w-full mb-4 px-4 py-2 text-sm font-medium text-ahc-green border border-ahc-green rounded-lg hover:bg-ahc-green/10 transition"
+        >
+          Clear All Filters
         </button>
-      </div>
-      {isLoading ? <Loader /> : (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
-          <aside className={`${showCatsMobile ? '' : 'hidden'} md:block`}>
-            <div className="card p-4">
-              <div className="font-medium mb-2">Categories</div>
-              <div className="space-y-1">
-                <button className={`flex items-center gap-2 w-full text-left px-2 py-2 rounded hover:bg-slate-50 ${category===''?'bg-slate-100':''}`} onClick={()=>setCategory('')}>
-                  <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7h5l2 3h11v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M3 7V5a2 2 0 0 1 2-2h3l2 2h4"/></svg>
-                  <span>All</span>
-                </button>
-                {categories.map((c:any)=> (
-                  <button key={c.slug ?? c.name} className={`flex items-center gap-2 w-full text-left px-2 py-2 rounded hover:bg-slate-50 ${category===c.name?'bg-slate-100':''}`} onClick={()=>setCategory(c.name)}>
-                    <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7h5l2 3h11v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M3 7V5a2 2 0 0 1 2-2h3l2 2h4"/></svg>
-                    <span>{c.name}</span>
-                  </button>
+      )}
+      
+      <div className={`space-y-6 ${isMobile ? '' : 'max-h-[calc(100vh-200px)] overflow-y-auto pr-2'}`}>
+        {/* Resource Type Filter */}
+        <div>
+          <h4 className="font-medium mb-3 text-sm">Resource Type</h4>
+          <div className="space-y-2">
+            {Object.values(RESOURCE_TYPE_NAMES).map((typeName) => (
+              <label 
+                key={typeName} 
+                className="flex items-center gap-2 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedResourceTypes.includes(typeName)}
+                  onChange={() => toggleResourceType(typeName)}
+                  className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                />
+                <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white">
+                  {typeName}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+        
+        {displayedTypes.length > 0 && (
+          <>
+            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div>
+              <h4 className="font-medium mb-3 text-sm">{typesLabel}</h4>
+              <div className="space-y-2">
+                {displayedTypes.map((type) => (
+                  <label 
+                    key={type} 
+                    className="flex items-center gap-2 cursor-pointer group"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedTypes.includes(type)}
+                      onChange={() => toggleType(type)}
+                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                    />
+                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white">
+                      {type}
+                    </span>
+                  </label>
                 ))}
               </div>
             </div>
-          </aside>
-          <section className="md:col-span-3">
-            {items.length === 0 ? (
-              <div className="text-sm text-slate-600">No resources found.</div>
-            ) : (
-              <div className="grid gap-4 sm:grid-cols-2">
-                {section==='documents' ? (
-                  (items as DocumentItem[]).map((d)=> (
-                    <div key={d.id} className="card p-4 hover:shadow">
-                      <div className="mb-2">
-                        {(() => {
-                          const mt = (d.mime_type ?? '').toLowerCase()
-                          const url = d.file_url ?? ''
-                          if (mt.startsWith('image/')) return <img src={url} alt="" className="w-full aspect-video object-cover rounded" />
-                          if (mt.startsWith('video/')) return <video src={url} controls className="w-full aspect-video rounded" />
-                          if (mt.startsWith('audio/')) return <audio src={url} controls className="w-full" />
-                          if (mt.includes('pdf')) return <iframe src={url} className="w-full aspect-video rounded" />
-                          return <FileTypeBadge url={url} mime={d.mime_type as any} />
-                        })()}
-                      </div>
-                      <div className="text-xs uppercase tracking-wide text-slate-500">{d.document_type ?? 'Document'}</div>
-                      <div className="font-semibold mt-1">{d.title}</div>
-                      {d.author && <div className="text-sm text-slate-600 mt-1">{d.author}</div>}
-                      {d.category && <div className="text-xs mt-2">{d.category}</div>}
-                      <div className="mt-3 flex gap-2">
-                        {d.file_url && isPreviewable(d.mime_type as any, d.file_url) && (
-                          <a href={d.file_url} target="_blank" rel="noreferrer" className="btn btn-sm">View</a>
-                        )}
-                        {d.file_url && <a href={d.file_url} download className="btn btn-sm">Download</a>}
-                        <Link to={`/resources/documents/${d.id}`} className="btn btn-sm">Detail</Link>
-                      </div>
-                    </div>
-                  ))
-                ) : section==='educational' ? (
-                  (items as EducationalItem[]).map((e)=> (
-                    <div key={e.id} className="card p-4 hover:shadow">
-                      <div className="mb-2">
-                        {(() => {
-                          const url = e.file_url ?? ''
-                          // No mime_type in payload; infer basic cases from url
-                          if (url.match(/\.(png|jpe?g|webp|gif)$/i)) return <img src={url} alt="" className="w-full aspect-video object-cover rounded" />
-                          if (url.match(/\.(mp4|webm|ogg)$/i)) return <video src={url} controls className="w-full aspect-video rounded" />
-                          if (url.match(/\.(mp3|wav|ogg)$/i)) return <audio src={url} controls className="w-full" />
-                          if (url.match(/\.pdf$/i)) return <iframe src={url} className="w-full aspect-video rounded" />
-                          return <FileTypeBadge url={url} />
-                        })()}
-                      </div>
-                      <div className="text-xs uppercase tracking-wide text-slate-500">{e.resource_type ?? 'Resource'}</div>
-                      <div className="font-semibold mt-1">{e.title}</div>
-                      {e.creator && <div className="text-sm text-slate-600 mt-1">{e.creator}</div>}
-                      <div className="mt-2 flex gap-2">
-                        {e.file_url && isPreviewable(undefined, e.file_url) && <a href={e.file_url} target="_blank" rel="noreferrer" className="btn btn-sm">View</a>}
-                        {e.file_url && <a href={e.file_url} download className="btn btn-sm">Download</a>}
-                        <Link to={`/resources/educational/${e.id}`} className="btn btn-sm">Detail</Link>
-                        {e.embed_code && <div className="text-xs text-slate-500">Has embed</div>}
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  (items as OthersItem[]).map((o)=> (
-                    <div key={o.id} className="card p-4 hover:shadow">
-                      <div className="mb-2">
-                        {(() => {
-                          const mt = (o as any).mime_type?.toLowerCase?.() ?? ''
-                          const url = o.file_url ?? ''
-                          if (mt.startsWith('image/')) return <img src={url} alt="" className="w-full aspect-video object-cover rounded" />
-                          if (mt.startsWith('video/')) return <video src={url} controls className="w-full aspect-video rounded" />
-                          if (mt.startsWith('audio/')) return <audio src={url} controls className="w-full" />
-                          if (mt.includes('pdf')) return <iframe src={url} className="w-full aspect-video rounded" />
-                          return <FileTypeBadge url={url} mime={(o as any).mime_type} />
-                        })()}
-                      </div>
-                      <div className="text-xs uppercase tracking-wide text-slate-500">{o.resource_type ?? 'Other'}</div>
-                      <div className="font-semibold mt-1">{o.title}</div>
-                      {o.creator && <div className="text-sm text-slate-600 mt-1">{o.creator}</div>}
-                      {o.subject_area && <div className="text-xs mt-2">{o.subject_area}</div>}
-                      <div className="mt-3 flex gap-2">
-                        {o.file_url && isPreviewable((o as any).mime_type, o.file_url) && (
-                          <a href={o.file_url} target="_blank" rel="noreferrer" className="btn btn-sm">View</a>
-                        )}
-                        {o.file_url && <a href={o.file_url} download className="btn btn-sm">Download</a>}
-                        <Link to={`/resources/others/${o.id}`} className="btn btn-sm">Detail</Link>
-                      </div>
-                    </div>
-                  ))
-                )}
+          </>
+        )}
+        
+        {categories.length > 0 && (
+          <>
+            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div>
+              <h4 className="font-medium mb-3 text-sm">Category</h4>
+              <div className="space-y-2">
+                {categories.map((cat) => (
+                  <label 
+                    key={cat} 
+                    className="flex items-center gap-2 cursor-pointer group"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedCategories.includes(cat)}
+                      onChange={() => toggleCategory(cat)}
+                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                    />
+                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white truncate">
+                      {cat}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+        
+        {/* Tags Filter */}
+        {tags.length > 0 && (
+          <>
+            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div>
+              <h4 className="font-medium mb-3 text-sm">Tags</h4>
+              <div className="space-y-2 max-h-64 overflow-y-auto">
+                {tags.slice(0, 20).map((tag) => (
+                  <label 
+                    key={tag} 
+                    className="flex items-center gap-2 cursor-pointer group"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedTags.includes(tag)}
+                      onChange={() => toggleTag(tag)}
+                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                    />
+                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white truncate">
+                      {tag}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+        
+        {/* Authors Filter */}
+        {authors.length > 0 && (
+          <>
+            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div>
+              <h4 className="font-medium mb-3 text-sm">Author / Creator</h4>
+              <div className="space-y-2 max-h-64 overflow-y-auto">
+                {authors.slice(0, 15).map((author) => (
+                  <label 
+                    key={author} 
+                    className="flex items-center gap-2 cursor-pointer group"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedAuthors.includes(author)}
+                      onChange={() => toggleAuthor(author)}
+                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                    />
+                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white truncate">
+                      {author}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+        
+        {/* Publication Date Filter */}
+        <>
+          <div className="border-t border-slate-200 dark:border-slate-700"></div>
+          <div>
+            <h4 className="font-medium mb-3 text-sm">Publication Date</h4>
+            <div className="space-y-3">
+              <div>
+                <label htmlFor="date-start" className="block text-xs text-slate-500 dark:text-slate-400 mb-1">
+                  From
+                </label>
+                <input
+                  id="date-start"
+                  type="date"
+                  value={dateRange.start}
+                  onChange={(e) => setDateRange(prev => ({ ...prev, start: e.target.value }))}
+                  className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
+                />
+              </div>
+              <div>
+                <label htmlFor="date-end" className="block text-xs text-slate-500 dark:text-slate-400 mb-1">
+                  To
+                </label>
+                <input
+                  id="date-end"
+                  type="date"
+                  value={dateRange.end}
+                  onChange={(e) => setDateRange(prev => ({ ...prev, end: e.target.value }))}
+                  className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      </div>
+      
+      {isMobile && (
+        <button 
+          onClick={() => setShowFiltersMobile(false)}
+          className="w-full mt-6 px-4 py-3 bg-ahc-green text-black font-medium rounded-lg hover:brightness-95 transition"
+        >
+          Apply Filters
+        </button>
+      )}
+    </div>
+  )
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <Helmet><title>Resources – AHC</title></Helmet>
+      
+      {/* Header Section */}
+      <div className="bg-white dark:bg-slate-800 border-b">
+        <div className="container py-8">
+          <SectionHeader eyebrow="Knowledge Hub" title="Resource Repository" />
+          <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+            Explore our comprehensive collection of documents, educational materials, and research resources
+          </p>
+          
+          {/* Search Bar */}
+          <div className="relative mt-6 max-w-2xl">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+            <input 
+              value={search} 
+              onChange={(e)=>setSearch(e.target.value)} 
+              placeholder="Search resources by title, author, or keyword..." 
+              className="w-full pl-12 pr-4 py-3 text-base border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-ahc-green focus:border-ahc-green" 
+            />
+          </div>
+        </div>
+      </div>
+      
+      {/* Main Content */}
+      <div className="container py-8">
+        {isLoading ? (
+          <div className="flex justify-center items-center py-20">
+            <Loader />
+          </div>
+        ) : (
+          <div className="flex gap-6">
+            {/* Sidebar Filters - Desktop */}
+            <aside className="w-80 flex-shrink-0 hidden lg:block">
+              {renderFilterSidebar(false)}
+            </aside>
+            
+            {/* Mobile Filter Drawer */}
+            {showFiltersMobile && (
+              <div className="lg:hidden fixed inset-0 z-50 bg-black/50" onClick={() => setShowFiltersMobile(false)}>
+                <div 
+                  className="fixed inset-y-0 left-0 w-80 bg-white dark:bg-slate-800 shadow-xl overflow-y-auto"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {renderFilterSidebar(true)}
+                </div>
               </div>
             )}
-          </section>
-        </div>
-      )}
+            
+            {/* Mobile Filter Toggle Button */}
+            <button 
+              className="lg:hidden fixed bottom-6 left-6 z-40 bg-ahc-green text-black px-5 py-3 rounded-full shadow-xl hover:shadow-2xl hover:brightness-95 transition-all duration-300 flex items-center gap-2 font-medium"
+              onClick={() => setShowFiltersMobile(true)}
+            >
+              <SlidersHorizontal className="h-5 w-5" />
+              <span className="text-sm">Filters</span>
+              {hasActiveFilters && (
+                <span className="bg-red-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 px-1.5 flex items-center justify-center">
+                  {selectedResourceTypes.length + selectedCategories.length + selectedTypes.length + selectedTags.length + selectedAuthors.length + (dateRange.start || dateRange.end ? 1 : 0)}
+                </span>
+              )}
+            </button>
+            
+            {/* Results Section */}
+            <section className="flex-1 min-w-0">
+              {/* Results Count and Sort */}
+              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Showing <span className="font-semibold text-slate-900 dark:text-white">{sortedResources.length}</span> of{' '}
+                  <span className="font-semibold text-slate-900 dark:text-white">{allResources.length}</span> resources
+                </p>
+                
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-slate-600 dark:text-slate-400">Sort by:</span>
+                  <select 
+                    value={sortBy} 
+                    onChange={(e) => setSortBy(e.target.value as SortOption)}
+                    className="px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
+                  >
+                    <option value="date-newest">Newest First</option>
+                    <option value="date-oldest">Oldest First</option>
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                    <option value="downloads">Most Downloaded</option>
+                  </select>
+                </div>
+              </div>
+              
+              {sortedResources.length === 0 ? (
+                <div className="text-center py-12 bg-white dark:bg-slate-800 rounded-xl border">
+                  <FileText className="h-12 w-12 text-slate-400 mx-auto mb-3" />
+                  <p className="text-lg text-slate-600 dark:text-slate-400">No resources found</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">Try adjusting your filters or search query</p>
+                </div>
+              ) : (
+                <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                  {sortedResources.map((resource) => (
+                    <div key={`${resource.sourceType}-${resource.id}`} className="card p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                      {/* Header with Badge and Download Count */}
+                      <div className="flex items-start justify-between mb-3">
+                        <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${
+                          resource.sourceType === 'documents' 
+                            ? 'bg-ahc-green/20 text-ahc-green'
+                            : resource.sourceType === 'educational'
+                            ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                            : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                        }`}>
+                          {resource.document_type || resource.resource_type || resource.sourceTypeName}
+                        </span>
+                        <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                          <Download className="h-3 w-3" />
+                          <span>{resource.download_count ?? 0}</span>
+                        </div>
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="font-semibold text-lg leading-tight text-slate-900 dark:text-white mb-2 line-clamp-2">
+                        {resource.title}
+                      </h3>
+                      
+                      {/* Abstract / Summary */}
+                      {(resource.abstract || resource.description) && (
+                        <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-3">
+                          {resource.abstract || resource.description}
+                        </p>
+                      )}
+                      
+                      {/* Category */}
+                      {(resource.category || resource.subject_area) && (
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
+                          {resource.category || resource.subject_area}
+                        </p>
+                      )}
+                      
+                      {/* Metadata */}
+                      <div className="space-y-2 text-sm mb-3 flex-grow">
+                        {(resource.author || resource.creator) && (
+                          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                            <User className="h-4 w-4 flex-shrink-0" />
+                            <span className="truncate">{resource.author || resource.creator}</span>
+                          </div>
+                        )}
+                        {(resource.publication_date || resource.published_at) && (
+                          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                            <Calendar className="h-4 w-4 flex-shrink-0" />
+                            <span>{new Date(resource.publication_date || resource.published_at || '').toLocaleDateString()}</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Tags */}
+                      {resource.tags && resource.tags.length > 0 && (
+                        <div className="mb-4">
+                          <div className="flex flex-wrap gap-1.5">
+                            {resource.tags.slice(0, 4).map((tag, index) => (
+                              <span 
+                                key={index}
+                                className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                            {resource.tags.length > 4 && (
+                              <span className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400">
+                                +{resource.tags.length - 4}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Actions */}
+                      <div className="flex gap-2 pt-4 border-t border-slate-200 dark:border-slate-700">
+                        {resource.file_url && (
+                          <button
+                            onClick={() => handleDownload(resource)}
+                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium bg-ahc-green text-black rounded-lg hover:brightness-95 transition"
+                          >
+                            <Download className="h-4 w-4" />
+                            Download
+                          </button>
+                        )}
+                        <Link 
+                          to={`/resources/${resource.sourceType}/${resource.id}`} 
+                          className="px-4 py-2 text-sm font-medium border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition"
+                        >
+                          Details
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
