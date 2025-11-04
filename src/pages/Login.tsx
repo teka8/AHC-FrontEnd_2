@@ -20,7 +20,7 @@ export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver: zodResolver(schema) })
 
   async function onSubmit(values: FormValues) {
-    const res = await login(values)
+    const res = await login({ email: values.email, password: values.password })
     if ('data' in res) navigate(from, { replace: true })
   }
 

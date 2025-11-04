@@ -9,7 +9,7 @@ export default function ChatbotWidget() {
 
   function handleSend() {
     if (!input.trim()) return
-    const next = [...messages, { role: 'user', text: input }]
+    const next = [...messages, { role: 'user' as const, text: input }]
     setMessages(next)
     setInput('')
   }
