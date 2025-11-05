@@ -66,10 +66,10 @@ export default function Home() {
                   A growing network of institutions across Africa.
                 </p>
               </div>
-              <div className="bg-ahc-green-light dark:bg-ahc-green-dark p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">Resources</div>
-                <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">500+ Items</div>
-                <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
+              <div className="bg-ahc-blue-light dark:bg-ahc-blue-dark p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-sm text-ahc-blue-dark dark:text-ahc-blue-light">Resources</div>
+                <div className="mt-1 text-3xl font-bold font-display text-ahc-blue-dark dark:text-white">500+ Items</div>
+                <p className="mt-2 text-sm text-ahc-blue-dark dark:text-ahc-blue-light">
                   A rich library of educational materials and research.
                 </p>
               </div>
