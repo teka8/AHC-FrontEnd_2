@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
         <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade ${scrolled ? 'bg-white/80 dark:bg-ahc-dark/80 backdrop-blur-lg shadow-md border-slate-200 dark:border-slate-800' : 'bg-transparent border-transparent'}`}>
-          <div class="container flex h-16 md:h-20 items-center justify-between">
+          <div className="container flex h-16 md:h-20 items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
               <img
                 src="/images/ahc-logo.png"

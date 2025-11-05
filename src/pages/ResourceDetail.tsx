@@ -71,7 +71,12 @@ export default function ResourceDetail() {
         </div>
       ) : item ? (
         <div>
-          <SectionHeader eyebrow="Resources" title={title} cta={<Link to="/resources" className="text-sm font-medium text-ahc-green-dark hover:underline">All resources</Link>} />
+                    <div className="mb-8">
+              <Link to="/resources" className="text-sm font-medium text-ahc-green-dark hover:underline">
+                  &larr; All resources
+              </Link>
+          </div>
+          <SectionHeader eyebrow="Resources" title={title} />
           <div className="grid gap-12 md:grid-cols-3">
             <div className="md:col-span-2">
               {renderPreview()}

@@ -18,7 +18,12 @@ export default function NewsDetail() {
         </div>
       ) : data ? (
         <div className="max-w-4xl mx-auto">
-          <SectionHeader eyebrow="News" title={data.title ?? 'News'} cta={<a href="/news" className="text-sm font-medium text-ahc-green-dark hover:underline">All news</a>} />
+                    <div className="mb-8">
+              <a href="/news" className="text-sm font-medium text-ahc-green-dark hover:underline">
+                  &larr; All news
+              </a>
+          </div>
+          <SectionHeader eyebrow="News" title={data.title ?? 'News'} />
           {(() => {
             const m = (data.content ?? '').match(/<img[^>]+src=["']([^"']+)["']/i)
             const headerImg = data.featured_image || (m ? m[1] : '')
