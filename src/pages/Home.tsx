@@ -335,7 +335,7 @@ export default function Home() {
                 <Link
                   key={n.id}
                   to={`/news/${n.id}`}
-                  className="group card card-hover overflow-hidden transition sunshine-edge"
+                  className="group card card-hover overflow-hidden transition"
                 >
                   {imgUrl ? (
                     <img
@@ -352,7 +352,7 @@ export default function Home() {
                         {dayjs(n.published_at).format("MMM DD, YYYY")}
                       </div>
                     )}
-                    <h3 className="mt-1 font-semibold group-hover:text-slate-900">
+                    <h3 className="mt-1 font-semibold">
                       {n.title}
                     </h3>
                     <p className="mt-2 text-sm text-slate-600 line-clamp-3">
@@ -364,7 +364,7 @@ export default function Home() {
                     </span>
                   </div>
                 </Link>
-              );
+              );git 
             })}
           </div>
         )}
