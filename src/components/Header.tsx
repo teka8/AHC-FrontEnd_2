@@ -44,95 +44,87 @@ export default function Header() {
   }, [theme])
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 border-b animate-fade ${
-      scrolled
-        ? 'bg-white/95 dark:bg-ahc-dark/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 supports-[backdrop-filter]:dark:bg-ahc-dark/60 border-slate-200 dark:border-slate-800'
-        : 'bg-transparent border-transparent'
-    }`}>
-      <div className="container flex h-14 md:h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <img
-            src="/images/ahc-logo.png"
-            alt="AHC Logo"
-            className="h-[115%] w-8 object-contain"
-            onError={(e) => {
-              const img = e.currentTarget as HTMLImageElement
-              if (img.dataset.fallback !== '1') { 
-                img.src = '/images/ahc-logo.jpg'; 
-                img.dataset.fallback = '1'; 
-              }
-              else { 
-                img.src = '/images/favicon.png'; 
-              }
-            }}
-          />
-          <span className="font-semibold">Africa Health Collaborative</span>
-        </Link>
-        <nav className="hidden md:flex items-center gap-6">
-          
-          {links.map((l) => (
-            <NavLink
-              key={l.path}
-              to={l.path}
-              className={({ isActive }) =>
-                `text-sm link-underline transition-colors duration-200 ${isActive ? 'text-ahc-green font-semibold' : 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'}`
-              }
-            >
-              {l.path === '/' ? <Home className="h-4 w-4" /> : l.label}
-            </NavLink>
-          ))}
-
-          <div 
-            className="relative"
-            onMouseEnter={() => setShowLatestDropdown(true)}
-            onMouseLeave={() => setShowLatestDropdown(false)}
-          >
-            <button
-              className="text-sm link-underline transition-colors duration-200 text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
-            >
-              <span className="inline-block">Latest</span>
-              <span className={`inline-block transition-transform duration-200 ${showLatestDropdown ? 'rotate-180' : ''}`}>
-                <ChevronDown className="h-3.5 w-3.5" />
-              </span>
-            </button>
-            {showLatestDropdown && (
-              <div className="absolute top-full left-0 pt-2">
-                <div className="w-48 bg-white dark:bg-slate-800 rounded-md shadow-lg border border-slate-200 dark:border-slate-700 py-1 animate-fade">
-                  {latestLinks.map((link) => (
-                    <NavLink
-                      key={link.path}
-                      to={link.path}
-                      className={({ isActive }) =>
-                        `block px-4 py-2 text-sm transition-colors ${
-                          isActive 
-                            ? 'bg-ahc-green/10 text-ahc-green font-semibold' 
-                            : 'text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700'
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                </div>
+        <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade ${scrolled ? 'bg-white/80 dark:bg-ahc-dark/80 backdrop-blur-lg shadow-md border-slate-200 dark:border-slate-800' : 'bg-transparent border-transparent'}`}>
+          <div class="container flex h-16 md:h-20 items-center justify-between">
+            <Link to="/" className="flex items-center gap-3">
+              <img
+                src="/images/ahc-logo.png"
+                alt="AHC Logo"
+                className="h-10 w-10 object-contain"
+                onError={(e) => {
+                  const img = e.currentTarget as HTMLImageElement
+                  if (img.dataset.fallback !== '1') { 
+                    img.src = '/images/ahc-logo.jpg'; 
+                    img.dataset.fallback = '1'; 
+                  }
+                  else { 
+                    img.src = '/images/favicon.png'; 
+                  }
+                }}
+              />
+              <span className="font-display text-xl font-bold">Africa Health Collaborative</span>
+            </Link>
+            <nav className="hidden md:flex items-center gap-8">
+              
+              {links.map((l) => (
+                <NavLink
+                  key={l.path}
+                  to={l.path}
+                  className={({ isActive }) =>
+                    `text-sm font-medium transition-colors duration-200 ${isActive ? 'text-ahc-green-dark font-semibold' : 'text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white'}`
+                  }
+                >
+                  {l.path === '/' ? <Home className="h-5 w-5" /> : l.label}
+                </NavLink>
+              ))}
+    
+              <div 
+                className="relative"
+                onMouseEnter={() => setShowLatestDropdown(true)}
+                onMouseLeave={() => setShowLatestDropdown(false)}
+              >
+                <button
+                  className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                >
+                  <span className="inline-block">Latest</span>
+                  <span className={`inline-block transition-transform duration-200 ${showLatestDropdown ? 'rotate-180' : ''}`}>
+                    <ChevronDown className="h-4 w-4" />
+                  </span>
+                </button>
+                {showLatestDropdown && (
+                  <div className="absolute top-full left-0 pt-3">
+                    <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                      {latestLinks.map((link) => (
+                        <NavLink
+                          key={link.path}
+                          to={link.path}
+                          className={({ isActive }) =>
+                            `block px-4 py-2.5 text-sm transition-colors ${isActive ? 'bg-ahc-green/10 text-ahc-green-dark font-semibold' : 'text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700'}`
+                          }
+                        >
+                          {link.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
+              
+              <button
+                className="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
+                onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
+                aria-label="Toggle theme"
+                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {theme === 'dark' ? (
+                  <Sun className="h-5 w-5" aria-hidden="true" />
+                ) : (
+                  <Moon className="h-5 w-5" aria-hidden="true" />
+                )}
+              </button>
+            </nav>
+            <button className="md:hidden px-3 py-2 rounded-md border transition hover:bg-slate-100 dark:hover:bg-slate-800" onClick={() => setOpen(true)} aria-label="Open menu">Menu</button>
           </div>
-          
-          <button
-            className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-md border text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 transition"
-            onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
-            aria-label="Toggle theme"
-            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {theme === 'dark' ? (
-              <Sun className="h-4 w-4" aria-hidden="true" />
-            ) : (
-              <Moon className="h-4 w-4" aria-hidden="true" />
-            )}
-          </button>
-        </nav>
-        <button className="md:hidden px-3 py-2 rounded-md border transition hover:bg-slate-50" onClick={() => setOpen(true)} aria-label="Open menu">Menu</button>
-      </div>
       {open && (
         <div className="md:hidden fixed inset-0 z-50 bg-black/40 animate-fade" onClick={() => setOpen(false)}>
           <div className="absolute right-0 top-0 h-full w-72 bg-white dark:bg-ahc-dark shadow-xl p-4 animate-page" onClick={(e) => e.stopPropagation()}>

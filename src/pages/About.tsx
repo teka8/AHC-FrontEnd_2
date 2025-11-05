@@ -14,26 +14,26 @@ export default function About() {
   }
   
   return (
-    <div className="container py-10">
+    <div className="container py-16 md:py-24">
       <Helmet><title>About – AHC</title></Helmet>
       {isLoading ? (
-        <div>
+        <div className="text-center">
           <Loader />
-          <p className="text-center mt-4 text-gray-500">Loading about page...</p>
+          <p className="mt-4 text-slate-500 dark:text-slate-400">Loading content...</p>
         </div>
       ) : error ? (
-        <div className="text-red-600">
-          <p>Error loading page.</p>
-          <pre className="text-xs mt-2">{JSON.stringify(error, null, 2)}</pre>
+        <div className="text-red-500 bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+          <p className="font-semibold">Error loading page content.</p>
+          <pre className="text-xs mt-2 whitespace-pre-wrap">{JSON.stringify(error, null, 2)}</pre>
         </div>
       ) : !data ? (
-        <div className="text-yellow-600">
-          <p>No data returned from API</p>
+        <div className="text-amber-600 bg-amber-50 dark:bg-amber-900/20 p-6 rounded-lg">
+          <p>The content for this page could not be loaded. Please try again later.</p>
         </div>
       ) : (
-        <div>
+        <div className="animate-page">
           <SectionHeader eyebrow="Who we are" title={data?.title ?? 'About Us'} />
-          <article className="prose prose-slate max-w-none">
+          <article className="prose prose-lg max-w-none dark:prose-invert prose-p:text-slate-600 dark:prose-p:text-slate-300 prose-headings:font-display prose-headings:text-ahc-dark dark:prose-headings:text-white">
             <div dangerouslySetInnerHTML={{ __html: data?.content ?? '' }} />
           </article>
         </div>

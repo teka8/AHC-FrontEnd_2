@@ -9,29 +9,35 @@ export default function NewsDetail() {
   const { id = '' } = useParams()
   const { data, isLoading, isError, error } = useGetPublicPostQuery(id)
   return (
-    <div className="container pt-24 pb-10">
+    <div className="container pt-24 pb-16 md:pb-24">
       <Helmet><title>{data?.title ?? 'News'} – AHC</title></Helmet>
       {isLoading ? <Loader /> : isError ? (
-        <div className="text-sm text-red-600">Failed to load this news item.</div>
+        <div className="text-center py-16">
+          <p className="text-lg font-semibold text-red-600">Failed to load this news item.</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">Please try again later.</p>
+        </div>
       ) : data ? (
-        <div>
-          <SectionHeader eyebrow="News" title={data.title ?? 'News'} cta={<a href="/news" className="text-sm text-ahc-green">All news</a>} />
+        <div className="max-w-4xl mx-auto">
+          <SectionHeader eyebrow="News" title={data.title ?? 'News'} cta={<a href="/news" className="text-sm font-medium text-ahc-green-dark hover:underline">All news</a>} />
           {(() => {
             const m = (data.content ?? '').match(/<img[^>]+src=["']([^"']+)["']/i)
             const headerImg = data.featured_image || (m ? m[1] : '')
             return headerImg ? (
-              <img src={headerImg} alt={data.title ?? ''} className="w-full rounded-xl border mb-6" />
+              <img src={headerImg} alt={data.title ?? ''} className="w-full rounded-xl border dark:border-slate-800 mb-8 shadow-lg" />
             ) : null
           })()}
           {data.published_at && (
-            <div className="text-sm text-slate-600 mb-4">{dayjs(data.published_at).format('MMMM DD, YYYY')}</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400 mb-4">Published on {dayjs(data.published_at).format('MMMM DD, YYYY')}</div>
           )}
-          <article className="prose prose-slate max-w-none">
+          <article className="prose prose-lg max-w-none dark:prose-invert prose-p:text-slate-600 dark:prose-p:text-slate-300 prose-headings:font-display prose-headings:text-ahc-dark dark:prose-headings:text-white">
             <div dangerouslySetInnerHTML={{ __html: data.content ?? '' }} />
           </article>
         </div>
       ) : (
-        <div className="text-sm text-slate-600">This news item was not found.</div>
+        <div className="text-center py-16">
+          <p className="text-lg font-semibold">This news item was not found.</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">Please check the URL or go back to the news list.</p>
+        </div>
       )}
     </div>
   )

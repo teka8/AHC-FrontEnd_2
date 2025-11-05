@@ -62,37 +62,45 @@ export default function ResourceDetail() {
   }
 
   return (
-    <div className="container pt-24 pb-10">
+    <div className="container pt-24 pb-16 md:pb-24">
       <Helmet><title>{title} – AHC</title></Helmet>
       {isLoading ? <Loader /> : isError ? (
-        <div className="text-sm text-red-600">Failed to load this resource.</div>
+        <div className="text-center py-16">
+          <p className="text-lg font-semibold text-red-600">Failed to load this resource.</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">Please try again later.</p>
+        </div>
       ) : item ? (
         <div>
-          <SectionHeader eyebrow="Resources" title={title} cta={<Link to="/resources" className="text-sm text-ahc-green">All resources</Link>} />
-          <div className="grid gap-6 md:grid-cols-3">
+          <SectionHeader eyebrow="Resources" title={title} cta={<Link to="/resources" className="text-sm font-medium text-ahc-green-dark hover:underline">All resources</Link>} />
+          <div className="grid gap-12 md:grid-cols-3">
             <div className="md:col-span-2">
               {renderPreview()}
             </div>
-            <aside>
-              <div className="card p-4">
-                <div className="text-sm text-slate-600">Type</div>
-                <div className="font-medium">{item.document_type || item.resource_type || 'Resource'}</div>
-                {item.author && <div className="mt-2"><div className="text-sm text-slate-600">Author</div><div className="font-medium">{item.author}</div></div>}
-                {item.creator && <div className="mt-2"><div className="text-sm text-slate-600">Creator</div><div className="font-medium">{item.creator}</div></div>}
-                {item.category && <div className="mt-2"><div className="text-sm text-slate-600">Category</div><div className="font-medium">{item.category}</div></div>}
-                {item.subject_area && <div className="mt-2"><div className="text-sm text-slate-600">Subject</div><div className="font-medium">{item.subject_area}</div></div>}
-                {item.publication_date && <div className="mt-2"><div className="text-sm text-slate-600">Published</div><div className="font-medium">{item.publication_date}</div></div>}
-                {item.published_at && <div className="mt-2"><div className="text-sm text-slate-600">Published</div><div className="font-medium">{item.published_at}</div></div>}
-                <div className="mt-4 flex gap-2">
-                  {fileUrl && isPreviewable(mimeType, fileUrl) && <a href={fileUrl} target="_blank" rel="noreferrer" className="btn btn-sm">View</a>}
-                  {fileUrl && <a href={fileUrl} download className="btn btn-sm">Download</a>}
+            <aside className="md:col-span-1">
+              <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md space-y-4">
+                <div>
+                  <div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Type</div>
+                  <div className="font-medium text-lg">{item.document_type || item.resource_type || 'Resource'}</div>
+                </div>
+                {item.author && <div><div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Author</div><div className="font-medium">{item.author}</div></div>}
+                {item.creator && <div><div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Creator</div><div className="font-medium">{item.creator}</div></div>}
+                {item.category && <div><div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Category</div><div className="font-medium">{item.category}</div></div>}
+                {item.subject_area && <div><div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Subject</div><div className="font-medium">{item.subject_area}</div></div>}
+                {item.publication_date && <div><div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Published</div><div className="font-medium">{item.publication_date}</div></div>}
+                {item.published_at && <div><div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Published</div><div className="font-medium">{item.published_at}</div></div>}
+                <div className="pt-4 flex gap-3">
+                  {fileUrl && isPreviewable(mimeType, fileUrl) && <a href={fileUrl} target="_blank" rel="noreferrer" className="btn bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-semibold rounded-full px-6 py-3 transition-colors">View</a>}
+                  {fileUrl && <a href={fileUrl} download className="btn bg-ahc-green hover:bg-ahc-green-dark text-white font-semibold rounded-full px-6 py-3 transition-colors">Download</a>}
                 </div>
               </div>
             </aside>
           </div>
         </div>
       ) : (
-        <div className="text-sm text-slate-600">Resource not found.</div>
+        <div className="text-center py-16">
+          <p className="text-lg font-semibold">Resource not found.</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">Please check the URL or go back to the resource list.</p>
+        </div>
       )}
     </div>
   )

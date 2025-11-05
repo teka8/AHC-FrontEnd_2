@@ -40,32 +40,32 @@ export default function EventsList() {
   const selectedLabel = month.format('MMMM YYYY')
 
   return (
-    <div className="container py-10">
+    <div className="container py-16 md:py-24">
       <Helmet><title>Events – AHC</title></Helmet>
       <SectionHeader eyebrow="What’s Next" title="All Events" />
-      <div className="flex items-center gap-3 mb-4">
-        <div className="inline-flex rounded border overflow-hidden">
-          <button className={`px-3 py-2 ${view==='calendar'?'bg-ahc-green text-black':''}`} onClick={()=>setView('calendar')}>Calendar</button>
-          <button className={`px-3 py-2 ${view==='list'?'bg-ahc-green text-black':''}`} onClick={()=>setView('list')}>List</button>
+      <div className="flex items-center gap-3 mb-6">
+        <div className="inline-flex rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+          <button className={`px-4 py-2 text-sm font-medium transition-colors ${view==='calendar'?'bg-ahc-green text-white':'hover:bg-slate-100 dark:hover:bg-slate-800'}`} onClick={()=>setView('calendar')}>Calendar</button>
+          <button className={`px-4 py-2 text-sm font-medium transition-colors ${view==='list'?'bg-ahc-green text-white':'hover:bg-slate-100 dark:hover:bg-slate-800'}`} onClick={()=>setView('list')}>List</button>
         </div>
       </div>
 
       {isLoading ? <Loader /> : view === 'list' ? (
-        <div className="grid gap-4 md:grid-cols-3 animate-page">
+        <div className="grid gap-8 md:grid-cols-3 animate-page">
           {items.map((e) => (<EventCard key={e.id} item={e} />))}
         </div>
       ) : (
-        <div className="animate-page">
-          <div className="flex items-center justify-between mb-3">
-            <div className="text-sm text-slate-600">{selectedLabel}</div>
+        <div className="animate-page bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+          <div className="flex items-center justify-between mb-4">
+            <div className="text-lg font-bold font-display dark:text-white">{selectedLabel}</div>
             <div className="flex items-center gap-2">
-              <button className="px-3 py-1 rounded border hover:bg-slate-50 hover:dark:bg-slate-800" onClick={()=>setMonth(m=>m.subtract(1,'month'))}>Prev</button>
-              <button className="px-3 py-1 rounded border hover:bg-slate-50 hover:dark:bg-slate-800" onClick={()=>setMonth(dayjs())}>Today</button>
-              <button className="px-3 py-1 rounded border hover:bg-slate-50 hover:dark:bg-slate-800" onClick={()=>setMonth(m=>m.add(1,'month'))}>Next</button>
+              <button className="px-3 py-1 rounded-md border border-slate-300 dark:border-slate-700 hover:bg-slate-100 hover:dark:bg-slate-700 transition-colors" onClick={()=>setMonth(m=>m.subtract(1,'month'))}>Prev</button>
+              <button className="px-3 py-1 rounded-md border border-slate-300 dark:border-slate-700 hover:bg-slate-100 hover:dark:bg-slate-700 transition-colors" onClick={()=>setMonth(dayjs())}>Today</button>
+              <button className="px-3 py-1 rounded-md border border-slate-300 dark:border-slate-700 hover:bg-slate-100 hover:dark:bg-slate-700 transition-colors" onClick={()=>setMonth(m=>m.add(1,'month'))}>Next</button>
             </div>
           </div>
-          <div className="grid grid-cols-7 text-xs text-slate-500 mb-2">
-            {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(w => (<div key={w} className="px-2 py-1">{w}</div>))}
+          <div className="grid grid-cols-7 text-xs text-slate-500 dark:text-slate-400 mb-2 font-semibold">
+            {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(w => (<div key={w} className="px-2 py-1 text-center">{w}</div>))}
           </div>
           <div className="grid grid-cols-7 gap-2">
             {days.map(d => {
@@ -73,17 +73,17 @@ export default function EventsList() {
               const key = d.format('YYYY-MM-DD')
               const dayEvents = byDate[key] || []
               return (
-                <div key={key} className={`min-h-[96px] rounded-lg border p-2 ${isCurrentMonth ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800 text-slate-400'}`}>
+                <div key={key} className={`min-h-[120px] rounded-lg border p-2 transition-colors ${isCurrentMonth ? 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700' : 'bg-slate-50 dark:bg-slate-800/50 text-slate-400 border-slate-100 dark:border-slate-700/50'}`}>
                   <div className="flex items-center justify-between">
-                    <div className="text-xs">{d.date()}</div>
-                    {!!dayEvents.length && <span className="inline-block rounded-full bg-ahc-green/80 text-black text-[10px] px-2 py-0.5">{dayEvents.length}</span>}
+                    <div className="text-sm font-semibold">{d.date()}</div>
+                    {!!dayEvents.length && <span className="inline-block rounded-full bg-ahc-green/20 text-ahc-green-dark text-xs px-2 py-0.5">{dayEvents.length}</span>}
                   </div>
-                  <div className="mt-1 space-y-1">
+                  <div className="mt-2 space-y-1">
                     {dayEvents.slice(0,2).map(ev => (
-                      <a key={ev.id} href={`/events/${ev.id}`} className="block text-[11px] truncate rounded px-2 py-1 bg-emerald-50 dark:bg-gray-400 text-emerald-700 hover:bg-emerald-100 hover:dark:bg-emerald-100">{ev.title}</a>
+                      <a key={ev.id} href={`/events/${ev.id}`} className="block text-xs truncate rounded-md px-2 py-1 bg-ahc-green/10 text-ahc-green-dark hover:bg-ahc-green/20 transition-colors">{ev.title}</a>
                     ))}
                     {dayEvents.length > 2 && (
-                      <a href={`/events?date=${key}`} className="block text-[11px] text-slate-500 hover:text-slate-700">+{dayEvents.length - 2} more</a>
+                      <a href={`/events?date=${key}`} className="block text-xs text-slate-500 hover:underline">+{dayEvents.length - 2} more</a>
                     )}
                   </div>
                 </div>
