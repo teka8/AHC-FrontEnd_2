@@ -352,9 +352,7 @@ export default function Home() {
                         {dayjs(n.published_at).format("MMM DD, YYYY")}
                       </div>
                     )}
-                    <h3 className="mt-1 font-semibold">
-                      {n.title}
-                    </h3>
+                    <h3 className="mt-1 font-semibold">{n.title}</h3>
                     <p className="mt-2 text-sm text-slate-600 line-clamp-3">
                       {n.excerpt ??
                         (n.content ?? "").replace(/<[^>]+>/g, "").slice(0, 160)}
@@ -364,7 +362,7 @@ export default function Home() {
                     </span>
                   </div>
                 </Link>
-              );git 
+              );
             })}
           </div>
         )}
