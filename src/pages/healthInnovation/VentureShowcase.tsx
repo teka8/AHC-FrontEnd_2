@@ -1,41 +1,45 @@
-import { Helmet } from 'react-helmet-async'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useGetVenturesQuery, useVoteVentureMutation } from '../../features/healthInnovation/venturesApi'
-import type { Venture } from '../../features/healthInnovation/types'
-import { ThumbsUp, MapPin, Users, TrendingUp } from 'lucide-react'
+import { Helmet } from "react-helmet-async";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  useGetVenturesQuery,
+  useVoteVentureMutation,
+} from "../../features/healthInnovation/venturesApi";
+import type { Venture } from "../../features/healthInnovation/types";
+import { ThumbsUp, MapPin, Users, TrendingUp } from "lucide-react";
+import Loader from "../../components/Loader";
 
 const focusAreas = [
-  { value: 'all', label: 'All' },
-  { value: 'mental-health', label: 'Mental Health' },
-  { value: 'telemedicine', label: 'Telemedicine' },
-  { value: 'pharmaceuticals', label: 'Pharmaceuticals' },
-  { value: 'biotech', label: 'Biotech' },
-  { value: 'medtech', label: 'MedTech' },
-  { value: 'diagnostics', label: 'Diagnostics' },
-]
+  { value: "all", label: "All" },
+  { value: "mental-health", label: "Mental Health" },
+  { value: "telemedicine", label: "Telemedicine" },
+  { value: "pharmaceuticals", label: "Pharmaceuticals" },
+  { value: "biotech", label: "Biotech" },
+  { value: "medtech", label: "MedTech" },
+  { value: "diagnostics", label: "Diagnostics" },
+];
 
 export default function VentureShowcase() {
-  const [selectedFocus, setSelectedFocus] = useState<string>('all')
-  const [searchQuery, setSearchQuery] = useState('')
-  
+  const [selectedFocus, setSelectedFocus] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
   const { data: ventures = [], isLoading } = useGetVenturesQuery({
     focus_area: selectedFocus as any,
     search: searchQuery || undefined,
-    sort_by: 'popular'
-  })
-  
-  const [voteVenture] = useVoteVentureMutation()
+    sort_by: "popular",
+  });
+
+  const [voteVenture] = useVoteVentureMutation();
 
   const handleVote = async (ventureId: number, e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
     try {
-      await voteVenture(ventureId).unwrap()
+      await voteVenture(ventureId).unwrap();
     } catch (error) {
-      console.error('Failed to vote:', error)
+      console.error("Failed to vote:", error);
     }
-  }
+  };
 
   return (
     <>
@@ -48,7 +52,8 @@ export default function VentureShowcase() {
           <div className="mb-12">
             <h1 className="text-4xl font-bold mb-4">Venture Showcase</h1>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              Discover innovative health startups transforming healthcare across Africa
+              Discover innovative health startups transforming healthcare across
+              Africa
             </p>
           </div>
 
@@ -71,8 +76,8 @@ export default function VentureShowcase() {
                 onClick={() => setSelectedFocus(area.value)}
                 className={`px-4 py-2 rounded-lg transition ${
                   selectedFocus === area.value
-                    ? 'bg-ahc-green text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+                    ? "bg-ahc-green text-white"
+                    : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 {area.label}
@@ -81,12 +86,7 @@ export default function VentureShowcase() {
           </div>
 
           {/* Loading State */}
-          {isLoading && (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-ahc-green mx-auto"></div>
-              <p className="mt-4 text-gray-600 dark:text-gray-400">Loading ventures...</p>
-            </div>
-          )}
+          {isLoading && <Loader />}
 
           {/* Ventures Grid */}
           {!isLoading && ventures.length > 0 && (
@@ -100,9 +100,15 @@ export default function VentureShowcase() {
                   {/* Logo */}
                   <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
                     {venture.logo ? (
-                      <img src={venture.logo} alt={venture.name} className="w-full h-full object-cover" />
+                      <img
+                        src={venture.logo}
+                        alt={venture.name}
+                        className="w-full h-full object-cover"
+                      />
                     ) : (
-                      <span className="text-2xl font-bold text-gray-400">{venture.name.charAt(0)}</span>
+                      <span className="text-2xl font-bold text-gray-400">
+                        {venture.name.charAt(0)}
+                      </span>
                     )}
                   </div>
 
@@ -118,17 +124,19 @@ export default function VentureShowcase() {
                     {venture.name}
                   </h3>
                   {venture.tagline && (
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 italic">{venture.tagline}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 italic">
+                      {venture.tagline}
+                    </p>
                   )}
 
                   {/* Focus Area */}
                   <div className="text-sm text-ahc-green font-medium mb-3 capitalize">
-                    {venture.focus_area.replace('-', ' ')}
+                    {venture.focus_area.replace("-", " ")}
                   </div>
 
                   {/* Description */}
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-                    {venture.description || 'Innovative healthcare solution'}
+                    {venture.description || "Innovative healthcare solution"}
                   </p>
 
                   {/* Stats */}
@@ -148,14 +156,18 @@ export default function VentureShowcase() {
                     {venture.patients_impacted && (
                       <div className="flex items-center gap-1">
                         <TrendingUp className="w-3 h-3" />
-                        <span>{venture.patients_impacted.toLocaleString()} patients</span>
+                        <span>
+                          {venture.patients_impacted.toLocaleString()} patients
+                        </span>
                       </div>
                     )}
                   </div>
 
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-4 border-t">
-                    <span className="text-sm font-medium text-ahc-green">Learn More →</span>
+                    <span className="text-sm font-medium text-ahc-green">
+                      Learn More →
+                    </span>
                     <button
                       onClick={(e) => handleVote(venture.id, e)}
                       className="flex items-center gap-1 text-xs text-gray-500 hover:text-ahc-green transition"
@@ -172,12 +184,16 @@ export default function VentureShowcase() {
           {/* Empty State */}
           {!isLoading && ventures.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-600 dark:text-gray-400 mb-4">No ventures found</p>
-              <p className="text-sm text-gray-500">Try adjusting your filters or search query</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                No ventures found
+              </p>
+              <p className="text-sm text-gray-500">
+                Try adjusting your filters or search query
+              </p>
             </div>
           )}
         </div>
       </div>
     </>
-  )
+  );
 }
