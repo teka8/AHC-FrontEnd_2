@@ -94,7 +94,7 @@ export default function Header() {
             onMouseLeave={() => setShowLatestDropdown(false)}
           >
             <button className="text-sm link-underline transition-colors duration-200 text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
-              <span className="inline-block pr-2">Latest</span>
+              <span className="inline-block">Latest</span>
               <span
                 className={`inline-block transition-transform duration-200 ${
                   showLatestDropdown ? "rotate-180" : ""
