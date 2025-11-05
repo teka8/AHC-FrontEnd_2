@@ -1,9 +1,25 @@
 import { Link, NavLink } from 'react-router-dom'
-import { useState } from 'react'
-import { Activity, Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+
+import { Activity, Menu, X, Moon, Sun } from 'lucide-react'
 
 export default function HIHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') return 'light'
+    const saved = localStorage.getItem('theme') as 'light' | 'dark' | null
+    if (saved) return saved
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
+
+   useEffect(() => {
+      const root = document.documentElement
+      if (theme === 'dark') root.classList.add('dark')
+      else root.classList.remove('dark')
+      localStorage.setItem('theme', theme)
+    }, [theme])
+
+  
 
   const navItems = [
     { label: 'Home', path: '/health-innovation' },
@@ -54,7 +70,22 @@ export default function HIHeader() {
                 Request Demo
               </button>
             </Link>
+
+            <button
+            className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-md border text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 transition"
+            onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
+            aria-label="Toggle theme"
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-4 w-4" aria-hidden="true" />
+            ) : (
+              <Moon className="h-4 w-4" aria-hidden="true" />
+            )}
+          </button>
           </div>
+
+          
 
           {/* Mobile Menu Button */}
           <button
@@ -96,6 +127,15 @@ export default function HIHeader() {
                   </button>
                 </Link>
               </div>
+
+              <button
+                className="mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-md border text-left hover:bg-slate-50 dark:hover:bg-slate-800"
+                onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun className="h-4 w-4" aria-hidden="true" /> : <Moon className="h-4 w-4" aria-hidden="true" />}
+                <span>Theme</span>
+              </button>
             </div>
           </div>
         )}
