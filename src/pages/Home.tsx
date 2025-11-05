@@ -99,41 +99,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container py-12 bg-gray-200 dark:bg-gray-900 transition-colors duration-300">
-        <SectionHeader
-          eyebrow="Highlights"
-          title="Latest News"
-          cta={
-            <Link to="/news" className="text-sm text-ahc-green sunshine-edge">
-              View all
-            </Link>
-          }
-        />
-        {loadingNews ? (
-          <Loader />
-        ) : newsArray.length === 0 ? (
-          <div className="text-sm text-slate-600">No news yet.</div>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-3">
-            {newsArray.slice(0, 3).map((n: any) => {
-              const firstImgMatch = (n.content ?? "").match(
-                /<img[^>]+src=["']([^"']+)["']/i
-              );
-              const galleryFirst =
-                n.gallery && Array.isArray(n.gallery) && n.gallery.length > 0
-                  ? n.gallery[0].original || n.gallery[0].url
-                  : "";
-              const imgUrl =
-                n.featured_image ||
-                galleryFirst ||
-                (firstImgMatch ? firstImgMatch[1] : "");
-              return (
-                <Link
-                  key={n.id}
-                  to={`/news/${n.id}`}
-                  className="group card card-hover overflow-hidden transition"
-                >
-                  {imgUrl ? (
+      <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Stay Informed"
+            title="Latest News & Updates"
+            centerTitle={true}
+          />
+          {loadingNews ? (
+            <Loader />
+          ) : newsArray.length === 0 ? (
+            <div className="text-sm text-slate-600 dark:text-slate-400 text-center">No news yet.</div>
+          ) : (
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="lg:col-span-1">
+                <Link to={`/news/${newsArray[0].id}`} className="group">
+                  <img
+                    src={newsArray[0].featured_image || (newsArray[0].content.match(/<img[^>]+src=["']([^"']+)["']/) ? newsArray[0].content.match(/<img[^>]+src=["']([^"']+)["']/)[1] : '')}
+                    alt={newsArray[0].title}
+                    className="w-full aspect-video object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+                  />
+                  <h3 className="mt-4 text-2xl font-bold font-display text-slate-900 dark:text-white group-hover:text-ahc-green-dark transition-colors">
+                    {newsArray[0].title}
+                  </h3>
+                  <p className="mt-2 text-slate-600 dark:text-slate-300 line-clamp-3">
+                    {newsArray[0].excerpt ?? newsArray[0].content.replace(/<[^>]+>/g, '').slice(0, 280)}
+                  </p>
+                </Link>
+              </div>
+              <div className="lg:col-span-1 grid gap-6">
+                {newsArray.slice(1, 4).map((n: any) => (
+                  <Link key={n.id} to={`/news/${n.id}`} className="group flex items-center gap-4">
                     <img
                       src={n.featured_image || (n.content.match(/<img[^>]+src=["']([^"']+)["']/) ? n.content.match(/<img[^>]+src=["']([^"']+)["']/)[1] : '')}
                       alt={n.title}
@@ -146,19 +142,16 @@ export default function Home() {
                       <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                         {dayjs(n.published_at).format("MMM DD, YYYY")}
                       </div>
-                    )}
-                    <h3 className="mt-1 font-semibold">{n.title}</h3>
-                    <p className="mt-2 text-sm text-slate-600 line-clamp-3">
-                      {n.excerpt ??
-                        (n.content ?? "").replace(/<[^>]+>/g, "").slice(0, 160)}
-                    </p>
-                    <span className="mt-3 inline-block text-sm text-slate-700 group-hover:text-ahc-green">
-                      Read more →
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="flex justify-center mt-8">
+            <Link to="/news" className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors">
+              View all news
+            </Link>
           </div>
         </div>
       </section>
