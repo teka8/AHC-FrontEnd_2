@@ -9,7 +9,14 @@ import dayjs from "dayjs";
 import EventCard from "../components/cards/EventCard";
 import PartnersStrip from "../components/ui/PartnersStrip";
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
-import { BookOpenCheck, Users, FlaskConical, Laptop, Globe, Landmark } from 'lucide-react';
+import {
+  BookOpenCheck,
+  Users,
+  FlaskConical,
+  Laptop,
+  Globe,
+  Landmark,
+} from "lucide-react";
 
 export default function Home() {
   const { data: homeBlocks, isLoading: loadingPages } =
@@ -52,39 +59,62 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-2 items-center">
             <div className="prose max-w-none dark:prose-invert">
               <p>
-                The Africa Health Collaborative (AHC) is a network of health professionals, educators, and institutions dedicated to advancing health professions education and research in Africa. We foster collaboration, knowledge exchange, and scholarship to address the continent's pressing health challenges.
+                The Africa Health Collaborative (AHC) is a network of health
+                professionals, educators, and institutions dedicated to
+                advancing health professions education and research in Africa.
+                We foster collaboration, knowledge exchange, and scholarship to
+                address the continent's pressing health challenges.
               </p>
               <p>
-                Our work is guided by a commitment to excellence, equity, and innovation. We believe that by working together, we can build a healthier future for all Africans.
+                Our work is guided by a commitment to excellence, equity, and
+                innovation. We believe that by working together, we can build a
+                healthier future for all Africans.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-ahc-blue-light dark:bg-ahc-blue-dark p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-ahc-blue-dark dark:text-ahc-blue-light">Our Reach</div>
-                <div className="mt-1 text-3xl font-bold font-display text-ahc-blue-dark dark:text-white">12+ Universities</div>
-                <p className="mt-2 text-sm text-ahc-blue-dark dark:text-ahc-blue-light">
+              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                  Our Reach
+                </div>
+                <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">
+                  12+ Universities
+                </div>
+                <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
                   A growing network of institutions across Africa.
                 </p>
               </div>
-              <div className="bg-ahc-green-light dark:bg-ahc-green-dark p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">Resources</div>
-                <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">500+ Items</div>
-                <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
+              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-sm text-slate-500 dark:text-slate-400">
+                  Resources
+                </div>
+                <div className="mt-1 text-3xl font-bold font-display">
+                  500+ Items
+                </div>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
                   A rich library of educational materials and research.
                 </p>
               </div>
               <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">Community</div>
-                <div className="mt-1 text-3xl font-bold font-display">3k+ Members</div>
+                <div className="text-sm text-slate-500 dark:text-slate-400">
+                  Community
+                </div>
+                <div className="mt-1 text-3xl font-bold font-display">
+                  3k+ Members
+                </div>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
                   A vibrant community of health professionals and educators.
                 </p>
               </div>
               <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">Impact</div>
-                <div className="mt-1 text-3xl font-bold font-display">Pan-African</div>
+                <div className="text-sm text-slate-500 dark:text-slate-400">
+                  Impact
+                </div>
+                <div className="mt-1 text-3xl font-bold font-display">
+                  Pan-African
+                </div>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  Driving positive change in health education across the continent.
+                  Driving positive change in health education across the
+                  continent.
                 </p>
               </div>
             </div>
@@ -110,13 +140,24 @@ export default function Home() {
           {loadingNews ? (
             <Loader />
           ) : newsArray.length === 0 ? (
-            <div className="text-sm text-slate-600 dark:text-slate-400 text-center">No news yet.</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400 text-center">
+              No news yet.
+            </div>
           ) : (
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="lg:col-span-1">
                 <Link to={`/news/${newsArray[0].id}`} className="group">
                   <img
-                    src={newsArray[0].featured_image || (newsArray[0].content.match(/<img[^>]+src=["']([^"']+)["']/) ? newsArray[0].content.match(/<img[^>]+src=["']([^"']+)["']/)[1] : '')}
+                    src={
+                      newsArray[0].featured_image ||
+                      (newsArray[0].content.match(
+                        /<img[^>]+src=["']([^"']+)["']/
+                      )
+                        ? newsArray[0].content.match(
+                            /<img[^>]+src=["']([^"']+)["']/
+                          )[1]
+                        : "")
+                    }
                     alt={newsArray[0].title}
                     className="w-full aspect-video object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                   />
@@ -124,15 +165,27 @@ export default function Home() {
                     {newsArray[0].title}
                   </h3>
                   <p className="mt-2 text-slate-600 dark:text-slate-300 line-clamp-3">
-                    {newsArray[0].excerpt ?? newsArray[0].content.replace(/<[^>]+>/g, '').slice(0, 280)}
+                    {newsArray[0].excerpt ??
+                      newsArray[0].content
+                        .replace(/<[^>]+>/g, "")
+                        .slice(0, 280)}
                   </p>
                 </Link>
               </div>
               <div className="lg:col-span-1 grid gap-6">
                 {newsArray.slice(1, 4).map((n: any) => (
-                  <Link key={n.id} to={`/news/${n.id}`} className="group flex items-center gap-4">
+                  <Link
+                    key={n.id}
+                    to={`/news/${n.id}`}
+                    className="group flex items-center gap-4"
+                  >
                     <img
-                      src={n.featured_image || (n.content.match(/<img[^>]+src=["']([^"']+)["']/) ? n.content.match(/<img[^>]+src=["']([^"']+)["']/)[1] : '')}
+                      src={
+                        n.featured_image ||
+                        (n.content.match(/<img[^>]+src=["']([^"']+)["']/)
+                          ? n.content.match(/<img[^>]+src=["']([^"']+)["']/)[1]
+                          : "")
+                      }
                       alt={n.title}
                       className="w-24 h-24 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300"
                     />
@@ -150,7 +203,10 @@ export default function Home() {
             </div>
           )}
           <div className="flex justify-center mt-8">
-            <Link to="/news" className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors">
+            <Link
+              to="/news"
+              className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
+            >
               View all news
             </Link>
           </div>
@@ -178,7 +234,10 @@ export default function Home() {
             </div>
           )}
           <div className="flex justify-center mt-8">
-            <a href="/events" className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors">
+            <a
+              href="/events"
+              className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
+            >
               View all
             </a>
           </div>
@@ -186,9 +245,13 @@ export default function Home() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-24 bg-ahc-blue-light dark:bg-ahc-blue-dark transition-colors duration-300">
+      <section className="py-16 md:py-24 bg-green-50 dark:bg-slate-950 transition-colors duration-300">
         <div className="container">
-          <SectionHeader eyebrow="Our Purpose" title="Our Mission & Vision" centerTitle={true} />
+          <SectionHeader
+            eyebrow="Our Purpose"
+            title="Our Mission & Vision"
+            centerTitle={true}
+          />
           <div className="grid gap-8 md:grid-cols-2">
             <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
               <div className="flex items-center gap-4">
@@ -207,7 +270,8 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Mission</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-                To be a leading catalyst for transformative and sustainable health professions education and research in Africa.
+                To be a leading catalyst for transformative and sustainable
+                health professions education and research in Africa.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
@@ -228,7 +292,10 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Vision</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-                To foster a dynamic and collaborative ecosystem that empowers health professionals to address Africa's unique health challenges through innovation and excellence in education and research.
+                To foster a dynamic and collaborative ecosystem that empowers
+                health professionals to address Africa's unique health
+                challenges through innovation and excellence in education and
+                research.
               </p>
             </div>
           </div>
@@ -238,7 +305,11 @@ export default function Home() {
       {/* Focus Areas */}
       <section className="py-16 md:py-24 bg-slate-100 dark:bg-slate-900">
         <div className="container">
-          <SectionHeader eyebrow="Our Priorities" title="Key Focus Areas" centerTitle={true} />
+          <SectionHeader
+            eyebrow="Our Priorities"
+            title="Key Focus Areas"
+            centerTitle={true}
+          />
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
@@ -272,12 +343,19 @@ export default function Home() {
                 i: <Landmark className="w-8 h-8" />,
               },
             ].map((f) => (
-              <div key={f.t} className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+              <div
+                key={f.t}
+                className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1"
+              >
                 <div className="flex items-center justify-center h-16 w-16 rounded-full bg-ahc-green-light dark:bg-ahc-green-dark text-ahc-green-dark dark:text-white mb-6">
                   {f.i}
                 </div>
-                <h4 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">{f.t}</h4>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{f.d}</p>
+                <h4 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">
+                  {f.t}
+                </h4>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {f.d}
+                </p>
               </div>
             ))}
           </div>
