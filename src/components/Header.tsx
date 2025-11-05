@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useGetNavigationQuery } from '../features/navigation/navigationApi'
 import { useEffect, useState } from 'react'
-import { Moon, Sun, ChevronDown, Home } from 'lucide-react'
+import { Moon, Sun, ChevronDown, Home, Menu, X } from 'lucide-react'
 
 export default function Header() {
   const { data } = useGetNavigationQuery()
@@ -44,7 +44,7 @@ export default function Header() {
   }, [theme])
 
   return (
-        <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade ${scrolled ? 'bg-white/80 dark:bg-ahc-dark/80 backdrop-blur-lg shadow-md border-slate-200 dark:border-slate-800' : 'bg-transparent border-transparent'}`}>
+        <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade ${scrolled || open ? 'bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800' : 'bg-transparent border-transparent'}`}>
           <div className="container flex h-16 md:h-20 items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
               <img
@@ -123,60 +123,85 @@ export default function Header() {
                 )}
               </button>
             </nav>
-            <button className="md:hidden px-3 py-2 rounded-md border transition hover:bg-slate-100 dark:hover:bg-slate-800" onClick={() => setOpen(true)} aria-label="Open menu">Menu</button>
+                        <button
+              className="md:hidden z-50"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
-      {open && (
-        <div className="md:hidden fixed inset-0 z-50 bg-black/40 animate-fade" onClick={() => setOpen(false)}>
-          <div className="absolute right-0 top-0 h-full w-72 bg-white dark:bg-ahc-dark shadow-xl p-4 animate-page" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between h-12">
-              <span className="font-semibold">Menu</span>
-              <button onClick={() => setOpen(false)} aria-label="Close menu" className="px-2 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">×</button>
-            </div>
-            <div className="mt-2 flex flex-col gap-2">
-              
-              {links.map((l) => (
-                <NavLink key={l.path} to={l.path} onClick={() => setOpen(false)} className={({isActive}) => `px-3 py-2 rounded-md transition-colors ${isActive ? 'bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-white' : 'hover:bg-slate-50 dark:hover:bg-slate-800'} ${l.path === '/' ? 'flex items-center gap-2' : ''}`}>
-                  {l.path === '/' && <Home className="h-4 w-4" />}
-                  {l.label}
-                </NavLink>
-              ))}
-
-              <div className="mb-2">
-                <button 
-                  onClick={() => setShowMobileLatestDropdown(!showMobileLatestDropdown)}
-                  className="w-full px-3 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors flex items-center justify-between"
-                >
-                  <span>Latest</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform ${showMobileLatestDropdown ? 'rotate-180' : ''}`} />
-                </button>
-                {showMobileLatestDropdown && (
-                  <div className="mt-1">
-                    {latestLinks.map((link) => (
-                      <NavLink 
-                        key={link.path} 
-                        to={link.path} 
-                        onClick={() => setOpen(false)} 
-                        className={({isActive}) => `pl-6 pr-3 py-2 rounded-md transition-colors text-sm flex ${isActive ? 'bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-white' : 'hover:bg-slate-50 dark:hover:bg-slate-800'}`}
-                      >
-                        {link.label}
-                      </NavLink>
-                    ))}
-                  </div>
-                )}
-              </div>
-              
-              <button
-                className="mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-md border text-left hover:bg-slate-50 dark:hover:bg-slate-800"
-                onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
-                aria-label="Toggle theme"
+      <div
+        className={`md:hidden fixed inset-0 z-60 bg-white dark:bg-ahc-dark transition-transform duration-300 ease-in-out ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="container h-full flex flex-col items-center justify-center">
+          <nav className="flex flex-col items-center gap-8">
+            {links.map((l) => (
+              <NavLink
+                key={l.path}
+                to={l.path}
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `text-2xl font-medium transition-colors duration-200 ${
+                    isActive
+                      ? "text-ahc-green-dark font-semibold"
+                      : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                  }`
+                }
               >
-                {theme === 'dark' ? <Sun className="h-4 w-4" aria-hidden="true" /> : <Moon className="h-4 w-4" aria-hidden="true" />}
-                <span>Theme</span>
+                {l.label}
+              </NavLink>
+            ))}
+            <div className="relative">
+              <button
+                onClick={() => setShowMobileLatestDropdown(!showMobileLatestDropdown)}
+                className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+              >
+                <span>Latest</span>
+                <ChevronDown
+                  className={`h-6 w-6 transition-transform duration-200 ${
+                    showMobileLatestDropdown ? "rotate-180" : ""
+                  }`}
+                />
               </button>
+              {showMobileLatestDropdown && (
+                <div className="mt-4 flex flex-col items-center gap-4">
+                  {latestLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `text-xl font-medium transition-colors duration-200 ${
+                          isActive
+                            ? "text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
+            <button
+              className="mt-8 inline-flex h-12 w-12 items-center justify-center rounded-full border text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
+              onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+              aria-label="Toggle theme"
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {theme === "dark" ? (
+                <Sun className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Moon className="h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </nav>
         </div>
-      )}
+      </div>
     </header>
   )
 }
