@@ -14,7 +14,12 @@ export default function EventDetail() {
       {isLoading ? <Loader /> : data ? (
         <div className="grid gap-12 md:grid-cols-3">
           <div className="md:col-span-2">
-            <SectionHeader eyebrow="Event" title={data.title ?? 'Event'} cta={<a href="/events" className="text-sm font-medium text-ahc-green-dark hover:underline">All events</a>} />
+                        <div className="mb-8">
+              <a href="/events" className="text-sm font-medium text-ahc-green-dark hover:underline">
+                  &larr; All events
+              </a>
+            </div>
+            <SectionHeader eyebrow="Event" title={data.title ?? 'Event'} />
             {data.event_image && (
               <img src={data.event_image} alt={data.title ?? 'Event image'} className="w-full rounded-xl border dark:border-slate-800 mb-8 shadow-lg" />
             )}

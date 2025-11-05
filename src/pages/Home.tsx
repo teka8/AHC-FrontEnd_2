@@ -156,7 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 animate-page bg-slate-100 dark:bg-slate-900">
+      <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
         <div className="container">
           <SectionHeader
             eyebrow="Join Us"
