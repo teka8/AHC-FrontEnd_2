@@ -8,8 +8,6 @@ export default function Header() {
   const links: Array<{ label: string; path: string }> = data?.links || [
     { label: "About", path: "/about" },
     { label: "Resources", path: "/resources" },
-    // { label: 'News', path: '/news' },
-    // { label: 'Events', path: '/events' },
     { label: "Scholarships", path: "/scholarship" },
     { label: "Media", path: "/media" },
     { label: "Contact", path: "/contact" },
