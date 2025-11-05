@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import EventCard from "../components/cards/EventCard";
 import PartnersStrip from "../components/ui/PartnersStrip";
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
+import { BookOpenCheck, Users, FlaskConical, Laptop, Globe, Landmark } from 'lucide-react';
 
 export default function Home() {
   const { data: homeBlocks, isLoading: loadingPages } =
@@ -235,36 +236,48 @@ export default function Home() {
       </section>
 
       {/* Focus Areas */}
-      <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
+      <section className="py-16 md:py-24 bg-slate-100 dark:bg-slate-900">
         <div className="container">
           <SectionHeader eyebrow="Our Priorities" title="Key Focus Areas" centerTitle={true} />
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { t: "Curriculum Innovation" },
-              { t: "Faculty Development" },
-              { t: "Research & Scholarship" },
-              { t: "Technology & Simulation" },
-              { t: "Regional Collaboration" },
-              { t: "Policy & Advocacy" },
+              {
+                t: "Curriculum Innovation",
+                d: "Developing and implementing cutting-edge curricula that are responsive to the evolving health needs of Africa.",
+                i: <BookOpenCheck className="w-8 h-8" />,
+              },
+              {
+                t: "Faculty Development",
+                d: "Empowering educators with the skills and knowledge to deliver high-quality health professions education.",
+                i: <Users className="w-8 h-8" />,
+              },
+              {
+                t: "Research & Scholarship",
+                d: "Fostering a culture of inquiry and evidence-based practice to address the continent's health challenges.",
+                i: <FlaskConical className="w-8 h-8" />,
+              },
+              {
+                t: "Technology & Simulation",
+                d: "Leveraging technology and simulation to enhance learning and improve clinical skills.",
+                i: <Laptop className="w-8 h-8" />,
+              },
+              {
+                t: "Regional Collaboration",
+                d: "Building and strengthening partnerships across the continent to foster knowledge exchange and joint initiatives.",
+                i: <Globe className="w-8 h-8" />,
+              },
+              {
+                t: "Policy & Advocacy",
+                d: "Advocating for policies that support the advancement of health professions education and research in Africa.",
+                i: <Landmark className="w-8 h-8" />,
+              },
             ].map((f) => (
-              <div key={f.t} className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-4">
-                  <svg
-                    className="w-6 h-6 text-ahc-green"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
-                  <h4 className="font-bold font-display text-lg">{f.t}</h4>
+              <div key={f.t} className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-ahc-green-light dark:bg-ahc-green-dark text-ahc-green-dark dark:text-white mb-6">
+                  {f.i}
                 </div>
-                <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                  Advancing health education through innovative approaches and cutting-edge research.
-                </p>
+                <h4 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">{f.t}</h4>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{f.d}</p>
               </div>
             ))}
           </div>
