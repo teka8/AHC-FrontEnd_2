@@ -3,45 +3,45 @@ import SectionHeader from '../components/ui/SectionHeader'
 
 export default function Contact() {
   return (
-    <div className="container py-10">
+    <div className="container py-16 md:py-24">
       <Helmet><title>Contact – AHC</title></Helmet>
       <SectionHeader eyebrow="Get in touch" title="Contact Us" />
-      <div className="grid gap-10 md:grid-cols-3">
-        <div className="md:col-span-1 space-y-4">
-          <div className="card p-5">
-            <h3 className="font-semibold mb-1">Address</h3>
-            <p className="text-sm text-slate-600">Addis Ababa University, Ethiopia</p>
+      <div className="grid gap-12 md:grid-cols-3 items-start">
+        <div className="md:col-span-1 space-y-6">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+            <h3 className="font-display text-xl font-bold mb-2">Address</h3>
+            <p className="text-slate-600 dark:text-slate-300">Addis Ababa University, Ethiopia</p>
           </div>
-          <div className="card p-5">
-            <h3 className="font-semibold mb-1">Email</h3>
-            <a className="text-sm text-ahc-green" href="mailto:info@aau.edu.et">info@aau.edu.et</a>
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+            <h3 className="font-display text-xl font-bold mb-2">Email</h3>
+            <a className="text-ahc-green-dark hover:underline" href="mailto:info@aau.edu.et">info@aau.edu.et</a>
           </div>
-          <div className="card p-5">
-            <h3 className="font-semibold mb-1">Phone</h3>
-            <p className="text-sm text-slate-600">+251 000 000 000</p>
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+            <h3 className="font-display text-xl font-bold mb-2">Phone</h3>
+            <p className="text-slate-600 dark:text-slate-300">+251 000 000 000</p>
           </div>
         </div>
         <div className="md:col-span-2">
-          <form className="card p-6 space-y-4">
-            <div className="grid gap-4 md:grid-cols-2">
+          <form className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg space-y-6">
+            <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <label className="block text-sm mb-1">First name</label>
-                <input className="w-full border rounded-md px-3 py-2" placeholder="First name" />
+                <label className="block text-sm font-medium mb-1 dark:text-slate-300">First name</label>
+                <input className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors" placeholder="First name" />
               </div>
               <div>
-                <label className="block text-sm mb-1">Last name</label>
-                <input className="w-full border rounded-md px-3 py-2" placeholder="Last name" />
+                <label className="block text-sm font-medium mb-1 dark:text-slate-300">Last name</label>
+                <input className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors" placeholder="Last name" />
               </div>
             </div>
             <div>
-              <label className="block text-sm mb-1">Email</label>
-              <input type="email" className="w-full border rounded-md px-3 py-2" placeholder="you@example.com" />
+              <label className="block text-sm font-medium mb-1 dark:text-slate-300">Email</label>
+              <input type="email" className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors" placeholder="you@example.com" />
             </div>
             <div>
-              <label className="block text-sm mb-1">Message</label>
-              <textarea className="w-full border rounded-md px-3 py-2" rows={6} placeholder="How can we help?" />
+              <label className="block text-sm font-medium mb-1 dark:text-slate-300">Message</label>
+              <textarea className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3" rows={6} placeholder="How can we help?" />
             </div>
-            <button type="button" className="btn w-full md:w-auto">Send</button>
+            <button type="button" className="btn bg-ahc-green hover:bg-ahc-green-dark text-white font-semibold rounded-full px-8 py-3 transition-colors w-full md:w-auto">Send Message</button>
           </form>
         </div>
       </div>

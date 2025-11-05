@@ -121,7 +121,21 @@ export default function Header() {
                   ))}
                 </div>
               </div>
-            )}
+              
+              <button
+                className="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
+                onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
+                aria-label="Toggle theme"
+                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {theme === 'dark' ? (
+                  <Sun className="h-5 w-5" aria-hidden="true" />
+                ) : (
+                  <Moon className="h-5 w-5" aria-hidden="true" />
+                )}
+              </button>
+            </nav>
+            <button className="md:hidden px-3 py-2 rounded-md border transition hover:bg-slate-100 dark:hover:bg-slate-800" onClick={() => setOpen(true)} aria-label="Open menu">Menu</button>
           </div>
           {links.map((l) => (
             <NavLink

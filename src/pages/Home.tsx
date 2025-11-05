@@ -34,271 +34,67 @@ export default function Home() {
       </Helmet>
 
       {/* Scoped styles for the "sunshine edge" hover effect */}
-      <style>{`
-        /* sunshine-edge: blurred, warm light that rotates edge-to-edge then holds */
-        .sunshine-edge,
-        button,
-        input[type="button"],
-        input[type="submit"],
-        a[class*="btn"],
-        a.btn,
-        .btn,
-        .button {
-          position: relative;
-          overflow: hidden;
-          border-radius: inherit;
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Pseudo element that creates the blurred sunshine stripe */
-        .sunshine-edge::before,
-        button::before,
-        input[type="button"]::before,
-        input[type="submit"]::before,
-        a[class*="btn"]::before,
-        a.btn::before,
-        .btn::before,
-        .button::before {
-          content: "";
-          position: absolute;
-          width: 40%;
-          height: 250%;
-          left: -10%;
-          top: -75%;
-          background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,223,77,0.95) 50%, rgba(255,255,255,0) 100%);
-          filter: blur(14px);
-          transform: rotate(-45deg);
-          transform-origin: 50% 50%;
-          opacity: 0;
-          pointer-events: none;
-          mix-blend-mode: screen;
-          transition: opacity .18s ease;
-        }
-
-        /* Trigger on hover and keyboard focus */
-        .sunshine-edge:hover::before,
-        .sunshine-edge:focus-visible::before,
-        button:hover::before,
-        button:focus-visible::before,
-        input[type="button"]:hover::before,
-        input[type="button"]:focus-visible::before,
-        input[type="submit"]:hover::before,
-        input[type="submit"]:focus-visible::before,
-        a[class*="btn"]:hover::before,
-        a[class*="btn"]:focus-visible::before,
-        a.btn:hover::before,
-        a.btn:focus-visible::before,
-        .btn:hover::before,
-        .btn:focus-visible::before,
-        .button:hover::before,
-        .button:focus-visible::before {
-          opacity: 1;
-          animation: sunshine-rotate 1s cubic-bezier(.22,.9,.33,1) forwards;
-        }
-
-        /* don't show on disabled controls */
-        button[disabled]::before,
-        input[disabled]::before {
-          display: none;
-        }
-
-        @keyframes sunshine-rotate {
-          0%   { transform: rotate(-45deg); }
-          70%  { transform: rotate(60deg); }
-          100% { transform: rotate(60deg); } /* hold at the end so glow stays on stopped edge */
-        }
-
-        /* ---------- Social links animation ---------- */
-        /* Common containers: .social, .socials, .social-links, .hero-social, .social-icons */
-        .social,
-        .socials,
-        .social-links,
-        .hero-social,
-        .social-icons {
-          display: inline-flex;
-          gap: 0.5rem;
-          align-items: center;
-        }
-
-        /* Target anchor/icon elements typically used for social links */
-        .social a,
-        .socials a,
-        .social-links a,
-        .hero-social a,
-        .social-icon,
-        .social-link {
-          position: relative;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          border-radius: 9999px;
-          transition: transform .28s cubic-bezier(.2,.9,.3,1), filter .28s, box-shadow .28s;
-          color: inherit;
-          text-decoration: none;
-          background: transparent;
-          z-index: 0;
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        /* radial warm glow pseudo-element */
-        .social a::after,
-        .socials a::after,
-        .social-links a::after,
-        .hero-social a::after,
-        .social-icon::after,
-        .social-link::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          background: radial-gradient(circle at 30% 20%, rgba(255,223,77,0.95) 0%, rgba(255,223,77,0.16) 18%, rgba(255,223,77,0.06) 34%, transparent 60%);
-          filter: blur(8px);
-          opacity: 0;
-          transform: scale(0.6) rotate(-30deg);
-          transition: opacity .25s ease, transform .6s cubic-bezier(.22,.9,.33,1);
-          pointer-events: none;
-          mix-blend-mode: screen;
-          z-index: -1; /* keep icon on top */
-        }
-
-        /* Hover / keyboard focus — lift, brighten and play glow animation */
-        .social a:hover,
-        .socials a:hover,
-        .social-links a:hover,
-        .hero-social a:hover,
-        .social-icon:hover,
-        .social-link:hover,
-        .social a:focus-visible,
-        .socials a:focus-visible,
-        .social-links a:focus-visible,
-        .hero-social a:focus-visible,
-        .social-icon:focus-visible,
-        .social-link:focus-visible {
-          transform: translateY(-4px) scale(1.06);
-          filter: brightness(1.04) saturate(1.05);
-          outline: none;
-        }
-
-        .social a:hover::after,
-        .socials a:hover::after,
-        .social-links a:hover::after,
-        .hero-social a:hover::after,
-        .social-icon:hover::after,
-        .social-link:hover::after,
-        .social a:focus-visible::after,
-        .socials a:focus-visible::after,
-        .social-links a:focus-visible::after,
-        .hero-social a:focus-visible::after,
-        .social-icon:focus-visible::after,
-        .social-link:focus-visible::after {
-          opacity: 1;
-          animation: social-glow 600ms cubic-bezier(.2,.9,.3,1) forwards;
-        }
-
-        @keyframes social-glow {
-          0% { transform: scale(0.6) rotate(-30deg); opacity: 0; }
-          60% { transform: scale(1.05) rotate(20deg); opacity: 1; }
-          100% { transform: scale(1) rotate(10deg); opacity: 1; } /* settle on a small rotated glow */
-        }
-
-        /* disabled / aria-disabled */
-        .social a[aria-disabled="true"],
-        .social a[disabled] {
-          transform: none;
-          filter: none;
-        }
-        .social a[aria-disabled="true"]::after,
-        .social a[disabled]::after {
-          display: none;
-        }
-
-        /* respect reduced motion users */
-        @media (prefers-reduced-motion: reduce) {
-          .sunshine-edge::before,
-          button::before,
-          input[type="button"]::before,
-          input[type="submit"]::before,
-          a[class*="btn"]::before,
-          .btn::before,
-          .button::before,
-          .social a::after,
-          .socials a::after,
-          .social-links a::after,
-          .hero-social a::after,
-          .social-icon::after,
-          .social-link::after {
-            transition: none;
-            animation: none;
-            opacity: 1;
-            transform: scale(1) rotate(10deg);
-            filter: blur(6px);
-          }
-        }
-      `}</style>
+      <Helmet>
+        <title>AHC – Home</title>
+      </Helmet>
 
       <Hero />
 
       {/* About AHC */}
-      <section className="container py-12 animate-page">
-        <SectionHeader
-          eyebrow="Who we are"
-          title="About AHC"
-          cta={
+      <section className="py-16 md:py-24 animate-page bg-slate-100 dark:bg-slate-900">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Who we are"
+            title="Advancing Health Education in Africa"
+            centerTitle={true}
+          />
+          <div className="grid gap-12 md:grid-cols-2 items-center">
+            <div className="prose max-w-none dark:prose-invert">
+              <p>
+                The Africa Health Collaborative (AHC) is a network of health professionals, educators, and institutions dedicated to advancing health professions education and research in Africa. We foster collaboration, knowledge exchange, and scholarship to address the continent's pressing health challenges.
+              </p>
+              <p>
+                Our work is guided by a commitment to excellence, equity, and innovation. We believe that by working together, we can build a healthier future for all Africans.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="bg-ahc-blue-light dark:bg-ahc-blue-dark p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-sm text-ahc-blue-dark dark:text-ahc-blue-light">Our Reach</div>
+                <div className="mt-1 text-3xl font-bold font-display text-ahc-blue-dark dark:text-white">12+ Universities</div>
+                <p className="mt-2 text-sm text-ahc-blue-dark dark:text-ahc-blue-light">
+                  A growing network of institutions across Africa.
+                </p>
+              </div>
+              <div className="bg-ahc-green-light dark:bg-ahc-green-dark p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">Resources</div>
+                <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">500+ Items</div>
+                <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                  A rich library of educational materials and research.
+                </p>
+              </div>
+              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-sm text-slate-500 dark:text-slate-400">Community</div>
+                <div className="mt-1 text-3xl font-bold font-display">3k+ Members</div>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                  A vibrant community of health professionals and educators.
+                </p>
+              </div>
+              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-sm text-slate-500 dark:text-slate-400">Impact</div>
+                <div className="mt-1 text-3xl font-bold font-display">Pan-African</div>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                  Driving positive change in health education across the continent.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center mt-8">
             <a
               href="/about"
-              className="text-sm text-ahc-green link-underline sunshine-edge"
+              className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
             >
               Learn more
             </a>
-          }
-        />
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="prose max-w-none">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              dictum, mauris at ultricies ultricies, urna sapien molestie
-              lectus, nec hendrerit nunc nisi nec arcu. Vestibulum ante ipsum
-              primis in faucibus orci luctus et ultrices posuere.
-            </p>
-            <p>
-              Curabitur a augue nec ipsum blandit posuere. Donec imperdiet, leo
-              et cursus mattis, orci enim congue leo, vel convallis arcu justo
-              et mi. Sed nec lacinia nibh. Suspendisse potenti. Pellentesque
-              habitant morbi tristique senectus et netus.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="card card-hover p-5 sunshine-edge">
-              <div className="text-sm text-slate-600">Our Reach</div>
-              <div className="mt-1 text-2xl font-bold">12+ Universities</div>
-              <p className="mt-2 text-sm text-slate-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-            </div>
-            <div className="card card-hover p-5 sunshine-edge">
-              <div className="text-sm text-slate-600">Resources</div>
-              <div className="mt-1 text-2xl font-bold">500+ Items</div>
-              <p className="mt-2 text-sm text-slate-600">
-                Sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua.
-              </p>
-            </div>
-            <div className="card card-hover p-5 sunshine-edge">
-              <div className="text-sm text-slate-600">Community</div>
-              <div className="mt-1 text-2xl font-bold">3k+ Members</div>
-              <p className="mt-2 text-sm text-slate-600">
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-              </p>
-            </div>
-            <div className="card card-hover p-5 sunshine-edge">
-              <div className="text-sm text-slate-600">Impact</div>
-              <div className="mt-1 text-2xl font-bold">Pan‑African</div>
-              <p className="mt-2 text-sm text-slate-600">
-                Duis aute irure dolor in reprehenderit in voluptate velit.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -339,16 +135,15 @@ export default function Home() {
                 >
                   {imgUrl ? (
                     <img
-                      src={imgUrl}
-                      alt=""
-                      className="w-full aspect-[16/9] object-cover"
+                      src={n.featured_image || (n.content.match(/<img[^>]+src=["']([^"']+)["']/) ? n.content.match(/<img[^>]+src=["']([^"']+)["']/)[1] : '')}
+                      alt={n.title}
+                      className="w-24 h-24 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300"
                     />
-                  ) : (
-                    <div className="aspect-[16/9] bg-slate-200" />
-                  )}
-                  <div className="p-5">
-                    {n.published_at && (
-                      <div className="text-xs uppercase tracking-wider text-slate-500">
+                    <div>
+                      <h4 className="font-semibold text-lg leading-tight text-slate-900 dark:text-white group-hover:text-ahc-green-dark transition-colors">
+                        {n.title}
+                      </h4>
+                      <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                         {dayjs(n.published_at).format("MMM DD, YYYY")}
                       </div>
                     )}
@@ -365,100 +160,46 @@ export default function Home() {
               );
             })}
           </div>
-        )}
+        </div>
       </section>
 
-      <section className="container py-12 animate-page">
-        <SectionHeader
-          eyebrow="What’s Next"
-          title="Upcoming Events"
-          cta={
-            <a href="/events" className="text-sm text-ahc-green sunshine-edge">
+      <section className="py-16 md:py-24 animate-page bg-slate-100 dark:bg-slate-900">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Join Us"
+            title="Upcoming Events & Opportunities"
+            centerTitle={true}
+          />
+          {loadingEvents ? (
+            <Loader />
+          ) : eventsArray.length === 0 ? (
+            <div className="text-sm text-slate-600 dark:text-slate-400 text-center">
+              No upcoming events yet. Please check back soon.
+            </div>
+          ) : (
+            <div className="grid gap-8 md:grid-cols-3">
+              {eventsArray.slice(0, 3).map((e) => (
+                <EventCard key={e.id} item={e} />
+              ))}
+            </div>
+          )}
+          <div className="flex justify-center mt-8">
+            <a href="/events" className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors">
               View all
             </a>
-          }
-        />
-        {loadingEvents ? (
-          <Loader />
-        ) : eventsArray.length === 0 ? (
-          <div className="text-sm text-slate-600">
-            No upcoming events yet. Please check back soon.
-          </div>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-3">
-            {eventsArray.slice(0, 3).map((e) => (
-              <EventCard key={e.id} item={e} />
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="container py-12 bg-gray-200 dark:bg-gray-900 transition-colors duration-300">
-        <SectionHeader eyebrow="Our Direction" title="Mission & Vision" />
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="card card-hover p-6 sunshine-edge">
-            <div className="flex items-center gap-3">
-              <svg
-                className="w-6 h-6 text-ahc-green"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 20l9-5-9-5-9 5 9 5z" />
-                <path d="M12 12l9-5-9-5-9 5 9 5z" />
-              </svg>
-              <h3 className="font-semibold">Mission</h3>
-            </div>
-            <p className="mt-3 text-sm text-slate-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              dictum mauris at ultricies ultricies.
-            </p>
-          </div>
-          <div className="card card-hover p-6 sunshine-edge">
-            <div className="flex items-center gap-3">
-              <svg
-                className="w-6 h-6 text-ahc-green"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M2 12h20" />
-                <path d="M12 2a15.3 15.3 0 0 1 0 20" />
-              </svg>
-              <h3 className="font-semibold">Vision</h3>
-            </div>
-            <p className="mt-3 text-sm text-slate-600">
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Focus Areas */}
-      <section className="container py-12 animate-page">
-        <SectionHeader eyebrow="What we focus on" title="Focus Areas" />
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            { t: "Curriculum Innovation" },
-            { t: "Faculty Development" },
-            { t: "Research & Scholarship" },
-            { t: "Technology & Simulation" },
-            { t: "Regional Collaboration" },
-            { t: "Policy & Advocacy" },
-          ].map((f) => (
-            <div key={f.t} className="card card-hover p-5 sunshine-edge">
-              <div className="flex items-center gap-3">
+      {/* Mission & Vision */}
+      <section className="py-16 md:py-24 bg-ahc-blue-light dark:bg-ahc-blue-dark transition-colors duration-300">
+        <div className="container">
+          <SectionHeader eyebrow="Our Purpose" title="Our Mission & Vision" centerTitle={true} />
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
+              <div className="flex items-center gap-4">
                 <svg
-                  className="w-5 h-5 text-ahc-green"
+                  className="w-8 h-8 text-ahc-green"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -466,15 +207,74 @@ export default function Home() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <path d="M20 6L9 17l-5-5" />
+                  <path d="M12 20l9-5-9-5-9 5 9 5z" />
+                  <path d="M12 12l9-5-9-5-9 5 9 5z" />
                 </svg>
-                <h4 className="font-semibold text-sm">{f.t}</h4>
+                <h3 className="text-2xl font-bold font-display">Mission</h3>
               </div>
-              <p className="mt-2 text-xs text-slate-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
+                To be a leading catalyst for transformative and sustainable health professions education and research in Africa.
               </p>
             </div>
-          ))}
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
+              <div className="flex items-center gap-4">
+                <svg
+                  className="w-8 h-8 text-ahc-green"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20" />
+                  <path d="M12 2a15.3 15.3 0 0 1 0 20" />
+                </svg>
+                <h3 className="text-2xl font-bold font-display">Vision</h3>
+              </div>
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
+                To foster a dynamic and collaborative ecosystem that empowers health professionals to address Africa's unique health challenges through innovation and excellence in education and research.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Focus Areas */}
+      <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
+        <div className="container">
+          <SectionHeader eyebrow="Our Priorities" title="Key Focus Areas" centerTitle={true} />
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { t: "Curriculum Innovation" },
+              { t: "Faculty Development" },
+              { t: "Research & Scholarship" },
+              { t: "Technology & Simulation" },
+              { t: "Regional Collaboration" },
+              { t: "Policy & Advocacy" },
+            ].map((f) => (
+              <div key={f.t} className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-4">
+                  <svg
+                    className="w-6 h-6 text-ahc-green"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  <h4 className="font-bold font-display text-lg">{f.t}</h4>
+                </div>
+                <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                  Advancing health education through innovative approaches and cutting-edge research.
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

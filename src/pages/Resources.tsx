@@ -582,203 +582,195 @@ export default function Resources() {
   )
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <Helmet><title>Resources – AHC</title></Helmet>
-      
-      {/* Header Section */}
-      <div className="bg-white dark:bg-slate-800 border-b">
-        <div className="container py-8">
-          <SectionHeader eyebrow="Knowledge Hub" title="Resource Repository" />
-          <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
-            Explore our comprehensive collection of documents, educational materials, and research resources
-          </p>
+        <div className="min-h-screen bg-slate-50 dark:bg-ahc-dark-dark">
+          <Helmet><title>Resources – AHC</title></Helmet>
           
-          {/* Search Bar */}
-          <div className="relative mt-6 max-w-2xl">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
-            <input 
-              value={search} 
-              onChange={(e)=>setSearch(e.target.value)} 
-              placeholder="Search resources by title, author, or keyword..." 
-              className="w-full pl-12 pr-4 py-3 text-base border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-ahc-green focus:border-ahc-green" 
-            />
-          </div>
-        </div>
-      </div>
-      
-      {/* Main Content */}
-      <div className="container py-8">
-        {isLoading ? (
-          <div className="flex justify-center items-center py-20">
-            <Loader />
-          </div>
-        ) : (
-          <div className="flex gap-6">
-            {/* Sidebar Filters - Desktop */}
-            <aside className="w-80 flex-shrink-0 hidden lg:block">
-              {renderFilterSidebar(false)}
-            </aside>
-            
-            {/* Mobile Filter Drawer */}
-            {showFiltersMobile && (
-              <div className="lg:hidden fixed inset-0 z-50 bg-black/50" onClick={() => setShowFiltersMobile(false)}>
-                <div 
-                  className="fixed inset-y-0 left-0 w-80 bg-white dark:bg-slate-800 shadow-xl overflow-y-auto"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {renderFilterSidebar(true)}
-                </div>
-              </div>
-            )}
-            
-            {/* Mobile Filter Toggle Button */}
-            <button 
-              className="lg:hidden fixed bottom-6 left-6 z-40 bg-ahc-green text-black px-5 py-3 rounded-full shadow-xl hover:shadow-2xl hover:brightness-95 transition-all duration-300 flex items-center gap-2 font-medium"
-              onClick={() => setShowFiltersMobile(true)}
-            >
-              <SlidersHorizontal className="h-5 w-5" />
-              <span className="text-sm">Filters</span>
-              {hasActiveFilters && (
-                <span className="bg-red-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 px-1.5 flex items-center justify-center">
-                  {selectedResourceTypes.length + selectedCategories.length + selectedTypes.length + selectedTags.length + selectedAuthors.length + (dateRange.start || dateRange.end ? 1 : 0)}
-                </span>
-              )}
-            </button>
-            
-            {/* Results Section */}
-            <section className="flex-1 min-w-0">
-              {/* Results Count and Sort */}
-              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Showing <span className="font-semibold text-slate-900 dark:text-white">{sortedResources.length}</span> of{' '}
-                  <span className="font-semibold text-slate-900 dark:text-white">{allResources.length}</span> resources
-                </p>
-                
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-slate-600 dark:text-slate-400">Sort by:</span>
-                  <select 
-                    value={sortBy} 
-                    onChange={(e) => setSortBy(e.target.value as SortOption)}
-                    className="px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
-                  >
-                    <option value="date-newest">Newest First</option>
-                    <option value="date-oldest">Oldest First</option>
-                    <option value="title-asc">Title (A-Z)</option>
-                    <option value="title-desc">Title (Z-A)</option>
-                    <option value="downloads">Most Downloaded</option>
-                  </select>
-                </div>
-              </div>
+          {/* Header Section */}
+          <div className="bg-white dark:bg-ahc-dark border-b border-slate-200 dark:border-slate-800">
+            <div className="container py-12">
+              <SectionHeader eyebrow="Knowledge Hub" title="Resource Repository" />
+              <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl text-lg">
+                Explore our comprehensive collection of documents, educational materials, and research resources designed to support health professionals in Africa.
+              </p>
               
-              {sortedResources.length === 0 ? (
-                <div className="text-center py-12 bg-white dark:bg-slate-800 rounded-xl border">
-                  <FileText className="h-12 w-12 text-slate-400 mx-auto mb-3" />
-                  <p className="text-lg text-slate-600 dark:text-slate-400">No resources found</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">Try adjusting your filters or search query</p>
-                </div>
-              ) : (
-                <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                  {sortedResources.map((resource) => (
-                    <div key={`${resource.sourceType}-${resource.id}`} className="card p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                      {/* Header with Badge and Download Count */}
-                      <div className="flex items-start justify-between mb-3">
-                        <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${
-                          resource.sourceType === 'documents' 
-                            ? 'bg-ahc-green/20 text-ahc-green'
-                            : resource.sourceType === 'educational'
-                            ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
-                            : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
-                        }`}>
-                          {resource.document_type || resource.resource_type || resource.sourceTypeName}
-                        </span>
-                        <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
-                          <Download className="h-3 w-3" />
-                          <span>{resource.download_count ?? 0}</span>
-                        </div>
-                      </div>
-                      
-                      {/* Title */}
-                      <h3 className="font-semibold text-lg leading-tight text-slate-900 dark:text-white mb-2 line-clamp-2">
-                        {resource.title}
-                      </h3>
-                      
-                      {/* Abstract / Summary */}
-                      {(resource.abstract || resource.description) && (
-                        <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-3">
-                          {resource.abstract || resource.description}
-                        </p>
-                      )}
-                      
-                      {/* Category */}
-                      {(resource.category || resource.subject_area) && (
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
-                          {resource.category || resource.subject_area}
-                        </p>
-                      )}
-                      
-                      {/* Metadata */}
-                      <div className="space-y-2 text-sm mb-3 flex-grow">
-                        {(resource.author || resource.creator) && (
-                          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-                            <User className="h-4 w-4 flex-shrink-0" />
-                            <span className="truncate">{resource.author || resource.creator}</span>
+              {/* Search Bar */}
+              <div className="relative mt-8 max-w-2xl">
+                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                <input 
+                  value={search} 
+                  onChange={(e)=>setSearch(e.target.value)} 
+                  placeholder="Search resources by title, author, or keyword..." 
+                  className="w-full pl-14 pr-5 py-4 text-base border border-slate-300 dark:border-slate-700 rounded-full bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-shadow shadow-sm"
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Main Content */}
+          <div className="container py-12">
+            {isLoading ? (
+              <div className="flex justify-center items-center py-24">
+                <Loader />
+              </div>
+            ) : (
+              <div className="flex gap-8">
+                {/* Sidebar Filters - Desktop */}
+                <aside className="w-80 flex-shrink-0 hidden lg:block">
+                  {renderFilterSidebar(false)}
+                </aside>
+                
+                {/* Mobile Filter Drawer */}
+                {showFiltersMobile && (
+                  <div className="lg:hidden fixed inset-0 z-50 bg-black/60 animate-fade" onClick={() => setShowFiltersMobile(false)}>
+                    <div 
+                      className="fixed inset-y-0 left-0 w-80 bg-white dark:bg-slate-900 shadow-2xl overflow-y-auto animate-page"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {renderFilterSidebar(true)}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Mobile Filter Toggle Button */}
+                <button 
+                  className="lg:hidden fixed bottom-6 right-6 z-40 bg-ahc-green hover:bg-ahc-green-dark text-white px-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-2 font-semibold"
+                  onClick={() => setShowFiltersMobile(true)}
+                >
+                  <SlidersHorizontal className="h-5 w-5" />
+                  <span className="text-sm">Filters</span>
+                  {hasActiveFilters && (
+                    <span className="bg-red-500 text-white text-xs font-bold rounded-full min-w-[22px] h-5.5 px-1.5 flex items-center justify-center">
+                      {selectedResourceTypes.length + selectedCategories.length + selectedTypes.length + selectedTags.length + selectedAuthors.length + (dateRange.start || dateRange.end ? 1 : 0)}
+                    </span>
+                  )}
+                </button>
+                
+                {/* Results Section */}
+                <section className="flex-1 min-w-0">
+                  {/* Results Count and Sort */}
+                  <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      Showing <span className="font-semibold text-slate-900 dark:text-white">{sortedResources.length}</span> of{' '}
+                      <span className="font-semibold text-slate-900 dark:text-white">{allResources.length}</span> resources
+                    </p>
+                    
+                    <div className="flex items-center gap-2">
+                      <label htmlFor="sort-by" className="text-sm text-slate-600 dark:text-slate-400">Sort by:</label>
+                      <select 
+                        id="sort-by"
+                        value={sortBy} 
+                        onChange={(e) => setSortBy(e.target.value as SortOption)}
+                        className="px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-colors"
+                      >
+                        <option value="date-newest">Newest First</option>
+                        <option value="date-oldest">Oldest First</option>
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                        <option value="downloads">Most Downloaded</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  {sortedResources.length === 0 ? (
+                    <div className="text-center py-20 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <FileText className="h-16 w-16 text-slate-400 mx-auto mb-4" />
+                      <p className="text-xl font-semibold text-slate-700 dark:text-slate-300">No resources found</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">Try adjusting your filters or search query.</p>
+                    </div>
+                  ) : (
+                    <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                      {sortedResources.map((resource) => (
+                        <div key={`${resource.sourceType}-${resource.id}`} className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-ahc-green">
+                          {/* Header with Badge and Download Count */}
+                          <div className="flex items-start justify-between mb-4">
+                            <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${resource.sourceType === 'documents' ? 'bg-ahc-green/20 text-ahc-green-dark' : resource.sourceType === 'educational' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'}`}>
+                              {resource.document_type || resource.resource_type || resource.sourceTypeName}
+                            </span>
+                            <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                              <Download className="h-3.5 w-3.5" />
+                              <span>{resource.download_count ?? 0}</span>
+                            </div>
                           </div>
-                        )}
-                        {(resource.publication_date || resource.published_at) && (
-                          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-                            <Calendar className="h-4 w-4 flex-shrink-0" />
-                            <span>{new Date(resource.publication_date || resource.published_at || '').toLocaleDateString()}</span>
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Tags */}
-                      {resource.tags && resource.tags.length > 0 && (
-                        <div className="mb-4">
-                          <div className="flex flex-wrap gap-1.5">
-                            {resource.tags.slice(0, 4).map((tag, index) => (
-                              <span 
-                                key={index}
-                                className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                            {resource.tags.length > 4 && (
-                              <span className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400">
-                                +{resource.tags.length - 4}
-                              </span>
+                          
+                          {/* Title */}
+                          <h3 className="font-display font-bold text-lg leading-tight text-slate-900 dark:text-white mb-2 line-clamp-2">
+                            {resource.title}
+                          </h3>
+                          
+                          {/* Abstract / Summary */}
+                          {(resource.abstract || resource.description) && (
+                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
+                              {resource.abstract || resource.description}
+                            </p>
+                          )}
+                          
+                          {/* Category */}
+                          {(resource.category || resource.subject_area) && (
+                            <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-4">
+                              {resource.category || resource.subject_area}
+                            </p>
+                          )}
+                          
+                          {/* Metadata */}
+                          <div className="space-y-2.5 text-sm mb-4 flex-grow">
+                            {(resource.author || resource.creator) && (
+                              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                                <User className="h-4 w-4 flex-shrink-0" />
+                                <span className="truncate text-xs">{resource.author || resource.creator}</span>
+                              </div>
+                            )}
+                            {(resource.publication_date || resource.published_at) && (
+                              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                                <Calendar className="h-4 w-4 flex-shrink-0" />
+                                <span className="text-xs">{new Date(resource.publication_date || resource.published_at || '').toLocaleDateString()}</span>
+                              </div>
                             )}
                           </div>
+                          
+                          {/* Tags */}
+                          {resource.tags && resource.tags.length > 0 && (
+                            <div className="mb-5">
+                              <div className="flex flex-wrap gap-1.5">
+                                {resource.tags.slice(0, 3).map((tag, index) => (
+                                  <span key={index} className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                                    {tag}
+                                  </span>
+                                ))}
+                                {resource.tags.length > 3 && (
+                                  <span className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400">
+                                    +{resource.tags.length - 3}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Actions */}
+                          <div className="flex gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+                            {resource.file_url && (
+                              <button
+                                onClick={() => handleDownload(resource)}
+                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold bg-ahc-green hover:bg-ahc-green-dark text-white rounded-lg transition-colors"
+                              >
+                                <Download className="h-4 w-4" />
+                                Download
+                              </button>
+                            )}
+                            <Link 
+                              to={`/resources/${resource.sourceType}/${resource.id}`} 
+                              className="px-4 py-2.5 text-sm font-semibold border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                            >
+                              Details
+                            </Link>
+                          </div>
                         </div>
-                      )}
-                      
-                      {/* Actions */}
-                      <div className="flex gap-2 pt-4 border-t border-slate-200 dark:border-slate-700">
-                        {resource.file_url && (
-                          <button
-                            onClick={() => handleDownload(resource)}
-                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium bg-ahc-green text-black rounded-lg hover:brightness-95 transition"
-                          >
-                            <Download className="h-4 w-4" />
-                            Download
-                          </button>
-                        )}
-                        <Link 
-                          to={`/resources/${resource.sourceType}/${resource.id}`} 
-                          className="px-4 py-2 text-sm font-medium border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition"
-                        >
-                          Details
-                        </Link>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
-            </section>
+                  )}
+                </section>
+              </div>
+            )}
           </div>
-        )}
-      </div>
     </div>
   )
 }
