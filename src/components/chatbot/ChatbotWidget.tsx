@@ -16,40 +16,100 @@ export default function ChatbotWidget() {
 
   return (
     <div>
-      <button
-        aria-label="Open chatbot"
-        onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-4 right-4 z-50 rounded-full bg-gradient-to-br from-ahc-green to-emerald-400 text-black shadow-2xl hover:shadow-ahc-green/50 h-14 w-14 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-      >
-        {open ? (
-          // Close icon with animation
-          <svg 
-            className="w-6 h-6 transition-transform duration-300 group-hover:rotate-90" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          // Chat icon with animation
-          <svg 
-            className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-        )}
-        {/* Notification pulse effect when closed */}
+      {/* Premium Chatbot Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {/* Animated background glow */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-ahc-green via-emerald-400 to-teal-400 opacity-75 blur-xl animate-pulse"></div>
+        
+        {/* Main button with glass effect */}
+        <button
+          aria-label="Open chatbot"
+          onClick={() => setOpen((v) => !v)}
+          className="relative h-16 w-16 rounded-full bg-gradient-to-br from-ahc-green via-emerald-400 to-teal-400 
+                     shadow-2xl hover:shadow-emerald-500/50 
+                     flex items-center justify-center 
+                     transition-all duration-500 ease-out
+                     hover:scale-110 hover:rotate-12
+                     before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-tr before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300
+                     group overflow-hidden
+                     animate-bounce-slow"
+          style={{
+            animation: open ? 'none' : 'float 3s ease-in-out infinite'
+          }}
+        >
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"></div>
+          </div>
+          
+          {/* Icon container with 3D effect */}
+          <div className="relative z-10 transform transition-all duration-300 group-hover:scale-110">
+            {open ? (
+              // Close icon with rotation
+              <svg 
+                className="w-7 h-7 text-white drop-shadow-lg transition-all duration-500 group-hover:rotate-180" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              // Chat icon with messaging theme
+              <div className="relative">
+                <svg 
+                  className="w-7 h-7 text-white drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6" 
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.38 0-2.68-.28-3.87-.78l-.28-.12-2.85.48.48-2.85-.12-.28C4.78 14.68 4.5 13.38 4.5 12c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5-3.36 7.5-7.5 7.5z"/>
+                  <circle cx="8.5" cy="12" r="1.25" fill="white"/>
+                  <circle cx="12" cy="12" r="1.25" fill="white"/>
+                  <circle cx="15.5" cy="12" r="1.25" fill="white"/>
+                </svg>
+                
+                {/* Typing indicator dots */}
+                <div className="absolute -bottom-1 -right-1 flex gap-0.5 bg-white rounded-full px-1.5 py-0.5 shadow-lg">
+                  <div className="w-1 h-1 rounded-full bg-ahc-green animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                  <div className="w-1 h-1 rounded-full bg-ahc-green animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                  <div className="w-1 h-1 rounded-full bg-ahc-green animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                </div>
+              </div>
+            )}
+          </div>
+          
+          {/* Notification badge with pulse */}
+          {!open && (
+            <span className="absolute -top-1 -right-1 flex h-5 w-5 z-20">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-5 w-5 bg-gradient-to-br from-red-500 to-red-600 shadow-lg items-center justify-center">
+                <span className="text-white text-xs font-bold">1</span>
+              </span>
+            </span>
+          )}
+          
+          {/* Border ring animation */}
+          <div className="absolute inset-0 rounded-full border-2 border-white/20 group-hover:border-white/40 transition-colors duration-300"></div>
+        </button>
+        
+        {/* Help text tooltip */}
         {!open && (
-          <span className="absolute top-0 right-0 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-          </span>
+          <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="bg-slate-900 dark:bg-slate-700 text-white text-xs font-medium px-3 py-2 rounded-lg shadow-xl whitespace-nowrap">
+              Need help? Chat with us!
+              <div className="absolute top-full right-4 -mt-1 border-4 border-transparent border-t-slate-900 dark:border-t-slate-700"></div>
+            </div>
+          </div>
         )}
-      </button>
+      </div>
+      
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+      `}</style>
       {open && (
         <div className="fixed bottom-20 right-4 z-50 w-80 sm:w-96 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           <div className="px-4 py-3 bg-gradient-to-r from-ahc-green to-emerald-400 font-semibold text-black flex items-center gap-2">
