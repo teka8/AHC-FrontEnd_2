@@ -367,7 +367,7 @@ export default function Resources() {
           </h3>
           <button 
             onClick={() => setShowFiltersMobile(false)}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
           >
             <X className="h-5 w-5" />
           </button>
@@ -415,9 +415,9 @@ export default function Resources() {
                   type="checkbox"
                   checked={selectedResourceTypes.includes(typeName)}
                   onChange={() => toggleResourceType(typeName)}
-                  className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                  className="w-4 h-4 rounded border-gray-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
                 />
-                <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white">
+                <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
                   {typeName}
                 </span>
               </label>
@@ -427,7 +427,7 @@ export default function Resources() {
         
         {displayedTypes.length > 0 && (
           <>
-            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
               <h4 className="font-medium mb-3 text-sm">{typesLabel}</h4>
               <div className="space-y-2">
@@ -440,9 +440,9 @@ export default function Resources() {
                       type="checkbox"
                       checked={selectedTypes.includes(type)}
                       onChange={() => toggleType(type)}
-                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                      className="w-4 h-4 rounded border-gray-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
                     />
-                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white">
+                    <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
                       {type}
                     </span>
                   </label>
@@ -454,7 +454,7 @@ export default function Resources() {
         
         {categories.length > 0 && (
           <>
-            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
               <h4 className="font-medium mb-3 text-sm">Category</h4>
               <div className="space-y-2">
@@ -467,9 +467,9 @@ export default function Resources() {
                       type="checkbox"
                       checked={selectedCategories.includes(cat)}
                       onChange={() => toggleCategory(cat)}
-                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                      className="w-4 h-4 rounded border-gray-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
                     />
-                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white truncate">
+                    <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white truncate">
                       {cat}
                     </span>
                   </label>
@@ -482,7 +482,7 @@ export default function Resources() {
         {/* Tags Filter */}
         {tags.length > 0 && (
           <>
-            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
               <h4 className="font-medium mb-3 text-sm">Tags</h4>
               <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -495,9 +495,9 @@ export default function Resources() {
                       type="checkbox"
                       checked={selectedTags.includes(tag)}
                       onChange={() => toggleTag(tag)}
-                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                      className="w-4 h-4 rounded border-gray-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
                     />
-                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white truncate">
+                    <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white truncate">
                       {tag}
                     </span>
                   </label>
@@ -510,7 +510,7 @@ export default function Resources() {
         {/* Authors Filter */}
         {authors.length > 0 && (
           <>
-            <div className="border-t border-slate-200 dark:border-slate-700"></div>
+            <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
               <h4 className="font-medium mb-3 text-sm">Author / Creator</h4>
               <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -523,9 +523,9 @@ export default function Resources() {
                       type="checkbox"
                       checked={selectedAuthors.includes(author)}
                       onChange={() => toggleAuthor(author)}
-                      className="w-4 h-4 rounded border-slate-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
+                      className="w-4 h-4 rounded border-gray-300 text-ahc-green focus:ring-ahc-green focus:ring-offset-0"
                     />
-                    <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white truncate">
+                    <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white truncate">
                       {author}
                     </span>
                   </label>
@@ -537,12 +537,12 @@ export default function Resources() {
         
         {/* Publication Date Filter */}
         <>
-          <div className="border-t border-slate-200 dark:border-slate-700"></div>
+          <div className="border-t border-gray-200 dark:border-gray-700"></div>
           <div>
             <h4 className="font-medium mb-3 text-sm">Publication Date</h4>
             <div className="space-y-3">
               <div>
-                <label htmlFor="date-start" className="block text-xs text-slate-500 dark:text-slate-400 mb-1">
+                <label htmlFor="date-start" className="block text-xs text-gray-500 dark:text-gray-400 mb-1">
                   From
                 </label>
                 <input
@@ -550,11 +550,11 @@ export default function Resources() {
                   type="date"
                   value={dateRange.start}
                   onChange={(e) => setDateRange(prev => ({ ...prev, start: e.target.value }))}
-                  className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
                 />
               </div>
               <div>
-                <label htmlFor="date-end" className="block text-xs text-slate-500 dark:text-slate-400 mb-1">
+                <label htmlFor="date-end" className="block text-xs text-gray-500 dark:text-gray-400 mb-1">
                   To
                 </label>
                 <input
@@ -562,7 +562,7 @@ export default function Resources() {
                   type="date"
                   value={dateRange.end}
                   onChange={(e) => setDateRange(prev => ({ ...prev, end: e.target.value }))}
-                  className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green"
                 />
               </div>
             </div>
@@ -582,25 +582,25 @@ export default function Resources() {
   )
 
   return (
-        <div className="min-h-screen bg-slate-50 dark:bg-ahc-dark-dark">
+        <div className="min-h-screen bg-gray-50 dark:bg-ahc-dark-dark">
           <Helmet><title>Resources – AHC</title></Helmet>
           
           {/* Header Section */}
-          <div className="bg-white dark:bg-ahc-dark border-b border-slate-200 dark:border-slate-800">
+          <div className="bg-white dark:bg-ahc-dark border-b border-gray-200 dark:border-gray-800">
             <div className="container py-12">
               <SectionHeader eyebrow="Knowledge Hub" title="Resource Repository" />
-              <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl text-lg">
+              <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-3xl text-lg">
                 Explore our comprehensive collection of documents, educational materials, and research resources designed to support health professionals in Africa.
               </p>
               
               {/* Search Bar */}
               <div className="relative mt-8 max-w-2xl">
-                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input 
                   value={search} 
                   onChange={(e)=>setSearch(e.target.value)} 
                   placeholder="Search resources by title, author, or keyword..." 
-                  className="w-full pl-14 pr-5 py-4 text-base border border-slate-300 dark:border-slate-700 rounded-full bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-shadow shadow-sm"
+                  className="w-full pl-14 pr-5 py-4 text-base border border-gray-300 dark:border-gray-700 rounded-full bg-white dark:bg-gray-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-shadow shadow-sm"
                 />
               </div>
             </div>
@@ -623,7 +623,7 @@ export default function Resources() {
                 {showFiltersMobile && (
                   <div className="lg:hidden fixed inset-0 z-50 bg-black/60 animate-fade" onClick={() => setShowFiltersMobile(false)}>
                     <div 
-                      className="fixed inset-y-0 left-0 w-80 bg-white dark:bg-slate-900 shadow-2xl overflow-y-auto animate-page"
+                      className="fixed inset-y-0 left-0 w-80 bg-white dark:bg-gray-900 shadow-2xl overflow-y-auto animate-page"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {renderFilterSidebar(true)}
@@ -648,19 +648,19 @@ export default function Resources() {
                 {/* Results Section */}
                 <section className="flex-1 min-w-0">
                   {/* Results Count and Sort */}
-                  <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
-                      Showing <span className="font-semibold text-slate-900 dark:text-white">{sortedResources.length}</span> of{' '}
-                      <span className="font-semibold text-slate-900 dark:text-white">{allResources.length}</span> resources
+                  <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Showing <span className="font-semibold text-gray-900 dark:text-white">{sortedResources.length}</span> of{' '}
+                      <span className="font-semibold text-gray-900 dark:text-white">{allResources.length}</span> resources
                     </p>
                     
                     <div className="flex items-center gap-2">
-                      <label htmlFor="sort-by" className="text-sm text-slate-600 dark:text-slate-400">Sort by:</label>
+                      <label htmlFor="sort-by" className="text-sm text-gray-600 dark:text-gray-400">Sort by:</label>
                       <select 
                         id="sort-by"
                         value={sortBy} 
                         onChange={(e) => setSortBy(e.target.value as SortOption)}
-                        className="px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-colors"
+                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-colors"
                       >
                         <option value="date-newest">Newest First</option>
                         <option value="date-oldest">Oldest First</option>
@@ -672,41 +672,41 @@ export default function Resources() {
                   </div>
                   
                   {sortedResources.length === 0 ? (
-                    <div className="text-center py-20 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-                      <FileText className="h-16 w-16 text-slate-400 mx-auto mb-4" />
-                      <p className="text-xl font-semibold text-slate-700 dark:text-slate-300">No resources found</p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">Try adjusting your filters or search query.</p>
+                    <div className="text-center py-20 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+                      <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                      <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">No resources found</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Try adjusting your filters or search query.</p>
                     </div>
                   ) : (
                     <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                       {sortedResources.map((resource) => (
-                        <div key={`${resource.sourceType}-${resource.id}`} className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-ahc-green">
+                        <div key={`${resource.sourceType}-${resource.id}`} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-ahc-green">
                           {/* Header with Badge and Download Count */}
                           <div className="flex items-start justify-between mb-4">
                             <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${resource.sourceType === 'documents' ? 'bg-ahc-green/20 text-ahc-green-dark' : resource.sourceType === 'educational' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'}`}>
                               {resource.document_type || resource.resource_type || resource.sourceTypeName}
                             </span>
-                            <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                            <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
                               <Download className="h-3.5 w-3.5" />
                               <span>{resource.download_count ?? 0}</span>
                             </div>
                           </div>
                           
                           {/* Title */}
-                          <h3 className="font-display font-bold text-lg leading-tight text-slate-900 dark:text-white mb-2 line-clamp-2">
+                          <h3 className="font-display font-bold text-lg leading-tight text-gray-900 dark:text-white mb-2 line-clamp-2">
                             {resource.title}
                           </h3>
                           
                           {/* Abstract / Summary */}
                           {(resource.abstract || resource.description) && (
-                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3">
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
                               {resource.abstract || resource.description}
                             </p>
                           )}
                           
                           {/* Category */}
                           {(resource.category || resource.subject_area) && (
-                            <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-4">
+                            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-4">
                               {resource.category || resource.subject_area}
                             </p>
                           )}
@@ -714,13 +714,13 @@ export default function Resources() {
                           {/* Metadata */}
                           <div className="space-y-2.5 text-sm mb-4 flex-grow">
                             {(resource.author || resource.creator) && (
-                              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                                 <User className="h-4 w-4 flex-shrink-0" />
                                 <span className="truncate text-xs">{resource.author || resource.creator}</span>
                               </div>
                             )}
                             {(resource.publication_date || resource.published_at) && (
-                              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                                 <Calendar className="h-4 w-4 flex-shrink-0" />
                                 <span className="text-xs">{new Date(resource.publication_date || resource.published_at || '').toLocaleDateString()}</span>
                               </div>
@@ -732,12 +732,12 @@ export default function Resources() {
                             <div className="mb-5">
                               <div className="flex flex-wrap gap-1.5">
                                 {resource.tags.slice(0, 3).map((tag, index) => (
-                                  <span key={index} className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                                  <span key={index} className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
                                     {tag}
                                   </span>
                                 ))}
                                 {resource.tags.length > 3 && (
-                                  <span className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400">
+                                  <span className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400">
                                     +{resource.tags.length - 3}
                                   </span>
                                 )}
@@ -746,7 +746,7 @@ export default function Resources() {
                           )}
                           
                           {/* Actions */}
-                          <div className="flex gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+                          <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                             {resource.file_url && (
                               <button
                                 onClick={() => handleDownload(resource)}
@@ -758,7 +758,7 @@ export default function Resources() {
                             )}
                             <Link 
                               to={`/resources/${resource.sourceType}/${resource.id}`} 
-                              className="px-4 py-2.5 text-sm font-semibold border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                              className="px-4 py-2.5 text-sm font-semibold border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                             >
                               Details
                             </Link>

@@ -7,6 +7,7 @@ export default function Header() {
   const { data } = useGetNavigationQuery();
   const links: Array<{ label: string; path: string }> = data?.links || [
     { label: "About", path: "/about" },
+    { label: "Partners", path: "/partners" },
     { label: "Resources", path: "/resources" },
     { label: "Scholarships", path: "/scholarship" },
     { label: "Media", path: "/media" },

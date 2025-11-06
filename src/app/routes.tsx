@@ -14,6 +14,8 @@ import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import NotFound from '../pages/NotFound'
 import Protected from '../components/Protected'
+import VisionGoalsValues from '../pages/VisionGoalsValues'
+import Partners from '../pages/Partners'
 
 // Health Innovation pages
 import HILayout from '../components/healthInnovation/HILayout'
@@ -44,6 +46,8 @@ export const router = createBrowserRouter([
       // Main site routes
       { index: true, element: <Home /> },
       { path: 'about', element: <About /> },
+      { path: 'vision-goals-values', element: <VisionGoalsValues /> },
+      { path: 'partners', element: <Partners /> },
       { path: 'resources', element: <Resources /> },
       { path: 'resources/:section/:id', element: <ResourceDetail /> },
       { path: 'news', element: <NewsList /> },

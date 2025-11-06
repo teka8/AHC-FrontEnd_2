@@ -1,5 +1,8 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { Briefcase, Zap, Heart, Users, Target, ArrowRight, BookOpenCheck, Globe } from 'lucide-react';
+import React from 'react';
+import CollaborationSection from '../components/CollaborationSection';
 
 export default function About() {
   return (
@@ -10,52 +13,122 @@ export default function About() {
       <div className="bg-white dark:bg-ahc-dark">
 
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-4rem)]">
-          <div className="h-full flex flex-col">
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/15 to-transparent" />
+        <section className="relative min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/images/hero-image.jpg"
+              alt="Healthcare professionals collaborating at Addis Ababa University"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-overlay" />
+          </div>
 
-            {/* Africa outline watermark  */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img
-                src="/images/africa-map.png"
-                alt="Africa map"
-                className="h-[110%] w-auto object-cover dark:opacity-5 opacity-10"
-                style={{
-                  animation: "float 8s ease-in-out infinite",
-                  filter: "brightness(1.5)",
-                }}
-              />
-            </div>
-
-            {/* Content Section */}
-            <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 md:pt-12 md:pb-20 grid gap-6 md:grid-cols-1 items-start flex-grow text-center">
-              <div className="text-center">
-                <div className="text-xs sm:text-sm tracking-wider uppercase text-ahc-green font-semibold mb-2 sm:mb-3">
-                  Africa Health Collaborative
-                </div>
-                <h1
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight font-display text-ahc-dark dark:text-white"
+          {/* Content */}
+          <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight">
+                Transforming Primary Healthcare in Ethiopia
+              </h1>
+              <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed">
+                AHC-AAU partners with the Africa Health Collaborative to build health workforce capacity, 
+                develop health entrepreneurship, and strengthen community health ecosystems through training, 
+                research, innovation, and collaboration.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/programs"
+                  className="inline-flex items-center px-6 py-3 rounded-md bg-ahc-green text-white font-semibold text-lg shadow-lg hover:bg-ahc-green-dark transition transform group"
                 >
-                  Innovate. Collaborate. Heal.
-                </h1>
-                <p className="mt-4 sm:mt-6 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
-                  The Africa Health Collaborative is a catalyst for change, uniting passion and expertise to build a healthier, more equitable future for all Africans.
-                </p>
-                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-                  <a
-                    href="/contact"
-                    className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
-                  >
-                    Get Involved
-                  </a>
-                </div>
+                  <span>Explore Our Programs</span>
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+
+                <Link
+                  to="/vision-goals-values"
+                  className="inline-flex items-center px-6 py-3 rounded-md border border-ahc-green text-ahc-green font-semibold text-lg bg-white/5 hover:bg-ahc-green/10 transition"
+                >
+                  Learn About AHC
+                </Link>
               </div>
             </div>
           </div>
+
+          {/* Decorative gradient accent */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
         </section>
+
+        <CollaborationSection />
+
         <section
-          className="py-24 bg-slate-100 dark:bg-slate-900"
+          className="py-16 md:py-24 bg-white dark:bg-ahc-dark"
+        >
+          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">Driven by Collaboration, Focused on Health Transformation</h2>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">A Collaborative anchored in Africa</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+                The Africa Health Collaborative (Health Collaborative) is a multistakeholder partnership working towards transforming Africa’s Primary Health Care (PHC) systems. It is made up of 9 higher education institutions and the Mastercard Foundation.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">
+                The shared vision of the Health Collaborative is to prepare diverse youth for the meaningful work of transforming health and well-being in Africa, through contextually appropriate and sustainable primary healthcare systems.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">
+                The Africa Health Collaborative features a networked approach that allows the partners to reach across borders and sectoral divisions to collectively address health sector challenges in the African context. We leverage the power of institutions as sites of knowledge exchange, community collaboration, and nexuses for cross-sector partnerships.
+              </p>
+            </div>
+            <div className="relative h-80 md:h-96">
+              <img src="/images/collaborative-network.jpg" alt="Our collaborative network across Africa" className="rounded-lg shadow-2xl object-contain w-full h-full"/>
+            </div>
+          </div>
+        </section>
+
+        
+
+        {/* What We Do Section */}
+        <section className="py-24 bg-slate-100 dark:bg-slate-900">
+          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative h-80 md:h-96">
+              <img src="/images/value-partnership.jpg" alt="Our collaborative network across Africa" className="rounded-lg shadow-2xl object-contain w-full h-full"/>
+            </div>
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">Our Value of <span className="text-ahc-green">Partnership</span></h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+                Together, through core partners and strategic alliances of ecosystem partners (corporations, government ministries, industry, NGOs, and healthcare providers), we amplify our potential and transform healthcare landscapes.
+              </p>
+              <Link to="/vision-goals-values" className="inline-flex items-center font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors">
+                Vision, Goals, Values and Principles of Partnership <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="py-16 md:py-24 bg-white dark:bg-ahc-dark"
+        >
+          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">Goals and Methods</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+                Born from a commitment to fostering inclusive, sustainable, and impactful health-focused initiatives, the Health Collaborative represents a fusion of bright minds and leading institutions.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">
+                With over 80 comprehensive training programs for healthcare professionals, our collaborative efforts extend to groundbreaking research and cultivating a vibrant network of emerging young professionals. We champion local, indigenous solutions to confronting Africa’s primary health care and global health challenges. Our vision is bold, our programs are diverse but united to foster transformative change in health systems in Africa.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">
+                Together, we are committed to and partnership invested in co-creating diverse programs and initiatives paving the way designed to foster innovative and sustainable health solutions and growth in Africa’s health sector.
+              </p>
+            </div>
+            <div className="relative h-80 md:h-96">
+              <img src="/images/goals-methods.jpg" alt="Our collaborative network across Africa" className="rounded-lg shadow-2xl object-contain w-full h-full"/>
+            </div>
+          </div>
+        </section>
+        <section>
+          
+        </section>
+        {/* <section
+          className="py-16 md:py-24 bg-white dark:bg-ahc-dark"
         >
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -74,90 +147,7 @@ export default function About() {
               <img src="/public/images/africa-map.png" alt="Our collaborative network across Africa" className="rounded-lg shadow-2xl object-contain w-full h-full"/>
             </div>
           </div>
-        </section>
-
-        {/* What We Do Section */}
-        <section className="py-16 md:py-24 bg-white dark:bg-ahc-dark">
-          <div className="container mx-auto px-4">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white text-center mb-12">What We Do</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-ahc-green-light dark:bg-ahc-green-dark text-ahc-green-dark dark:text-white mb-6">
-                  <BookOpenCheck className="w-8 h-8" />
-                </div>
-                <h3 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">Health Innovation & Entrepreneurship</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">We foster a vibrant ecosystem for health innovation, supporting startups and entrepreneurs to develop scalable solutions for Africa's health challenges.</p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-ahc-blue-light dark:bg-ahc-blue-dark text-ahc-blue-dark dark:text-white mb-6">
-                  <Users className="w-8 h-8" />
-                </div>
-                <h3 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">Capacity Building & Education</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">We empower the next generation of health leaders through comprehensive training programs, mentorship, and scholarship opportunities.</p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-ahc-green-light dark:bg-ahc-green-dark text-ahc-green-dark dark:text-white mb-6">
-                  <Globe className="w-8 h-8" />
-                </div>
-                <h3 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">Strategic Partnerships & Advocacy</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">We forge strong alliances with governments, NGOs, and private sector entities to drive policy change and amplify our collective impact across the continent.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Mission and Vision Section */}
-        <section
-          className="py-16 md:py-24 bg-gradient-to-br from-ahc-blue-light to-ahc-green/20 dark:from-ahc-blue-dark dark:to-ahc-green/40 transition-colors duration-300"
-        >
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12">
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-1 cursor-pointer">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center justify-center p-3 rounded-full bg-ahc-green-light dark:bg-ahc-green-dark">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 20l9-5-9-5-9 5 9 5z" />
-                    <path d="M12 12l9-5-9-5-9 5 9 5z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold font-display text-ahc-dark dark:text-white">Our Mission</h3>
-              </div>
-              <p className="mt-4 text-slate-600 dark:text-slate-300">
-                To catalyze a vibrant, tech-enabled health ecosystem in Africa that fosters local innovation, empowers a new generation of health leaders, and ensures equitable access to quality care for all.
-              </p>
-            </div>
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-1 cursor-pointer">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center justify-center p-3 rounded-full bg-ahc-blue-light dark:bg-ahc-blue-dark">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M2 12h20" />
-                    <path d="M12 2a15.3 15.3 0 0 1 0 20" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold font-display text-ahc-dark dark:text-white">Our Vision</h3>
-              </div>
-              <p className="mt-4 text-slate-600 dark:text-slate-300">
-                An Africa where innovation drives a resilient and people-centered health system, creating a healthy and prosperous future for generations to come.
-              </p>
-            </div>
-          </div>
-        </section>
+        </section> */}
 
         {/* Our Values Section */}
         <section
@@ -268,52 +258,6 @@ export default function About() {
           </div>
         </section>
 
-
-        {/* Testimonials Section */}
-        <section className="py-24 bg-white dark:bg-ahc-dark">
-          <div className="container mx-auto px-4">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white text-center mb-12">Voices of Impact</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg">
-                <p className="text-lg italic text-slate-700 dark:text-slate-300 mb-6">
-                  "The Africa Health Collaborative has been instrumental in transforming healthcare delivery in our region. Their support and innovative approach are truly commendable."
-                </p>
-                <div className="flex items-center">
-                  <img src="https://i.pravatar.cc/150?img=5" alt="Testimonial 1" className="w-12 h-12 rounded-full mr-4" />
-                  <div>
-                    <p className="font-semibold text-ahc-dark dark:text-white">Dr. Amina Yusuf</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">Health Minister, Ghana</p>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg">
-                <p className="text-lg italic text-slate-700 dark:text-slate-300 mb-6">
-                  "Being part of AHC's scholarship program changed my life. I'm now equipped to make a real difference in my community."
-                </p>
-                <div className="flex items-center">
-                  <img src="https://i.pravatar.cc/150?img=6" alt="Testimonial 2" className="w-12 h-12 rounded-full mr-4" />
-                  <div>
-                    <p className="font-semibold text-ahc-dark dark:text-white">Kwesi Boateng</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">AHC Scholar, Kenya</p>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg">
-                <p className="text-lg italic text-slate-700 dark:text-slate-300 mb-6">
-                  "AHC's collaborative model is exactly what Africa needs. Their focus on local solutions is inspiring and effective."
-                </p>
-                <div className="flex items-center">
-                  <img src="https://i.pravatar.cc/150?img=7" alt="Testimonial 3" className="w-12 h-12 rounded-full mr-4" />
-                  <div>
-                    <p className="font-semibold text-ahc-dark dark:text-white">Prof. Naledi Mokoena</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">University of Cape Town</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Join Us Section */}
         <section className="py-32 text-center">
           <div className="container mx-auto px-4">
@@ -327,6 +271,26 @@ export default function About() {
           </div>
         </section>
 
+        <section className="py-16 md:py-24 bg-white dark:bg-ahc-dark">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">Governance</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
+                <h3 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">Pillar Advisory Committee (PAC)</h3>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Our governance structure is strengthened by an Executive Steering Committee, supported by dedicated Advisory Committees for each of our three core program pillars.</p>
+                <a href="https://africahealthcollaborative.org/about-us/ahehc-pillar-advisory-committee-pac/" className="inline-flex items-center font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors mt-4">
+                  Learn more about PAC <ArrowRight className="w-5 h-5 ml-2" />
+                </a>
+              </div>
+              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
+                <h3 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">Governance – Executive Steering Committee (ESC)</h3>
+                <a href="https://africahealthcollaborative.org/about-us/executive-steering-committee-esc/" className="inline-flex items-center font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors mt-4">
+                  Learn more about ESC <ArrowRight className="w-5 h-5 ml-2" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
