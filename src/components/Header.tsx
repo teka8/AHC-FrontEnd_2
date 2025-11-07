@@ -9,7 +9,6 @@ export default function Header() {
     { label: "About", path: "/about" },
     { label: "Partners", path: "/partners" },
     { label: "Resources", path: "/resources" },
-    { label: "Scholarships", path: "/scholarship" },
     { label: "Media", path: "/media" },
     { label: "Contact", path: "/contact" },
   ];

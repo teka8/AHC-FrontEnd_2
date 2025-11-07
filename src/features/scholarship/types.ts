@@ -2,6 +2,7 @@ export interface Scholarship {
   id: number
   title: string
   description: string
+  image_url?: string
   program_type: 'undergraduate' | 'graduate' | 'postgraduate' | 'research' | 'fellowship'
   eligibility_criteria: string
   required_documents: string[]

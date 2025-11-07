@@ -360,3 +360,69 @@ body { animation: fade-slide-up .45s ease-out; }
 .hero-network .net-link { stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; stroke-dasharray: 6 10; animation: link-flow 8s linear infinite; opacity: .85; }
 .dark .hero-network .net-link { opacity: .9; }
 
+.embla {
+  position: relative;
+  padding: 20px 0;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  will-change: transform;
+}
+
+.embla__slide {
+  flex: 0 0 33.33%;
+  min-width: 0;
+  padding: 0 15px;
+}
+
+.embla__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.embla__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.embla__button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.embla__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.embla__dots {
+  display: flex;
+  gap: 5px;
+}
+
+.embla__dot {
+  background-color: #ddd;
+  border: 0;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+
+.embla__dot.is-selected {
+  background-color: #333;
+}
