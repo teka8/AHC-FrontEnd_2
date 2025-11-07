@@ -16,6 +16,7 @@ import NotFound from '../pages/NotFound'
 import Protected from '../components/Protected'
 import VisionGoalsValues from '../pages/VisionGoalsValues'
 import Partners from '../pages/Partners'
+import HealthEmployment from '../pages/healthPillars/HealthEmployment' // Import the new component
 
 // Health Innovation pages
 import HILayout from '../components/healthInnovation/HILayout'
@@ -58,6 +59,7 @@ export const router = createBrowserRouter([
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
       { path: 'dashboard', element: <Protected><Dashboard /></Protected> },
+      { path: 'health-pillars/health-employment', element: <HealthEmployment /> },
       
       // Scholarship routes
       { path: 'scholarship', element: <ScholarshipHome /> },

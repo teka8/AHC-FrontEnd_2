@@ -20,6 +20,9 @@ export default function Header() {
   const [showLatestDropdown, setShowLatestDropdown] = useState(false);
   const [showMobileLatestDropdown, setShowMobileLatestDropdown] =
     useState(false);
+  const [showPillarsDropdown, setShowPillarsDropdown] = useState(false);
+  const [showMobilePillarsDropdown, setShowMobilePillarsDropdown] =
+    useState(false);
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
     const saved = localStorage.getItem("theme") as "light" | "dark" | null;
@@ -34,6 +37,12 @@ export default function Header() {
     { label: "Events", path: "/events" },
     { label: "Announcement", path: "/announcement" },
     { label: "News", path: "/news" },
+  ];
+
+  const healthPillarsLinks = [
+    { label: "Health Employment", path: "/health-pillars/health-employment" },
+    { label: "Health Entrepreneurship", path: "/health-pillars/health-entrepreneurship" },
+    { label: "Health Ecosystems", path: "/health-pillars/health-ecosystems" },
   ];
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -109,6 +118,44 @@ export default function Header() {
               <div className="absolute top-full left-0 pt-3">
                 <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
                   {latestLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `block px-4 py-2.5 text-sm transition-colors ${
+                          isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setShowPillarsDropdown(true)}
+            onMouseLeave={() => setShowPillarsDropdown(false)}
+          >
+            <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+              <span className="inline-block">Health Pillars</span>
+              <span
+                className={`inline-block transition-transform duration-200 ${
+                  showPillarsDropdown ? "rotate-180" : ""
+                }`}
+              >
+                <ChevronDown className="h-4 w-4" />
+              </span>
+            </button>
+            {showPillarsDropdown && (
+              <div className="absolute top-full left-0 pt-3">
+                <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                  {healthPillarsLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
@@ -207,6 +254,42 @@ export default function Header() {
               {showMobileLatestDropdown && (
                 <div className="mt-4 flex flex-col items-center gap-4">
                   {latestLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `text-xl font-medium transition-colors duration-200 ${
+                          isActive
+                            ? "text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="relative">
+              <button
+                onClick={() =>
+                  setShowMobilePillarsDropdown(!showMobilePillarsDropdown)
+                }
+                className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+              >
+                <span>Health Pillars</span>
+                <ChevronDown
+                  className={`h-6 w-6 transition-transform duration-200 ${
+                    showMobilePillarsDropdown ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {showMobilePillarsDropdown && (
+                <div className="mt-4 flex flex-col items-center gap-4">
+                  {healthPillarsLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
