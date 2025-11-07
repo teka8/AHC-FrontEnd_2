@@ -26,7 +26,7 @@ export default function NewsDetail() {
           <SectionHeader eyebrow="News" title={data.title ?? 'News'} />
           {(() => {
             const m = (data.content ?? '').match(/<img[^>]+src=["']([^"']+)["']/i)
-            const headerImg = data.featured_image || (m ? m[1] : '')
+            const headerImg = data.featured_image
             return headerImg ? (
               <img src={headerImg} alt={data.title ?? ''} className="w-full rounded-xl border dark:border-slate-800 mb-8 shadow-lg" />
             ) : null
