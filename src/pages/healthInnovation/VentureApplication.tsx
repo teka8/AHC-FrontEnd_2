@@ -23,7 +23,7 @@ const schema = z.object({
   description: z.string().min(50, 'Please provide at least 50 characters'),
   focus_area: z.enum(['mental-health', 'telemedicine', 'pharmaceuticals', 'biotech', 'medtech', 'diagnostics', 'health-tech', 'other']),
   stage: z.enum(['idea', 'prototype', 'early-stage', 'growth', 'scale']),
-  founded_year: z.number().optional(),
+  founded_year: z.number().optional().or(z.nan()).transform(val => isNaN(val) ? undefined : val),
   country: z.string().min(2, 'Country is required'),
   website: z.string().url().optional().or(z.literal('')),
   
@@ -32,7 +32,7 @@ const schema = z.object({
   contact_phone: z.string().optional(),
   
   founders: z.string().min(5, 'Please describe your founders'),
-  team_size: z.number().optional(),
+  team_size: z.number().optional().or(z.nan()).transform(val => isNaN(val) ? undefined : val),
   team_description: z.string().optional(),
   
   problem_statement: z.string().min(50, 'Please provide at least 50 characters'),
@@ -41,12 +41,12 @@ const schema = z.object({
   unique_value_proposition: z.string().min(30, 'Please describe your unique value'),
   
   current_stage_description: z.string().min(30, 'Please describe your current stage'),
-  patients_served: z.number().optional(),
-  revenue_generated: z.number().optional(),
-  funding_raised: z.number().optional(),
+  patients_served: z.number().optional().or(z.nan()).transform(val => isNaN(val) ? undefined : val),
+  revenue_generated: z.number().optional().or(z.nan()).transform(val => isNaN(val) ? undefined : val),
+  funding_raised: z.number().optional().or(z.nan()).transform(val => isNaN(val) ? undefined : val),
   key_milestones: z.string().optional(),
   
-  funding_sought: z.number().optional(),
+  funding_sought: z.number().optional().or(z.nan()).transform(val => isNaN(val) ? undefined : val),
   use_of_funds: z.string().optional(),
   
   why_apply: z.string().min(50, 'Please provide at least 50 characters'),
@@ -62,14 +62,46 @@ export default function VentureApplication() {
   const [businessPlan, setBusinessPlan] = useState<File | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isFormDirty, setIsFormDirty] = useState(false) // Track if form has changes
+
   
   const [createApplication, { isLoading: isSubmitting }] = useCreateApplicationMutation()
   const [saveDraft, { isLoading: isSavingDraft }] = useSaveDraftApplicationMutation()
   
-  const { register, handleSubmit, formState: { errors }, watch, trigger } = useForm<FormValues>({
+  const { register, handleSubmit, formState: { errors, isDirty }, watch, trigger } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: 'onBlur'
   })
+
+  // Add this useEffect to log errors
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      console.log('=== FORM VALIDATION ERRORS ===')
+      console.log('Errors:', errors)
+    }
+  }, [errors])
+
+  // Track form changes
+    useEffect(() => {
+      setIsFormDirty(isDirty || pitchDeck !== null || businessPlan !== null)
+    }, [isDirty, pitchDeck, businessPlan])
+  
+    // Prevent browser reload/close when form has unsaved changes
+    useEffect(() => {
+      const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+        if (isFormDirty && !showSuccess) {
+          e.preventDefault()
+          e.returnValue = '' // Required for Chrome
+          return '' // Required for some browsers
+        }
+      }
+  
+      window.addEventListener('beforeunload', handleBeforeUnload)
+  
+      return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload)
+      }
+    }, [isFormDirty, showSuccess])
 
   // Auto-save draft every 30 seconds
   useEffect(() => {
@@ -139,19 +171,18 @@ export default function VentureApplication() {
     try {
       const result = await createApplication(formData).unwrap()
       console.log('Application submitted successfully:', result)
+      setIsFormDirty(false) // Clear dirty state before showing success
       setShowSuccess(true)
-      setTimeout(() => {
-        navigate('/health-innovation/ventures')
-      }, 3000)
     } catch (error: any) {
       console.error('Failed to submit application:', error)
       
       // Check for authentication error
-      if (error?.status === 401 || error?.originalStatus === 401) {
-        setSubmitError('You must be logged in to submit an application. Redirecting to login...')
-        setTimeout(() => navigate('/login'), 2000)
-        return
-      }
+      // if (error?.status === 401 || error?.originalStatus === 401) {
+      //   setSubmitError('You must be logged in to submit an application. Redirecting to login...')
+      //   setTimeout(() => navigate('/login'), 2000)
+      //   return
+      // }
+      
       
       // Show user-friendly error message
       const errorMessage = error?.data?.message || error?.data?.error || error?.message || 'Failed to submit application. Please check all required fields and try again.'
