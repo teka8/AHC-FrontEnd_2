@@ -10,6 +10,11 @@ export default function NewsDetail() {
 
   const headerImg = data?.featured_image || data?.content?.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] || ''
 
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href)
+    alert('Link copied to clipboard!')
+  }
+
   return (
     <div className="bg-white dark:bg-gray-900">
       <Helmet>
@@ -71,31 +76,54 @@ export default function NewsDetail() {
                     <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-4">
                       Share this post
                     </h3>
-                    <div className="flex space-x-4">
+                    <div className="flex flex-col space-y-4">
                       <a
                         href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400"
+                        className="flex items-center text-gray-500 hover:text-blue-600 dark:hover:text-blue-400"
                       >
-                        <i className="fab fa-facebook-f text-2xl"></i>
+                        <i className="fab fa-facebook-f text-2xl mr-2"></i> Facebook
                       </a>
                       <a
                         href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${data.title}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-blue-400 dark:hover:text-blue-300"
+                        className="flex items-center text-gray-500 hover:text-blue-400 dark:hover:text-blue-300"
                       >
-                        <i className="fab fa-twitter text-2xl"></i>
+                        <i className="fab fa-twitter text-2xl mr-2"></i> Twitter
                       </a>
                       <a
                         href={`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${data.title}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-blue-700 dark:hover:text-blue-500"
+                        className="flex items-center text-gray-500 hover:text-blue-700 dark:hover:text-blue-500"
                       >
-                        <i className="fab fa-linkedin-in text-2xl"></i>
+                        <i className="fab fa-linkedin-in text-2xl mr-2"></i> LinkedIn
                       </a>
+                      <a
+                        href={`whatsapp://send?text=${data.title}%20${window.location.href}`}
+                        data-action="share/whatsapp/share"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-500 hover:text-green-500 dark:hover:text-green-400"
+                      >
+                        <i className="fab fa-whatsapp text-2xl mr-2"></i> WhatsApp
+                      </a>
+                      <a
+                        href={`mailto:?subject=${data.title}&body=${window.location.href}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-500 hover:text-red-600 dark:hover:text-red-400"
+                      >
+                        <i className="fas fa-envelope text-2xl mr-2"></i> Email
+                      </a>
+                      <button
+                        onClick={copyLink}
+                        className="flex items-center text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
+                      >
+                        <i className="fas fa-copy text-2xl mr-2"></i> Copy Link
+                      </button>
                     </div>
                   </div>
                 </div>
