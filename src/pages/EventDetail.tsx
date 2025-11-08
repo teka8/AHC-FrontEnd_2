@@ -24,7 +24,7 @@ export default function EventDetail() {
               <img src={data.event_image} alt={data.title ?? 'Event image'} className="w-full rounded-xl border dark:border-slate-800 mb-8 shadow-lg" />
             )}
             <article className="prose prose-lg max-w-none dark:prose-invert prose-p:text-slate-600 dark:prose-p:text-slate-300 prose-headings:font-display prose-headings:text-ahc-dark dark:prose-headings:text-white">
-              <div dangerouslySetInnerHTML={{ __html: data.description ?? '' }} />
+              <div className="break-words whitespace-normal overflow-x-auto" dangerouslySetInnerHTML={{ __html: data.description ?? '' }} />
             </article>
           </div>
           <aside className="md:col-span-1 space-y-6">

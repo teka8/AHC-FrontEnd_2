@@ -35,7 +35,7 @@ export default function NewsDetail() {
             <div className="text-sm text-slate-500 dark:text-slate-400 mb-4">Published on {dayjs(data.published_at).format('MMMM DD, YYYY')}</div>
           )}
           <article className="prose prose-lg max-w-none dark:prose-invert prose-p:text-slate-600 dark:prose-p:text-slate-300 prose-headings:font-display prose-headings:text-ahc-dark dark:prose-headings:text-white">
-            <div dangerouslySetInnerHTML={{ __html: data.content ?? '' }} />
+            <div className="break-words whitespace-normal overflow-x-auto" dangerouslySetInnerHTML={{ __html: data.content ?? '' }} />
           </article>
         </div>
       ) : (
