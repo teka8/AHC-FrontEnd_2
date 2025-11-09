@@ -3,99 +3,34 @@ import React from 'react';
 import { ChevronRight, ChevronLeft, Linkedin, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useGetScholarshipsQuery } from '../../features/scholarship/scholarshipsApi';
+import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
 import ScholarshipCard from '../../components/cards/ScholarshipCard';
 
 const HealthEmployment: React.FC = () => {
   const { data: scholarships = [] } = useGetScholarshipsQuery();
-  const programs = [
-    {
-      title: "IMIx Certificate of Effective Healthcare Management",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: true,
-    },
-    {
-      title: "Introduction to Africa Health Public Policy",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: true,
-    },
-    {
-      title: "Master of Biotechnology",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: false,
-    },
-    {
-      title: "Master of Engineering, Biomedical Engineering",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: true,
-    },
-    {
-      title: "Master of Financial Insurance",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: true,
-    },
-    {
-      title: "Master of Health Administration",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: false,
-    },
-    {
-      title: "Master of Health Informatics",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: true,
-    },
-    {
-      title: "Master of Public Health in Occupational and Environmental Health",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: true,
-    },
-    {
-      title: "Master of Public Health in Social and Behavioural Health Sciences",
-      description: "A short description of the program.",
-      branch: "University of Toronto",
-      image: "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: true,
-    },
-  ];
+  const { data: programsData = [], isLoading } = useGetProgramsQuery();
 
-  const comingSoon = [
-    {
-        title: "BSc. in Biological Engineering",
-        description: "A short description of the program.",
-        branch: "University of Toronto",
-        image: "https://placehold.co/600x400/000000/FFFFFF/png",
-        active: false,
-      },
-      {
-        title: "Centre for Reimagined Africa (CRA)",
-        description: "A short description of the program.",
-        branch: "University of Toronto",
-        image: "https://placehold.co/600x400/000000/FFFFFF/png",
-        active: false,
-      },
-      {
-        title: "Collaborative Research: Monitoring, Evaluation, Learning & Adaptation (MELA) @ 3-year external evaluation: HEMP + HECO",
-        description: "A short description of the program.",
-        branch: "University of Toronto",
-        image: "https://placehold.co/600x400/000000/FFFFFF/png",
-        active: false,
-      },
-  ];
+  // Filter active and paused programs
+  const programs = programsData
+    .filter(p => p.state === 'active' || p.state === 'paused')
+    .map(p => ({
+      title: p.title,
+      description: p.description || '',
+      branch: p.host,
+      image: p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
+      state: p.state,
+    }));
+
+  // Filter upcoming programs only (coming soon)
+  const comingSoon = programsData
+    .filter(p => p.state === 'upcoming')
+    .map(p => ({
+      title: p.title,
+      description: p.description || '',
+      branch: p.host,
+      image: p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
+      active: false,
+    }));
 
   const successStories = [
     {
@@ -193,23 +128,42 @@ const HealthEmployment: React.FC = () => {
             </button>
           </div>
           <div ref={programsScrollRef} className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide">
-            {programs.map((program, index) => (
-              <div key={index} className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img src={program.image} alt={program.title} className="rounded-t-xl h-48 w-full object-cover" />
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{program.branch}</p>
-                    {program.active ? (
-                      <span className="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Active</span>
-                    ) : (
-                      <span className="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">Inactive</span>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{program.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400">{program.description}</p>
+            {isLoading ? (
+              <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div className="animate-pulse">
+                  <div className="h-48 bg-gray-300 dark:bg-gray-700 rounded-t-xl mb-4"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
                 </div>
               </div>
-            ))}
+            ) : programs.length > 0 ? (
+              programs.map((program, index) => (
+                <div key={index} className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <img src={program.image} alt={program.title} className="rounded-t-xl h-48 w-full object-cover" />
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{program.branch}</p>
+                      {program.state === 'active' ? (
+                        <span className="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Active</span>
+                      ) : program.state === 'paused' ? (
+                        <span className="px-2 py-1 text-xs font-semibold text-orange-800 bg-orange-200 rounded-full">Paused</span>
+                      ) : (
+                        <span className="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">Inactive</span>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{program.title}</h3>
+                    <div 
+                      className="text-gray-600 dark:text-gray-400 line-clamp-3"
+                      dangerouslySetInnerHTML={{ __html: program.description || 'A short description of the program.' }}
+                    />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="flex-shrink-0 w-full text-center py-12">
+                <p className="text-gray-500 dark:text-gray-400">No active programs available at the moment.</p>
+              </div>
+            )}
           </div>
           <div className="absolute top-1/2 -right-4 z-10">
             <button onClick={() => scroll('right', programsScrollRef)} className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
@@ -227,23 +181,36 @@ const HealthEmployment: React.FC = () => {
             </button>
           </div>
           <div ref={comingSoonScrollRef} className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide">
-            {comingSoon.map((item, index) => (
-                <div key={index} className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img src={item.image} alt={item.title} className="rounded-t-xl h-48 w-full object-cover" />
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{item.branch}</p>
-                    {item.active ? (
-                      <span className="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Active</span>
-                    ) : (
-                      <span className="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">Coming Soon</span>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
+            {isLoading ? (
+              <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div className="animate-pulse">
+                  <div className="h-48 bg-gray-300 dark:bg-gray-700 rounded-t-xl mb-4"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
                 </div>
               </div>
-            ))}
+            ) : comingSoon.length > 0 ? (
+              comingSoon.map((item, index) => (
+                <div key={index} className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <img src={item.image} alt={item.title} className="rounded-t-xl h-48 w-full object-cover" />
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{item.branch}</p>
+                      <span className="px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">Coming Soon</span>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <div 
+                      className="text-gray-600 dark:text-gray-400 line-clamp-3 prose prose-sm max-w-none"
+                      dangerouslySetInnerHTML={{ __html: item.description || 'A short description of the program.' }}
+                    />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="flex-shrink-0 w-full text-center py-12">
+                <p className="text-gray-500 dark:text-gray-400">No upcoming programs at the moment.</p>
+              </div>
+            )}
           </div>
           <div className="absolute top-1/2 -right-4 z-10">
             <button onClick={() => scroll('right', comingSoonScrollRef)} className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
