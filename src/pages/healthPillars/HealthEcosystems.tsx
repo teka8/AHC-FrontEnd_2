@@ -10,6 +10,7 @@ const HealthEcosystems: React.FC = () => {
   const programs = programsData
     .filter((p) => p.state === "active" || p.state === "paused")
     .map((p) => ({
+      id: p.id,
       title: p.title,
       description: p.description || "",
       branch: p.host,
@@ -131,38 +132,41 @@ const HealthEcosystems: React.FC = () => {
                 </div>
               </div>
             ) : programs.length > 0 ? (
-              programs.map((program, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+              programs.map((program) => (
+                <Link
+                  key={program.id}
+                  to={`/programs/${program.id}`}
+                  className="flex-shrink-0 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green"
                 >
                   <img
                     src={program.image}
                     alt={program.title}
                     className="rounded-t-xl h-48 w-full object-cover"
                   />
-                  <div className="p-6">
-                    <div className="flex justify-between items-center mb-2">
+                  <div className="p-6 flex flex-col gap-3">
+                    <div className="flex justify-between items-center">
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         {program.branch}
                       </p>
-                      {program.state === "active" ? (
-                        <span className="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
-                          Active
-                        </span>
-                      ) : program.state === "paused" ? (
-                        <span className="px-2 py-1 text-xs font-semibold text-orange-800 bg-orange-200 rounded-full">
-                          Paused
-                        </span>
-                      ) : (
-                        <span className="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
-                          Inactive
-                        </span>
-                      )}
+                      <span
+                        className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                          program.state === "active"
+                            ? "text-green-800 bg-green-200"
+                            : program.state === "paused"
+                              ? "text-orange-800 bg-orange-200"
+                              : "text-red-800 bg-red-200"
+                        }`}
+                      >
+                        {program.state === "active"
+                          ? "Active"
+                          : program.state === "paused"
+                            ? "Paused"
+                            : "Inactive"}
+                      </span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{program.title}</h3>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{program.title}</h3>
                     <div
-                      className="text-gray-600 dark:text-gray-400 line-clamp-3"
+                      className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3"
                       dangerouslySetInnerHTML={{
                         __html:
                           program.description ||
@@ -170,7 +174,7 @@ const HealthEcosystems: React.FC = () => {
                       }}
                     />
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <div className="flex-shrink-0 w-full text-center py-12">

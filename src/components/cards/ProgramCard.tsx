@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { ProgramItem } from "../../features/healthPillars/programsApi";
 
 const STATUS_STYLES: Record<string, string> = {
@@ -26,7 +27,10 @@ export default function ProgramCard({ item }: { item: ProgramItem }) {
       : "bg-ahc-blue/10 text-ahc-blue";
 
   return (
-    <div className="group bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
+    <Link
+      to={`/programs/${item.id}`}
+      className="group bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green"
+    >
       <div className="h-48 w-full overflow-hidden rounded-t-xl">
         <img
           src={imageSrc}
@@ -72,6 +76,6 @@ export default function ProgramCard({ item }: { item: ProgramItem }) {
           dangerouslySetInnerHTML={{ __html: item.description || "" }}
         />
       </div>
-    </div>
+    </Link>
   );
 }
