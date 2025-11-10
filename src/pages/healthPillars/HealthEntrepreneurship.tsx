@@ -1,10 +1,11 @@
 
 import React from 'react';
-import { Zap, Briefcase, DollarSign, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Briefcase, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
 
 const HealthEntrepreneurship: React.FC = () => {
-  const { data: programsData = [], isLoading } = useGetProgramsQuery();
+  const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: 'health_entrepreneurship' });
 
   // Filter active and paused programs
   const programs = programsData
@@ -14,7 +15,7 @@ const HealthEntrepreneurship: React.FC = () => {
       icon: <Briefcase className="h-8 w-8 text-ahc-green" />,
       description: p.description || '',
       branch: p.host,
-      image: p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
+      image: p.image_thumb || p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
       state: p.state,
     }));
 
@@ -25,7 +26,7 @@ const HealthEntrepreneurship: React.FC = () => {
       title: p.title,
       description: p.description || '',
       branch: p.host,
-      image: p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
+      image: p.image_thumb || p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
       active: false,
     }));
 
@@ -72,7 +73,15 @@ const HealthEntrepreneurship: React.FC = () => {
 
         {/* Our Programs Section */}
         <div id="programs" className="mb-20 relative">
-          <h2 className="text-4xl font-bold text-center text-ahc-green-dark mb-12">Our Programs</h2>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
+            <h2 className="text-4xl font-bold text-ahc-green-dark text-center md:text-left">Our Programs</h2>
+            <Link
+              to="/programs?category=health_entrepreneurship"
+              className="inline-flex items-center justify-center px-6 py-2 bg-ahc-green text-white rounded-lg font-semibold shadow-md hover:bg-ahc-green-dark transition-colors"
+            >
+              See All Programs
+            </Link>
+          </div>
           <div className="absolute top-1/2 -left-4 z-10">
             <button onClick={() => scroll('left', programsScrollRef)} className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />

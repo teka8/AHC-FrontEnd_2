@@ -1,10 +1,10 @@
 import React from "react";
-import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGetProgramsQuery } from "../../features/healthPillars/programsApi";
 
 const HealthEcosystems: React.FC = () => {
-  const { data: programsData = [], isLoading } = useGetProgramsQuery();
-  console.log("Programs Data:", programsData);
+  const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: "health_ecosystems" });
 
   // Filter active and paused programs
   const programs = programsData
@@ -13,7 +13,7 @@ const HealthEcosystems: React.FC = () => {
       title: p.title,
       description: p.description || "",
       branch: p.host,
-      image: p.image || "https://placehold.co/600x400/000000/FFFFFF/png",
+      image: p.image_thumb || p.image || "https://placehold.co/600x400/000000/FFFFFF/png",
       state: p.state,
     }));
 
@@ -24,7 +24,7 @@ const HealthEcosystems: React.FC = () => {
       title: p.title,
       description: p.description || "",
       branch: p.host,
-      image: p.image || "https://placehold.co/600x400/000000/FFFFFF/png",
+      image: p.image_thumb || p.image || "https://placehold.co/600x400/000000/FFFFFF/png",
       active: false,
     }));
 
@@ -99,9 +99,17 @@ const HealthEcosystems: React.FC = () => {
 
         {/* Programs Section */}
         <div id="programs" className="mb-20 relative">
-          <h2 className="text-4xl font-bold text-center text-ahc-green-dark mb-12">
-            Programs
-          </h2>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
+            <h2 className="text-4xl font-bold text-ahc-green-dark text-center md:text-left">
+              Programs
+            </h2>
+            <Link
+              to="/programs?category=health_ecosystems"
+              className="inline-flex items-center justify-center px-6 py-2 bg-ahc-green text-white rounded-lg font-semibold shadow-md hover:bg-ahc-green-dark transition-colors"
+            >
+              See All Programs
+            </Link>
+          </div>
           <div className="absolute top-1/2 -left-4 z-10">
             <button
               onClick={() => scroll("left", programsScrollRef)}
