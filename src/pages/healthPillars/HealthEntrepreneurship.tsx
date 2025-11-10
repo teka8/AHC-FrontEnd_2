@@ -50,7 +50,7 @@ const HealthEntrepreneurship: React.FC = () => {
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
       {/* Hero Section */}
-      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: "url('/images/pillars/health-entrepreneurship-hero.jpg')" }}>
+      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: "url('/images/ahc-health-symbol.png')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="text-center text-white p-8">
             <h1 className="text-5xl font-extrabold tracking-tight">Health Entrepreneurship</h1>
@@ -68,7 +68,7 @@ const HealthEntrepreneurship: React.FC = () => {
             <a href="#programs" className="bg-ahc-green hover:bg-ahc-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1">Discover Our Programs</a>
           </div>
           <div className="order-1 md:order-2">
-            <img src="/images/pillars/health-entrepreneurship-mission.jpg" alt="Health Entrepreneurship Mission" className="rounded-2xl shadow-2xl object-cover w-full h-full" />
+            <img src="/images/ahc-health-symbol.png" alt="Health Entrepreneurship Mission" className="rounded-2xl shadow-2xl object-cover w-full h-full" />
           </div>
         </div>
 

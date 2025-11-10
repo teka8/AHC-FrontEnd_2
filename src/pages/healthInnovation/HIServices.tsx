@@ -39,11 +39,39 @@ export default function HIServices() {
 
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-ahc-green to-green-600 text-white py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-              <p className="text-xl opacity-90">
+        <section className="relative bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 py-20 overflow-hidden">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Large AHC Symbol - Center Background */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
+              <img 
+                src="/images/ahc-health-symbol.png" 
+                alt="" 
+                aria-hidden="true"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            
+            {/* Decorative Triangles */}
+            <div className="absolute top-10 left-10 w-16 h-16 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+              <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
+            </div>
+            <div className="absolute bottom-10 right-10 w-20 h-20 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+              <div className="w-full h-full bg-gradient-to-b from-green-400 to-teal-500"></div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              {/* Icon Badge */}
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
+                <Target className="w-10 h-10 text-white" />
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+                Our Services
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
                 Comprehensive support solutions designed to accelerate healthcare innovation 
                 from concept to market impact
               </p>
@@ -52,13 +80,18 @@ export default function HIServices() {
         </section>
 
         {/* Open Innovation Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Lightbulb className="h-12 w-12 text-ahc-green" />
-                  <h2 className="text-3xl md:text-4xl font-bold">Open Innovation</h2>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-green-500 rounded-2xl blur-lg opacity-30"></div>
+                    <div className="relative bg-gradient-to-br from-teal-50 to-green-50 dark:from-teal-900/30 dark:to-green-900/30 p-4 rounded-2xl">
+                      <Lightbulb className="h-12 w-12 text-teal-600 dark:text-teal-400" />
+                    </div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Open Innovation</h2>
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                   Bridge the gap between established healthcare organizations and innovative startups. 
@@ -68,36 +101,39 @@ export default function HIServices() {
                 <div className="space-y-3 mb-6">
                   {openInnovationFeatures.map((feature, index) => (
                     <div key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-ahc-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </div>
                   ))}
                 </div>
-                <Link to="/health-innovation/contact">
-                  <button className="bg-ahc-green text-white px-8 py-3 rounded-lg font-medium hover:bg-ahc-green/90 transition inline-flex items-center">
-                    Learn More <ArrowRight className="ml-2 h-5 w-5" />
+                <Link to="/health-pillars/health-entrepreneurship/contact">
+                  <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 inline-flex items-center group">
+                    Learn More <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
               </div>
-              <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-ahc-green transition">
-                <h3 className="text-xl font-bold mb-2">Success Story</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">MedTech Innovation Challenge 2023</p>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
+              <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 border border-teal-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
+                {/* Gradient accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-green-400 rounded-t-3xl"></div>
+                
+                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Success Story</h3>
+                <p className="text-sm text-teal-600 dark:text-teal-400 mb-3 font-semibold">MedTech Innovation Challenge 2023</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                   Partnered with 5 major hospitals to identify and pilot 12 innovative solutions, 
                   resulting in 3 successful product deployments and $8M in follow-on funding.
                 </p>
-                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <div>
-                    <div className="text-2xl font-bold text-ahc-green">85+</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Applications</div>
+                <div className="grid grid-cols-3 gap-4 pt-6 border-t border-teal-100 dark:border-gray-700">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400 bg-clip-text text-transparent mb-1">85+</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Applications</div>
                   </div>
-                  <div>
-                    <div className="text-2xl font-bold text-ahc-green">12</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Pilot Programs</div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400 bg-clip-text text-transparent mb-1">12</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Pilot Programs</div>
                   </div>
-                  <div>
-                    <div className="text-2xl font-bold text-ahc-green">$8M</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Follow-on Funding</div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400 bg-clip-text text-transparent mb-1">$8M</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Follow-on Funding</div>
                   </div>
                 </div>
               </div>
@@ -106,54 +142,78 @@ export default function HIServices() {
         </section>
 
         {/* Accelerators Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-              <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-ahc-green transition order-2 lg:order-1">
-                <h3 className="text-xl font-bold mb-2">Cohort Overview</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Our proven acceleration model</p>
-                <div className="space-y-4">
+
+        <section className="py-20 bg-gradient-to-br from-green-500 via-emerald-100 to-teal-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500 rounded-t-3xl"></div>
+
+          {/* Decorative Elements - Right */}
+          <div className="absolute right-0 bottom-0 w-96 h-96 opacity-20">
+            <div className="absolute right-0 bottom-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(100% 0, 0 100%, 100% 100%)' }}></div>
+          </div>
+
+          {/* Decorative Elements - left */}
+          <div className="absolute left-0 top-0 w-96 h-96 opacity-20">
+            <div className="absolute left-0 top-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300 order-2 lg:order-1">
+                {/* Gradient accent border */}
+                
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Cohort Overview</h3>
+                <p className="text-sm text-teal-600 dark:text-teal-400 mb-6 font-semibold">Our proven acceleration model</p>
+                <div className="space-y-6">
                   <div>
-                    <div className="font-semibold mb-1">Phase 1: Foundation (Weeks 1-4)</div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="font-semibold mb-2 text-lg text-gray-900 dark:text-white">Phase 1: Foundation (Weeks 1-4)</div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                       Business model refinement, customer discovery, and market validation
                     </p>
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Phase 2: Growth (Weeks 5-8)</div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="font-semibold mb-2 text-lg text-gray-900 dark:text-white">Phase 2: Growth (Weeks 5-8)</div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                       Product development, early traction, and metrics optimization
                     </p>
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Phase 3: Scale (Weeks 9-12)</div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="font-semibold mb-2 text-lg text-gray-900 dark:text-white">Phase 3: Scale (Weeks 9-12)</div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                       Fundraising preparation, pitch refinement, and investor introductions
                     </p>
                   </div>
                 </div>
               </div>
               <div className="order-1 lg:order-2">
-                <div className="flex items-center gap-3 mb-4">
-                  <Rocket className="h-12 w-12 text-ahc-green" />
-                  <h2 className="text-3xl md:text-4xl font-bold">Accelerators</h2>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-green-500 rounded-2xl blur-lg opacity-30"></div>
+                    <div className="relative bg-gradient-to-br from-teal-400 to-teal-600 p-4 rounded-2xl relative overflow-hidden">
+                      <Rocket className="w-12 h-12 text-white relative z-10" />
+                      {/* Small decorative triangles around icon */}
+                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-green-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-green-400 opacity-70" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}></div>
+                    </div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Accelerators</h2>
                 </div>
-                <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                   Transform your healthcare startup from early-stage to investment-ready. Our 
                   intensive accelerator program provides the funding, mentorship, and connections 
                   needed to scale rapidly.
                 </p>
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-8">
                   {acceleratorFeatures.map((feature, index) => (
                     <div key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-ahc-green mt-0.5 flex-shrink-0" />
-                      <span>{feature}</span>
+                      <CheckCircle className="h-5 w-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
-                <Link to="/health-innovation/apply">
-                  <button className="bg-ahc-green text-white px-8 py-3 rounded-lg font-medium hover:bg-ahc-green/90 transition inline-flex items-center">
-                    Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+                <Link to="/health-pillars/health-entrepreneurship/apply">
+                  <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
+                    Apply Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
               </div>
@@ -162,45 +222,72 @@ export default function HIServices() {
         </section>
 
         {/* Consulting Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <section className="py-20 bg-gradient-to-br from-green-500 via-emerald-100 to-teal-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+          {/* Decorative Elements - Right */}
+          <div className="absolute right-0 bottom-0 w-96 h-96 opacity-20">
+            <div className="absolute right-0 bottom-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(100% 0, 0 100%, 100% 100%)' }}></div>
+          </div>
+
+          {/* Decorative Elements - left */}
+          <div className="absolute left-0 top-0 w-96 h-96 opacity-20">
+            <div className="absolute left-0 top-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Users className="h-12 w-12 text-ahc-green" />
-                  <h2 className="text-3xl md:text-4xl font-bold">Consulting</h2>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-green-500 rounded-2xl blur-lg opacity-30"></div>
+                    <div className="relative bg-gradient-to-br from-teal-400 to-teal-600 p-4 rounded-2xl relative overflow-hidden">
+                      <Users className="w-12 h-12 text-white relative z-10" />
+                      {/* Small decorative triangles around icon */}
+                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-yellow-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-yellow-400 opacity-70" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}></div>
+                    </div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Consulting</h2>
                 </div>
-                <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                   Strategic advisory services tailored to your unique challenges. Our experienced 
                   consultants bring deep healthcare industry expertise to help you navigate 
                   complex decisions and achieve your business objectives.
                 </p>
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-8">
                   {consultingFeatures.map((feature, index) => (
                     <div key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-ahc-green mt-0.5 flex-shrink-0" />
-                      <span>{feature}</span>
+                      <CheckCircle className="h-5 w-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
-                <Link to="/health-innovation/contact">
-                  <button className="bg-ahc-green text-white px-8 py-3 rounded-lg font-medium hover:bg-ahc-green/90 transition inline-flex items-center">
-                    Schedule Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                <Link to="/health-pillars/health-entrepreneurship/contact">
+                  <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
+                    Schedule Consultation <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
               </div>
-              <div className="grid gap-4">
-                <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-ahc-green transition">
-                  <Target className="h-8 w-8 text-ahc-green mb-2" />
-                  <h3 className="text-xl font-bold mb-2">Strategic Planning</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+              <div className="grid gap-6">
+                <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center">
+                      <Target className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Strategic Planning</h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     Develop comprehensive strategies aligned with market opportunities and your organizational capabilities.
                   </p>
                 </div>
-                <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-ahc-green transition">
-                  <TrendingUp className="h-8 w-8 text-ahc-green mb-2" />
-                  <h3 className="text-xl font-bold mb-2">Growth Advisory</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center">
+                      <TrendingUp className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Growth Advisory</h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     Scale your operations efficiently with data-driven insights and proven growth frameworks.
                   </p>
                 </div>
@@ -210,23 +297,94 @@ export default function HIServices() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-ahc-green to-green-600 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Let's discuss how our services can accelerate your healthcare innovation journey
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/health-innovation/contact">
-                <button className="bg-white text-ahc-green px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition">
-                  Contact Us
-                </button>
-              </Link>
-              <Link to="/health-innovation/demo">
-                <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-ahc-green transition">
-                  Request Demo
-                </button>
-              </Link>
+        <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Large AHC Symbol - Center Background */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
+              <img 
+                src="/images/ahc-health-symbol.png" 
+                alt="" 
+                aria-hidden="true"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            
+            {/* Decorative Triangles */}
+            <div className="absolute top-10 left-10 w-16 h-16 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+              <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
+            </div>
+            <div className="absolute bottom-10 right-10 w-20 h-20 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+              <div className="w-full h-full bg-gradient-to-b from-green-400 to-teal-500"></div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-5xl mx-auto">
+              {/* Main CTA Card */}
+              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
+                {/* Gradient accent border */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
+                
+                {/* Small decorative AHC Symbol - Top Right */}
+                <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
+                  <img 
+                    src="/images/ahc-health-symbol.png" 
+                    alt="" 
+                    aria-hidden="true"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                <div className="text-center relative z-10">
+                  {/* Icon Badge */}
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
+                    <Rocket className="w-8 h-8 text-white" />
+                  </div>
+
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+                    Ready to Get Started?
+                  </h2>
+                  
+                  <p className="text-base sm:text-lg lg:text-xl mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Let's discuss how our services can accelerate your healthcare innovation journey 
+                    and transform your ideas into impactful solutions.
+                  </p>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <Link to="/health-pillars/health-entrepreneurship/contact" className="w-full sm:w-auto">
+                      <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center group">
+                        Contact Us 
+                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    </Link>
+                    
+                    <Link to="/health-pillars/health-entrepreneurship/demo" className="w-full sm:w-auto">
+                      <button className="w-full sm:w-auto bg-white dark:bg-gray-700 border-2 border-teal-500 text-teal-600 dark:text-teal-400 px-8 py-4 rounded-xl font-semibold hover:bg-teal-50 dark:hover:bg-gray-600 transition-all duration-300 inline-flex items-center justify-center group">
+                        Request Demo 
+                        <Rocket className="ml-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" />
+                      </button>
+                    </Link>
+                  </div>
+
+                  {/* Stats or Trust Indicators */}
+                  <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">150+</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Startups Supported</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1">$50M+</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Funding Raised</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">95%</div>
+                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Success Rate</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

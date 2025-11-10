@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCreateApplicationMutation, useSaveDraftApplicationMutation } from '../../features/healthInnovation/applicationsApi'
 import MultiStepForm from '../../components/ui/MultiStepForm'
 import FileUpload from '../../components/ui/FileUpload'
-import { AlertCircle, CheckCircle2 } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Rocket } from 'lucide-react'
 
 const steps = [
   { title: 'Basic Info', description: 'Venture details' },
@@ -195,13 +195,28 @@ export default function VentureApplication() {
 
   if (showSuccess) {
     return (
-      <div className="min-h-screen py-12 flex items-center justify-center">
-        <div className="text-center max-w-md">
-          <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-2">Application Submitted!</h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            Thank you for applying. We'll review your application and get back to you soon.
-          </p>
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center py-12 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
+          <img 
+            src="/images/ahc-health-symbol.png" 
+            alt="" 
+            aria-hidden="true"
+            className="w-full h-full object-contain"
+            style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+          />
+        </div>
+        
+        <div className="text-center max-w-2xl mx-auto px-4 relative z-10">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-2xl">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-green-400 to-teal-500 mb-6 shadow-lg">
+              <CheckCircle2 className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Application Submitted!</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              Thank you for applying. We'll review your application and get back to you soon.
+            </p>
+          </div>
         </div>
       </div>
     )
@@ -213,12 +228,45 @@ export default function VentureApplication() {
         <title>Apply - Health Innovation & Entrepreneurship</title>
       </Helmet>
 
-      <div className="min-h-screen py-12">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-4xl font-bold mb-2">Health Venture Application</h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
-            Complete all steps to submit your application
-          </p>
+      <div className="min-h-screen overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 py-16 overflow-hidden">
+          {/* Decorative Elements */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
+          </div>
+          
+          <div className="absolute right-0 top-1/4 translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
+          </div>
+
+          <div className="container mx-auto px-4 max-w-4xl relative z-10">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
+                <Rocket className="w-10 h-10 text-white" />
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Health Venture Application</h1>
+              <p className="text-xl text-gray-700 dark:text-gray-300">
+                Complete all steps to submit your application
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 max-w-4xl py-12">
 
           {submitError && (
             <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
@@ -236,13 +284,13 @@ export default function VentureApplication() {
             <MultiStepForm steps={steps} currentStep={currentStep}>
               {/* Step 0: Basic Info */}
               {currentStep === 0 && (
-                <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border space-y-4">
-                  <h2 className="text-2xl font-semibold mb-6">Basic Information</h2>
+                <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border-t-4 border-teal-500 shadow-xl space-y-6">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Basic Information</h2>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-1">Venture Name *</label>
-                    <input {...register('venture_name')} className="w-full border rounded-lg px-4 py-2" placeholder="Your Venture Name" />
-                    {errors.venture_name && <p className="text-red-500 text-xs mt-1">{errors.venture_name.message}</p>}
+                    <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Venture Name *</label>
+                    <input {...register('venture_name')} className="w-full border-2 border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 dark:bg-gray-700 dark:text-white transition-all" placeholder="Your Venture Name" />
+                    {errors.venture_name && <p className="text-red-500 text-sm mt-1">{errors.venture_name.message}</p>}
                   </div>
 
                   <div>
@@ -332,8 +380,8 @@ export default function VentureApplication() {
 
               {/* Step 1: Team */}
               {currentStep === 1 && (
-                <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border space-y-4">
-                  <h2 className="text-2xl font-semibold mb-6">Team Information</h2>
+                <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border-t-4 border-green-500 shadow-xl space-y-6">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Team Information</h2>
 
                   <div>
                     <label className="block text-sm font-medium mb-1">Founders *</label>
@@ -355,8 +403,8 @@ export default function VentureApplication() {
 
               {/* Step 2: Solution */}
               {currentStep === 2 && (
-                <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border space-y-4">
-                  <h2 className="text-2xl font-semibold mb-6">Problem & Solution</h2>
+                <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border-t-4 border-teal-500 shadow-xl space-y-6">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Problem & Solution</h2>
 
                   <div>
                     <label className="block text-sm font-medium mb-1">Problem Statement *</label>
@@ -386,8 +434,8 @@ export default function VentureApplication() {
 
               {/* Step 3: Traction */}
               {currentStep === 3 && (
-                <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border space-y-4">
-                  <h2 className="text-2xl font-semibold mb-6">Traction & Funding</h2>
+                <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border-t-4 border-green-500 shadow-xl space-y-6">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Traction & Funding</h2>
 
                   <div>
                     <label className="block text-sm font-medium mb-1">Current Stage Description *</label>
@@ -444,8 +492,8 @@ export default function VentureApplication() {
 
               {/* Step 4: Documents */}
               {currentStep === 4 && (
-                <div className="bg-white dark:bg-gray-900 p-8 rounded-lg border space-y-4">
-                  <h2 className="text-2xl font-semibold mb-6">Upload Documents</h2>
+                <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border-t-4 border-teal-500 shadow-xl space-y-6">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Upload Documents</h2>
 
                   <FileUpload
                     label="Pitch Deck"
@@ -477,12 +525,12 @@ export default function VentureApplication() {
               )}
 
               {/* Navigation Buttons */}
-              <div className="flex justify-between mt-8">
+              <div className="flex justify-between mt-10">
                 <button
                   type="button"
                   onClick={handlePrevious}
                   disabled={currentStep === 0}
-                  className="px-6 py-2 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                  className="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium text-gray-700 dark:text-gray-300"
                 >
                   Previous
                 </button>
@@ -491,7 +539,7 @@ export default function VentureApplication() {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="px-6 py-2 bg-ahc-green text-white rounded-lg hover:bg-green-600 transition"
+                    className="px-8 py-3 bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     Next
                   </button>
@@ -499,7 +547,7 @@ export default function VentureApplication() {
                   <button
                     type="submit"
                     disabled={isSubmitting || !pitchDeck}
-                    className="px-6 py-2 bg-ahc-green text-white rounded-lg hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                    className="px-8 py-3 bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                   >
                     {isSubmitting ? 'Submitting...' : 'Submit Application'}
                   </button>
