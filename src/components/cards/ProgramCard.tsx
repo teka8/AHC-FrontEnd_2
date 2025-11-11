@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CountryBadge from "../CountryBadge";
 import type { ProgramItem } from "../../features/healthPillars/programsApi";
 
 const STATUS_STYLES: Record<string, string> = {
@@ -20,6 +21,16 @@ export default function ProgramCard({ item }: { item: ProgramItem }) {
   const categories = (item.category_labels?.length
     ? item.category_labels
     : item.categories?.map((cat) => statusLabel(cat))) ?? []; // reuse statusLabel for formatting
+  const countries = item.country
+    ? Array.from(
+        new Set(
+          item.country
+            .split(/[\n,|]/)
+            .map((value) => value.trim())
+            .filter(Boolean)
+        )
+      )
+    : [];
 
   const chipStyle = (index: number) =>
     index % 2 === 0
@@ -75,6 +86,13 @@ export default function ProgramCard({ item }: { item: ProgramItem }) {
           className="text-sm text-slate-600 dark:text-slate-300 line-clamp-4 prose prose-sm max-w-none"
           dangerouslySetInnerHTML={{ __html: item.description || "" }}
         />
+        {countries.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2 border-t border-slate-200 pt-3 dark:border-slate-700/60">
+            {countries.map((country) => (
+              <CountryBadge key={`${item.id}-country-${country}`} country={country} />
+            ))}
+          </div>
+        )}
       </div>
     </Link>
   );
