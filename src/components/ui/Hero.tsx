@@ -1,4 +1,47 @@
+import { useEffect, useMemo, useState } from "react";
+
+const LOGO_ROTATION_INTERVAL = 3500;
+
+type HeroLogo = {
+  src: string;
+  alt: string;
+  fallback?: string;
+};
+
 export default function Hero() {
+  const logos = useMemo<HeroLogo[]>(
+    () => [
+      {
+        src: "/images/ahc-logo.png",
+        alt: "Africa Health Collaborative",
+        fallback: "/ahc-logo.svg",
+      },
+      {
+        src: "/images/partners/Addis_Ababa_University_logo.png",
+        alt: "Addis Ababa University",
+      },
+      {
+        src: "/images/partners/mastercard_foundation_-_logo.jpg",
+        alt: "Mastercard Foundation",
+      },
+    ],
+    [],
+  );
+
+  const [activeLogo, setActiveLogo] = useState(0);
+
+  useEffect(() => {
+    if (logos.length <= 1) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveLogo((current) => (current + 1) % logos.length);
+    }, LOGO_ROTATION_INTERVAL);
+
+    return () => window.clearInterval(timer);
+  }, [logos.length]);
+
   return (
     <section className="relative overflow-hidden min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-4rem)] hero-aurora">
       <div className="h-full flex flex-col">
@@ -183,20 +226,48 @@ export default function Hero() {
 
               {/* Inner shadow */}
               <div className="absolute inset-0 rounded-full shadow-[inset_0_2px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_12px_rgba(0,0,0,0.4)]"></div>
-              <img
-                src="/images/ahc-logo.png"
-                alt="AHC Logo"
-                className="h-[115%] relative z-10 w-24 sm:w-28 md:w-32 lg:w-36 object-contain transition-transform duration-300 group-hover:scale-105 dark:brightness-110"
-                onError={(e) => {
-                  const img = e.currentTarget as HTMLImageElement;
-                  if (img.dataset.fallback !== "1") {
-                    img.src = "/ahc-logo.svg";
-                    img.dataset.fallback = "1";
-                  } else {
-                    img.src = "/favicon.svg";
-                  }
-                }}
-              />
+              <div className="relative z-10 flex h-full w-full items-center justify-center">
+                {logos.map((logo, index) => {
+                  const isActive = index === activeLogo;
+
+                  return (
+                    <img
+                      key={`${logo.alt}-${index}`}
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`absolute top-1/2 left-1/2 h-[70%] w-auto max-w-[80%] -translate-x-1/2 -translate-y-1/2 transform object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.18)] transition-all duration-700 ease-out ${
+                        isActive ? 'opacity-100 scale-100 z-20' : 'opacity-0 scale-95 z-10 pointer-events-none'
+                      }`}
+                      loading="eager"
+                      onError={(e) => {
+                        const img = e.currentTarget as HTMLImageElement;
+                        if (logo.fallback && img.dataset.fallback !== '1') {
+                          img.src = logo.fallback;
+                          img.dataset.fallback = '1';
+                        } else if (img.src.includes('Addis_Ababa_University_logo')) {
+                          img.src = '/images/ahc-logo.png';
+                        } else {
+                          img.src = '/favicon.svg';
+                        }
+                      }}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                {logos.map((logo, index) => (
+                  <span
+                    key={`${logo.alt}-dot-${index}`}
+                    className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                      index === activeLogo
+                        ? "bg-ahc-green-dark scale-125"
+                        : "bg-white/50"
+                    }`}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
