@@ -3,9 +3,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Briefcase, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
+import CountryBadge from '../../components/CountryBadge';
 
 const HealthEntrepreneurship: React.FC = () => {
   const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: 'health_entrepreneurship' });
+
+  const extractCountries = React.useCallback((value?: string | null) => {
+    if (!value) {
+      return [] as string[];
+    }
+
+    return Array.from(
+      new Set(
+        value
+          .split(/[\n,|]/)
+          .map((item) => item.trim())
+          .filter(Boolean)
+      )
+    );
+  }, []);
 
   // Filter active and paused programs
   const programs = programsData
@@ -18,6 +34,7 @@ const HealthEntrepreneurship: React.FC = () => {
       branch: p.host,
       image: p.image_thumb || p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
       state: p.state,
+      countries: extractCountries(p.country),
     }));
 
   // Filter upcoming programs only (coming soon)
@@ -29,6 +46,7 @@ const HealthEntrepreneurship: React.FC = () => {
       branch: p.host,
       image: p.image_thumb || p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
       active: false,
+      countries: extractCountries(p.country),
     }));
 
   const featuredVentures = [
@@ -127,6 +145,13 @@ const HealthEntrepreneurship: React.FC = () => {
                       className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3"
                       dangerouslySetInnerHTML={{ __html: program.description || 'A short description of the program.' }}
                     />
+                    {program.countries.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-100 pt-3 dark:border-gray-700/60">
+                        {program.countries.map((country) => (
+                          <CountryBadge key={`${program.id}-country-${country}`} country={country} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </Link>
               ))
@@ -178,6 +203,13 @@ const HealthEntrepreneurship: React.FC = () => {
                       className="text-gray-600 dark:text-gray-400 line-clamp-3 prose prose-sm max-w-none"
                       dangerouslySetInnerHTML={{ __html: item.description || 'A short description of the program.' }}
                     />
+                    {item.countries.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-200 pt-3 dark:border-gray-700/60">
+                        {item.countries.map((country) => (
+                          <CountryBadge key={`${index}-country-${country}`} country={country} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))

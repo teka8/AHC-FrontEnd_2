@@ -2,9 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGetProgramsQuery } from "../../features/healthPillars/programsApi";
+import CountryBadge from "../../components/CountryBadge";
 
 const HealthEcosystems: React.FC = () => {
   const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: "health_ecosystems" });
+
+  const extractCountries = React.useCallback((value?: string | null) => {
+    if (!value) {
+      return [] as string[];
+    }
+
+    return Array.from(
+      new Set(
+        value
+          .split(/[\n,|]/)
+          .map((item) => item.trim())
+          .filter(Boolean)
+      )
+    );
+  }, []);
 
   // Filter active and paused programs
   const programs = programsData
@@ -16,6 +32,7 @@ const HealthEcosystems: React.FC = () => {
       branch: p.host,
       image: p.image_thumb || p.image || "https://placehold.co/600x400/000000/FFFFFF/png",
       state: p.state,
+      countries: extractCountries(p.country),
     }));
 
   // Filter upcoming programs only (coming soon)
@@ -27,6 +44,7 @@ const HealthEcosystems: React.FC = () => {
       branch: p.host,
       image: p.image_thumb || p.image || "https://placehold.co/600x400/000000/FFFFFF/png",
       active: false,
+      countries: extractCountries(p.country),
     }));
 
   const programsScrollRef = React.useRef<HTMLDivElement>(null);
@@ -174,6 +192,13 @@ const HealthEcosystems: React.FC = () => {
                           "A short description of the program.",
                       }}
                     />
+                    {program.countries.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-100 pt-3 dark:border-gray-700/60">
+                        {program.countries.map((country) => (
+                          <CountryBadge key={`${program.id}-country-${country}`} country={country} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </Link>
               ))
@@ -250,6 +275,13 @@ const HealthEcosystems: React.FC = () => {
                           "A short description of the program.",
                       }}
                     />
+                    {item.countries.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-200 pt-3 dark:border-gray-700/60">
+                        {item.countries.map((country) => (
+                          <CountryBadge key={`${index}-country-${country}`} country={country} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))

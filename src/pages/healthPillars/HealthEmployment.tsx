@@ -1,14 +1,30 @@
 
 import React from 'react';
-import { ChevronRight, ChevronLeft, Linkedin, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useGetScholarshipsQuery } from '../../features/scholarship/scholarshipsApi';
+import { Briefcase, ChevronLeft, ChevronRight, Linkedin, Twitter } from 'lucide-react';
 import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
+import { useGetScholarshipsQuery } from '../../features/scholarship/scholarshipsApi';
+import CountryBadge from '../../components/CountryBadge';
 import ScholarshipCard from '../../components/cards/ScholarshipCard';
 
 const HealthEmployment: React.FC = () => {
   const { data: scholarships = [] } = useGetScholarshipsQuery();
   const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: 'health_employment' });
+
+  const extractCountries = React.useCallback((value?: string | null) => {
+    if (!value) {
+      return [] as string[];
+    }
+
+    return Array.from(
+      new Set(
+        value
+          .split(/[\n,|]/)
+          .map((item) => item.trim())
+          .filter(Boolean)
+      )
+    );
+  }, []);
 
   // Filter active and paused programs
   const programs = programsData
@@ -20,6 +36,7 @@ const HealthEmployment: React.FC = () => {
       branch: p.host,
       image: p.image_thumb || p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
       state: p.state,
+      countries: extractCountries(p.country),
     }));
 
   // Filter upcoming programs only (coming soon)
@@ -31,6 +48,7 @@ const HealthEmployment: React.FC = () => {
       branch: p.host,
       image: p.image_thumb || p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
       active: false,
+      countries: extractCountries(p.country),
     }));
 
   const successStories = [
@@ -175,6 +193,13 @@ const HealthEmployment: React.FC = () => {
                       className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3"
                       dangerouslySetInnerHTML={{ __html: program.description || 'A short description of the program.' }}
                     />
+                    {program.countries.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-100 pt-3 dark:border-gray-700/60">
+                        {program.countries.map((country) => (
+                          <CountryBadge key={`${program.id}-country-${country}`} country={country} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </Link>
               ))
@@ -226,6 +251,13 @@ const HealthEmployment: React.FC = () => {
                       className="text-gray-600 dark:text-gray-400 line-clamp-3 prose prose-sm max-w-none"
                       dangerouslySetInnerHTML={{ __html: item.description || 'A short description of the program.' }}
                     />
+                    {item.countries.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-200 pt-3 dark:border-gray-700/60">
+                        {item.countries.map((country) => (
+                          <CountryBadge key={`${index}-country-${country}`} country={country} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))
