@@ -136,7 +136,11 @@ const HealthEmployment: React.FC = () => {
               <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
             </button>
           </div>
-          <div ref={programsScrollRef} className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide">
+          <div
+            ref={programsScrollRef}
+            className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
             {isLoading ? (
               <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
                 <div className="animate-pulse">
@@ -195,7 +199,11 @@ const HealthEmployment: React.FC = () => {
               <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
             </button>
           </div>
-          <div ref={comingSoonScrollRef} className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide">
+          <div
+            ref={comingSoonScrollRef}
+            className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
             {isLoading ? (
               <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
                 <div className="animate-pulse">
@@ -245,7 +253,11 @@ const HealthEmployment: React.FC = () => {
               <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
             </button>
           </div>
-          <div ref={scholarshipsScrollRef} className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide">
+          <div
+            ref={scholarshipsScrollRef}
+            className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
             {scholarships.map((scholarship) => (
               <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
             ))}

@@ -122,6 +122,7 @@ const HealthEcosystems: React.FC = () => {
           <div
             ref={programsScrollRef}
             className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {isLoading ? (
               <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
@@ -210,6 +211,7 @@ const HealthEcosystems: React.FC = () => {
           <div
             ref={comingSoonScrollRef}
             className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {isLoading ? (
               <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">

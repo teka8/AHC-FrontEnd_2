@@ -360,6 +360,15 @@ body { animation: fade-slide-up .45s ease-out; }
 .hero-network .net-link { stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; stroke-dasharray: 6 10; animation: link-flow 8s linear infinite; opacity: .85; }
 .dark .hero-network .net-link { opacity: .9; }
 
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .embla {
   position: relative;
   padding: 20px 0;
