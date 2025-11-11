@@ -171,9 +171,9 @@ export default function HIBlog() {
 
         {/* Featured Articles */}
         {featuredPosts.length > 0 && (
-          <section className="py-20 px-20 bg-white dark:bg-gray-900">
+          <section className="py-20 bg-white dark:bg-gray-900">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white">Featured Articles</h2>
+              <h2 className="text-3xl lg:px-20 md:text-4xl font-bold mb-12 text-gray-900 dark:text-white">Featured Articles</h2>
               <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
                 {featuredPosts.map((post) => (
                   <div key={post.id} className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 relative overflow-hidden group">
@@ -210,9 +210,9 @@ export default function HIBlog() {
         )}
 
         {/* All Articles */}
-        <section className="py-20 px-20 bg-gray-50 dark:bg-gray-800">
+        <section className="py-20 bg-gray-50 dark:bg-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white">All Articles</h2>
+            <h2 className="text-3xl lg:px-20 md:text-4xl font-bold mb-12 text-gray-900 dark:text-white">All Articles</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {regularPosts.map((post) => (
                 <div key={post.id} className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 relative overflow-hidden group">

@@ -100,7 +100,7 @@ export default function HIHome() {
         </section>
 
         {/* Impact of Entrepreneurship Section */}
-        <section id="impact" className="py-20 px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
+        <section id="impact" className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large AHC Symbol - Top Left */}
@@ -277,7 +277,7 @@ export default function HIHome() {
         </section>
 
         {/* Programs Section */}
-        <section className="py-20 px-20 bg-white dark:bg-gray-900 relative overflow-hidden min-h-screen">
+        <section className="py-20 px-4 lg:px-20 bg-white dark:bg-gray-900 relative overflow-hidden min-h-screen">
           
           
           <div className="container mx-auto px-4">
