@@ -1,7 +1,10 @@
-import React, { useEffect, useMemo } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useGetProgramsQuery, type ProgramItem } from '../features/healthPillars/programsApi';
-import ProgramCard from '../components/cards/ProgramCard';
+import React, { useEffect, useMemo } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import {
+  useGetProgramsQuery,
+  type ProgramItem,
+} from "../features/healthPillars/programsApi";
+import ProgramCard from "../components/cards/ProgramCard";
 
 const CATEGORY_SECTIONS: Array<{
   value: string;
@@ -9,41 +12,47 @@ const CATEGORY_SECTIONS: Array<{
   description: string;
 }> = [
   {
-    value: 'health_employment',
-    title: 'Health Employment',
+    value: "health_employment",
+    title: "Health Employment",
     description:
-      'Programs focused on building and sustaining a skilled health workforce across the continent.',
+      "Programs focused on building and sustaining a skilled health workforce across the continent.",
   },
   {
-    value: 'health_entrepreneurship',
-    title: 'Health Entrepreneurship',
+    value: "health_entrepreneurship",
+    title: "Health Entrepreneurship",
     description:
-      'Initiatives supporting health innovators and startups that are transforming access to care.',
+      "Initiatives supporting health innovators and startups that are transforming access to care.",
   },
   {
-    value: 'health_ecosystems',
-    title: 'Health Ecosystems',
+    value: "health_ecosystems",
+    title: "Health Ecosystems",
     description:
-      'Collaborations strengthening systems, infrastructure, and leadership within health sectors.',
+      "Collaborations strengthening systems, infrastructure, and leadership within health sectors.",
   },
   {
-    value: 'uncategorized',
-    title: 'Uncategorized Programs',
+    value: "uncategorized",
+    title: "Uncategorized Programs",
     description:
-      'Programs still being classified or spanning multiple focus areas of the collaborative.',
+      "Programs still being classified or spanning multiple focus areas of the collaborative.",
   },
 ];
 
 const Programs: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const selectedCategory = searchParams.get('category')?.toLowerCase() ?? null;
+  const selectedCategory = searchParams.get("category")?.toLowerCase() ?? null;
   const { data: programs = [], isLoading } = useGetProgramsQuery(undefined);
 
   const stats = useMemo(() => {
     const total = programs.length;
-    const active = programs.filter((program) => program.state === 'active').length;
-    const upcoming = programs.filter((program) => program.state === 'upcoming').length;
-    const paused = programs.filter((program) => program.state === 'paused').length;
+    const active = programs.filter(
+      (program) => program.state === "active"
+    ).length;
+    const upcoming = programs.filter(
+      (program) => program.state === "upcoming"
+    ).length;
+    const paused = programs.filter(
+      (program) => program.state === "paused"
+    ).length;
 
     return {
       total,
@@ -54,20 +63,26 @@ const Programs: React.FC = () => {
   }, [programs]);
 
   const groupedPrograms = useMemo(() => {
-    const initial = CATEGORY_SECTIONS.reduce<Record<string, ProgramItem[]>>((acc, section) => {
-      acc[section.value] = [];
-      return acc;
-    }, {});
+    const initial = CATEGORY_SECTIONS.reduce<Record<string, ProgramItem[]>>(
+      (acc, section) => {
+        acc[section.value] = [];
+        return acc;
+      },
+      {}
+    );
 
     programs.forEach((program) => {
-      const categories = program.categories && program.categories.length > 0
-        ? program.categories
-        : ['uncategorized'];
+      const categories =
+        program.categories && program.categories.length > 0
+          ? program.categories
+          : ["uncategorized"];
 
       categories.forEach((category) => {
-        const key = CATEGORY_SECTIONS.some((section) => section.value === category)
+        const key = CATEGORY_SECTIONS.some(
+          (section) => section.value === category
+        )
           ? category
-          : 'uncategorized';
+          : "uncategorized";
 
         initial[key].push(program);
       });
@@ -77,12 +92,12 @@ const Programs: React.FC = () => {
   }, [programs]);
 
   const featuredPrograms = useMemo(() => {
-    const active = programs.filter((program) => program.state === 'active');
+    const active = programs.filter((program) => program.state === "active");
     if (active.length >= 3) {
       return active.slice(0, 3);
     }
 
-    const upcoming = programs.filter((program) => program.state === 'upcoming');
+    const upcoming = programs.filter((program) => program.state === "upcoming");
     return [...active, ...upcoming, ...programs].slice(0, 3);
   }, [programs]);
 
@@ -93,7 +108,7 @@ const Programs: React.FC = () => {
 
     const el = document.getElementById(`program-category-${selectedCategory}`);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [selectedCategory]);
 
@@ -116,7 +131,9 @@ const Programs: React.FC = () => {
               <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.3em] bg-white/15">
                 Our Programs
               </span>
-              <span className="text-xs uppercase tracking-[0.2em] text-white/70">Africa Health Collaborative</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-white/70">
+                Africa Health Collaborative
+              </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight drop-shadow-xl">
@@ -124,24 +141,36 @@ const Programs: React.FC = () => {
             </h1>
 
             <p className="text-base md:text-lg text-white/80 max-w-3xl">
-              Explore all active, upcoming, and visionary programs shaping the future of health in Africa. Filter by focus area to uncover initiatives aligned with your interests.
+              Explore all active, upcoming, and visionary programs shaping the
+              future of health in Africa. Filter by focus area to uncover
+              initiatives aligned with your interests.
             </p>
 
             <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
-                <p className="text-xs uppercase tracking-wide text-white/70">Total Programs</p>
+                <p className="text-xs uppercase tracking-wide text-white/70">
+                  Total Programs
+                </p>
                 <p className="text-3xl font-bold text-white">{stats.total}</p>
               </div>
               <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
-                <p className="text-xs uppercase tracking-wide text-white/70">Active</p>
+                <p className="text-xs uppercase tracking-wide text-white/70">
+                  Active
+                </p>
                 <p className="text-3xl font-bold text-white">{stats.active}</p>
               </div>
               <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
-                <p className="text-xs uppercase tracking-wide text-white/70">Upcoming</p>
-                <p className="text-3xl font-bold text-white">{stats.upcoming}</p>
+                <p className="text-xs uppercase tracking-wide text-white/70">
+                  Upcoming
+                </p>
+                <p className="text-3xl font-bold text-white">
+                  {stats.upcoming}
+                </p>
               </div>
               <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
-                <p className="text-xs uppercase tracking-wide text-white/70">Paused</p>
+                <p className="text-xs uppercase tracking-wide text-white/70">
+                  Paused
+                </p>
                 <p className="text-3xl font-bold text-white">{stats.paused}</p>
               </div>
             </div>
@@ -151,7 +180,7 @@ const Programs: React.FC = () => {
             <Link
               to="/programs"
               className={`px-5 py-2 rounded-full border transition-colors font-semibold backdrop-blur bg-white/20 text-white border-white/40 hover:bg-white/30 ${
-                selectedCategory === null ? 'ring-2 ring-white/70' : ''
+                selectedCategory === null ? "ring-2 ring-white/70" : ""
               }`}
             >
               All Programs
@@ -162,8 +191,8 @@ const Programs: React.FC = () => {
                 to={`/programs?category=${section.value}`}
                 className={`px-5 py-2 rounded-full transition-colors font-semibold backdrop-blur border ${
                   selectedCategory === section.value
-                    ? 'bg-white text-ahc-green border-white'
-                    : 'border-white/40 text-white/80 hover:text-white hover:border-white/60'
+                    ? "bg-white text-ahc-green border-white"
+                    : "border-white/40 text-white/80 hover:text-white hover:border-white/60"
                 }`}
               >
                 {section.title}
@@ -172,106 +201,57 @@ const Programs: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {featuredPrograms.length > 0 && (
-        <section className="relative -mt-14 pb-12">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-ahc-green/25 via-black/60 to-ahc-blue/30 text-white shadow-2xl overflow-hidden">
-              <div className="grid lg:grid-cols-3 gap-6 p-8 lg:p-12">
-                <div className="lg:col-span-1 space-y-4">
-                  <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.3em] bg-white/20">
-                    Featured now
-                  </span>
-                  <h2 className="text-3xl font-bold leading-tight">Flagship programmes shaping the continent&apos;s health future</h2>
-                  <p className="text-sm text-white/80">
-                    Explore a curated selection of impact-driven programmes that are mobilising partners, learners, and innovators across the collaborative.
-                  </p>
-                </div>
-
-                <div className="lg:col-span-2 grid gap-6 md:grid-cols-2">
-                  {featuredPrograms.map((program) => {
-                    const imageSrc = program.image_thumb || program.image || '/images/pillars/power-of-partnership.jpg';
-
-                    return (
-                      <Link
-                        key={program.id}
-                        to={`/programs/${program.id}`}
-                        className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-lg transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                      >
-                        <div className="absolute inset-0">
-                          <img src={imageSrc} alt={program.title} className="h-full w-full object-cover opacity-60" loading="lazy" />
-                          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-transparent" />
-                        </div>
-                        <div className="relative p-6 space-y-3">
-                          <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-white/20">
-                            {program.state.replace(/_/g, ' ')}
-                          </span>
-                          <h3 className="text-xl font-bold text-white leading-snug line-clamp-2">{program.title}</h3>
-                          <p className="text-sm text-white/80 line-clamp-3" dangerouslySetInnerHTML={{ __html: program.description || '' }} />
-                          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70">
-                            View programme details →
-                          </span>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-ahc-green/5 dark:from-gray-900 dark:via-gray-900 dark:to-ahc-green-dark/10" />
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-20">
-        {CATEGORY_SECTIONS.map((section, index) => {
-          const items = groupedPrograms[section.value] ?? [];
+          {CATEGORY_SECTIONS.map((section, index) => {
+            const items = groupedPrograms[section.value] ?? [];
 
-          return (
-            <div
-              key={section.value}
-              id={`program-category-${section.value}`}
-              className="relative overflow-hidden rounded-3xl border border-white/70 bg-white shadow-xl dark:bg-slate-900/70 dark:border-slate-700/60 p-8 space-y-8"
-            >
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-ahc-green/5 via-transparent to-ahc-blue/5" />
-              <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-                <div className="space-y-3">
-                  <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-ahc-green/10 text-ahc-green-dark text-xs font-semibold uppercase tracking-wide">
-                    {section.title}
+            return (
+              <div
+                key={section.value}
+                id={`program-category-${section.value}`}
+                className="relative overflow-hidden rounded-3xl border border-white/70 bg-white shadow-xl dark:bg-slate-900/70 dark:border-slate-700/60 p-8 space-y-8"
+              >
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-ahc-green/5 via-transparent to-ahc-blue/5" />
+                <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                  <div className="space-y-3">
+                    <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-ahc-green/10 text-ahc-green-dark text-xs font-semibold uppercase tracking-wide">
+                      {section.title}
+                    </div>
+                    <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+                      {section.description}
+                    </p>
                   </div>
-                  <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-                    {section.description}
-                  </p>
+                  <div className="self-start md:self-end rounded-full border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 backdrop-blur bg-white/80 dark:bg-gray-800/70">
+                    {items.length} {items.length === 1 ? "program" : "programs"}
+                  </div>
                 </div>
-                <div className="self-start md:self-end rounded-full border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 backdrop-blur bg-white/80 dark:bg-gray-800/70">
-                  {items.length} {items.length === 1 ? 'program' : 'programs'}
-                </div>
-              </div>
 
-              {isLoading ? (
-                <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {Array.from({ length: 3 }).map((_, skeletonIndex) => (
-                    <div
-                      key={`program-skeleton-${index}-${skeletonIndex}`}
-                      className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 h-80"
-                    />
-                  ))}
-                </div>
-              ) : items.length > 0 ? (
-                <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {items.map((program) => (
-                    <ProgramCard key={program.id} item={program} />
-                  ))}
-                </div>
-              ) : (
-                <div className="relative rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-10 text-center text-gray-500 dark:text-gray-400">
-                  No programs are currently published under this category. Please check back soon.
-                </div>
-              )}
-            </div>
-          );
-        })}
+                {isLoading ? (
+                  <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                    {Array.from({ length: 3 }).map((_, skeletonIndex) => (
+                      <div
+                        key={`program-skeleton-${index}-${skeletonIndex}`}
+                        className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 h-80"
+                      />
+                    ))}
+                  </div>
+                ) : items.length > 0 ? (
+                  <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                    {items.map((program) => (
+                      <ProgramCard key={program.id} item={program} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="relative rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-10 text-center text-gray-500 dark:text-gray-400">
+                    No programs are currently published under this category.
+                    Please check back soon.
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
