@@ -50,7 +50,7 @@ export default function HIHome() {
               <p className="text-ahc-green dark:text-ahc-green-light text-md font-semibold mb-4 uppercase tracking-wide">
                 Empowering innovation and entrepreneurship in healthcare
               </p>
-              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h1 className="text-3xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
                 Health Entrepreneurship (HENT)
               </h1>
               <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
