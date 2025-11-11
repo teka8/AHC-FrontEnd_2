@@ -39,6 +39,20 @@ const Programs: React.FC = () => {
   const selectedCategory = searchParams.get('category')?.toLowerCase() ?? null;
   const { data: programs = [], isLoading } = useGetProgramsQuery(undefined);
 
+  const stats = useMemo(() => {
+    const total = programs.length;
+    const active = programs.filter((program) => program.state === 'active').length;
+    const upcoming = programs.filter((program) => program.state === 'upcoming').length;
+    const paused = programs.filter((program) => program.state === 'paused').length;
+
+    return {
+      total,
+      active,
+      upcoming,
+      paused,
+    };
+  }, [programs]);
+
   const groupedPrograms = useMemo(() => {
     const initial = CATEGORY_SECTIONS.reduce<Record<string, ProgramItem[]>>((acc, section) => {
       acc[section.value] = [];
@@ -62,6 +76,16 @@ const Programs: React.FC = () => {
     return initial;
   }, [programs]);
 
+  const featuredPrograms = useMemo(() => {
+    const active = programs.filter((program) => program.state === 'active');
+    if (active.length >= 3) {
+      return active.slice(0, 3);
+    }
+
+    const upcoming = programs.filter((program) => program.state === 'upcoming');
+    return [...active, ...upcoming, ...programs].slice(0, 3);
+  }, [programs]);
+
   useEffect(() => {
     if (!selectedCategory) {
       return;
@@ -75,28 +99,59 @@ const Programs: React.FC = () => {
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-ahc-green/20 via-transparent to-ahc-blue/20 dark:from-ahc-green-dark/30 dark:to-ahc-blue/30" />
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1 mb-4 text-sm font-semibold rounded-full bg-ahc-green/10 text-ahc-green-dark">
-              Our Programs
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-              Discover Programs Across Every Health Pillar
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/pillars/health-entrepreneurship-hero.jpg"
+            alt="Programs hero"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/60 to-ahc-green/40" />
+          <div className="absolute -left-32 top-1/2 hidden h-[720px] w-[720px] -translate-y-1/2 rounded-full bg-ahc-green/20 blur-3xl lg:block" />
+        </div>
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-28">
+          <div className="max-w-4xl space-y-8 text-white">
+            <div className="inline-flex items-center gap-3">
+              <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.3em] bg-white/15">
+                Our Programs
+              </span>
+              <span className="text-xs uppercase tracking-[0.2em] text-white/70">Africa Health Collaborative</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight drop-shadow-xl">
+              Discover Flagship Initiatives Across Every Health Pillar
             </h1>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              Explore all active, upcoming, and flagship programs led by the Africa Health Collaborative.
-              Filter by focus area to find initiatives aligned with your interests.
+
+            <p className="text-base md:text-lg text-white/80 max-w-3xl">
+              Explore all active, upcoming, and visionary programs shaping the future of health in Africa. Filter by focus area to uncover initiatives aligned with your interests.
             </p>
+
+            <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+                <p className="text-xs uppercase tracking-wide text-white/70">Total Programs</p>
+                <p className="text-3xl font-bold text-white">{stats.total}</p>
+              </div>
+              <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+                <p className="text-xs uppercase tracking-wide text-white/70">Active</p>
+                <p className="text-3xl font-bold text-white">{stats.active}</p>
+              </div>
+              <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+                <p className="text-xs uppercase tracking-wide text-white/70">Upcoming</p>
+                <p className="text-3xl font-bold text-white">{stats.upcoming}</p>
+              </div>
+              <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+                <p className="text-xs uppercase tracking-wide text-white/70">Paused</p>
+                <p className="text-3xl font-bold text-white">{stats.paused}</p>
+              </div>
+            </div>
           </div>
-          <div className="mt-10 flex flex-wrap gap-3">
+
+          <div className="mt-12 flex flex-wrap gap-3">
             <Link
               to="/programs"
-              className={`px-5 py-2 rounded-full border transition-colors font-semibold ${
-                selectedCategory === null
-                  ? 'bg-ahc-green text-white border-ahc-green'
-                  : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:border-ahc-green hover:text-ahc-green'
+              className={`px-5 py-2 rounded-full border transition-colors font-semibold backdrop-blur bg-white/20 text-white border-white/40 hover:bg-white/30 ${
+                selectedCategory === null ? 'ring-2 ring-white/70' : ''
               }`}
             >
               All Programs
@@ -105,10 +160,10 @@ const Programs: React.FC = () => {
               <Link
                 key={section.value}
                 to={`/programs?category=${section.value}`}
-                className={`px-5 py-2 rounded-full border transition-colors font-semibold ${
+                className={`px-5 py-2 rounded-full transition-colors font-semibold backdrop-blur border ${
                   selectedCategory === section.value
-                    ? 'bg-ahc-green text-white border-ahc-green'
-                    : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:border-ahc-green hover:text-ahc-green'
+                    ? 'bg-white text-ahc-green border-white'
+                    : 'border-white/40 text-white/80 hover:text-white hover:border-white/60'
                 }`}
               >
                 {section.title}
@@ -118,49 +173,106 @@ const Programs: React.FC = () => {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-20">
-        {CATEGORY_SECTIONS.map((section) => {
+      {featuredPrograms.length > 0 && (
+        <section className="relative -mt-14 pb-12">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-ahc-green/25 via-black/60 to-ahc-blue/30 text-white shadow-2xl overflow-hidden">
+              <div className="grid lg:grid-cols-3 gap-6 p-8 lg:p-12">
+                <div className="lg:col-span-1 space-y-4">
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.3em] bg-white/20">
+                    Featured now
+                  </span>
+                  <h2 className="text-3xl font-bold leading-tight">Flagship programmes shaping the continent&apos;s health future</h2>
+                  <p className="text-sm text-white/80">
+                    Explore a curated selection of impact-driven programmes that are mobilising partners, learners, and innovators across the collaborative.
+                  </p>
+                </div>
+
+                <div className="lg:col-span-2 grid gap-6 md:grid-cols-2">
+                  {featuredPrograms.map((program) => {
+                    const imageSrc = program.image_thumb || program.image || '/images/pillars/power-of-partnership.jpg';
+
+                    return (
+                      <Link
+                        key={program.id}
+                        to={`/programs/${program.id}`}
+                        className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-lg transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                      >
+                        <div className="absolute inset-0">
+                          <img src={imageSrc} alt={program.title} className="h-full w-full object-cover opacity-60" loading="lazy" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-transparent" />
+                        </div>
+                        <div className="relative p-6 space-y-3">
+                          <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-white/20">
+                            {program.state.replace(/_/g, ' ')}
+                          </span>
+                          <h3 className="text-xl font-bold text-white leading-snug line-clamp-2">{program.title}</h3>
+                          <p className="text-sm text-white/80 line-clamp-3" dangerouslySetInnerHTML={{ __html: program.description || '' }} />
+                          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70">
+                            View programme details →
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-ahc-green/5 dark:from-gray-900 dark:via-gray-900 dark:to-ahc-green-dark/10" />
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-20">
+        {CATEGORY_SECTIONS.map((section, index) => {
           const items = groupedPrograms[section.value] ?? [];
 
           return (
-            <div key={section.value} id={`program-category-${section.value}`}>
-              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div
+              key={section.value}
+              id={`program-category-${section.value}`}
+              className="relative overflow-hidden rounded-3xl border border-white/70 bg-white shadow-xl dark:bg-slate-900/70 dark:border-slate-700/60 p-8 space-y-8"
+            >
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-ahc-green/5 via-transparent to-ahc-blue/5" />
+              <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <div className="space-y-3">
+                  <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-ahc-green/10 text-ahc-green-dark text-xs font-semibold uppercase tracking-wide">
                     {section.title}
-                  </h2>
-                  <p className="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl">
+                  </div>
+                  <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
                     {section.description}
                   </p>
                 </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">
+                <div className="self-start md:self-end rounded-full border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 backdrop-blur bg-white/80 dark:bg-gray-800/70">
                   {items.length} {items.length === 1 ? 'program' : 'programs'}
                 </div>
               </div>
 
               {isLoading ? (
-                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {Array.from({ length: 3 }).map((_, index) => (
+                <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  {Array.from({ length: 3 }).map((_, skeletonIndex) => (
                     <div
-                      key={`program-skeleton-${index}`}
-                      className="animate-pulse rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 h-72"
+                      key={`program-skeleton-${index}-${skeletonIndex}`}
+                      className="animate-pulse rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 h-80"
                     />
                   ))}
                 </div>
               ) : items.length > 0 ? (
-                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {items.map((program) => (
                     <ProgramCard key={program.id} item={program} />
                   ))}
                 </div>
               ) : (
-                <div className="rounded-xl border border-dashed border-gray-300 dark:border-gray-700 p-10 text-center text-gray-500 dark:text-gray-400">
+                <div className="relative rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-10 text-center text-gray-500 dark:text-gray-400">
                   No programs are currently published under this category. Please check back soon.
                 </div>
               )}
             </div>
           );
         })}
+        </div>
       </section>
     </div>
   );
