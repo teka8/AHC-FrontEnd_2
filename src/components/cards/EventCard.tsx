@@ -6,6 +6,7 @@ export default function EventCard({ item }: { item: EventItem }) {
   const date = item.event_date ? dayjs(item.event_date) : null
   const plain = (item.description ?? '').replace(/<[^>]+>/g, '').trim()
   const previewHtml = plain.length === 0 ? '<p>Details coming soon.</p>' : (item.description as string)
+  const eventImage = item.event_image ? item.event_image : null
 
   return (
     <a
@@ -28,10 +29,15 @@ export default function EventCard({ item }: { item: EventItem }) {
                 <span>{item.location}</span>
               </div>
             )}
-            <div
+            {eventImage && (
+              <div className="mt-2">
+                <img src={eventImage} alt={item.title} className="w-full h-48 object-cover rounded-lg" />
+              </div>
+            )}
+            {/* <div
               className="mt-3 text-sm text-slate-600 dark:text-slate-300 line-clamp-3 prose prose-sm max-w-none"
               dangerouslySetInnerHTML={{ __html: previewHtml }}
-            />
+            /> */}
           </div>
         </div>
       </div>
