@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
       { path: 'programs', element: <Programs /> },
       { path: 'programs/:id', element: <ProgramDetail /> },
       { path: 'health-pillars/health-employment', element: <HealthEmployment /> },
-      { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
+      // { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
       { path: 'health-pillars/health-ecosystems', element: <HealthEcosystems /> },
       
       // Scholarship routes
@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
   },
   // Health Innovation routes with separate layout
   {
-    path: '/health-innovation',
+    path: 'health-pillars/health-entrepreneurship',
     element: <HILayout />,
     children: [
       { index: true, element: <HIHome /> },
