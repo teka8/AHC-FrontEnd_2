@@ -37,7 +37,7 @@ export default function HIHeader() {
   ]
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
       scrolled 
         ? 'bg-white/98 dark:bg-gray-900/98 shadow-lg backdrop-blur-md' 
         : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm'
