@@ -135,7 +135,7 @@ const Programs: React.FC = () => {
                       Discover Our Programs
                     </h1>
                     <p className="mt-4 text-lg text-white/80">
-                      Explore initiatives shaping the future of health in Africa. Use the filters to find programs aligned with your interests.
+                      Our programs are a dynamic confluence of universities, healthcare institutions, and diverse organizations, collaboratively pioneering innovative solutions to address the complex challenges in Africa’s healthcare sector.
                     </p>
                   </div>
                 </div>
