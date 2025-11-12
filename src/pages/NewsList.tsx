@@ -12,14 +12,11 @@ export default function NewsList() {
   const [searchParams, setSearchParams] = useSearchParams();
   const pillarParam = searchParams.get("pillar") ?? undefined;
   const page = parseInt(searchParams.get("page") ?? "1", 10);
-  const { data, isLoading } = useGetPublicPostsQuery(
+  const pageSize = 9; // Moved pageSize declaration here
+
+  const { data: { data: items = [], meta } = {}, isLoading } = useGetPublicPostsQuery(
     pillarParam ? { pillar: pillarParam, page, perPage: pageSize } : { page, perPage: pageSize }
   );
-  const items = data?.data ?? [];
-  const meta = data?.meta;
-
-  //const [search, setSearch] = useState('')
-  const pageSize = 9;
   const pillarLabels: Record<string, string> = {
     unknown: "All Pillars",
     health_employment: "Health Employment",
