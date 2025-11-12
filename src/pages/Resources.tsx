@@ -667,7 +667,7 @@ export default function Resources() {
       </div>
 
       {/* Main Content */}
-      <div className="container py-12">
+      <div className="container py-12 pt-16 md:pt-20">
         {isLoading ? (
           <div className="flex justify-center items-center py-24">
             <Loader />

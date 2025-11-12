@@ -10,7 +10,8 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ search, setSearch }) => {
   return (
-    <div className="ahehc-banner alignfull contains-wraps">
+    <div className="ahehc-banner alignfull hero-aurora">
+      <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/30 to-transparent -z-10" />
       <div className="ahehc-banner__inner">
         <svg
           width="1450"
@@ -56,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ search, setSearch }) => {
           ></path>
         </svg>
 
-        <div className="ahehc-banner__content">
+        <div className="ahehc-banner__content px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="ahehc-breadcrumb">
             <ol className="ahehc-breadcrumb__items">
               <li className="ahehc-breadcrumb__item">
