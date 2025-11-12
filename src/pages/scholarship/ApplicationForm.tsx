@@ -32,7 +32,7 @@ const schema = z.object({
   institution_name: z.string().min(2, 'Institution name is required'),
   field_of_study: z.string().min(2, 'Field of study is required'),
   gpa: z.string().optional(),
-  graduation_year: z.number().optional(),
+  graduation_year: z.number().int().gt(1900, 'Year must be greater than 1900').optional(),
   academic_achievements: z.string().optional(),
   
   research_area: z.string().optional(),
@@ -65,18 +65,42 @@ export default function ApplicationForm() {
   const [motivationLetterFile, setMotivationLetterFile] = useState<File | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isFormDirty, setIsFormDirty] = useState(false) // Track if form has changes
+
   
   const { data: scholarships = [] } = useGetScholarshipsQuery()
   const [createApplication, { isLoading: isSubmitting }] = useCreateScholarshipApplicationMutation()
   const [saveDraft, { isLoading: isSavingDraft }] = useSaveDraftScholarshipApplicationMutation()
   
-  const { register, handleSubmit, formState: { errors }, watch, trigger, setValue } = useForm<FormValues>({
+  const { register, handleSubmit, formState: { errors, isDirty  }, watch, trigger, setValue } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: 'onBlur',
     defaultValues: {
       scholarship_id: scholarshipId ? parseInt(scholarshipId) : undefined,
     }
   })
+
+  // Track form changes
+  useEffect(() => {
+    setIsFormDirty(isDirty || cv !== null || transcript !== null || motivationLetterFile !== null)
+  }, [isDirty, cv, transcript, motivationLetterFile])
+
+  // Prevent browser reload/close when form has unsaved changes
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (isFormDirty && !showSuccess) {
+        e.preventDefault()
+        e.returnValue = '' // Required for Chrome
+        return '' // Required for some browsers
+      }
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+    }
+  }, [isFormDirty, showSuccess])
 
   // Auto-save draft every 30 seconds
   useEffect(() => {
@@ -95,7 +119,7 @@ export default function ApplicationForm() {
     if (currentStep === 0) {
       fieldsToValidate.push('first_name', 'last_name', 'email', 'phone', 'date_of_birth', 'nationality', 'country_of_residence')
     } else if (currentStep === 1) {
-      fieldsToValidate.push('current_education_level', 'institution_name', 'field_of_study')
+      fieldsToValidate.push('current_education_level', 'institution_name', 'field_of_study', 'graduation_year')
     } else if (currentStep === 2) {
       fieldsToValidate.push('motivation_letter', 'career_goals', 'why_this_scholarship')
     }
@@ -148,16 +172,15 @@ export default function ApplicationForm() {
     try {
       const result = await createApplication(formData).unwrap()
       console.log('Application submitted successfully:', result)
+      setIsFormDirty(false) // Clear dirty state before showing success
       setShowSuccess(true)
-      setTimeout(() => {
-        navigate('/scholarship/track')
-      }, 3000)
     } catch (error: any) {
       console.error('Failed to submit application:', error)
       
       // Check for authentication error
       if (error?.status === 401 || error?.originalStatus === 401) {
         setSubmitError('You must be logged in to submit an application. Redirecting to login...')
+        setIsFormDirty(false) // Clear dirty state before redirecting
         setTimeout(() => navigate('/login'), 2000)
         return
       }
@@ -326,6 +349,7 @@ export default function ApplicationForm() {
                   <div>
                     <label className="block text-sm font-medium mb-1">Expected/Actual Graduation Year</label>
                     <input {...register('graduation_year', { valueAsNumber: true })} type="number" className="w-full border rounded-lg px-4 py-2" placeholder="2024" />
+                    {errors.graduation_year && <p className="text-red-500 text-xs mt-1">{errors.graduation_year.message}</p>}
                   </div>
 
                   <div>

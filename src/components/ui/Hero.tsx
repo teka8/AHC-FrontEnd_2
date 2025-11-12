@@ -1,4 +1,83 @@
+import { useEffect, useMemo, useState } from "react";
+
+const LOGO_ROTATION_INTERVAL = 3500;
+
+type HeroLogo = {
+  src: string;
+  alt: string;
+  fallback?: string;
+};
+
 export default function Hero() {
+  // Get the base URL for the public directory
+  const baseUrl = window.location.origin;
+
+  const logos = useMemo<HeroLogo[]>(
+    () => [
+      {
+        src: `/images/logo_dark.png`,
+        alt: "Africa Health Collaborative",
+        fallback: `/images/ahc-logo.png`,
+      },
+      {
+        src: `/images/partners/Addis_Ababa_University_logo.png`,
+        alt: "Addis Ababa University",
+        fallback: `/images/partners/addis-ababa-university.png`,
+      },
+      {
+        src: `/images/partners/mastercard_foundation_-_logo.png`,
+        alt: "Mastercard Foundation",
+        fallback: `/images/partners/mastercard-foundation.svg`,
+      },
+    ],
+    []
+  );
+
+  // Debug: Test image loading
+  useEffect(() => {
+    const testImage = (url: string) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          console.log(`✅ Image loaded: ${url}`);
+          resolve(true);
+        };
+        img.onerror = () => {
+          console.error(`❌ Failed to load: ${url}`);
+          resolve(false);
+        };
+        img.src = url;
+      });
+    };
+
+    // Test each logo
+    const testAllImages = async () => {
+      for (const logo of logos) {
+        const success = await testImage(logo.src);
+        if (!success && logo.fallback) {
+          console.log(`Trying fallback for ${logo.alt}...`);
+          await testImage(logo.fallback);
+        }
+      }
+    };
+
+    testAllImages();
+  }, [logos]);
+
+  const [activeLogo, setActiveLogo] = useState(0);
+
+  useEffect(() => {
+    if (logos.length <= 1) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveLogo((current) => (current + 1) % logos.length);
+    }, LOGO_ROTATION_INTERVAL);
+
+    return () => window.clearInterval(timer);
+  }, [logos.length]);
+
   return (
     <section className="relative overflow-hidden min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-4rem)] hero-aurora">
       <div className="h-full flex flex-col">
@@ -171,7 +250,7 @@ export default function Hero() {
 
           {/* Logo section */}
           <div className="flex justify-center mt-4 md:mt-0">
-            <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 rounded-full bg-white/80 dark:bg-slate-800/80 border-2 border-slate-200/80 dark:border-slate-600/80 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 grid place-content-center backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-ahc-green/20 dark:hover:shadow-ahc-green/30 hover:scale-[1.02] group glow-border">
+            <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 rounded-full bg-white/80 dark:bg-slate-800/80 border-2 border-slate-200/80 dark:border-slate-600/80 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 grid place-content-center backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-ahc-green/20 dark:hover:shadow-ahc-green/30 hover:scale-[1.02] group glow-border overflow-hidden">
               {/* Pulsing gradient background */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-ahc-green/20 via-white/20 to-ahc-green/20 dark:from-ahc-green/30 dark:via-slate-800/40 dark:to-ahc-green/30 animate-pulse"></div>
 
@@ -183,20 +262,90 @@ export default function Hero() {
 
               {/* Inner shadow */}
               <div className="absolute inset-0 rounded-full shadow-[inset_0_2px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_12px_rgba(0,0,0,0.4)]"></div>
-              <img
-                src="/images/ahc-logo.png"
-                alt="AHC Logo"
-                className="h-[115%] relative z-10 w-24 sm:w-28 md:w-32 lg:w-36 object-contain transition-transform duration-300 group-hover:scale-105 dark:brightness-110"
-                onError={(e) => {
-                  const img = e.currentTarget as HTMLImageElement;
-                  if (img.dataset.fallback !== "1") {
-                    img.src = "/ahc-logo.svg";
-                    img.dataset.fallback = "1";
-                  } else {
-                    img.src = "/favicon.svg";
-                  }
-                }}
-              />
+              <div className="relative z-10 flex h-full w-full items-center justify-center">
+                {logos.map((logo, index) => {
+                  const isActive = index === activeLogo;
+                  console.log(
+                    `Rendering logo ${index}: ${logo.src}, active: ${isActive}`
+                  );
+
+                  return (
+                    <div
+                      key={`${logo.alt}-${index}`}
+                      className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-out ${
+                        isActive
+                          ? "opacity-100 z-20"
+                          : "opacity-0 z-10 pointer-events-none"
+                      }`}
+                    >
+                      <div className="relative w-full h-full flex items-center justify-center p-4">
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <img
+                            src={logo.src}
+                            alt={logo.alt}
+                            className="max-h-full max-w-full object-contain"
+                            style={{
+                              backgroundColor: "transparent",
+                              width: "auto",
+                              height: "auto",
+                              maxHeight: "100%",
+                              maxWidth: "100%",
+                              minWidth: "180px",
+                              minHeight: "160px",
+                              padding: "10px",
+                              transform: "scale(1.2)",
+                            }}
+                            loading="eager"
+                            onError={(e) => {
+                              const img = e.currentTarget as HTMLImageElement;
+                              console.log(
+                                `❌ Failed to load image: ${img.src}`
+                              );
+                              if (
+                                logo.fallback &&
+                                img.dataset.fallback !== "1"
+                              ) {
+                                console.log(
+                                  `🔄 Trying fallback: ${logo.fallback}`
+                                );
+                                img.src = logo.fallback;
+                                img.dataset.fallback = "1";
+                              } else {
+                                // Create a fallback div with text
+                                const fallbackDiv =
+                                  document.createElement("div");
+                                fallbackDiv.className =
+                                  "flex items-center justify-center w-full h-full";
+                                fallbackDiv.style.border = "2px dashed #ef4444";
+                                fallbackDiv.style.borderRadius = "8px";
+                                fallbackDiv.style.padding = "16px";
+                                fallbackDiv.style.backgroundColor =
+                                  "rgba(239, 68, 68, 0.1)";
+                                fallbackDiv.textContent = logo.alt;
+                                img.parentNode?.replaceChild(fallbackDiv, img);
+                              }
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                {logos.map((logo, index) => (
+                  <span
+                    key={`${logo.alt}-dot-${index}`}
+                    className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                      index === activeLogo
+                        ? "bg-ahc-green-dark scale-125"
+                        : "bg-white/50"
+                    }`}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

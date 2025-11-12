@@ -8,7 +8,11 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'https://ahc.tewostech.com',  // Local Laravel backend
+        target: process.env.NODE_ENV === 'production' 
+          ? 'https://ahc.tewostech.com' 
+          : 'http://localhost:8000',
+
+        // target: 'http://localhost:8000',  // Local Laravel backend
         changeOrigin: true,
         secure: false,
       }
