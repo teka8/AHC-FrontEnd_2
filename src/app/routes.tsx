@@ -19,6 +19,8 @@ import Partners from '../pages/Partners'
 import HealthEmployment from '../pages/healthPillars/HealthEmployment' 
 import HealthEntrepreneurship from '../pages/healthPillars/HealthEntrepreneurship'
 import HealthEcosystems from '../pages/healthPillars/HealthEcosystems' 
+import Programs from '../pages/Programs'
+import ProgramDetail from '../pages/ProgramDetail'
 
 // Health Innovation pages
 import HILayout from '../components/healthInnovation/HILayout'
@@ -62,8 +64,10 @@ export const router = createBrowserRouter([
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
       { path: 'dashboard', element: <Protected><Dashboard /></Protected> },
+      { path: 'programs', element: <Programs /> },
+      { path: 'programs/:id', element: <ProgramDetail /> },
       { path: 'health-pillars/health-employment', element: <HealthEmployment /> },
-      { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
+      // { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
       { path: 'health-pillars/health-ecosystems', element: <HealthEcosystems /> },
       {path: 'partners/:name', element: <PartnerDetail /> },
       
@@ -77,7 +81,7 @@ export const router = createBrowserRouter([
   },
   // Health Innovation routes with separate layout
   {
-    path: '/health-innovation',
+    path: 'health-pillars/health-entrepreneurship',
     element: <HILayout />,
     children: [
       { index: true, element: <HIHome /> },
