@@ -12,7 +12,7 @@ export default function HIHome() {
         <meta name="description" content="Empowering innovation and entrepreneurship in healthcare across Africa" />
       </Helmet>
 
-      <div className="overflow-x-hidden max-w-screen box-sizing:border-box">
+      <div className="relative mx-auto w-full max-w-[100vw] overflow-x-hidden">
         {/* Hero Banner with AHC Health Symbol Decorations */}
         <section className="relative bg-white dark:bg-gray-900 overflow-hidden min-h-screen flex items-center">
           {/* Left Side Large Decorative Pattern */}
@@ -74,8 +74,8 @@ export default function HIHome() {
         </section>
 
         {/* Image Gallery */}
-        <section className="bg-white dark:bg-gray-900 max-w-screen overflow-x-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
+        <section className="bg-white dark:bg-gray-900 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
             <div className="aspect-square overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=800&fit=crop" 

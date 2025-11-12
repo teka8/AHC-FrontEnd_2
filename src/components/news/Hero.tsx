@@ -4,7 +4,8 @@ import "./Hero.css";
 
 const Hero: React.FC = () => {
   return (
-    <div className="ahehc-banner alignfull contains-wraps">
+    <div className="ahehc-banner alignfull hero-aurora pl-8">
+      <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/30 to-transparent -z-10" />
       <div className="ahehc-banner__inner">
         <svg
           width="1450"

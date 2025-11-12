@@ -7,9 +7,13 @@ export default function Layout() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Header />
-      <main className={`flex-1 pt-12 md:pt-16 ${isHome ? 'bg-gradient-to-b from-ahc-green/15 to-transparent' : ''}`}>
+      <main
+        className={`flex-1 pt-12 md:pt-16 overflow-x-hidden ${
+          isHome ? 'bg-gradient-to-b from-ahc-green/15 to-transparent' : ''
+        }`}
+      >
         <div key={location.pathname} className="animate-fade">
           <Outlet />
         </div>

@@ -4,8 +4,10 @@
 
 :root { color-scheme: light dark; }
 html, body, #root { height: 100%; }
-html { scroll-behavior: smooth; }
-body { @apply antialiased; font-family: Poppins, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; overflow-x: hidden; }
+html { scroll-behavior: smooth; max-width: 100vw; overflow-x: hidden; }
+body { max-width: 100vw; overflow-x: hidden; }
+#root { max-width: 100vw; overflow-x: hidden; }
+body { @apply antialiased; font-family: Poppins, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
 .prose h1, .prose h2, .prose h3, .prose h4 { font-family: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
 .container { @apply mx-auto px-4 sm:px-6 lg:px-8; }
 .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium bg-ahc-green text-black hover:brightness-95 transition; }

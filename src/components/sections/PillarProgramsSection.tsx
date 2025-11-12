@@ -68,7 +68,7 @@ const PillarProgramsSection: React.FC<PillarProgramsSectionProps> = ({ category,
   };
 
   return (
-    <div className="mb-20 relative overflow-hidden">
+    <div className="relative mb-20 max-w-full overflow-hidden">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
         <h2 className="text-4xl font-bold text-ahc-black text-center md:text-left">
           {title}
@@ -80,7 +80,7 @@ const PillarProgramsSection: React.FC<PillarProgramsSectionProps> = ({ category,
           See All Programs <ArrowRight className="ml-2 h-5 w-5" />
         </Link>
       </div>
-      <div className="relative">
+      <div className="relative px-2">
         <div className="absolute top-1/2 left-2 -translate-y-1/2 z-10">
           <button
             onClick={() => scroll('left', scrollRef)}
