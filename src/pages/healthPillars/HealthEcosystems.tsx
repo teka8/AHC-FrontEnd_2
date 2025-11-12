@@ -173,14 +173,10 @@ const HealthEcosystems: React.FC = () => {
                             ? "text-green-800 bg-green-200"
                             : program.state === "paused"
                               ? "text-orange-800 bg-orange-200"
-                              : "text-red-800 bg-red-200"
+                              : "text-blue-800 bg-blue-200"
                         }`}
                       >
-                        {program.state === "active"
-                          ? "Active"
-                          : program.state === "paused"
-                            ? "Paused"
-                            : "Inactive"}
+                        {program.state}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white">{program.title}</h3>
@@ -205,7 +201,7 @@ const HealthEcosystems: React.FC = () => {
             ) : (
               <div className="flex-shrink-0 w-full text-center py-12">
                 <p className="text-gray-500 dark:text-gray-400">
-                  No active programs available at the moment.
+                  No programs available at the moment.
                 </p>
               </div>
             )}
@@ -213,89 +209,6 @@ const HealthEcosystems: React.FC = () => {
           <div className="absolute top-1/2 -right-4 z-10">
             <button
               onClick={() => scroll("right", programsScrollRef)}
-              className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />
-            </button>
-          </div>
-        </div>
-
-        {/* Coming Soon Section */}
-        <div className="mb-20 relative">
-          <h2 className="text-4xl font-bold text-center text-ahc-green-dark mb-12">
-            Coming Soon
-          </h2>
-          <div className="absolute top-1/2 -left-4 z-10">
-            <button
-              onClick={() => scroll("left", comingSoonScrollRef)}
-              className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
-            </button>
-          </div>
-          <div
-            ref={comingSoonScrollRef}
-            className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
-            style={{ WebkitOverflowScrolling: 'touch' }}
-          >
-            {isLoading ? (
-              <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
-                <div className="animate-pulse">
-                  <div className="h-48 bg-gray-300 dark:bg-gray-700 rounded-t-xl mb-4"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-                </div>
-              </div>
-            ) : comingSoon.length > 0 ? (
-              comingSoon.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="rounded-t-xl h-48 w-full object-cover"
-                  />
-                  <div className="p-6">
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {item.branch}
-                      </p>
-                      <span className="px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
-                        Coming Soon
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <div
-                      className="text-gray-600 dark:text-gray-400 line-clamp-3 prose prose-sm max-w-none"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          item.description ||
-                          "A short description of the program.",
-                      }}
-                    />
-                    {item.countries.length > 0 && (
-                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-200 pt-3 dark:border-gray-700/60">
-                        {item.countries.map((country) => (
-                          <CountryBadge key={`${index}-country-${country}`} country={country} />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="flex-shrink-0 w-full text-center py-12">
-                <p className="text-gray-500 dark:text-gray-400">
-                  No upcoming programs at the moment.
-                </p>
-              </div>
-            )}
-          </div>
-          <div className="absolute top-1/2 -right-4 z-10">
-            <button
-              onClick={() => scroll("right", comingSoonScrollRef)}
               className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
               <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />
