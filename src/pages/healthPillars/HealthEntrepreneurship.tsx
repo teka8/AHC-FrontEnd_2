@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Briefcase, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
 import CountryBadge from '../../components/CountryBadge';
+import PillarNewsSection from '../../components/sections/PillarNewsSection';
 
 const HealthEntrepreneurship: React.FC = () => {
   const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: 'health_entrepreneurship' });
@@ -240,6 +241,12 @@ const HealthEntrepreneurship: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <PillarNewsSection
+          pillar="health_entrepreneurship"
+          title="Latest Health Entrepreneurship Stories"
+          description="Stay informed with the newest highlights and announcements from the Health Entrepreneurship pillar."
+        />
 
       </div>
     </div>

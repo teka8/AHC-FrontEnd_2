@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Users, Target, Rocket, ChevronDown } from 'lucide-react'
+import PillarNewsSection from '../../components/sections/PillarNewsSection'
 
 export default function HIHome() {
   return (
@@ -354,6 +355,13 @@ export default function HIHome() {
             </div>
           </div>
         </section>
+
+        <PillarNewsSection
+          pillar="health_entrepreneurship"
+          title="Health Entrepreneurship Highlights"
+          description="Catch up on fresh insights, success stories, and opportunities emerging from the Health Entrepreneurship pillar."
+          backgroundClassName="bg-gradient-to-br from-emerald-50 via-white to-teal-100 dark:from-[#0b1120] dark:via-[#0f1729] dark:to-[#020617]"
+        />
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGetProgramsQuery } from "../../features/healthPillars/programsApi";
 import CountryBadge from "../../components/CountryBadge";
+import PillarNewsSection from "../../components/sections/PillarNewsSection";
 
 const HealthEcosystems: React.FC = () => {
   const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: "health_ecosystems" });
@@ -248,6 +249,12 @@ const HealthEcosystems: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <PillarNewsSection
+          pillar="health_ecosystems"
+          title="Health Ecosystems In Focus"
+          description="Read the most recent developments strengthening health ecosystems across Africa."
+        />
 
         {/* Key Contacts Section */}
         <div className="text-center">

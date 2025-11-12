@@ -4,17 +4,39 @@ import Loader from "../components/Loader";
 import SectionHeader from "../components/ui/SectionHeader";
 import NewsCard from "../components/cards/NewsCard";
 import Pagination from "../components/ui/Pagination";
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import dayjs from "dayjs";
 
 export default function NewsList() {
-  const { data, isLoading } = useGetPublicPostsQuery();
-  const items = Array.isArray(data as any) ? (data as any) : [];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pillarParam = searchParams.get("pillar") ?? undefined;
+  const page = parseInt(searchParams.get("page") ?? "1", 10);
+  const { data, isLoading } = useGetPublicPostsQuery(
+    pillarParam ? { pillar: pillarParam, page, perPage: pageSize } : { page, perPage: pageSize }
+  );
+  const items = data?.data ?? [];
+  const meta = data?.meta;
 
   //const [search, setSearch] = useState('')
-  const [page, setPage] = useState(1);
   const pageSize = 9;
+  const pillarLabels: Record<string, string> = {
+    unknown: "All Pillars",
+    health_employment: "Health Employment",
+    health_entrepreneurship: "Health Entrepreneurship",
+    health_ecosystems: "Health Ecosystems",
+  };
+
+  const activePillarLabel = pillarParam
+    ? pillarLabels[pillarParam] ?? pillarParam.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())
+    : null;
+
+  useEffect(() => {
+    setSearchParams((prev) => {
+      prev.set("page", "1");
+      return prev;
+    });
+  }, [pillarParam, setSearchParams]);
 
   // const filtered = useMemo(() => {
   //   const q = search.trim().toLowerCase()
@@ -26,9 +48,15 @@ export default function NewsList() {
   //   })
   // }, [items, search])
 
-  const total = items.length;
-  const start = (page - 1) * pageSize;
-  const current = items.slice(start, start + pageSize);
+  const total = meta?.total ?? 0;
+  const current = items;
+
+  const onPageChange = (newPage: number) => {
+    setSearchParams((prev) => {
+      prev.set("page", String(newPage));
+      return prev;
+    });
+  };
 
   return (
     <div className="container py-16 md:py-24">
@@ -43,8 +71,15 @@ export default function NewsList() {
           placeholder="Search news..."
           className="w-full md:w-80 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-full px-5 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors"
         /> */}
-        <div className="text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">
-          {total} result{total === 1 ? "" : "s"}
+        <div className="flex flex-col items-end text-right text-sm text-slate-500 dark:text-slate-400">
+          {activePillarLabel && (
+            <span className="mb-1 inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-xs uppercase tracking-[0.25em] text-slate-600 dark:border-slate-700 dark:text-slate-300">
+              {activePillarLabel}
+            </span>
+          )}
+          <span>
+            {total} result{total === 1 ? "" : "s"}
+          </span>
         </div>
       </div>
       {isLoading ? (
@@ -111,7 +146,7 @@ export default function NewsList() {
             page={page}
             total={total}
             pageSize={pageSize}
-            onPageChange={setPage}
+            onPageChange={onPageChange}
           />
         </>
       )}

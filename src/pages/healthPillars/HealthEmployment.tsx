@@ -6,6 +6,7 @@ import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
 import { useGetScholarshipsQuery } from '../../features/scholarship/scholarshipsApi';
 import CountryBadge from '../../components/CountryBadge';
 import ScholarshipCard from '../../components/cards/ScholarshipCard';
+import PillarNewsSection from '../../components/sections/PillarNewsSection';
 
 const HealthEmployment: React.FC = () => {
   const { data: scholarships = [] } = useGetScholarshipsQuery();
@@ -242,6 +243,12 @@ const HealthEmployment: React.FC = () => {
             </button>
           </div>
         </div>
+
+        <PillarNewsSection
+          pillar="health_employment"
+          title="Latest Health Employment News"
+          description="Discover recent updates, initiatives, and stories from across the Health Employment pillar."
+        />
 
         {/* Success Stories Section */}
         <div className="bg-gray-100 dark:bg-gray-800 py-20">
