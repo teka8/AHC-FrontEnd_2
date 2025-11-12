@@ -64,7 +64,7 @@ export default function Header() {
           : "bg-transparent border-transparent"
       }`}
     >
-      <div className="container flex h-16 md:h-20 items-center justify-between">
+      <div className="container flex h-14 md:h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <img
             src="/images/ahc-logo.png"
