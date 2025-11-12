@@ -40,6 +40,7 @@ import ProgressUpdates from '../pages/healthInnovation/ProgressUpdates'
 import ScholarshipHome from '../pages/scholarship/ScholarshipHome'
 import ApplicationForm from '../pages/scholarship/ApplicationForm'
 import ApplicationTracker from '../pages/scholarship/ApplicationTracker'
+import {PartnerDetail} from '../pages/PartnerDetail'
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,7 @@ export const router = createBrowserRouter([
       { path: 'health-pillars/health-employment', element: <HealthEmployment /> },
       { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
       { path: 'health-pillars/health-ecosystems', element: <HealthEcosystems /> },
+      {path: 'partners/:name', element: <PartnerDetail /> },
       
       // Scholarship routes
       { path: 'scholarship', element: <ScholarshipHome /> },
