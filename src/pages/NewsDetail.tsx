@@ -1,5 +1,15 @@
 import { Helmet } from 'react-helmet-async'
 import { useParams } from 'react-router-dom'
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Mail,
+  Link,
+  ArrowLeft,
+  Share2,
+} from 'lucide-react'
+
 import { useGetPublicPostQuery } from '../features/posts/postsApi'
 import Loader from '../components/Loader'
 import dayjs from 'dayjs'
@@ -8,12 +18,42 @@ export default function NewsDetail() {
   const { id = '' } = useParams()
   const { data, isLoading, isError } = useGetPublicPostQuery(id)
 
-  const headerImg = data?.featured_image || data?.content?.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] || ''
+  const headerImg =
+    data?.featured_image ||
+    data?.content?.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] ||
+    ''
 
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href)
     alert('Link copied to clipboard!')
   }
+
+  const shareLinks = [
+    {
+      name: 'Facebook',
+      icon: <Facebook size={20} />,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
+      color: 'text-blue-600',
+    },
+    {
+      name: 'Twitter',
+      icon: <Twitter size={20} />,
+      href: `https://twitter.com/intent/tweet?url=${window.location.href}&text=${data?.title}`,
+      color: 'text-blue-400',
+    },
+    {
+      name: 'LinkedIn',
+      icon: <Linkedin size={20} />,
+      href: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${data?.title}`,
+      color: 'text-blue-700',
+    },
+    {
+      name: 'Email',
+      icon: <Mail size={20} />,
+      href: `mailto:?subject=${data?.title}&body=${window.location.href}`,
+      color: 'text-red-600',
+    },
+  ]
 
   return (
     <div className="bg-white dark:bg-gray-900">
@@ -27,16 +67,24 @@ export default function NewsDetail() {
         </div>
       ) : isError ? (
         <div className="text-center py-16 px-4">
-          <p className="text-lg font-semibold text-red-600">Failed to load this news item.</p>
-          <p className="text-slate-500 dark:text-slate-400 mt-2">Please try again later.</p>
+          <p className="text-lg font-semibold text-red-600">
+            Failed to load this news item.
+          </p>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">
+            Please try again later.
+          </p>
         </div>
       ) : data ? (
         <>
           <div className="relative bg-gray-100 dark:bg-gray-800 py-16 md:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="mb-8">
-                <a href="/news" className="text-sm font-medium text-ahc-green-dark hover:underline">
-                  &larr; All news
+                <a
+                  href="/news"
+                  className="text-sm font-medium text-ahc-green-dark hover:underline flex items-center"
+                >
+                  <ArrowLeft size={16} className="mr-1" />
+                  All news
                 </a>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-ahc-dark dark:text-white mb-4 leading-tight">
@@ -66,63 +114,44 @@ export default function NewsDetail() {
             <div className="flex flex-wrap lg:flex-nowrap -mx-4">
               <div className="w-full lg:w-3/4 px-4">
                 <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed overflow-hidden break-words">
-                  <div dangerouslySetInnerHTML={{ __html: data.content ?? '' }} />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: data.content ?? '' }}
+                  />
                 </div>
               </div>
 
               <div className="w-full lg:w-1/4 px-4 mt-8 lg:mt-0">
                 <div className="sticky top-24">
-                  <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-4">
+                  <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 className="text-lg font-bold text-ahc-dark dark:text-white mb-4 flex items-center">
+                      <Share2 size={20} className="mr-2" />
                       Share this post
                     </h3>
-                    <div className="flex flex-col space-y-4">
-                      <a
-                        href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-500 hover:text-blue-600 dark:hover:text-blue-400"
-                      >
-                        <i className="fab fa-facebook-f text-2xl mr-2"></i> Facebook
-                      </a>
-                      <a
-                        href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${data.title}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-500 hover:text-blue-400 dark:hover:text-blue-300"
-                      >
-                        <i className="fab fa-twitter text-2xl mr-2"></i> Twitter
-                      </a>
-                      <a
-                        href={`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${data.title}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-500 hover:text-blue-700 dark:hover:text-blue-500"
-                      >
-                        <i className="fab fa-linkedin-in text-2xl mr-2"></i> LinkedIn
-                      </a>
-                      <a
-                        href={`whatsapp://send?text=${data.title}%20${window.location.href}`}
-                        data-action="share/whatsapp/share"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-500 hover:text-green-500 dark:hover:text-green-400"
-                      >
-                        <i className="fab fa-whatsapp text-2xl mr-2"></i> WhatsApp
-                      </a>
-                      <a
-                        href={`mailto:?subject=${data.title}&body=${window.location.href}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-500 hover:text-red-600 dark:hover:text-red-400"
-                      >
-                        <i className="fas fa-envelope text-2xl mr-2"></i> Email
-                      </a>
+                    <div className="space-y-3">
+                      {shareLinks.map((link) => (
+                        <a
+                          key={link.name}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center p-2 rounded-md transition-colors text-gray-600 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600`}
+                        >
+                          <span className={`${link.color} mr-3`}>
+                            {link.icon}
+                          </span>
+                          <span className="text-sm font-medium">
+                            {link.name}
+                          </span>
+                        </a>
+                      ))}
                       <button
                         onClick={copyLink}
-                        className="flex items-center text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
+                        className="w-full flex items-center p-2 rounded-md transition-colors text-gray-600 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none"
                       >
-                        <i className="fas fa-copy text-2xl mr-2"></i> Copy Link
+                        <span className="text-gray-500 mr-3">
+                          <Link size={20} />
+                        </span>
+                        <span className="text-sm font-medium">Copy Link</span>
                       </button>
                     </div>
                   </div>
