@@ -15,7 +15,7 @@ export default function Hero() {
   const logos = useMemo<HeroLogo[]>(
     () => [
       {
-        src: `/images/ahc-logo.png`,
+        src: `/images/logo_dark.png`,
         alt: "Africa Health Collaborative",
         fallback: `/images/ahc-logo.png`,
       },
@@ -25,7 +25,7 @@ export default function Hero() {
         fallback: `/images/partners/addis-ababa-university.png`,
       },
       {
-        src: `/images/partners/mastercard_foundation_-_logo.jpeg`,
+        src: `/images/partners/mastercard_foundation_-_logo.png`,
         alt: "Mastercard Foundation",
         fallback: `/images/partners/mastercard-foundation.svg`,
       },
