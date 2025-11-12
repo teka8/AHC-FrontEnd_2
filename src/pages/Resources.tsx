@@ -631,12 +631,11 @@ export default function Resources() {
                   </div>
                 )}
                 
-                {/* Mobile Filter Toggle Button */}
-                <button 
-                  className="lg:hidden fixed bottom-6 right-6 z-40 bg-ahc-green hover:bg-ahc-green-dark text-white px-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-2 font-semibold"
-                  onClick={() => setShowFiltersMobile(true)}
-                >
-                  <SlidersHorizontal className="h-5 w-5" />
+                                {/* Mobile Filter Toggle Button */}
+                                <button
+                                  className="lg:hidden fixed bottom-6 left-6 z-40 bg-ahc-green hover:bg-ahc-green-dark text-white px-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-2 font-semibold"
+                                  onClick={() => setShowFiltersMobile(true)}
+                                >                  <SlidersHorizontal className="h-5 w-5" />
                   <span className="text-sm">Filters</span>
                   {hasActiveFilters && (
                     <span className="bg-red-500 text-white text-xs font-bold rounded-full min-w-[22px] h-5.5 px-1.5 flex items-center justify-center">
