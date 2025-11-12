@@ -33,7 +33,7 @@ export default function Home() {
     : Array.isArray(events as any)
     ? (events as any)
     : [];
-  const newsArray = Array.isArray(posts as any) ? (posts as any) : [];
+  const newsArray = Array.isArray(posts?.data) ? posts.data : [];
 
   return (
     <div>

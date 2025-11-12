@@ -24,8 +24,8 @@ export default function PillarNewsSection({
   ctaLabel = 'See all news',
   backgroundClassName = DEFAULT_BACKGROUND,
 }: PillarNewsSectionProps) {
-  const { data = [], isLoading, isError } = useGetPublicPostsQuery({ perPage: limit, pillar })
-  const items = Array.isArray(data) ? data.slice(0, limit) : []
+  const { data, isLoading, isError } = useGetPublicPostsQuery({ perPage: limit, pillar })
+  const items = Array.isArray(data?.data) ? data.data.slice(0, limit) : []
   const resolvedCtaHref = ctaHref ?? `/news?pillar=${encodeURIComponent(pillar)}`
 
   return (
