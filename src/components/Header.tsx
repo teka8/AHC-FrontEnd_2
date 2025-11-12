@@ -6,13 +6,14 @@ import { Moon, Sun, ChevronDown, Home, Menu, X } from "lucide-react";
 export default function Header() {
   const { data } = useGetNavigationQuery();
   const links: Array<{ label: string; path: string }> = data?.links || [
-    { label: "About", path: "/about" },
+    // { label: "About", path: "/about" },
     { label: "Partners", path: "/partners" },
     { label: "Resources", path: "/resources" },
     { label: "Media", path: "/media" },
     { label: "Contact", path: "/contact" },
   ];
   const hPath = "/";
+  const aboutPath = "/about";
 
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -96,6 +97,19 @@ export default function Header() {
             }
           >
             {hPath === "/" ? <Home className="h-5 w-5" /> : "Home"}
+          </NavLink>
+
+          <NavLink
+            to={aboutPath}
+            className={({ isActive }) =>
+              `text-sm font-medium transition-colors duration-200 ${
+                isActive
+                  ? "text-ahc-green-dark font-semibold"
+                  : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+              }`
+            }
+          >
+            {aboutPath === "/about" ? "About" : "About"}
           </NavLink>
 
           <div
@@ -220,22 +234,37 @@ export default function Header() {
       >
         <div className="container h-full flex flex-col items-center justify-center">
           <nav className="flex flex-col items-center gap-8">
-            {links.map((l) => (
-              <NavLink
-                key={l.path}
-                to={l.path}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `text-2xl font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "text-ahc-green-dark font-semibold"
-                      : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
-                  }`
-                }
-              >
-                {l.label}
-              </NavLink>
-            ))}
+            {/* home */}
+            <NavLink
+              to="/"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `text-2xl font-medium transition-colors duration-200 ${
+                  isActive
+                    ? "text-ahc-green-dark font-semibold"
+                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                }`
+              }
+            >
+              <Home className="h-5 w-5" />
+            </NavLink>
+
+            {/* about */}
+            <NavLink
+              to="/about"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `text-2xl font-medium transition-colors duration-200 ${
+                  isActive
+                    ? "text-ahc-green-dark font-semibold"
+                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                }`
+              }
+            >
+              About
+            </NavLink>
+
+            {/* latest */}
             <div className="relative">
               <button
                 onClick={() =>
@@ -307,6 +336,24 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            {links.map((l) => (
+              <NavLink
+                key={l.path}
+                to={l.path}
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `text-2xl font-medium transition-colors duration-200 ${
+                    isActive
+                      ? "text-ahc-green-dark font-semibold"
+                      : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                  }`
+                }
+              >
+                {l.label}
+              </NavLink>
+            ))}
+            
             <button
               className="mt-8 inline-flex h-12 w-12 items-center justify-center rounded-full border text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
               onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}

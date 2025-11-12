@@ -240,7 +240,7 @@ export default function Hero() {
                 Portal
               </a>
               <a
-                href="/health-innovation"
+                href="/health-pillars/health-entrepreneurship"
                 className="px-6 py-3 text-sm sm:text-base font-medium border border-slate-200 dark:border-slate-700 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-center"
               >
                 Health Innovation & Entrepreneurship
