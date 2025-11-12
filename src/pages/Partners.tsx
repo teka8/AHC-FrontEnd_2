@@ -1,12 +1,13 @@
 
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const partners = [
   { name: 'Addis Ababa University', country: 'Ethiopia', logo: '/images/partners/addis-ababa-university.png' },
   { name: 'African Institute for Mathematical Sciences', country: 'Rwanda', logo: '/images/partners/aims.png' },
   { name: 'African Leadership University', country: 'Mauritius, Rwanda', logo: '/images/partners/alu.png' },
-  { name: 'Amref International University / Amref Health Africa', country: 'Kenya', logo: '/images/partners/amref.png' },
+  { name: 'Amref International University (Amref Health Africa)', country: 'Kenya', logo: '/images/partners/amref.png' },
   { name: 'Ashesi University', country: 'Ghana', logo: '/images/partners/ashesi-university.png' },
   { name: 'Kwame Nkrumah University of Science and Technology', country: 'Ghana', logo: '/images/partners/knust.png' },
   { name: 'Mastercard Foundation', country: 'Canada', logo: '/images/partners/mastercard-foundation.png' },
@@ -65,13 +66,13 @@ export default function Partners() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {filteredPartners.map(partner => (
-                <div key={partner.name} className="bg-white dark:bg-ahc-dark-secondary rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                <Link to={partner.name} key={partner.name} className="bg-white dark:bg-ahc-dark-secondary rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                   <div className="p-6 flex flex-col items-center text-center">
                     <img src={partner.logo} alt={partner.name} className="h-24 object-contain mb-4" />
                     <h3 className="font-bold font-display text-xl text-ahc-dark dark:text-white">{partner.name}</h3>
                     <p className="text-slate-500 dark:text-slate-400">{partner.country}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
