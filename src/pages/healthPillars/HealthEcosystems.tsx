@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGetProgramsQuery } from "../../features/healthPillars/programsApi";
 import CountryBadge from "../../components/CountryBadge";
 import PillarNewsSection from "../../components/sections/PillarNewsSection";
+import PillarProgramsSection from "../../components/sections/PillarProgramsSection";
 
 const HealthEcosystems: React.FC = () => {
   const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: "health_ecosystems" });

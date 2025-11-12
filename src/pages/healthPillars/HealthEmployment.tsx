@@ -7,6 +7,7 @@ import { useGetScholarshipsQuery } from '../../features/scholarship/scholarships
 import CountryBadge from '../../components/CountryBadge';
 import ScholarshipCard from '../../components/cards/ScholarshipCard';
 import PillarNewsSection from '../../components/sections/PillarNewsSection';
+import PillarProgramsSection from '../../components/sections/PillarProgramsSection';
 
 const HealthEmployment: React.FC = () => {
   const { data: scholarships = [] } = useGetScholarshipsQuery();
