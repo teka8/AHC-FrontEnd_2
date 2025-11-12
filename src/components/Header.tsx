@@ -58,11 +58,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade ${
-        scrolled || open
-          ? "bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800"
-          : "bg-transparent border-transparent"
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800`}
     >
       <div className="container flex h-14 md:h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
