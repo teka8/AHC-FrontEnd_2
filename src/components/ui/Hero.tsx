@@ -290,8 +290,8 @@ export default function Hero() {
                               height: "auto",
                               maxHeight: "100%",
                               maxWidth: "100%",
-                              minWidth: "160px",
-                              minHeight: "140px",
+                              minWidth: "180px",
+                              minHeight: "160px",
                               padding: "10px",
                               transform: "scale(1.2)",
                             }}
