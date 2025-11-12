@@ -2,19 +2,9 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Users, Target, Rocket, ChevronDown } from 'lucide-react'
 import PillarNewsSection from '../../components/sections/PillarNewsSection'
-import PillarProgramsSection from '../../components/sections/PillarProgramsSection' // Import the new component
-import { useGetProgramsQuery } from '../../features/healthPillars/programsApi'; // Import the hook
+import PillarProgramsSection from '../../components/sections/PillarProgramsSection'
 
 export default function HIHome() {
-  const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: "health_entrepreneurship" });
-
-  const programs = programsData.filter(p => p.state === 'active' || p.state === 'paused').map(p => ({
-    id: p.id,
-    title: p.title,
-    description: p.description || '',
-    image: p.image_thumb || p.image || 'https://placehold.co/600x400/000000/FFFFFF/png',
-    state: p.state,
-  }));
   return (
     <>
       <Helmet>
@@ -22,8 +12,7 @@ export default function HIHome() {
         <meta name="description" content="Empowering innovation and entrepreneurship in healthcare across Africa" />
       </Helmet>
 
-      <div className="overflow-hidden">
-
+      <div className="overflow-x-hidden max-w-screen box-sizing:border-box">
         {/* Hero Banner with AHC Health Symbol Decorations */}
         <section className="relative bg-white dark:bg-gray-900 overflow-hidden min-h-screen flex items-center">
           {/* Left Side Large Decorative Pattern */}
@@ -85,8 +74,8 @@ export default function HIHome() {
         </section>
 
         {/* Image Gallery */}
-        <section className="bg-white dark:bg-gray-900">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+        <section className="bg-white dark:bg-gray-900 max-w-screen overflow-x-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
             <div className="aspect-square overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=800&fit=crop" 
