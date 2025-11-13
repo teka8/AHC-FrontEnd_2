@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
-import "./Hero.css";
+import "../../styles/Hero.css";
 
 interface HeroProps {
   search: string;
@@ -67,7 +67,7 @@ const Hero: React.FC<HeroProps> = ({ search, setSearch }) => {
               </li>
             </ol>
           </nav>
-          <h1 className="ahehc-banner__title">Resource Repository</h1>
+          <h1 className="ahehc-banner__title">Resources</h1>
           <p className="is-size-large">
             Explore our comprehensive collection of documents, educational
             materials, and research resources designed to support health

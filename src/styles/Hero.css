@@ -122,9 +122,9 @@
   .ahehc-banner__poster {
     height: auto;
     left: auto;
-    right: -1.5rem;
+    right: -4rem;
     width: 16rem;
-    transform: scale(0.8);
+    transform: scale(1.7);
   }
 
   .ahehc-banner__content {
@@ -171,8 +171,8 @@
   }
 
   .ahehc-banner__poster {
-    transform: scale(0.7);
-    right: -2rem;
+    transform: scale(1.2);
+    right: -4rem;
   }
 
   .ahehc-banner__title {
