@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
-import "./Hero.css";
+import "../../styles/Hero.css";
 
 interface HeroProps {
   search: string;
