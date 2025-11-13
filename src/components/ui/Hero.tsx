@@ -39,11 +39,11 @@ export default function Hero() {
       return new Promise((resolve) => {
         const img = new Image();
         img.onload = () => {
-          console.log(`✅ Image loaded: ${url}`);
+          //console.log(`✅ Image loaded: ${url}`);
           resolve(true);
         };
         img.onerror = () => {
-          console.error(`❌ Failed to load: ${url}`);
+          //console.error(`❌ Failed to load: ${url}`);
           resolve(false);
         };
         img.src = url;
@@ -55,7 +55,7 @@ export default function Hero() {
       for (const logo of logos) {
         const success = await testImage(logo.src);
         if (!success && logo.fallback) {
-          console.log(`Trying fallback for ${logo.alt}...`);
+          //console.log(`Trying fallback for ${logo.alt}...`);
           await testImage(logo.fallback);
         }
       }
@@ -240,7 +240,7 @@ export default function Hero() {
                 Portal
               </a>
               <a
-                href="/health-innovation"
+                href="/health-pillars/health-entrepreneurship"
                 className="px-6 py-3 text-sm sm:text-base font-medium border border-slate-200 dark:border-slate-700 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-center"
               >
                 Health Innovation & Entrepreneurship
@@ -265,9 +265,9 @@ export default function Hero() {
               <div className="relative z-10 flex h-full w-full items-center justify-center">
                 {logos.map((logo, index) => {
                   const isActive = index === activeLogo;
-                  console.log(
-                    `Rendering logo ${index}: ${logo.src}, active: ${isActive}`
-                  );
+                  // console.log(
+                  //   `Rendering logo ${index}: ${logo.src}, active: ${isActive}`
+                  // );
 
                   return (
                     <div
@@ -298,16 +298,16 @@ export default function Hero() {
                             loading="eager"
                             onError={(e) => {
                               const img = e.currentTarget as HTMLImageElement;
-                              console.log(
-                                `❌ Failed to load image: ${img.src}`
-                              );
+                              // console.log(
+                              //   `❌ Failed to load image: ${img.src}`
+                              // );
                               if (
                                 logo.fallback &&
                                 img.dataset.fallback !== "1"
                               ) {
-                                console.log(
-                                  `🔄 Trying fallback: ${logo.fallback}`
-                                );
+                                // console.log(
+                                //   `🔄 Trying fallback: ${logo.fallback}`
+                                // );
                                 img.src = logo.fallback;
                                 img.dataset.fallback = "1";
                               } else {

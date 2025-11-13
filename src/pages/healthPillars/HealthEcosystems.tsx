@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Target, Users, ChevronDown } from "lucide-react";
 import { useGetProgramsQuery } from "../../features/healthPillars/programsApi";
 import CountryBadge from "../../components/CountryBadge";
+import PillarNewsSection from "../../components/sections/PillarNewsSection";
+import PillarProgramsSection from "../../components/sections/PillarProgramsSection";
 
 const HealthEcosystems: React.FC = () => {
   const { data: programsData = [], isLoading } = useGetProgramsQuery({ category: "health_ecosystems" });
@@ -35,20 +37,7 @@ const HealthEcosystems: React.FC = () => {
       countries: extractCountries(p.country),
     }));
 
-  // Filter upcoming programs only (coming soon)
-  const comingSoon = programsData
-    .filter((p) => p.state === "upcoming")
-    .map((p) => ({
-      title: p.title,
-      description: p.description || "",
-      branch: p.host,
-      image: p.image_thumb || p.image || "https://placehold.co/600x400/000000/FFFFFF/png",
-      active: false,
-      countries: extractCountries(p.country),
-    }));
-
   const programsScrollRef = React.useRef<HTMLDivElement>(null);
-  const comingSoonScrollRef = React.useRef<HTMLDivElement>(null);
 
   const scroll = (
     direction: "left" | "right",
@@ -66,220 +55,449 @@ const HealthEcosystems: React.FC = () => {
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-      {/* Hero Section */}
-      <div
-        className="relative h-96 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/pillars/health-ecosystem-hero.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center text-white p-8">
-            <h1 className="text-5xl font-extrabold tracking-tight">
-              Health Ecosystems
-            </h1>
-            <p className="mt-4 text-xl max-w-3xl mx-auto">
-              Enabling professionals with advanced skills for sustainable health
-              sector growth and transformation in Africa.
+      {/* Hero Banner - Improved */}
+      <section className="relative bg-white dark:bg-gray-900 overflow-hidden min-h-screen flex items-center">
+        {/* Decorative Background Elements */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
+          <img 
+            src="/images/ahc-health-symbol.png" 
+            alt="" 
+            aria-hidden="true"
+            className="w-full h-full object-contain"
+            style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+          />
+        </div>
+        <div className="absolute right-0 top-3/4 -translate-y-1/2 translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
+          <img 
+            src="/images/ahc-health-symbol.png" 
+            alt="" 
+            aria-hidden="true"
+            className="w-full h-full object-contain"
+            style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-5xl mx-auto">
+            <div className="flex justify-center mb-6">
+              <img 
+                src="/images/ahc-health-symbol.png" 
+                alt="AHC Health Symbol" 
+                className="w-40 h-40 object-contain"
+              />
+            </div>
+            <p className="text-ahc-green dark:text-ahc-green-light text-md font-semibold mb-4 uppercase tracking-wide">
+              Enabling the growth and transformation of Africa’s health sector
             </p>
+            <h1 className="text-3xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
+              Health Ecosystems (HECO)
+            </h1>
+            <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
+              The Health Ecosystems Pillar enables students and professionals to acquire advanced skills in a broad range of disciplines critical for sustainable health sector growth and transformation in Africa.            </p>
+            <div className="flex flex-col items-center gap-4">
+              <a
+                href="#impact"
+                className="text-gray-700 dark:text-gray-300 font-medium text-lg hover:text-ahc-green transition"
+              >
+                Keep Reading              
+              </a>
+              <ChevronDown className="w-6 h-6 text-gray-700 dark:text-gray-300 animate-bounce" />
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Our Goal Section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <div className="order-2 md:order-1">
-            <h2 className="text-4xl font-bold text-ahc-green-dark mb-6">
-              Our Goal
-            </h2>
-            <p className="text-lg leading-relaxed mb-6">
-              The Health Ecosystems Pillar (HECO) focuses on increasing the
-              number of primary healthcare workers with stable employment by
-              assembling essential building blocks for the African health
-              sectors. Our goal is to train professionals across various
-              disciplines to drive equitable and inclusive growth in Africa.
-            </p>
-            <a
-              href="#programs"
-              className="bg-ahc-green hover:bg-ahc-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
-            >
-              Explore Our Programs
-            </a>
+      {/* Image Gallery */}
+      <section className="bg-white dark:bg-gray-900 max-w-screen overflow-x-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
+          <div className="aspect-square overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=800&fit=crop" 
+              alt="Health system building in Africa" 
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            />
           </div>
-          <div className="order-1 md:order-2">
-            <img
-              src="/images/pillars/health-ecosystem-goal.jpg"
-              alt="Health Ecosystem Goal"
-              className="rounded-2xl shadow-2xl object-cover w-full h-full"
+          <div className="aspect-square overflow-hidden">
+            <img 
+              src="/images/pillars/health-ecosystem-goal.jpg" 
+              alt="Healthcare professionals collaborating" 
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <div className="aspect-square overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1599045118108-bf9954418b76?w=800&h=800&fit=crop" 
+              alt="Community health workers" 
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
         </div>
+      </section>
 
-        {/* Programs Section */}
-        <div id="programs" className="mb-20 relative">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
-            <h2 className="text-4xl font-bold text-ahc-green-dark text-center md:text-left">
-              Programs
-            </h2>
-            <Link
-              to="/programs?category=health_ecosystems"
-              className="inline-flex items-center justify-center px-6 py-2 bg-ahc-green text-white rounded-lg font-semibold shadow-md hover:bg-ahc-green-dark transition-colors"
-            >
-              See All Programs
-            </Link>
+      {/* Impact of Health Ecosystems Section */}
+      <section id="impact" className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
           </div>
-          <div className="absolute top-1/2 -left-4 z-10">
-            <button
-              onClick={() => scroll("left", programsScrollRef)}
-              className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
-            </button>
+          <div className="absolute right-0 bottom-20 translate-x-1/4 w-96 h-96 opacity-[0.06]">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
           </div>
-          <div
-            ref={programsScrollRef}
-            className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
-            style={{ WebkitOverflowScrolling: 'touch' }}
-          >
-            {isLoading ? (
-              <div className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
-                <div className="animate-pulse">
-                  <div className="h-48 bg-gray-300 dark:bg-gray-700 rounded-t-xl mb-4"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-                </div>
-              </div>
-            ) : programs.length > 0 ? (
-              programs.map((program) => (
-                <Link
-                  key={program.id}
-                  to={`/programs/${program.id}`}
-                  className="flex-shrink-0 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green"
-                >
-                  <img
-                    src={program.image}
-                    alt={program.title}
-                    className="rounded-t-xl h-48 w-full object-cover"
-                  />
-                  <div className="p-6 flex flex-col gap-3">
-                    <div className="flex justify-between items-center">
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {program.branch}
-                      </p>
-                      <span
-                        className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                          program.state === "active"
-                            ? "text-green-800 bg-green-200"
-                            : program.state === "paused"
-                              ? "text-orange-800 bg-orange-200"
-                              : "text-blue-800 bg-blue-200"
-                        }`}
-                      >
-                        {program.state}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{program.title}</h3>
-                    <div
-                      className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          program.description ||
-                          "A short description of the program.",
-                      }}
-                    />
-                    {program.countries.length > 0 && (
-                      <div className="mt-4 flex flex-wrap gap-2 border-t border-gray-100 pt-3 dark:border-gray-700/60">
-                        {program.countries.map((country) => (
-                          <CountryBadge key={`${program.id}-country-${country}`} country={country} />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </Link>
-              ))
-            ) : (
-              <div className="flex-shrink-0 w-full text-center py-12">
-                <p className="text-gray-500 dark:text-gray-400">
-                  No programs available at the moment.
+
+          {/* Decorative Circles */}
+          <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-40 left-20 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
+          
+          {/* Grid Pattern Overlay */}
+          <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]" 
+            style={{ 
+              backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
+              backgroundSize: '60px 60px'
+            }}>
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="lg:col-span-2">
+              <h3 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+                Impact of Ecosystems on Africa
+              </h3>
+              <div className="space-y-4 text-2xl text-gray-700 dark:text-gray-300">
+                <p>
+                  To enhance the stability and growth of African health sectors, HECO focuses on increasing the number of primary
+                  healthcare workers with stable employment by assembling essential building blocks for these sectors.                
+                </p>
+                <p>
+                  The purpose of the Health Ecosystems Pillar is to train and prepare a new generation of talented
+                  health professionals with the broad sets of skills required to drive equitable and inclusive growth in Africa.   
+                </p>
+                <p>
+                  The Health Collaborative develops these building blocks to ensure that there are always sufficient numbers of highly skilled, 
+                  work-ready graduates across a spectrum of disciplines responding to Africa’s needs.               
+                </p>
+                <p>
+                  Programs under the Health Ecosystem Pillar are tailored to equip young leaders with the perspective, skills, training, and 
+                  credentials essential for developing innovative, sustainable, and equitable health sectors.                
                 </p>
               </div>
-            )}
-          </div>
-          <div className="absolute top-1/2 -right-4 z-10">
-            <button
-              onClick={() => scroll("right", programsScrollRef)}
-              className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />
-            </button>
-          </div>
-        </div>
-
-        {/* News and Events Section */}
-        <div className="bg-ahc-blue-light dark:bg-ahc-blue-dark text-white p-12 rounded-2xl shadow-xl mb-20">
-          <h2 className="text-4xl font-bold text-center mb-8">News & Events</h2>
-          <div className="grid md:grid-cols-2 gap-8 text-center">
-            <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-6 rounded-xl shadow-md">
-              <h3 className="text-2xl font-bold mb-4">
-                2026-2027 Graduate Scholarships
-              </h3>
-              <p className="mb-4">University of Toronto</p>
-              <a
-                href="#"
-                className="text-ahc-green hover:underline font-semibold"
-              >
-                Learn More
-              </a>
             </div>
-            <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-6 rounded-xl shadow-md">
-              <h3 className="text-2xl font-bold mb-4">
-                ALU Public Sector Fellowship
-              </h3>
-              <p className="mb-4">
-                Join the next cohort of public sector leaders.
-              </p>
-              <a
-                href="#"
-                className="text-ahc-green hover:underline font-semibold"
-              >
-                Apply Now
-              </a>
+            <div className="lg:col-span-1">
+              <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
+                <img 
+                  src="/images/pillars/health-ecosystem-goal.jpg" 
+                  alt="Health Ecosystem Building" 
+                  className="w-full h-full object-cover"
+                  style={{ aspectRatio: '3/4' }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-sm">Health system strengthening workshop with African partners</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Key Contacts Section */}
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-ahc-green-dark mb-8">
-            Key Contacts
+      {/* The Power of Partnership Section */}
+      <section className="py-20 bg-gradient-to-br from-green-500 via-emerald-100 to-teal-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
+        {/* Decorative Elements */}
+        <div className="absolute right-0 bottom-0 w-96 h-96 opacity-20">
+          <div className="absolute right-0 bottom-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(100% 0, 0 100%, 100% 100%)' }}></div>
+        </div>
+        <div className="absolute left-0 top-0 w-96 h-96 opacity-20">
+          <div className="absolute left-0 top-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-gray-900 dark:text-white">
+            The Power of Partnership
           </h2>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-12">
-            <div className="text-center">
-              <img
-                src="/images/pillars/tak-koguchi.jpg"
-                alt="Tak Koguchi"
-                className="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg"
-              />
-              <h3 className="text-2xl font-bold">Tak Koguchi</h3>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Senior Regional Lead
-              </p>
+          
+          <div className="space-y-12 max-w-6xl mx-auto">
+            {/* Our Goal Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="relative flex-shrink-0">
+                  <div className="w-32 h-32 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <Target className="w-16 h-16 text-white relative z-10" />
+                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-yellow-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-yellow-400 opacity-70" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}></div>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Our Goal</h3>
+                  <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+Train professionals across a broad range of disciplines critical for sustainable and equitable health-sector growth.                  </p>
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <img
-                src="/images/pillars/suying-hugh.jpg"
-                alt="Suying Hugh"
-                className="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg"
-              />
-              <h3 className="text-2xl font-bold">Suying Hugh</h3>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Program Manager, Mastercard Foundation
-              </p>
+
+            {/* How HECO Works Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex flex-col md:flex-row-reverse items-center gap-8">
+                <div className="relative flex-shrink-0">
+                  <div className="w-32 h-32 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <Users className="w-16 h-16 text-white relative z-10" />
+                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-green-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-green-400 opacity-70" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}></div>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">How HECO and Partners Work Together</h3>
+                  <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                    Under the Health Ecosystems Pillar, Health Collaborative Partners work to co-create and train a new generation of talented health 
+                    professionals with advanced skills required to drive equitable and inclusive growth in Africa.                   
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programs Section with Background Design */}
+      <section className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
+          </div>
+          
+          <div className="absolute right-0 bottom-20 translate-x-1/4 w-96 h-96 opacity-[0.06]">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
+          </div>
+
+          {/* Decorative Circles */}
+          <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-40 left-20 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
+          
+          {/* Grid Pattern Overlay */}
+          <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]" 
+            style={{ 
+              backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
+              backgroundSize: '60px 60px'
+            }}>
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <PillarProgramsSection
+            category="health_ecosystems"
+            title="Explore HECO Activities"
+          />
+        </div>
+      </section>
+
+      {/* News Section */}
+      <PillarNewsSection
+        pillar="health_ecosystems"
+        title="Health Ecosystems In Focus"
+        description="Read the most recent developments strengthening health ecosystems across Africa."
+        backgroundClassName="bg-gradient-to-br from-teal-50 via-white to-green-100 dark:from-[#0b1120] dark:via-[#0f1729] dark:to-[#020617]"
+      />
+
+      {/* Key Contacts Section - Improved */}
+      <div className="relative py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute left-0 top-1/3 -translate-x-1/3 w-70 h-70 opacity-[0.06]">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
+          </div>
+          <div className="absolute right-0 bottom-1/3 translate-x-1/3 w-80 h-80 opacity-[0.05]">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+            />
+          </div>
+
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-teal-200/15 to-green-200/15 dark:from-teal-600/08 dark:to-green-600/08 rounded-full blur-4xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-88 h-88 bg-gradient-to-br from-green-200/15 to-emerald-200/15 dark:from-green-600/08 dark:to-emerald-600/08 rounded-full blur-4xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              Key Contacts
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Get in touch with our dedicated team members driving the Health Ecosystems pillar forward.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Contact Card 1 */}
+            <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10 text-center">
+                <div className="relative mb-6">
+                  <div className="relative inline-block">
+                    <img 
+                      src="/images/pillars/tak-koguchi.jpg" 
+                      alt="Tak Koguchi" 
+                      className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
+                    />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
+                    <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                    Tak Koguchi
+                  </h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Senior Regional Lead</p>
+                  <p className="text-green-600 dark:text-green-400 font-medium">Health Ecosystems Pillar</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Card 2 */}
+            <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10 text-center">
+                <div className="relative mb-6">
+                  <div className="relative inline-block">
+                    <img 
+                      src="/images/pillars/suying-hugh.jpg" 
+                      alt="Suying Hugh" 
+                      className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
+                    />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
+                    <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                    Suying Hugh
+                  </h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Program Manager</p>
+                  <p className="text-green-600 dark:text-green-400 font-medium">Mastercard Foundation</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
+            <img 
+              src="/images/ahc-health-symbol.png" 
+              alt="" 
+              aria-hidden="true"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          
+          <div className="absolute top-10 left-10 w-16 h-16 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+            <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
+          </div>
+          <div className="absolute bottom-10 right-10 w-20 h-20 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+            <div className="w-full h-full bg-gradient-to-b from-green-400 to-teal-500"></div>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
+              
+              <div className="text-center relative z-10">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+                  Ready to Strengthen Health Ecosystems in Africa?
+                </h2>
+                
+                <p className="text-base sm:text-lg lg:text-xl mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                  Join our mission to build robust, sustainable health systems across the continent. Together, we can create lasting impact through education, partnership, and systemic transformation.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Link to="/contact" className="w-full sm:w-auto">
+                    <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center group">
+                      Get Involved Now
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </Link>
+                  
+                  <Link to="/health-pillars/health-ecosystems/programs" className="w-full sm:w-auto">
+                    <button className="w-full sm:w-auto bg-white dark:bg-gray-700 border-2 border-teal-500 text-teal-600 dark:text-teal-400 px-8 py-4 rounded-xl font-semibold hover:bg-teal-50 dark:hover:bg-gray-600 transition-all duration-300 inline-flex items-center justify-center group">
+                      Explore Programs
+                      <svg className="ml-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                  <div className="text-center">
+                    <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">50+</div>
+                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Health System Projects</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1">15+</div>
+                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Partner Countries</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">100+</div>
+                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Ecosystem Leaders</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

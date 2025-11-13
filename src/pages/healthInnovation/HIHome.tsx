@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Users, Target, Rocket, ChevronDown } from 'lucide-react'
+import PillarNewsSection from '../../components/sections/PillarNewsSection'
+import PillarProgramsSection from '../../components/sections/PillarProgramsSection'
 
 export default function HIHome() {
   return (
@@ -10,8 +12,7 @@ export default function HIHome() {
         <meta name="description" content="Empowering innovation and entrepreneurship in healthcare across Africa" />
       </Helmet>
 
-      <div className="overflow-hidden">
-
+      <div className="relative mx-auto w-full max-w-[100vw] overflow-x-hidden">
         {/* Hero Banner with AHC Health Symbol Decorations */}
         <section className="relative bg-white dark:bg-gray-900 overflow-hidden min-h-screen flex items-center">
           {/* Left Side Large Decorative Pattern */}
@@ -73,7 +74,7 @@ export default function HIHome() {
         </section>
 
         {/* Image Gallery */}
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white dark:bg-gray-900 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
             <div className="aspect-square overflow-hidden">
               <img 
@@ -281,79 +282,20 @@ export default function HIHome() {
           
           
           <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white">Explore HENT Activities</h2>
-              <Link 
-                to="/health-pillars/health-entrepreneurship/programs" 
-                className="text-ahc-green hover:text-ahc-green-dark font-semibold inline-flex items-center"
-              >
-                View All <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </div>
+          
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Program Card 1 */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition group">
-                <div className="h-96 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" 
-                    alt="African Impact Challenge" 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">African Impact Challenge</h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
-                    Supporting health entrepreneurs across Africa with training and mentorship
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Active</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Program Card 2 */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition group">
-                <div className="h-96 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1573164574511-73c773193279?w=600&h=400&fit=crop" 
-                    alt="FemSTEM" 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">FemSTEM</h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
-                    Empowering women in science, technology, engineering, and medicine
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Active</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Program Card 3 */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition group">
-                <div className="h-96 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=400&fit=crop" 
-                    alt="Health Innovation Hub" 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Health Innovation Hub</h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
-                    Building sustainable health innovation ecosystems across the continent
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Active</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            <PillarProgramsSection
+              category="health_entrepreneurship"
+              title="Explore HENT Activities"
+            />          </div>
         </section>
+
+        <PillarNewsSection
+          pillar="health_entrepreneurship"
+          title="Health Entrepreneurship Highlights"
+          description="Catch up on fresh insights, success stories, and opportunities emerging from the Health Entrepreneurship pillar."
+          backgroundClassName="bg-gradient-to-br from-emerald-50 via-white to-teal-100 dark:from-[#0b1120] dark:via-[#0f1729] dark:to-[#020617]"
+        />
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
