@@ -5,12 +5,16 @@ import { useCallback } from 'react'
 
 export default function PartnersStrip() {
   const partners: Array<{ name: string; url: string; logo?: string; description: string }> = [
-    { name: 'Addis Ababa University', url: 'https://www.aau.edu.et/', logo: 'https://logo.clearbit.com/aau.edu.et', description: 'A leading university in Ethiopia, fostering academic excellence and research.' },
-    { name: 'Welthungerhilfe', url: 'https://www.welthungerhilfe.org/', logo: 'https://logo.clearbit.com/welthungerhilfe.org', description: 'A German non-governmental organization working to fight hunger and poverty.' },
-    { name: 'Ministry of Health', url: 'https://moh.gov.et/', logo: 'https://logo.clearbit.com/moh.gov.et', description: 'The national body for health in Ethiopia, dedicated to improving public health.' },
-    { name: 'Partner University', url: '#', logo: '', description: 'A key academic partner in our network.' },
-    { name: 'Partner Institute', url: '#', logo: '', description: 'A specialized institute contributing to our mission.' },
-    { name: 'Global Health Org', url: '#', logo: '', description: 'A global organization dedicated to advancing health worldwide.' },
+    { name: 'Addis Ababa University', url: 'http://localhost:5176/partners/Addis%20Ababa%20University', logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-aau.png', description: 'Addis Ababa University (AAU), founded in 1950 as the University College of Addis Ababa, is Ethiopia’s oldest and largest higher education and research institution.' },
+    { name: 'African Institute for Mathematical Sciences', url: 'http://localhost:5176/partners/African%20Institute%20for%20Mathematical%20Sciences', logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-aims.png', description: 'The pan-African network of centers of excellence for training, research, and public engagement in mathematical sciences.' },
+    { name: 'African Leadership University', url: 'http://localhost:5176/partners/African%20Leadership%20University', logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-alu.svg', description: 'Higher Education for a higher purpose: We believe young people have the potential to be the ethical, entrepreneurial leaders our world needs.' },
+    { name: 'Amref International University (Amref Health Africa)', url: 'http://localhost:5176/partners/Amref%20International%20University%20(Amref%20Health%20Africa)', logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-amref.png', description: 'A leading Pan-African university of health sciences owned by Amref Health Africa, building on over 60 years of experience in improving community health across Africa.' },
+    { name: 'Ashesi University', url: 'http://localhost:5176/partners/Ashesi%20University', logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-ashesi-university.png', description: 'Founded by Dr. Patrick Awuah, Ashesi University Foundation is guided by a dedicated Board of Trustees, supported by Advisory Boards in the US and Ghana.' },
+    { name: 'Kwame Nkrumah University of Science and Technology', url: 'http://localhost:5176/partners/Kwame%20Nkrumah%20University%20of%20Science%20and%20Technology', logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-knust.png', description: 'Kwame Nkrumah University of Science and Technology (KNUST) began as Kumasi College of Technology in 1951. It opened in 1952 with 200 students and soon added the School of Engineering and the Department of Commerce.' },
+    { name: 'Mastercard Foundation', url: 'http://localhost:5176/partners/Mastercard%20Foundation', logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-mastercard.svg', description: 'The Mastercard Foundation is a Canadian charity and one of the world’s largest foundations.' },
+    { name: 'Moi University', url: 'http://localhost:5176/partners/Moi%20University',logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-moi-university.png', description: 'Moi University, established in 1984 by an act of parliament, is Kenya’s second public university and among the top-ranked in the country.' },
+    { name: 'University of Cape Town', url: 'http://localhost:5176/partners/University%20of%20Cape%20Town',logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-uct.png', description: 'The University of Cape Town is a community of talented students, teachers, researchers, and staff dedicated to making the world a better place.' },
+    { name: 'University of Toronto', url: 'http://localhost:5176/partners/University%20of%20Toronto',logo: 'https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-uoft.svg', description: 'Founded in 1827, the University of Toronto is one of the world’s top universities and was ranked Canada’s best and the world’s most sustainable in 2024.' },
   ]
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
@@ -37,7 +41,6 @@ export default function PartnersStrip() {
                 <div className="flex-grow-0 flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4" key={p.name + idx}>
                   <a
                     href={p.url}
-                    target="_blank"
                     rel="noreferrer"
                     className="p-6 rounded-xl border bg-white dark:bg-slate-800 border-gray-200 dark:border-gray-700 flex flex-col items-center text-center text-slate-700 dark:text-slate-200 hover:text-ahc-green dark:hover:text-ahc-green-dark transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl h-full"
                   >

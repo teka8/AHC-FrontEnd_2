@@ -244,7 +244,6 @@ export default function Home() {
         <div className="relative rounded-xl overflow-hidden shadow-lg">
           <a
             href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
-            target="_blank"
             rel="noopener noreferrer"
           >
             <img
