@@ -186,7 +186,6 @@ export default function Home() {
           {/* Learn More Button */}
           <a
             href="health-pillars/health-employment"
-            target="_blank"
             rel="noopener noreferrer"
             className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
           >
@@ -235,7 +234,6 @@ export default function Home() {
           {/* Learn More Button */}
           <a
             href="health-pillars/health-entrepreneurship"
-            target="_blank"
             rel="noopener noreferrer"
             className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
           >
@@ -282,7 +280,6 @@ export default function Home() {
           {/* Learn More Button */}
           <a
             href="health-pillars/health-ecosystems"
-            target="_blank"
             rel="noopener noreferrer"
             className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
           >
