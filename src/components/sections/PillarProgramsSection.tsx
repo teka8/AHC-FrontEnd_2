@@ -40,7 +40,7 @@ const PillarProgramsSection: React.FC<PillarProgramsSectionProps> = ({ category,
   }, []);
 
   const programs = programsData
-    .filter((p) => p.state === 'active' || p.state === 'paused')
+    .filter((p) => p.state === 'active' || p.state === 'paused' || p.state === 'upcoming')
     .map((p) => ({
       id: p.id,
       title: p.title,
