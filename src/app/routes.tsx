@@ -5,6 +5,7 @@ import About from '../pages/About'
 import Resources from '../pages/Resources'
 import NewsList from '../pages/NewsList'
 import NewsDetail from '../pages/NewsDetail'
+import Announcements from '../pages/Announcements'
 import EventsList from '../pages/EventsList'
 import EventDetail from '../pages/EventDetail'
 import Media from '../pages/Media'
@@ -58,6 +59,8 @@ export const router = createBrowserRouter([
       { path: 'resources/:section/:id', element: <ResourceDetail /> },
       { path: 'news', element: <NewsList /> },
       { path: 'news/:id', element: <NewsDetail /> },
+      { path: 'announcement', element: <Announcements /> },
+      { path: 'announcement/:id', element: <NewsDetail /> },
       { path: 'events', element: <EventsList /> },
       { path: 'events/:id', element: <EventDetail /> },
       { path: 'media', element: <Media /> },

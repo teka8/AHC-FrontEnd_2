@@ -35,7 +35,7 @@ export default function Header() {
 
   const latestLinks = [
     { label: "Events", path: "/events" },
-    { label: "Announcement", path: "/announcement" },
+    { label: "Announcements", path: "/announcement" },
     { label: "News", path: "/news" },
   ];
 

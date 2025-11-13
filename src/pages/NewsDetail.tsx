@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { useParams } from 'react-router-dom'
+import { useMatch, useParams } from 'react-router-dom'
 import {
   Facebook,
   Twitter,
@@ -17,6 +17,17 @@ import dayjs from 'dayjs'
 export default function NewsDetail() {
   const { id = '' } = useParams()
   const { data, isLoading, isError } = useGetPublicPostQuery(id)
+
+  const isNewsRoute = Boolean(useMatch('/news/:id'))
+  const isAnnouncementRoute = Boolean(useMatch('/announcement/:id'))
+
+  const normalizedType = data?.post_type
+    ? String(data.post_type).toLowerCase()
+    : 'news'
+  const isAnnouncement = normalizedType === 'announcement'
+  const backPath = isAnnouncement ? '/announcement' : '/news'
+  const backLabel = isAnnouncement ? 'All announcements' : 'All news'
+  const pageSingular = isAnnouncement ? 'Announcement' : 'News'
 
   const headerImg =
     data?.featured_image ||
@@ -58,7 +69,7 @@ export default function NewsDetail() {
   return (
     <div className="bg-white dark:bg-gray-900">
       <Helmet>
-        <title>{data?.title ?? 'News'} – AHC</title>
+        <title>{`${data?.title ?? pageSingular} – AHC`}</title>
       </Helmet>
 
       {isLoading ? (
@@ -68,23 +79,23 @@ export default function NewsDetail() {
       ) : isError ? (
         <div className="text-center py-16 px-4">
           <p className="text-lg font-semibold text-red-600">
-            Failed to load this news item.
+            Failed to load this {isAnnouncement ? 'announcement' : 'news item'}.
           </p>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
             Please try again later.
           </p>
         </div>
-      ) : data ? (
+      ) : data && ((isAnnouncementRoute && isAnnouncement) || (isNewsRoute && !isAnnouncement)) ? (
         <>
           <div className="relative bg-gray-100 dark:bg-gray-800 py-16 md:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="mb-8">
                 <a
-                  href="/news"
-                  className="text-sm font-medium text-ahc-green-dark hover:underline flex items-center"
+                  href={backPath}
+                  className="flex items-center text-sm font-medium text-ahc-green-dark hover:underline"
                 >
                   <ArrowLeft size={16} className="mr-1" />
-                  All news
+                  {backLabel}
                 </a>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-ahc-dark dark:text-white mb-4 leading-tight">
@@ -160,11 +171,22 @@ export default function NewsDetail() {
             </div>
           </div>
         </>
+      ) : data ? (
+        <div className="text-center py-16 px-4">
+          <p className="text-lg font-semibold">
+            This {isAnnouncementRoute ? 'announcement' : 'news item'} was not found.
+          </p>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">
+            Please check the URL or go back to the {isAnnouncementRoute ? 'announcements' : 'news'} list.
+          </p>
+        </div>
       ) : (
         <div className="text-center py-16 px-4">
-          <p className="text-lg font-semibold">This news item was not found.</p>
+          <p className="text-lg font-semibold">
+            This {isAnnouncement ? 'announcement' : 'news item'} was not found.
+          </p>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
-            Please check the URL or go back to the news list.
+            Please check the URL or go back to the {isAnnouncement ? 'announcements' : 'news'} list.
           </p>
         </div>
       )}
