@@ -41,7 +41,10 @@ export default function Header() {
 
   const healthPillarsLinks = [
     { label: "Health Employment", path: "/health-pillars/health-employment" },
-    { label: "Health Entrepreneurship", path: "/health-pillars/health-entrepreneurship" },
+    {
+      label: "Health Entrepreneurship",
+      path: "/health-pillars/health-entrepreneurship",
+    },
     { label: "Health Ecosystems", path: "/health-pillars/health-ecosystems" },
   ];
   useEffect(() => {
@@ -59,13 +62,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade ${
-        scrolled || open
-          ? "bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800"
-          : "bg-transparent border-transparent"
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800`}
     >
-      <div className="container flex h-16 md:h-20 items-center justify-between">
+      <div className="container flex h-14 md:h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <img
             src="/images/ahc-logo.png"
@@ -353,7 +352,7 @@ export default function Header() {
                 {l.label}
               </NavLink>
             ))}
-            
+
             <button
               className="mt-8 inline-flex h-12 w-12 items-center justify-center rounded-full border text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
               onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
