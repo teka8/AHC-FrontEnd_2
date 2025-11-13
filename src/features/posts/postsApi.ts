@@ -114,7 +114,7 @@ export const postsApi = baseApi.injectEndpoints({
           return {
             data: mapped,
             meta: null, // No meta data in this case
-            filters: response?.filters,
+          filters: undefined,
           };
         }
 
