@@ -231,7 +231,7 @@ const Programs: React.FC = () => {
       {/* Mobile Sidebar */}
       <div className={`fixed inset-0 z-40 lg:hidden ${isSidebarOpen ? 'block' : 'hidden'}`}>
         <div className="absolute inset-0 bg-black/50" onClick={() => setIsSidebarOpen(false)}></div>
-        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-gray-800 h-full overflow-y-auto">
+        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-gray-800 h-full overflow-y-auto overflow-x-hidden">
           <div className="absolute top-0 right-0 -mr-12 pt-2">
             <button
               className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
