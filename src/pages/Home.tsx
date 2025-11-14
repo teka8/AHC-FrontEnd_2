@@ -154,7 +154,7 @@ export default function Home() {
               src="./images/HEMP.jpg"
               alt="Health"
               className="w-full h-[500px] object-cover"
-            /> 
+            />
           </a>
 
           {/* Dark overlay */}
@@ -409,6 +409,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Our Purpose"
             title="Our Mission & Vision"
+            
             centerTitle={true}
           />
           <div className="grid gap-8 md:grid-cols-2">
