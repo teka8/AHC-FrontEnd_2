@@ -5,6 +5,7 @@ import SectionHeader from '../components/ui/SectionHeader'
 import EventCard from '../components/cards/EventCard'
 import dayjs from 'dayjs'
 import { useMemo, useState } from 'react'
+import Hero from '../components/event/Hero'
 
 export default function EventsList() {
   const { data, isLoading } = useGetEventsQuery()
@@ -40,8 +41,10 @@ export default function EventsList() {
   const selectedLabel = month.format('MMMM YYYY')
 
   return (
+    <>
+    <Helmet><title>Events – AHC</title></Helmet>
+      <Hero />
     <div className="container py-16 md:py-24">
-      <Helmet><title>Events – AHC</title></Helmet>
       <SectionHeader eyebrow="What’s Next" title="All Events" />
       <div className="flex items-center gap-3 mb-6">
         <div className="inline-flex rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
@@ -93,5 +96,6 @@ export default function EventsList() {
         </div>
       )}
     </div>
+    </>
   )
 }

@@ -417,6 +417,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Our Purpose"
             title="Our Mission & Vision"
+            
             centerTitle={true}
           />
           <div className="grid gap-8 md:grid-cols-2">
