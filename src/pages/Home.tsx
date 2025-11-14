@@ -58,7 +58,7 @@ export default function Home() {
           />
           <div className="grid gap-12 md:grid-cols-2 items-center">
             <div>
-              <img src="/public/images/aheia.jpg" alt="Advancing Health Education in Africa" className="rounded-lg shadow-xl w-full h-auto object-cover" />
+              <img src="/images/aheia.jpg" alt="Advancing Health Education in Africa" className="rounded-lg shadow-xl w-full h-auto object-cover" />
             </div>
             <div>
               <div className="prose max-w-none dark:prose-invert">
