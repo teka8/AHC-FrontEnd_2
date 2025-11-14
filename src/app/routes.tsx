@@ -5,6 +5,9 @@ import About from '../pages/About'
 import Resources from '../pages/Resources'
 import NewsList from '../pages/NewsList'
 import NewsDetail from '../pages/NewsDetail'
+import AhcLeaders from '../pages/AhcLeaders'
+import ValuesandPrinciples from '../pages/ValuesandPrinciples'
+import AhcLeaderDetail from "../pages/AhcLeaderDetail"
 import EventsList from '../pages/EventsList'
 import EventDetail from '../pages/EventDetail'
 import Media from '../pages/Media'
@@ -77,6 +80,11 @@ export const router = createBrowserRouter([
       { path: 'scholarship/track', element: <ApplicationTracker /> },
       
       { path: '*', element: <NotFound /> },
+//about us ,ahc , values routes
+ { path: 'ahcleaders', element: <AhcLeaders /> },
+ {path:'valuesandprinciples' ,element:<ValuesandPrinciples/>},
+ {path:'/ahc-leaders/:id' ,element:<AhcLeaderDetail/>}
+
     ],
   },
   // Health Innovation routes with separate layout
