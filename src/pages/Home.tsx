@@ -142,21 +142,21 @@ export default function Home() {
               and sustainable primary healthcare.
             </p>
 
-      {/* Pillars Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {/* Pillar Card */}
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-employment/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HEMP.jpg"
-              alt="Health"
-              className="w-full h-[500px] object-cover"
-            /> 
-          </a>
+            {/* Pillars Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {/* Pillar Card */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-employment/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HEMP.jpg"
+                    alt="Health"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -194,18 +194,18 @@ export default function Home() {
                 </a>
               </div>
 
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HENT.jpg"
-              alt="Education"
-              className="w-full h-[500px] object-cover"
-            />
-          </a>
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HENT.jpg"
+                    alt="Education"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -243,17 +243,17 @@ export default function Home() {
                 </a>
               </div>
 
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HECO.jpg"
-              alt="Innovation"
-              className="w-full h-[500px] object-cover"
-            />
-          </a>
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HECO.jpg"
+                    alt="Innovation"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -407,7 +407,7 @@ export default function Home() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-24 bg-green-50 dark:bg-slate-950 transition-colors duration-300">
+      <section className="py-16 md:py-24 bg-green-50 dark:bg-slate-950 transition-colors duration-300 bg-green-50/50">
         <div className="container">
           <SectionHeader
             eyebrow="Our Purpose"
@@ -432,7 +432,10 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Mission</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-               To leverage the power of higher education institutions as centres of innovation, knowledge exchange, and community collaboration, driving inclusive transformation of primary healthcare in Ethiopia and beyond.
+                To leverage the power of higher education institutions as
+                centres of innovation, knowledge exchange, and community
+                collaboration, driving inclusive transformation of primary
+                healthcare in Ethiopia and beyond.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
@@ -453,7 +456,10 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Vision</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-               To prepare diverse youth for meaningful work in transforming health and well-being in Africa through contextually appropriate, equitable, and sustainable primary healthcare systems.
+                To prepare diverse youth for meaningful work in transforming
+                health and well-being in Africa through contextually
+                appropriate, equitable, and sustainable primary healthcare
+                systems.
               </p>
             </div>
           </div>
