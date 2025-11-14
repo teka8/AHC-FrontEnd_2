@@ -11,6 +11,7 @@
 .ahehc-banner__inner {
   display: flex;
   position: relative;
+  min-height: 28rem; /* Base min-height */
 }
 
 .ahehc-banner__poster {
@@ -118,6 +119,115 @@
   background: rgb(230, 180, 28);
 }
 
+/* Medium laptops (13-14 inch screens) */
+@media screen and (max-width: 1440px) and (min-width: 1024px) {
+  .ahehc-banner__inner {
+    min-height: 26rem;
+  }
+
+  .ahehc-banner__poster {
+    transform: scale(0.85);
+    left: 15%;
+  }
+
+  .ahehc-banner__content {
+    transform: scale(0.85);
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+
+  .ahehc-banner__title {
+    font-size: 3.25rem;
+  }
+
+  .is-size-large {
+    font-size: 1.8rem;
+  }
+}
+
+/* Small laptops (13.5 inch and similar) */
+@media screen and (max-width: 1366px) and (min-width: 1024px) {
+  .ahehc-banner__inner {
+    min-height: 24rem;
+  }
+
+  .ahehc-banner__poster {
+    transform: scale(0.85);
+    left: 10%;
+  }
+
+  .ahehc-banner__content {
+    transform: scale(0.8);
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+  }
+
+  .ahehc-banner__title {
+    font-size: 3rem;
+  }
+
+  .is-size-large {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablets and smaller laptops */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .ahehc-banner__inner {
+    min-height: 22rem;
+  }
+
+  .ahehc-banner__poster {
+    height: auto;
+    left: auto;
+    right: -3rem;
+    width: 14rem;
+    transform: scale(1.4);
+  }
+
+  .ahehc-banner__content {
+    padding-bottom: 2rem;
+    padding-top: 7rem;
+    transform: scale(0.9);
+  }
+
+  .ahehc-banner__title {
+    font-size: 2.75rem;
+  }
+
+  .is-size-large {
+    font-size: 1.4rem;
+  }
+}
+
+/* Large tablets */
+@media screen and (max-width: 767px) and (min-width: 481px) {
+  .ahehc-banner__inner {
+    min-height: 20rem;
+  }
+
+  .ahehc-banner__poster {
+    right: -2rem;
+    width: 12rem;
+    transform: scale(1.3);
+  }
+
+  .ahehc-banner__content {
+    transform: scale(0.95);
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .ahehc-banner__title {
+    font-size: 2.5rem;
+  }
+
+  .is-size-large {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile devices - RESTORED YOUR ORIGINAL MOBILE STYLES */
 @media screen and (max-width: 62.5em) {
   .ahehc-banner__poster {
     height: auto;
@@ -142,27 +252,7 @@
   }
 }
 
-@media screen and (min-width: 62.5em) {
-  .ahehc-banner__inner {
-    min-height: 32rem;
-  }
-}
-
-@media screen and (min-width: 37.5em) {
-  .ahehc-banner__inner {
-    min-height: 20rem;
-  }
-}
-
-.contains-wraps > * {
-  margin-left: 1rem;
-  margin-right: auto;
-  max-width: var(--block-width, 72rem);
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-/* Additional mobile optimization */
+/* Additional mobile optimization - RESTORED YOUR ORIGINAL STYLES */
 @media screen and (max-width: 48em) {
   .ahehc-banner__content {
     transform: scale(1);
@@ -186,5 +276,41 @@
   .wp-block-buttons {
     flex-direction: column;
     gap: 0.75rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media screen and (max-width: 360px) {
+  .ahehc-banner__title {
+    font-size: 1.75rem;
+  }
+
+  .is-size-large {
+    font-size: 1rem;
+  }
+
+  .ahehc-banner__poster {
+    transform: scale(0.9);
+    right: -1rem;
+  }
+}
+
+.contains-wraps > * {
+  margin-left: 1rem;
+  margin-right: auto;
+  max-width: var(--block-width, 72rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media screen and (min-width: 62.5em) {
+  .ahehc-banner__inner {
+    min-height: 32rem;
+  }
+}
+
+@media screen and (min-width: 37.5em) {
+  .ahehc-banner__inner {
+    min-height: 20rem;
   }
 }

@@ -72,7 +72,7 @@ export default function Header() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800`}
     >
-      <div className="container flex h-14 md:h-16 items-center justify-between">
+      <div className="container flex h-14 md:h-16 items-center justify-between min-w-full">
         <Link to="/" className="flex items-center gap-3">
           <img
             src="/images/ahc-logo.png"
