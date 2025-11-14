@@ -37,7 +37,18 @@ body {
     Times, serif;
 }
 .container {
-  @apply mx-auto;
+  @apply mx-auto px-5 sm:px-6 lg:px-8;
+
+  /* Add these for larger screens */
+  @media (min-width: 1440px) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  @media (min-width: 1920px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 .btn {
   @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium bg-ahc-green text-black hover:brightness-95 transition;
