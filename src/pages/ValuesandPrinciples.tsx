@@ -9,12 +9,12 @@ export default function ValuesandPrinciples() {
 
   const accordionData = [
     {
-      title: "Goals",
-      content: "As a Collaborative we commit to the following goals:."
+      title: "Our Mission",
+      content: "To leverage the power of higher education institutions as centres of innovation, knowledge exchange, and community collaboration, driving inclusive transformation of primary healthcare in Ethiopia and beyond."
     },
     {
-      title: "Values",
-      content: "As a Collaborative, we will strive to live by these values to guide our engagement in Africa:   ."
+      title: "Our Goal",
+      content: "To empower Africa’s next generation of health leaders by strengthening primary healthcare through transformative education, innovation, and entrepreneurship fostering a vibrant ecosystem that advances equitable health and employment opportunities."
     },
     {
       title: "Principles of Partnership",
@@ -28,22 +28,17 @@ export default function ValuesandPrinciples() {
     { name: "AIMS", logo: "/images/partners/aims.png" },
     { name: "ALU", logo: "/images/partners/alu.png" },
     { name: "Amref", logo: "/images/partners/amref.png" },
-    { name: "Ashesi", logo: "/images/partners/amref.png" },
+    { name: "Ashesi", logo: "/images/partners/moi-university.png" },
     { name: "University of Toronto", logo: "/images/partners/utoronto.png" }
   ];
 
   const toggleAccordion = (index) => setActiveIndex(activeIndex === index ? null : index);
 
   const visionText = [
-    `Guided by a unified vision, the partners of the Africa Health Collaborative strive to empower young people, equipping them with the skills to advance and sustain the growth of African health sectors and meet the diverse health needs of their respective countries.`,
-    `Eight African Universities listed above and the University of Toronto (U of T), in partnership with Mastercard Foundation, are together creating a Higher Education Health Collaborative anchored in Africa. We are working together because we believe higher education institutions are well-positioned to jointly collaborate to develop a vision for and implement a health strategy due to their unique concentration of talent, their mission to train the leaders of the future, and to develop and leverage knowledge to create both global and locally contextualized solutions.`,
-    `This Collaborative will build on existing networks to ensure local knowledge and expertise are prioritized to create exponential impact. A networked approach allows us to reach across borders and sectoral divisions to collectively address health sector challenges, leveraging the power of institutions as sites of knowledge development, exchange, community collaboration, and cross-sector partnerships.`,
-    `The Health Collaborative has identified strategic opportunities to develop programs aligned with the three pillars to drive impact: Health Employment, Health Entrepreneurship, and Health Ecosystems. The Collaborative will co-create and co-deliver health-related programs that will contribute to these pillars and capacity building of Africa’s healthcare systems.`,
-    `Over time other universities may be invited to join the Collaborative.`
+    `To prepare diverse youth for meaningful work in transforming health and well-being in Africa through contextually appropriate, equitable, and sustainable primary healthcare systems..`
   ];
 
   const maxVisible = 2;
-
   return (
     <>
       <Helmet>
@@ -92,8 +87,6 @@ export default function ValuesandPrinciples() {
         </div>
       </section>
 
-
-
       <section className="bg-gray-50 dark:bg-ahc-dark py-24">
         <div className="container mx-auto px-6 lg:px-0 lg:flex lg:gap-12">
 
@@ -106,21 +99,19 @@ export default function ValuesandPrinciples() {
                   onClick={() => toggleAccordion(index)}
                   className="w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
-                  <span className="font-semibold text-gray-800 dark:text-white">{item.title}</span>
+                  <span className=" text-gray-800 dark:text-white text-2x3">{item.title}</span>
 
-                  <span className="text-gray-500 dark:text-gray-300 text-xl">{activeIndex === index ? "-" : "+"}</span>
+                  <span className="text-gray-500 dark:text-gray-300 text-2xl ">{activeIndex === index ? "-" : "+"}</span>
                 </button>
 
                 {activeIndex === index && (
-                  <div className="px-6 py-4 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300  ">
+                  <div className="px-6 py-4  dark:bg-gray-900 text-gray-500 dark:text-gray-300  ">
                     {item.content}
                   </div>
                 )}
               </div>
             ))}
           </div>
-
-
           <div className="lg:w-1/3 mt-12 lg:mt-0">
             <h3 className="text-2xl font-bold text-gray-400 dark:text-white mb-6">Our Partners</h3>
             <p className=" text-gray-500 dark:text-white">This Partnership Agreement is made and entered into by and between the following parties: </p>
