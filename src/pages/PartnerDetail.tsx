@@ -27,7 +27,7 @@ export function PartnerDetail() {
   }
 
   return (
-    <div id="content" className="bg-yellow-50 min-h-screen py-12 px-6 md:px-16">
+    <div id="content" className="bg-slate-50 dark:bg-ahc-dark min-h-screen py-12 px-4 md:px-8 lg:px-16">
       
       <div className="flex flex-col md:flex-row items-center gap-8 max-w-6xl mx-auto mb-10">
         <div className="flex-1">
@@ -38,17 +38,17 @@ export function PartnerDetail() {
 
         {/* ✅ Main Gallery Image with Logo Overlay */}
         {partner.galery?.[0] && (
-          <div className="relative w-[600px]">
+          <div className="relative w-full md:w-1/2 lg:w-2/3">
             <img
               src={partner.galery[0]}
               alt={`${partner.name} gallery`}
-              className="rounded-xl shadow-md bg-white p-3 w-full h-[400px] object-cover"
+              className="rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 w-full h-[400px] object-cover"
             />
             {partner.logo && (
               <img
                 src={partner.logo}
                 alt={`${partner.name} logo`}
-                className="absolute bottom-4 right-4 w-28 h-20 rounded-xl shadow-lg bg-white p-2 object-contain"
+                className="absolute bottom-4 right-4 w-28 h-20 rounded-xl shadow-xl bg-white dark:bg-slate-900 p-2 object-contain"
               />
             )}
           </div>
@@ -164,7 +164,7 @@ export function PartnerDetail() {
           )}
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl shadow-md p-10 min-w-[450px] md:w-80 h-fit">
+        <div className="bg-white dark:bg-ahc-dark-secondary border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-8 md:min-w-[300px] lg:min-w-[350px] h-fit">
           <p className="text-gray-900 mb-1 text-3xl font-bold">
             Learn about the Partner
           </p>
@@ -176,7 +176,7 @@ export function PartnerDetail() {
                 href={partner.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg text-center transition"
+                className="bg-ahc-green text-white hover:bg-ahc-green-darker font-semibold py-2 px-4 rounded-lg text-center transition"
               >
                 🌐 Website
               </a>
@@ -185,13 +185,13 @@ export function PartnerDetail() {
             {partner.contact?.contactPerson?.email && (
               <a
                 href={`mailto:${partner.contact.contactPerson.email}`}
-                className="bg-black text-white hover:bg-gray-800 font-semibold py-2 px-4 rounded-lg text-center transition"
+                className="bg-ahc-blue text-white hover:bg-ahc-blue-darker font-semibold py-2 px-4 rounded-lg text-center transition"
               >
                 ✉️ Contact Us
               </a>
             )}
           </div>
-          <Link to="" className="text-2xl font-bold hover:border-b-4 hover:border-black border-b-yellow-400 border-b-4">
+          <Link to="" className="text-lg font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors">
             Submit Revisions
           </Link>
         </div>

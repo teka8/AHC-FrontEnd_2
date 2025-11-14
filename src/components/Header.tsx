@@ -42,11 +42,9 @@ export default function Header() {
   ];
   const AboutLinks = [
     { label: "About Us", path: "/about" },
-    { label: "AHC Leaders", path: "/ahcleaders" },
+    { label: "AHC Leadership", path: "/ahcleaders" },
     { label: "Values & Principles", path: "/valuesandprinciples" },
-
   ];
-
 
   const healthPillarsLinks = [
     { label: "Health Employment", path: "/health-pillars/health-employment" },
@@ -97,15 +95,15 @@ export default function Header() {
           <NavLink
             to={hPath}
             className={({ isActive }) =>
-              `text-sm font-medium transition-colors duration-200 ${isActive
-                ? "text-ahc-green-dark font-semibold"
-                : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+              `text-sm font-medium transition-colors duration-200 ${
+                isActive
+                  ? "text-ahc-green-dark font-semibold"
+                  : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
               }`
             }
           >
             {hPath === "/" ? <Home className="h-5 w-5" /> : "Home"}
           </NavLink>
-
 
           <div
             className="relative"
@@ -115,8 +113,9 @@ export default function Header() {
             <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
               <span className="inline-block">About</span>
               <span
-                className={`inline-block transition-transform duration-200 ${showAboutDropdown ? "rotate-180" : ""
-                  }`}
+                className={`inline-block transition-transform duration-200 ${
+                  showAboutDropdown ? "rotate-180" : ""
+                }`}
               >
                 <ChevronDown className="h-4 w-4" />
               </span>
@@ -129,9 +128,10 @@ export default function Header() {
                       key={link.path}
                       to={link.path}
                       className={({ isActive }) =>
-                        `block px-4 py-2.5 text-sm transition-colors ${isActive
-                          ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
-                          : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                        `block px-4 py-2.5 text-sm transition-colors ${
+                          isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
                         }`
                       }
                     >
@@ -151,8 +151,9 @@ export default function Header() {
             <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
               <span className="inline-block">Latest</span>
               <span
-                className={`inline-block transition-transform duration-200 ${showLatestDropdown ? "rotate-180" : ""
-                  }`}
+                className={`inline-block transition-transform duration-200 ${
+                  showLatestDropdown ? "rotate-180" : ""
+                }`}
               >
                 <ChevronDown className="h-4 w-4" />
               </span>
@@ -165,9 +166,10 @@ export default function Header() {
                       key={link.path}
                       to={link.path}
                       className={({ isActive }) =>
-                        `block px-4 py-2.5 text-sm transition-colors ${isActive
-                          ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
-                          : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                        `block px-4 py-2.5 text-sm transition-colors ${
+                          isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
                         }`
                       }
                     >
@@ -187,8 +189,9 @@ export default function Header() {
             <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
               <span className="inline-block">Health Pillars</span>
               <span
-                className={`inline-block transition-transform duration-200 ${showPillarsDropdown ? "rotate-180" : ""
-                  }`}
+                className={`inline-block transition-transform duration-200 ${
+                  showPillarsDropdown ? "rotate-180" : ""
+                }`}
               >
                 <ChevronDown className="h-4 w-4" />
               </span>
@@ -201,9 +204,10 @@ export default function Header() {
                       key={link.path}
                       to={link.path}
                       className={({ isActive }) =>
-                        `block px-4 py-2.5 text-sm transition-colors ${isActive
-                          ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
-                          : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                        `block px-4 py-2.5 text-sm transition-colors ${
+                          isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
                         }`
                       }
                     >
@@ -220,9 +224,10 @@ export default function Header() {
               key={l.path}
               to={l.path}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors duration-200 ${isActive
-                  ? "text-ahc-green-dark font-semibold"
-                  : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                `text-sm font-medium transition-colors duration-200 ${
+                  isActive
+                    ? "text-ahc-green-dark font-semibold"
+                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                 }`
               }
             >
@@ -254,8 +259,9 @@ export default function Header() {
         </button>
       </div>
       <div
-        className={`md:hidden fixed inset-0 z-60 bg-white dark:bg-ahc-dark transition-transform duration-300 ease-in-out ${open ? "translate-x-0" : "translate-x-full"
-          }`}
+        className={`md:hidden fixed inset-0 z-60 bg-white dark:bg-ahc-dark transition-transform duration-300 ease-in-out ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         <div className="container h-full flex flex-col items-center justify-center">
           <nav className="flex flex-col items-center gap-8">
@@ -264,37 +270,42 @@ export default function Header() {
               to="/"
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `text-2xl font-medium transition-colors duration-200 ${isActive
-                  ? "text-ahc-green-dark font-semibold"
-                  : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                `text-2xl font-medium transition-colors duration-200 ${
+                  isActive
+                    ? "text-ahc-green-dark font-semibold"
+                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                 }`
               }
             >
               <Home className="h-5 w-5" />
             </NavLink>
 
-
             <div className="relative">
               <button
-                onClick={() => setShowMobileAboutDropdown(!showMobileAboutDropdown)}
+                onClick={() =>
+                  setShowMobileAboutDropdown(!showMobileAboutDropdown)
+                }
                 className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
               >
                 <span>About</span>
                 <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-200 ${showMobileAboutDropdown ? "rotate-180" : ""}`}
+                  className={`h-6 w-6 transition-transform duration-200 ${
+                    showMobileAboutDropdown ? "rotate-180" : ""
+                  }`}
                 />
               </button>
               {showMobileAboutDropdown && (
                 <div className="mt-4 flex flex-col items-center gap-4">
-                  {AboutLinks.map(link => (
+                  {AboutLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `text-xl font-medium transition-colors duration-200 ${isActive
-                          ? "text-ahc-green-dark font-semibold"
-                          : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        `text-xl font-medium transition-colors duration-200 ${
+                          isActive
+                            ? "text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                         }`
                       }
                     >
@@ -315,8 +326,9 @@ export default function Header() {
               >
                 <span>Latest</span>
                 <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-200 ${showMobileLatestDropdown ? "rotate-180" : ""
-                    }`}
+                  className={`h-6 w-6 transition-transform duration-200 ${
+                    showMobileLatestDropdown ? "rotate-180" : ""
+                  }`}
                 />
               </button>
               {showMobileLatestDropdown && (
@@ -327,9 +339,10 @@ export default function Header() {
                       to={link.path}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `text-xl font-medium transition-colors duration-200 ${isActive
-                          ? "text-ahc-green-dark font-semibold"
-                          : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        `text-xl font-medium transition-colors duration-200 ${
+                          isActive
+                            ? "text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                         }`
                       }
                     >
@@ -349,8 +362,9 @@ export default function Header() {
               >
                 <span>Health Pillars</span>
                 <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-200 ${showMobilePillarsDropdown ? "rotate-180" : ""
-                    }`}
+                  className={`h-6 w-6 transition-transform duration-200 ${
+                    showMobilePillarsDropdown ? "rotate-180" : ""
+                  }`}
                 />
               </button>
               {showMobilePillarsDropdown && (
@@ -361,9 +375,10 @@ export default function Header() {
                       to={link.path}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `text-xl font-medium transition-colors duration-200 ${isActive
-                          ? "text-ahc-green-dark font-semibold"
-                          : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        `text-xl font-medium transition-colors duration-200 ${
+                          isActive
+                            ? "text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                         }`
                       }
                     >
@@ -380,9 +395,10 @@ export default function Header() {
                 to={l.path}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `text-2xl font-medium transition-colors duration-200 ${isActive
-                    ? "text-ahc-green-dark font-semibold"
-                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                  `text-2xl font-medium transition-colors duration-200 ${
+                    isActive
+                      ? "text-ahc-green-dark font-semibold"
+                      : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                   }`
                 }
               >
