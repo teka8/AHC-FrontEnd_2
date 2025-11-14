@@ -468,34 +468,34 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                t: "Curriculum Innovation",
-                d: "Developing and implementing cutting-edge curricula that are responsive to the evolving health needs of Africa.",
+                t: "Scholarship",
+                d: "Fostering academic excellence and supporting students in health-related fields through various scholarship programs.",
                 i: <BookOpenCheck className="w-8 h-8" />,
               },
               {
-                t: "Faculty Development",
-                d: "Empowering educators with the skills and knowledge to deliver high-quality health professions education.",
-                i: <Users className="w-8 h-8" />,
-              },
-              {
-                t: "Research & Scholarship",
-                d: "Fostering a culture of inquiry and evidence-based practice to address the continent's health challenges.",
+                t: "Health Entrepreneurship",
+                d: "Promoting innovative health solutions and supporting entrepreneurs in developing sustainable healthcare ventures.",
                 i: <FlaskConical className="w-8 h-8" />,
               },
               {
-                t: "Technology & Simulation",
-                d: "Leveraging technology and simulation to enhance learning and improve clinical skills.",
-                i: <Laptop className="w-8 h-8" />,
-              },
-              {
-                t: "Regional Collaboration",
-                d: "Building and strengthening partnerships across the continent to foster knowledge exchange and joint initiatives.",
+                t: "Regional and local Collaboration",
+                d: "Building strong partnerships and fostering collaboration among regional and local stakeholders to address health challenges.",
                 i: <Globe className="w-8 h-8" />,
               },
               {
-                t: "Policy & Advocacy",
-                d: "Advocating for policies that support the advancement of health professions education and research in Africa.",
+                t: "Policy",
+                d: "Advocating for evidence-based health policies to improve public health outcomes.",
                 i: <Landmark className="w-8 h-8" />,
+              },
+              {
+                t: "Health Advocacy",
+                d: "Influencing decision-makers and raising awareness to promote health and well-being.",
+                i: <Users className="w-8 h-8" />,
+              },
+              {
+                t: "Faculty Development",
+                d: "Enhancing the skills and knowledge of faculty members to deliver high-quality health education and research.",
+                i: <Users className="w-8 h-8" />,
               },
             ].map((f) => (
               <div
