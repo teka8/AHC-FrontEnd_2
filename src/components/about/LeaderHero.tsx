@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
                 decoding="async"
                 width="1320"
                 height="880"
-                src="/images/hero/about.jpg"
+                src="/public/images/hero/about.jpg"
                 className="attachment-large size-large"
                 alt=""
                 style={{ objectPosition: "82% 51%" }}
@@ -59,12 +59,12 @@ const Hero: React.FC = () => {
               </li>
             </ol>
           </nav>
-          <h1 className="ahehc-banner__title">About Us</h1>
+          <h1 className="ahehc-banner__title">Leadership</h1>
           <p className="is-size-large">
-            The Africa Health Collaborative (AHC) strengthens primary healthcare
-            across Africa by empowering youth. AHC–AAU leads this work in
-            Ethiopia, partnering with local universities to equip young people,
-            especially women, to drive health sector transformation.
+            AHC–AAU’s leadership team drives innovation and impact in Ethiopia’s
+            health sector. Committed to collaboration and excellence, they guide
+            programs, empower youth, and shape strategies that strengthen
+            primary healthcare across the country.
           </p>
         </div>
       </div>
