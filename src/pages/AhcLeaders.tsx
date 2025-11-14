@@ -12,33 +12,42 @@ export default function AhcLeaders() {
 
       <Hero />
 
-      <div className="bg-white dark:bg-ahc-dark py-20">
+      <div className="bg-slate-50 dark:bg-ahc-dark py-20">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
-            AHC Leaders
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-ahc-dark dark:text-white mb-2">
+            Meet our Leaders
+          </h1>
+          <div className="flex items-center mb-12">
+            <div className="w-24 h-1 bg-ahc-green rounded-full"></div>
+            <div className="w-12 h-1 bg-ahc-blue rounded-full ml-2"></div>
+          </div>
+          <p className="max-w-3xl text-lg text-slate-600 dark:text-slate-300 mb-12">
+            From its earliest days as a university college to its present position as Ethiopia’s first autonomous public university, AAU has been shaped by its presidents. AAU's current President is Dr Samuel Kifle who has been entrusted with the historic task of leading the university's transition to autonoms.
+          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {leaders.map((leader) => (
               <Link
                 to={`/ahc-leaders/${leader.id}`}
                 key={leader.id}
-                className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 duration-300 overflow-hidden"
+                className="bg-white dark:bg-ahc-dark-secondary rounded-lg shadow-md hover:shadow-xl border border-slate-200 dark:border-slate-700 transition-all duration-300 overflow-hidden group"
               >
-                <img
-                  src={leader.image}
-                  alt={leader.name}
-                  className="w-full h-48 object-contain bg-gray-50 p-4"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <div className="p-6 text-left">
+                  <h3 className="text-xl font-bold text-ahc-dark dark:text-white">
                     {leader.name}
                   </h3>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-ahc-green dark:text-ahc-green-light mt-1">
                     {leader.position}
                   </p>
-                  <p className="text-gray-600 dark:text-gray-300 mt-4 line-clamp-2"></p>
-                  <div className="mt-4 text-ahc-green hover:text-blue-900 font-medium">
+                  <div className="mt-4 text-sm font-semibold text-ahc-blue hover:text-ahc-blue-dark dark:text-ahc-blue-light dark:hover:text-white transition-colors">
                     View Details →
                   </div>
                 </div>

@@ -57,75 +57,80 @@ export default function Home() {
             centerTitle={true}
           />
           <div className="grid gap-12 md:grid-cols-2 items-center">
-            <div className="prose max-w-none dark:prose-invert">
-              <p>
-                The Africa Health Collaborative (AHC) is a network of health
-                professionals, educators, and institutions dedicated to
-                advancing health professions education and research in Africa.
-                We foster collaboration, knowledge exchange, and scholarship to
-                address the continent's pressing health challenges.
-              </p>
-              <p>
-                Our work is guided by a commitment to excellence, equity, and
-                innovation. We believe that by working together, we can build a
-                healthier future for all Africans.
-              </p>
+            <div>
+              <img src="/public/images/aheia.jpg" alt="Advancing Health Education in Africa" className="rounded-lg shadow-xl w-full h-auto object-cover" />
             </div>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
-                  Our Reach
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">
-                  12+ Universities
-                </div>
-                <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
-                  A growing network of institutions across Africa.
+            <div>
+              <div className="prose max-w-none dark:prose-invert">
+                <p>
+                  The Africa Health Collaborative (AHC) is a network of health
+                  professionals, educators, and institutions dedicated to
+                  advancing health professions education and research in Africa.
+                  We foster collaboration, knowledge exchange, and scholarship to
+                  address the continent's pressing health challenges.
+                </p>
+                <p>
+                  Our work is guided by a commitment to excellence, equity, and
+                  innovation. We believe that by working together, we can build a
+                  healthier future for all Africans.
                 </p>
               </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Resources
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  500+ Items
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  A rich library of educational materials and research.
-                </p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Community
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  3k+ Members
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  A vibrant community of health professionals and educators.
-                </p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Impact
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  Pan-African
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  Driving positive change in health education across the
-                  continent.
-                </p>
+              <div className="mt-8">
+                <a
+                  href="/about"
+                  className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
+                >
+                  Learn more
+                </a>
               </div>
             </div>
           </div>
-          <div className="flex justify-center mt-8">
-            <a
-              href="/about"
-              className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
-            >
-              Learn more
-            </a>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+            <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                Our Reach
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">
+                12+ Universities
+              </div>
+              <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                A growing network of institutions across Africa.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Resources
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                500+ Items
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                A rich library of educational materials and research.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Community
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                3k+ Members
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                A vibrant community of health professionals and educators.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Impact
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                Pan-African
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                Driving positive change in health education across the
+                continent.
+              </p>
+            </div>
           </div>
         </div>
       </section>
