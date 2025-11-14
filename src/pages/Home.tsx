@@ -151,10 +151,10 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <img
-              src="https://africahealthcollaborative.org/wp-content/uploads/2023/11/0X3A0642-2048x1343.jpg"
+              src="./images/HEMP.jpg"
               alt="Health"
               className="w-full h-[500px] object-cover"
-            />
+            /> 
           </a>
 
           {/* Dark overlay */}
@@ -200,7 +200,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <img
-              src="https://africahealthcollaborative.org/wp-content/uploads/2023/11/African-Impact-Challenge_July-2023_Edits_Volpe-43-2048x1365.jpg"
+              src="./images/HENT.jpg"
               alt="Education"
               className="w-full h-[500px] object-cover"
             />
@@ -247,7 +247,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <img
-              src="https://africahealthcollaborative.org/wp-content/uploads/2023/11/0110TCB00871-edited-2048x2048.jpg"
+              src="./images/HECO.jpg"
               alt="Innovation"
               className="w-full h-[500px] object-cover"
             />
@@ -429,8 +429,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Mission</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-                To be a leading catalyst for transformative and sustainable
-                health professions education and research in Africa.
+               To leverage the power of higher education institutions as centres of innovation, knowledge exchange, and community collaboration, driving inclusive transformation of primary healthcare in Ethiopia and beyond.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
@@ -451,10 +450,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Vision</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-                To foster a dynamic and collaborative ecosystem that empowers
-                health professionals to address Africa's unique health
-                challenges through innovation and excellence in education and
-                research.
+               To prepare diverse youth for meaningful work in transforming health and well-being in Africa through contextually appropriate, equitable, and sustainable primary healthcare systems.
               </p>
             </div>
           </div>

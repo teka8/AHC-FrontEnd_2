@@ -112,7 +112,7 @@ AIMS ranks among the top 20 African academic institutions for influential resear
       website: "https://example.com",
       contactPerson: { name: "", description: "Admissions Officer", email: "info@ashesi.edu.gh" },
     },
-    galery: ["https://africahealthcollaborative.org/wp-content/uploads/2023/10/IMG_8926-1320x880.jpg", ""],
+    galery: ["https://africahealthcollaborative.org/wp-content/uploads/2023/10/IMG_8926-1320x880.jpg", "https://africahealthcollaborative.org/wp-content/uploads/2023/11/Ikaze-24-edited-2048x1280.jpg"],
     website: "http://example.com",
     logo: "https://africahealthcollaborative.org/wp-content/uploads/2023/10/logo-alu.svg",
     description: {
