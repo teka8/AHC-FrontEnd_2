@@ -57,239 +57,247 @@ export default function Home() {
             centerTitle={true}
           />
           <div className="grid gap-12 md:grid-cols-2 items-center">
-            <div className="prose max-w-none dark:prose-invert">
-              <p>
-                The Africa Health Collaborative (AHC) is a network of health
-                professionals, educators, and institutions dedicated to
-                advancing health professions education and research in Africa.
-                We foster collaboration, knowledge exchange, and scholarship to
-                address the continent's pressing health challenges.
-              </p>
-              <p>
-                Our work is guided by a commitment to excellence, equity, and
-                innovation. We believe that by working together, we can build a
-                healthier future for all Africans.
-              </p>
+            <div>
+              <img src="/images/aheia.jpg" alt="Advancing Health Education in Africa" className="rounded-lg shadow-xl w-full h-auto object-cover" />
             </div>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
-                  Our Reach
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">
-                  12+ Universities
-                </div>
-                <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
-                  A growing network of institutions across Africa.
+            <div>
+              <div className="prose max-w-none dark:prose-invert">
+                <p>
+                  The Africa Health Collaborative (AHC) is a network of health
+                  professionals, educators, and institutions dedicated to
+                  advancing health professions education and research in Africa.
+                  We foster collaboration, knowledge exchange, and scholarship to
+                  address the continent's pressing health challenges.
+                </p>
+                <p>
+                  Our work is guided by a commitment to excellence, equity, and
+                  innovation. We believe that by working together, we can build a
+                  healthier future for all Africans.
                 </p>
               </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Resources
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  500+ Items
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  A rich library of educational materials and research.
-                </p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Community
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  3k+ Members
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  A vibrant community of health professionals and educators.
-                </p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Impact
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  Pan-African
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  Driving positive change in health education across the
-                  continent.
-                </p>
+              <div className="mt-8">
+                <a
+                  href="/about"
+                  className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
+                >
+                  Learn more
+                </a>
               </div>
             </div>
           </div>
-          <div className="flex justify-center mt-8">
-            <a
-              href="/about"
-              className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
-            >
-              Learn more
-            </a>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+            <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                Our Reach
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">
+                12+ Universities
+              </div>
+              <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                A growing network of institutions across Africa.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Resources
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                500+ Items
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                A rich library of educational materials and research.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Community
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                3k+ Members
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                A vibrant community of health professionals and educators.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Impact
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                Pan-African
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                Driving positive change in health education across the
+                continent.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-{/* Discovering pillars*/}
-<section>
-  {/* Discovering Pillars */}
-  <section className="py-16 bg-white">
-    <div className="container mx-auto text-center px-4">
-      {/* Section Title */}
-      <h2 className="text-5xl font-bold mb-4">Explore our Pillars</h2>
-      <p className="text-gray-600 max-w-3xl mx-auto mb-12">
-        Preparing diverse youth for the meaningful work of transforming health and wellbeing in Africa
-        through contextually appropriate and sustainable primary healthcare.
-      </p>
+      {/* Discovering pillars*/}
+      <section>
+        {/* Discovering Pillars */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto text-center px-4">
+            {/* Section Title */}
+            <h2 className="text-5xl font-bold mb-4">Explore our Pillars</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto mb-12">
+              Preparing diverse youth for the meaningful work of transforming
+              health and wellbeing in Africa through contextually appropriate
+              and sustainable primary healthcare.
+            </p>
 
-      {/* Pillars Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {/* Pillar Card */}
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-employment/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HEMP.jpg"
-              alt="Health"
-              className="w-full h-[500px] object-cover"
-            />
-          </a>
+            {/* Pillars Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {/* Pillar Card */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-employment/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HEMP.jpg"
+                    alt="Health"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-          
-         <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
-  {/* Icon */}
-  <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-5 h-5 text-white"
-      fill="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
-    </svg>
-  </div>
+                <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
+                  {/* Icon */}
+                  <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                    </svg>
+                  </div>
 
-  {/* Text */}
-  <h3 className="text-2xl font-extrabold drop-shadow-lg">
-    Health Employment (HEMP)
-  </h3>
-  <p className="text-sm mt-2 max-w-xs mx-auto">
-    Expand capacity to train primary health care workers to meet growing demand.
-  </p>
-</div>
+                  {/* Text */}
+                  <h3 className="text-2xl font-extrabold drop-shadow-lg">
+                    Health Employment (HEMP)
+                  </h3>
+                  <p className="text-sm mt-2 max-w-xs mx-auto">
+                    Expand capacity to train primary health care workers to meet
+                    growing demand.
+                  </p>
+                </div>
 
-          {/* Learn More Button */}
-          <a
-            href="health-pillars/health-employment"
-            rel="noopener noreferrer"
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
-          >
-            Learn More
-          </a>
-        </div>
+                {/* Learn More Button */}
+                <a
+                  href="health-pillars/health-employment"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
+                >
+                  Learn More
+                </a>
+              </div>
 
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HENT.jpg"
-              alt="Education"
-              className="w-full h-[500px] object-cover"
-            />
-          </a>
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HENT.jpg"
+                    alt="Education"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
-          {/* Dark overlay */}
-           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-          <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
-  {/* Icon */}
-  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-3">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-5 h-5 text-white"
-      fill="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
-    </svg>
-  </div>
+                <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
+                  {/* Icon */}
+                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                    </svg>
+                  </div>
 
-  {/* Text */}
-  <h3 className="text-2xl font-extrabold drop-shadow-lg">
-   Health Entrepreneurship (HENT)
-  </h3>
-  <p className="text-sm mt-2 max-w-xs mx-auto">
-   Implement and sustain entrepreneurial ecosystems that launch health start-ups, generate
-              revenue, and create meaningful employment.
-  </p>
-</div>
-          {/* Learn More Button */}
-          <a
-            href="health-pillars/health-entrepreneurship"
-            rel="noopener noreferrer"
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
-          >
-            Learn More
-          </a>
-        </div>
+                  {/* Text */}
+                  <h3 className="text-2xl font-extrabold drop-shadow-lg">
+                    Health Entrepreneurship (HENT)
+                  </h3>
+                  <p className="text-sm mt-2 max-w-xs mx-auto">
+                    Implement and sustain entrepreneurial ecosystems that launch
+                    health start-ups, generate revenue, and create meaningful
+                    employment.
+                  </p>
+                </div>
+                {/* Learn More Button */}
+                <a
+                  href="health-pillars/health-entrepreneurship"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
+                >
+                  Learn More
+                </a>
+              </div>
 
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HECO.jpg"
-              alt="Innovation"
-              className="w-full h-[500px] object-cover"
-            />
-          </a>
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HECO.jpg"
+                    alt="Innovation"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-         <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
-  <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-3">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-5 h-5 text-white"
-      fill="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
-    </svg>
-  </div>
+                <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
+                  <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                    </svg>
+                  </div>
 
-  <h3 className="text-2xl font-extrabold drop-shadow-lg">
-     Health Ecosystems (HECO)
-  </h3>
-  <p className="text-sm mt-2 max-w-xs mx-auto">
-     Enabling the growth and transformation of Africa’s health sector.
-  </p>
-</div>
+                  <h3 className="text-2xl font-extrabold drop-shadow-lg">
+                    Health Ecosystems (HECO)
+                  </h3>
+                  <p className="text-sm mt-2 max-w-xs mx-auto">
+                    Enabling the growth and transformation of Africa’s health
+                    sector.
+                  </p>
+                </div>
 
-          {/* Learn More Button */}
-          <a
-            href="health-pillars/health-ecosystems"
-            rel="noopener noreferrer"
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
-          >
-            Learn More
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-</section>
-          <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
+                {/* Learn More Button */}
+                <a
+                  href="health-pillars/health-ecosystems"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
         <div className="container">
           <SectionHeader
             eyebrow="Stay Informed"
@@ -346,7 +354,7 @@ export default function Home() {
                           : "")
                       }
                       alt={n.title}
-                      className="w-24 h-24 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300"
+                      className="w-42 h-32 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300"
                     />
                     <div>
                       <h4 className="font-semibold text-lg leading-tight text-slate-900 dark:text-white group-hover:text-ahc-green-dark transition-colors">
@@ -371,8 +379,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-            
-             <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
+
+      <section className="py-16 md:py-24 animate-page bg-white dark:bg-slate-800">
         <div className="container">
           <SectionHeader
             eyebrow="Join Us"
@@ -404,7 +412,7 @@ export default function Home() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-24 bg-green-50 dark:bg-slate-950 transition-colors duration-300">
+      <section className="py-16 md:py-24 bg-green-50 dark:bg-slate-950 transition-colors duration-300 bg-green-50/50">
         <div className="container">
           <SectionHeader
             eyebrow="Our Purpose"
@@ -430,7 +438,10 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Mission</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-               To leverage the power of higher education institutions as centres of innovation, knowledge exchange, and community collaboration, driving inclusive transformation of primary healthcare in Ethiopia and beyond.
+                To leverage the power of higher education institutions as
+                centres of innovation, knowledge exchange, and community
+                collaboration, driving inclusive transformation of primary
+                healthcare in Ethiopia and beyond.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
@@ -451,7 +462,10 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Vision</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-               To prepare diverse youth for meaningful work in transforming health and well-being in Africa through contextually appropriate, equitable, and sustainable primary healthcare systems.
+                To prepare diverse youth for meaningful work in transforming
+                health and well-being in Africa through contextually
+                appropriate, equitable, and sustainable primary healthcare
+                systems.
               </p>
             </div>
           </div>
@@ -469,34 +483,34 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                t: "Curriculum Innovation",
-                d: "Developing and implementing cutting-edge curricula that are responsive to the evolving health needs of Africa.",
+                t: "Scholarship",
+                d: "Fostering academic excellence and supporting students in health-related fields through various scholarship programs.",
                 i: <BookOpenCheck className="w-8 h-8" />,
               },
               {
-                t: "Faculty Development",
-                d: "Empowering educators with the skills and knowledge to deliver high-quality health professions education.",
-                i: <Users className="w-8 h-8" />,
-              },
-              {
-                t: "Research & Scholarship",
-                d: "Fostering a culture of inquiry and evidence-based practice to address the continent's health challenges.",
+                t: "Health Entrepreneurship",
+                d: "Promoting innovative health solutions and supporting entrepreneurs in developing sustainable healthcare ventures.",
                 i: <FlaskConical className="w-8 h-8" />,
               },
               {
-                t: "Technology & Simulation",
-                d: "Leveraging technology and simulation to enhance learning and improve clinical skills.",
-                i: <Laptop className="w-8 h-8" />,
-              },
-              {
-                t: "Regional Collaboration",
-                d: "Building and strengthening partnerships across the continent to foster knowledge exchange and joint initiatives.",
+                t: "Regional and local Collaboration",
+                d: "Building strong partnerships and fostering collaboration among regional and local stakeholders to address health challenges.",
                 i: <Globe className="w-8 h-8" />,
               },
               {
-                t: "Policy & Advocacy",
-                d: "Advocating for policies that support the advancement of health professions education and research in Africa.",
+                t: "Policy",
+                d: "Advocating for evidence-based health policies to improve public health outcomes.",
                 i: <Landmark className="w-8 h-8" />,
+              },
+              {
+                t: "Health Advocacy",
+                d: "Influencing decision-makers and raising awareness to promote health and well-being.",
+                i: <Users className="w-8 h-8" />,
+              },
+              {
+                t: "Faculty Development",
+                d: "Enhancing the skills and knowledge of faculty members to deliver high-quality health education and research.",
+                i: <Users className="w-8 h-8" />,
               },
             ].map((f) => (
               <div
