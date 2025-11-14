@@ -207,7 +207,7 @@ export default function About() {
         </section>
 
         {/* Our Team Section */}
-        <section className="py-24 text-center">
+        {/* <section className="py-24 text-center">
           <div className="container mx-auto px-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-4">
               Meet Our Leadership
@@ -281,7 +281,7 @@ export default function About() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Impact Section */}
         <section className="py-16 md:py-24 bg-slate-100 dark:bg-slate-900">

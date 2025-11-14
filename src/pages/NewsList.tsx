@@ -15,12 +15,13 @@ export default function NewsList() {
   const page = parseInt(searchParams.get("page") ?? "1", 10);
   const pageSize = 9; // Moved pageSize declaration here
 
-  const { data: { data: items = [], meta } = {}, isLoading } =
-    useGetPublicPostsQuery(
-      pillarParam
-        ? { pillar: pillarParam, page, perPage: pageSize }
-        : { page, perPage: pageSize }
-    );
+  const { data, isLoading } = useGetPublicPostsQuery(
+    pillarParam
+      ? { pillar: pillarParam, page, perPage: pageSize, postType: "news" }
+      : { page, perPage: pageSize, postType: "news" }
+  );
+  const items = data?.data ?? [];
+  const meta = data?.meta;
   const pillarLabels: Record<string, string> = {
     unknown: "All Pillars",
     health_employment: "Health Employment",
@@ -52,8 +53,11 @@ export default function NewsList() {
   //   })
   // }, [items, search])
 
-  const total = meta?.total ?? 0;
-  const current = items;
+  const current = items.filter(
+    (item) => item.post_type?.toLowerCase() === "news"
+  );
+  const totalVisible = current.length;
+  const paginationTotal = meta?.total ?? totalVisible;
 
   const onPageChange = (newPage: number) => {
     setSearchParams((prev) => {
@@ -77,12 +81,12 @@ export default function NewsList() {
           className="w-full md:w-80 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-full px-5 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors"
         /> */}
           <div className="text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">
-            {total} result{total === 1 ? "" : "s"}
+            {totalVisible} result{totalVisible === 1 ? "" : "s"}
           </div>
         </div>
         {isLoading ? (
           <Loader />
-        ) : total === 0 ? (
+        ) : totalVisible === 0 ? (
           <div className="text-center py-16">
             <p className="text-lg font-semibold">No news found.</p>
             <p className="text-slate-500 dark:text-slate-400 mt-2">
@@ -144,7 +148,7 @@ export default function NewsList() {
             </div>
             <Pagination
               page={page}
-              total={total}
+              total={paginationTotal}
               pageSize={pageSize}
               onPageChange={onPageChange}
             />

@@ -18,6 +18,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [showLatestDropdown, setShowLatestDropdown] = useState(false);
+   const [showAboutDropdown, setShowAboutDropdown] = useState(false);
   const [showMobileLatestDropdown, setShowMobileLatestDropdown] =
     useState(false);
   const [showPillarsDropdown, setShowPillarsDropdown] = useState(false);
@@ -35,9 +36,16 @@ export default function Header() {
 
   const latestLinks = [
     { label: "Events", path: "/events" },
-    { label: "Announcement", path: "/announcement" },
+    { label: "Announcements", path: "/announcement" },
     { label: "News", path: "/news" },
   ];
+  const AboutLinks = [
+    { label: "About Us", path: "/about" },
+    { label: "AHC Leaders", path: "/ahcleaders" },
+    { label: "Values & Principles", path: "/valuesandprinciples" },
+    
+  ];
+
 
   const healthPillarsLinks = [
     { label: "Health Employment", path: "/health-pillars/health-employment" },
@@ -64,7 +72,7 @@ export default function Header() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800`}
     >
-      <div className="container flex h-14 md:h-16 items-center justify-between">
+      <div className="container flex h-14 md:h-16 items-center justify-between min-w-full">
         <Link to="/" className="flex items-center gap-3">
           <img
             src="/images/ahc-logo.png"
@@ -98,7 +106,7 @@ export default function Header() {
             {hPath === "/" ? <Home className="h-5 w-5" /> : "Home"}
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to={aboutPath}
             className={({ isActive }) =>
               `text-sm font-medium transition-colors duration-200 ${
@@ -109,7 +117,44 @@ export default function Header() {
             }
           >
             {aboutPath === "/about" ? "About" : "About"}
-          </NavLink>
+          </NavLink> */}
+          <div
+            className="relative"
+            onMouseEnter={() => setShowAboutDropdown(true)}
+            onMouseLeave={() => setShowAboutDropdown(false)}
+          >
+            <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+              <span className="inline-block">About</span>
+              <span
+                className={`inline-block transition-transform duration-200 ${
+                  showAboutDropdown ? "rotate-180" : ""
+                }`}
+              >
+                <ChevronDown className="h-4 w-4" />
+              </span>
+            </button>
+            {showAboutDropdown && (
+              <div className="absolute top-full left-0 pt-3">
+                <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                  {AboutLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `block px-4 py-2.5 text-sm transition-colors ${
+                          isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           <div
             className="relative"
