@@ -18,7 +18,7 @@ const ScholarshipDetail: React.FC = () => {
     return <div>Error loading scholarship details.</div>;
   }
 
-  const { title, description, eligibility, deadline, image_url, program_type, coverage, available_slots, status } = data;
+  const { title, description, eligibility_criteria, deadline, image_url, program_type, coverage, available_slots, status } = data;
 
   return (
     <>
@@ -52,7 +52,7 @@ const ScholarshipDetail: React.FC = () => {
               <h2 className="text-2xl font-bold mt-8 mb-4">Eligibility</h2>
               <div
                 className="break-words whitespace-normal overflow-x-auto"
-                dangerouslySetInnerHTML={{ __html: eligibility ?? "" }}
+                dangerouslySetInnerHTML={{ __html: eligibility_criteria ?? "" }}
               />
             </article>
           </div>
