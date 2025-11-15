@@ -52,7 +52,7 @@ export default function About() {
               <img
                 src="/images/collaborative-network.jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-contain w-full h-full"
+                className="rounded-lg shadow-2xl object-fill w-full h-full"
               />
             </div>
           </div>
@@ -63,9 +63,9 @@ export default function About() {
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div className="relative h-80 md:h-96">
               <img
-                src="/images/value-partnership.jpg"
+                src="/images/partners/photo_2025-11-15_11-19-13.jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-contain w-full h-full"
+                className="rounded-lg shadow-2xl object-fill w-full h-full"
               />
             </div>
             <div>
@@ -119,9 +119,9 @@ export default function About() {
             </div>
             <div className="relative h-80 md:h-96">
               <img
-                src="/images/goals-methods.jpg"
+                src="/images/partners/photo_2025-11-15_11-31-55.jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-contain w-full h-full"
+                className="rounded-lg shadow-2xl object-fill w-full h-full"
               />
             </div>
           </div>
@@ -141,7 +141,7 @@ As a proud founding partner of the Africa Health Collaborative, AAU continues to
               
             </div>
             <div className="relative h-80 md:h-96">
-              <img src="/public/images/Addis ababa university.jpeg" alt="Our collaborative network across Africa" className="rounded-lg shadow-2xl object-contain w-full h-full"/>
+              <img src="/images/Addis ababa university.jpeg" alt="Our collaborative network across Africa" className="rounded-lg shadow-2xl object-fill w-full h-full"/>
             </div>
           </div>
         </section>
