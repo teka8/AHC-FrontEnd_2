@@ -105,7 +105,7 @@ export default function About() {
               <img
                 src="/images/collaborative-network.jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-contain w-full h-full"
+                className="rounded-lg shadow-2xl object-cover w-full h-full"
               />
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function About() {
               <img
                 src="/images/value-partnership.jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-contain w-full h-full"
+                className="rounded-lg shadow-2xl object-cover w-full h-full"
               />
             </div>
             <div>
@@ -174,7 +174,7 @@ export default function About() {
               <img
                 src="/images/goals-methods.jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-contain w-full h-full"
+                className="rounded-lg shadow-2xl object-cover w-full h-full"
               />
             </div>
           </div>
@@ -206,7 +206,7 @@ export default function About() {
             </div>
             <div className="relative h-80 md:h-96">
               <img
-                src="/public/images/partners/AAU.webp"
+                src="/images/partners/AAU.webp"
                 alt="Our collaborative network across Africa"
                 className="rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 object-cover w-full h-full"
               />
