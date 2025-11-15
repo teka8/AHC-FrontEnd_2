@@ -8,6 +8,39 @@ export default function AhcLeaders() {
     <>
       <Helmet>
         <title>AHC Leaders – Africa Health Collaborative</title>
+        <meta
+          name="description"
+          content="Meet the dedicated leaders of the Africa Health Collaborative at Addis Ababa University, driving transformative health initiatives across the continent."
+        />
+        <meta
+          name="keywords"
+          content="AHC Leaders, Africa Health Collaborative, Addis Ababa University, Health Leadership, African Health Initiatives, AHC-AAU Team"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta property="og:title" content="AHC-AAU Leaders" />
+        <meta
+          property="og:description"
+          content="Meet the dedicated leaders of the Africa Health Collaborative at Addis Ababa University, driving transformative health initiatives across the continent."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://ahc.tewostechsolutions.com/ahc-leaders"
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AHC-AAU Leaders" />
+        <meta
+          name="twitter:description"
+          content="Meet the dedicated leaders of the Africa Health Collaborative at Addis Ababa University, driving transformative health initiatives across the continent."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
 
       <Hero />
@@ -22,7 +55,11 @@ export default function AhcLeaders() {
             <div className="w-12 h-1 bg-ahc-blue rounded-full ml-2"></div>
           </div>
           <p className="max-w-3xl text-lg text-slate-600 dark:text-slate-300 mb-12">
-            From its earliest days as a university college to its present position as Ethiopia’s first autonomous public university, AAU has been shaped by its presidents. AAU's current President is Dr Samuel Kifle who has been entrusted with the historic task of leading the university's transition to autonoms.
+            From its earliest days as a university college to its present
+            position as Ethiopia’s first autonomous public university, AAU has
+            been shaped by its presidents. AAU's current President is Dr Samuel
+            Kifle who has been entrusted with the historic task of leading the
+            university's transition to autonoms.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

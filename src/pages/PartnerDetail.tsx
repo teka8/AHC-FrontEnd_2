@@ -1,7 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { partners } from "../data/partners";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react"; 
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export function PartnerDetail() {
   const { name } = useParams<{ name: string }>();
@@ -27,8 +28,48 @@ export function PartnerDetail() {
   }
 
   return (
-    <div id="content" className="bg-slate-50 dark:bg-ahc-dark min-h-screen py-12 px-4 md:px-8 lg:px-16">
-      
+    <div
+      id="content"
+      className="bg-slate-50 dark:bg-ahc-dark min-h-screen py-12 px-4 md:px-8 lg:px-16"
+    >
+      <Helmet>
+        <title>{partner.name} – Africa Health Collaborative</title>
+        <meta
+          name="description"
+          content={`Learn more about ${partner.name}, a valued partner of the Africa Health Collaborative (AHC). Discover our collaborative efforts to strengthen primary healthcare across Africa and empower youth in the health sector.`}
+        />
+        <meta
+          name="keywords"
+          content={`AHC Partner, ${partner.name}, Africa Health Collaborative Partners, Health Collaborations Africa, Addis Ababa University Partners, AHC Partnerships, African Health Collaborations`}
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta property="og:title" content={`${partner.name} – AHC Partner`} />
+        <meta
+          property="og:description"
+          content={`Learn more about ${partner.name}, a valued partner of the Africa Health Collaborative (AHC). Discover our collaborative efforts to strengthen primary healthcare across Africa and empower youth in the health sector.`}
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://ahc.tewostechsolutions.com/partners/${partner.name
+            .replace(/\s+/g, "")
+            .toLowerCase()}`}
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${partner.name} – AHC Partner`} />
+        <meta
+          name="twitter:description"
+          content={`Learn more about ${partner.name}, a valued partner of the Africa Health Collaborative (AHC). Discover our collaborative efforts to strengthen primary healthcare across Africa and empower youth in the health sector.`}
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+      </Helmet>
       <div className="flex flex-col md:flex-row items-center gap-8 max-w-6xl mx-auto mb-10">
         <div className="flex-1">
           <h1 className="font-black text-4xl md:text-5xl text-gray-900 mb-6">
@@ -191,7 +232,10 @@ export function PartnerDetail() {
               </a>
             )}
           </div>
-          <Link to="" className="text-lg font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors">
+          <Link
+            to=""
+            className="text-lg font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors"
+          >
             Submit Revisions
           </Link>
         </div>

@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async'
-import { useMatch, useParams } from 'react-router-dom'
+import { Helmet } from "react-helmet-async";
+import { useMatch, useParams } from "react-router-dom";
 import {
   Facebook,
   Twitter,
@@ -8,68 +8,111 @@ import {
   Link,
   ArrowLeft,
   Share2,
-} from 'lucide-react'
+} from "lucide-react";
 
-import { useGetPublicPostQuery } from '../features/posts/postsApi'
-import Loader from '../components/Loader'
-import dayjs from 'dayjs'
+import { useGetPublicPostQuery } from "../features/posts/postsApi";
+import Loader from "../components/Loader";
+import dayjs from "dayjs";
 
 export default function NewsDetail() {
-  const { id = '' } = useParams()
-  const { data, isLoading, isError } = useGetPublicPostQuery(id)
+  const { id = "" } = useParams();
+  const { data, isLoading, isError } = useGetPublicPostQuery(id);
 
-  const isNewsRoute = Boolean(useMatch('/news/:id'))
-  const isAnnouncementRoute = Boolean(useMatch('/announcement/:id'))
+  const isNewsRoute = Boolean(useMatch("/news/:id"));
+  const isAnnouncementRoute = Boolean(useMatch("/announcement/:id"));
 
   const normalizedType = data?.post_type
     ? String(data.post_type).toLowerCase()
-    : 'news'
-  const isAnnouncement = normalizedType === 'announcement'
-  const backPath = isAnnouncement ? '/announcement' : '/news'
-  const backLabel = isAnnouncement ? 'All announcements' : 'All news'
-  const pageSingular = isAnnouncement ? 'Announcement' : 'News'
+    : "news";
+  const isAnnouncement = normalizedType === "announcement";
+  const backPath = isAnnouncement ? "/announcement" : "/news";
+  const backLabel = isAnnouncement ? "All announcements" : "All news";
+  const pageSingular = isAnnouncement ? "Announcement" : "News";
 
   const headerImg =
     data?.featured_image ||
     data?.content?.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] ||
-    ''
+    "";
 
   const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href)
-    alert('Link copied to clipboard!')
-  }
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied to clipboard!");
+  };
 
   const shareLinks = [
     {
-      name: 'Facebook',
+      name: "Facebook",
       icon: <Facebook size={20} />,
       href: `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
-      color: 'text-blue-600',
+      color: "text-blue-600",
     },
     {
-      name: 'Twitter',
+      name: "Twitter",
       icon: <Twitter size={20} />,
       href: `https://twitter.com/intent/tweet?url=${window.location.href}&text=${data?.title}`,
-      color: 'text-blue-400',
+      color: "text-blue-400",
     },
     {
-      name: 'LinkedIn',
+      name: "LinkedIn",
       icon: <Linkedin size={20} />,
       href: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${data?.title}`,
-      color: 'text-blue-700',
+      color: "text-blue-700",
     },
     {
-      name: 'Email',
+      name: "Email",
       icon: <Mail size={20} />,
       href: `mailto:?subject=${data?.title}&body=${window.location.href}`,
-      color: 'text-red-600',
+      color: "text-red-600",
     },
-  ]
+  ];
 
   return (
     <div className="bg-white dark:bg-gray-900">
       <Helmet>
         <title>{`${data?.title ?? pageSingular} – AHC`}</title>
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta
+          property="og:title"
+          content={`${
+            data?.title ?? pageSingular
+          } – Africa Health Collaborative`}
+        />
+        <meta
+          property="og:description"
+          content={
+            data?.excerpt ??
+            `Read this ${pageSingular.toLowerCase()} from the Africa Health Collaborative (AHC) at Addis Ababa University.`
+          }
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://ahc.tewostechsolutions.com/${
+            isAnnouncement ? "announcement" : "news"
+          }/${id}`}
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={`${
+            data?.title ?? pageSingular
+          } – Africa Health Collaborative`}
+        />
+        <meta
+          name="twitter:description"
+          content={
+            data?.excerpt ??
+            `Read this ${pageSingular.toLowerCase()} from the Africa Health Collaborative (AHC) at Addis Ababa University.`
+          }
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
 
       {isLoading ? (
@@ -79,13 +122,15 @@ export default function NewsDetail() {
       ) : isError ? (
         <div className="text-center py-16 px-4">
           <p className="text-lg font-semibold text-red-600">
-            Failed to load this {isAnnouncement ? 'announcement' : 'news item'}.
+            Failed to load this {isAnnouncement ? "announcement" : "news item"}.
           </p>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
             Please try again later.
           </p>
         </div>
-      ) : data && ((isAnnouncementRoute && isAnnouncement) || (isNewsRoute && !isAnnouncement)) ? (
+      ) : data &&
+        ((isAnnouncementRoute && isAnnouncement) ||
+          (isNewsRoute && !isAnnouncement)) ? (
         <>
           <div className="relative bg-gray-100 dark:bg-gray-800 py-16 md:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,7 +148,7 @@ export default function NewsDetail() {
               </h1>
               {data.published_at && (
                 <p className="text-base text-slate-500 dark:text-slate-400 mb-8">
-                  {dayjs(data.published_at).format('MMMM DD, YYYY')}
+                  {dayjs(data.published_at).format("MMMM DD, YYYY")}
                 </p>
               )}
             </div>
@@ -114,7 +159,7 @@ export default function NewsDetail() {
               <div className="overflow-hidden rounded-lg shadow-lg">
                 <img
                   src={headerImg}
-                  alt={data.title ?? ''}
+                  alt={data.title ?? ""}
                   className="w-full h-96 object-cover"
                 />
               </div>
@@ -126,7 +171,7 @@ export default function NewsDetail() {
               <div className="w-full lg:w-3/4 px-4">
                 <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed overflow-hidden break-words">
                   <div
-                    dangerouslySetInnerHTML={{ __html: data.content ?? '' }}
+                    dangerouslySetInnerHTML={{ __html: data.content ?? "" }}
                   />
                 </div>
               </div>
@@ -174,22 +219,25 @@ export default function NewsDetail() {
       ) : data ? (
         <div className="text-center py-16 px-4">
           <p className="text-lg font-semibold">
-            This {isAnnouncementRoute ? 'announcement' : 'news item'} was not found.
+            This {isAnnouncementRoute ? "announcement" : "news item"} was not
+            found.
           </p>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
-            Please check the URL or go back to the {isAnnouncementRoute ? 'announcements' : 'news'} list.
+            Please check the URL or go back to the{" "}
+            {isAnnouncementRoute ? "announcements" : "news"} list.
           </p>
         </div>
       ) : (
         <div className="text-center py-16 px-4">
           <p className="text-lg font-semibold">
-            This {isAnnouncement ? 'announcement' : 'news item'} was not found.
+            This {isAnnouncement ? "announcement" : "news item"} was not found.
           </p>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
-            Please check the URL or go back to the {isAnnouncement ? 'announcements' : 'news'} list.
+            Please check the URL or go back to the{" "}
+            {isAnnouncement ? "announcements" : "news"} list.
           </p>
         </div>
       )}
     </div>
-  )
+  );
 }

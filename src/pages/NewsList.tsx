@@ -70,6 +70,45 @@ export default function NewsList() {
     <>
       <Helmet>
         <title>News – AHC</title>
+        <meta
+          name="description"
+          content="Stay informed with the latest news and updates from the Africa Health Collaborative (AHC) at Addis Ababa University. Explore our articles on health initiatives, research, and impact across Africa."
+        />
+        <meta
+          name="keywords"
+          content="AHC News, Africa Health Collaborative News, Health Initiatives Africa, Addis Ababa University News, AHC Updates, African Health News"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta
+          property="og:title"
+          content="AHC News – Africa Health Collaborative"
+        />
+        <meta
+          property="og:description"
+          content="Stay informed with the latest news and updates from the Africa Health Collaborative (AHC) at Addis Ababa University. Explore our articles on health initiatives, research, and impact across Africa."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://ahc.tewostechsolutions.com/news"
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="AHC News – Africa Health Collaborative"
+        />
+        <meta
+          name="twitter:description"
+          content="Stay informed with the latest news and updates from the Africa Health Collaborative (AHC) at Addis Ababa University. Explore our articles on health initiatives, research, and impact across Africa."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
       <Hero />
       <div className="container py-16 md:py-24">

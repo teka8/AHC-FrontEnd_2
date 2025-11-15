@@ -19,6 +19,46 @@ export default function About() {
     <>
       <Helmet>
         <title>About Us – Africa Health Collaborative</title>
+        <meta
+          name="description"
+          content="Learn more about the Africa Health Collaborative (AHC), our mission to strengthen primary healthcare across Africa by empowering youth, and our partnership with Addis Ababa University in Ethiopia."
+        />
+        <meta
+          name="keywords"
+          content="Africa Health Collaborative, AHC, primary healthcare, youth empowerment, Addis Ababa University, Ethiopia, health transformation, collaboration, health systems, Africa health initiatives, health ecosystem, health inovation, health employment"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <link rel="canonical" href="https://ahc.tewostechsolutions.com/about" />
+        <meta
+          property="og:title"
+          content="About Us – Africa Health Collaborative"
+        />
+        <meta
+          property="og:description"
+          content="Learn more about the Africa Health Collaborative (AHC), our mission to strengthen primary healthcare across Africa by empowering youth, and our partnership with Addis Ababa University in Ethiopia."
+        />
+        <meta
+          property="og:url"
+          content="https://ahc.tewostechsolutions.com/about"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="About Us – Africa Health Collaborative"
+        />
+        <meta
+          name="twitter:description"
+          content="Learn more about the Africa Health Collaborative (AHC), our mission to strengthen primary healthcare across Africa by empowering youth, and our partnership with Addis Ababa University in Ethiopia."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
       <Hero />
       <div className="bg-white dark:bg-ahc-dark">

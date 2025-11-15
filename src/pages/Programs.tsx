@@ -1,12 +1,19 @@
 import React, { useMemo, useState } from "react";
 import { useGetProgramsQuery } from "../features/healthPillars/programsApi";
 import ProgramCard from "../components/cards/ProgramCard";
-import { Search, X, ChevronLeft, ChevronRight, SlidersHorizontal } from "lucide-react";
+import {
+  Search,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  SlidersHorizontal,
+} from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const Programs: React.FC = () => {
   const { data: programs = [], isLoading } = useGetProgramsQuery(undefined);
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedPillars, setSelectedPillars] = useState<string[]>([]);
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [selectedPartners, setSelectedPartners] = useState<string[]>([]);
@@ -17,20 +24,24 @@ const Programs: React.FC = () => {
   const itemsPerPage = 9;
 
   const { pillars, countries, partners } = useMemo(() => {
-    const pillars = [...new Set(programs.flatMap(p => p.category_labels))];
-    const countries = [...new Set(programs.map(p => p.country).filter(Boolean) as string[])];
-    
+    const pillars = [...new Set(programs.flatMap((p) => p.category_labels))];
+    const countries = [
+      ...new Set(programs.map((p) => p.country).filter(Boolean) as string[]),
+    ];
+
     const partnerSet = new Set<string>();
-    programs.forEach(p => {
+    programs.forEach((p) => {
       if (p.host) partnerSet.add(p.host);
       if (p.partners_involved) {
         try {
           const parsed = JSON.parse(p.partners_involved);
           if (Array.isArray(parsed)) {
-            parsed.forEach(partner => partnerSet.add(partner));
+            parsed.forEach((partner) => partnerSet.add(partner));
           }
         } catch (e) {
-          p.partners_involved.split(/, ?/).forEach(partner => partnerSet.add(partner.trim()));
+          p.partners_involved
+            .split(/, ?/)
+            .forEach((partner) => partnerSet.add(partner.trim()));
         }
       }
     });
@@ -39,37 +50,67 @@ const Programs: React.FC = () => {
   }, [programs]);
 
   const filteredPrograms = useMemo(() => {
-    return programs.filter(program => {
-      const searchTermMatch = program.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            program.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const pillarMatch = selectedPillars.length === 0 || program.category_labels.some(c => selectedPillars.includes(c));
-      const countryMatch = selectedCountries.length === 0 || (program.country && selectedCountries.includes(program.country));
-      
+    return programs.filter((program) => {
+      const searchTermMatch =
+        program.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        program.description.toLowerCase().includes(searchTerm.toLowerCase());
+      const pillarMatch =
+        selectedPillars.length === 0 ||
+        program.category_labels.some((c) => selectedPillars.includes(c));
+      const countryMatch =
+        selectedCountries.length === 0 ||
+        (program.country && selectedCountries.includes(program.country));
+
       const programPartners = new Set<string>([program.host]);
       if (program.partners_involved) {
         try {
           const parsed = JSON.parse(program.partners_involved);
           if (Array.isArray(parsed)) {
-            parsed.forEach(partner => programPartners.add(partner));
+            parsed.forEach((partner) => programPartners.add(partner));
           }
         } catch (e) {
-            program.partners_involved.split(/, ?/).forEach(partner => programPartners.add(partner.trim()));
+          program.partners_involved
+            .split(/, ?/)
+            .forEach((partner) => programPartners.add(partner.trim()));
         }
       }
-      const partnerMatch = selectedPartners.length === 0 || [...programPartners].some(p => selectedPartners.includes(p));
+      const partnerMatch =
+        selectedPartners.length === 0 ||
+        [...programPartners].some((p) => selectedPartners.includes(p));
 
-      const statusMatch = selectedStatus.length === 0 || selectedStatus.includes(program.state);
+      const statusMatch =
+        selectedStatus.length === 0 || selectedStatus.includes(program.state);
 
-      return searchTermMatch && pillarMatch && countryMatch && partnerMatch && statusMatch;
+      return (
+        searchTermMatch &&
+        pillarMatch &&
+        countryMatch &&
+        partnerMatch &&
+        statusMatch
+      );
     });
-  }, [programs, searchTerm, selectedPillars, selectedCountries, selectedPartners, selectedStatus]);
+  }, [
+    programs,
+    searchTerm,
+    selectedPillars,
+    selectedCountries,
+    selectedPartners,
+    selectedStatus,
+  ]);
 
   const statusOptions = ["active", "upcoming", "paused", "archived"];
 
   const totalPages = Math.ceil(filteredPrograms.length / itemsPerPage);
-  const paginatedPrograms = filteredPrograms.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const paginatedPrograms = filteredPrograms.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
-  const FilterCheckbox: React.FC<{label: string, group: string[], setGroup: React.Dispatch<React.SetStateAction<string[]>>}> = ({ label, group, setGroup }) => (
+  const FilterCheckbox: React.FC<{
+    label: string;
+    group: string[];
+    setGroup: React.Dispatch<React.SetStateAction<string[]>>;
+  }> = ({ label, group, setGroup }) => (
     <label className="flex items-center space-x-3">
       <input
         type="checkbox"
@@ -87,32 +128,64 @@ const Programs: React.FC = () => {
     </label>
   );
 
-  const hasActiveFilters = selectedPillars.length > 0 || selectedCountries.length > 0 || selectedPartners.length > 0 || selectedStatus.length > 0;
+  const hasActiveFilters =
+    selectedPillars.length > 0 ||
+    selectedCountries.length > 0 ||
+    selectedPartners.length > 0 ||
+    selectedStatus.length > 0;
 
   const renderFilters = () => (
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-semibold mb-3">Pillars</h3>
         <div className="space-y-2">
-          {pillars.map(p => <FilterCheckbox key={p} label={p} group={selectedPillars} setGroup={setSelectedPillars} />)}
+          {pillars.map((p) => (
+            <FilterCheckbox
+              key={p}
+              label={p}
+              group={selectedPillars}
+              setGroup={setSelectedPillars}
+            />
+          ))}
         </div>
       </div>
       <div>
         <h3 className="text-lg font-semibold mb-3">Countries</h3>
         <div className="space-y-2">
-          {countries.map(c => <FilterCheckbox key={c} label={c} group={selectedCountries} setGroup={setSelectedCountries} />)}
+          {countries.map((c) => (
+            <FilterCheckbox
+              key={c}
+              label={c}
+              group={selectedCountries}
+              setGroup={setSelectedCountries}
+            />
+          ))}
         </div>
       </div>
       <div>
         <h3 className="text-lg font-semibold mb-3">Partners</h3>
         <div className="space-y-2">
-          {partners.map(p => <FilterCheckbox key={p} label={p} group={selectedPartners} setGroup={setSelectedPartners} />)}
+          {partners.map((p) => (
+            <FilterCheckbox
+              key={p}
+              label={p}
+              group={selectedPartners}
+              setGroup={setSelectedPartners}
+            />
+          ))}
         </div>
       </div>
       <div>
         <h3 className="text-lg font-semibold mb-3">Status</h3>
         <div className="space-y-2">
-          {statusOptions.map(s => <FilterCheckbox key={s} label={s} group={selectedStatus} setGroup={setSelectedStatus} />)}
+          {statusOptions.map((s) => (
+            <FilterCheckbox
+              key={s}
+              label={s}
+              group={selectedStatus}
+              setGroup={setSelectedStatus}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -120,6 +193,48 @@ const Programs: React.FC = () => {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+      <Helmet>
+        <title>Programs | Africa Health Collaborative</title>
+        <meta
+          name="description"
+          content="Explore the diverse programs of the Africa Health Collaborative (AHC) aimed at strengthening primary healthcare across Africa. Discover initiatives focused on health entrepreneurship, digital health, and more."
+        />
+        <meta
+          name="keywords"
+          content="AHC Programs, Africa Health Collaborative Initiatives, Health Programs Africa, Primary Healthcare Africa, Health Entrepreneurship, Digital Health Africa, AHC Health Projects"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta
+          property="og:title"
+          content="AHC Programs – Africa Health Collaborative"
+        />
+        <meta
+          property="og:description"
+          content="Explore the diverse programs of the Africa Health Collaborative (AHC) aimed at strengthening primary healthcare across Africa. Discover initiatives focused on health entrepreneurship, digital health, and more."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://ahc.tewostechsolutions.com/programs"
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="AHC Programs | Africa Health Collaborative"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore the diverse programs of the Africa Health Collaborative (AHC) aimed at strengthening primary healthcare across Africa. Discover initiatives focused on health entrepreneurship, digital health, and more."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+      </Helmet>
       <section className="relative isolate overflow-hidden bg-gray-900">
         <div className="absolute inset-0">
           <img
@@ -129,16 +244,17 @@ const Programs: React.FC = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/60 to-ahc-green/40" />
         </div>
-                <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-28">
-                  <div className="max-w-3xl">
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight drop-shadow-xl">
-                      Discover Our Programs
-                    </h1>
-                    <p className="mt-4 text-lg text-white/80">
-                      Explore initiatives shaping the future of health in Africa. Use the filters to find programs aligned with your interests.
-                    </p>
-                  </div>
-                </div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-28">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight drop-shadow-xl">
+              Discover Our Programs
+            </h1>
+            <p className="mt-4 text-lg text-white/80">
+              Explore initiatives shaping the future of health in Africa. Use
+              the filters to find programs aligned with your interests.
+            </p>
+          </div>
+        </div>
       </section>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -166,13 +282,17 @@ const Programs: React.FC = () => {
             {isLoading ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {Array.from({ length: 9 }).map((_, index) => (
-                  <div key={index} className="animate-pulse rounded-2xl bg-gray-200 dark:bg-gray-800 h-80" />
+                  <div
+                    key={index}
+                    className="animate-pulse rounded-2xl bg-gray-200 dark:bg-gray-800 h-80"
+                  />
                 ))}
               </div>
             ) : (
               <>
                 <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                  Showing {paginatedPrograms.length} of {filteredPrograms.length} programs.
+                  Showing {paginatedPrograms.length} of{" "}
+                  {filteredPrograms.length} programs.
                 </div>
                 {filteredPrograms.length > 0 ? (
                   <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -183,7 +303,9 @@ const Programs: React.FC = () => {
                 ) : (
                   <div className="text-center py-16">
                     <h3 className="text-xl font-semibold">No programs found</h3>
-                    <p className="text-gray-500 mt-2">Try adjusting your search or filters.</p>
+                    <p className="text-gray-500 mt-2">
+                      Try adjusting your search or filters.
+                    </p>
                   </div>
                 )}
               </>
@@ -192,7 +314,7 @@ const Programs: React.FC = () => {
             {totalPages > 1 && (
               <div className="mt-12 flex justify-center items-center space-x-4">
                 <button
-                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
                   className="p-2 rounded-md disabled:opacity-50"
                 >
@@ -202,7 +324,9 @@ const Programs: React.FC = () => {
                   Page {currentPage} of {totalPages}
                 </span>
                 <button
-                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  onClick={() =>
+                    setCurrentPage((p) => Math.min(totalPages, p + 1))
+                  }
                   disabled={currentPage === totalPages}
                   className="p-2 rounded-md disabled:opacity-50"
                 >
@@ -213,7 +337,7 @@ const Programs: React.FC = () => {
           </main>
         </div>
       </div>
-      
+
       {/* Floating Filter Button for Mobile */}
       <button
         className="lg:hidden fixed bottom-6 left-6 z-40 bg-ahc-green hover:bg-ahc-green-dark text-white px-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-2 font-semibold"
@@ -223,14 +347,24 @@ const Programs: React.FC = () => {
         <span className="text-sm">Filters</span>
         {hasActiveFilters && (
           <span className="bg-red-500 text-white text-xs font-bold rounded-full min-w-[22px] h-5.5 px-1.5 flex items-center justify-center">
-            {selectedPillars.length + selectedCountries.length + selectedPartners.length + selectedStatus.length}
+            {selectedPillars.length +
+              selectedCountries.length +
+              selectedPartners.length +
+              selectedStatus.length}
           </span>
         )}
       </button>
 
       {/* Mobile Sidebar */}
-      <div className={`fixed inset-0 z-40 lg:hidden ${isSidebarOpen ? 'block' : 'hidden'}`}>
-        <div className="absolute inset-0 bg-black/50" onClick={() => setIsSidebarOpen(false)}></div>
+      <div
+        className={`fixed inset-0 z-40 lg:hidden ${
+          isSidebarOpen ? "block" : "hidden"
+        }`}
+      >
+        <div
+          className="absolute inset-0 bg-black/50"
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
         <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-gray-800 h-full overflow-y-auto overflow-x-hidden">
           <div className="absolute top-0 right-0 -mr-12 pt-2">
             <button
@@ -244,9 +378,7 @@ const Programs: React.FC = () => {
             <div className="px-6">
               <h2 className="text-xl font-bold">Filters</h2>
             </div>
-            <div className="mt-5 px-6">
-              {renderFilters()}
-            </div>
+            <div className="mt-5 px-6">{renderFilters()}</div>
           </div>
         </div>
       </div>

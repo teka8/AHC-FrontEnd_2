@@ -39,13 +39,37 @@ export default function Home() {
     <div>
       <Helmet>
         <title>AHC – Home</title>
+        <meta
+          name="description"
+          content="Welcome to the Africa Health Collaborative (AHC) at Addis Ababa University. Discover our mission to advance health professions education and research across Africa through collaboration, innovation, and community engagement."
+        />
+        <meta
+          name="keywords"
+          content="Africa Health Collaborative, AHC, Addis Ababa University, Health Professions Education, Health Research Africa, Primary Healthcare Africa, Health Collaboration, African Health Initiatives"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta property="og:title" content="AHC – Home" />
+        <meta
+          property="og:description"
+          content="Welcome to the Africa Health Collaborative (AHC) at Addis Ababa University. Discover our mission to advance health professions education and research across Africa through collaboration, innovation, and community engagement."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ahc.tewostechsolutions.com/" />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AHC – Home" />
+        <meta
+          name="twitter:description"
+          content="Welcome to the Africa Health Collaborative (AHC) at Addis Ababa University. Discover our mission to advance health professions education and research across Africa through collaboration, innovation, and community engagement."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
-
-      {/* Scoped styles for the "sunshine edge" hover effect */}
-      <Helmet>
-        <title>AHC – Home</title>
-      </Helmet>
-
       <Hero />
 
       {/* About AHC */}
@@ -58,7 +82,11 @@ export default function Home() {
           />
           <div className="grid gap-12 md:grid-cols-2 items-center">
             <div>
-              <img src="/images/aheia.jpg" alt="Advancing Health Education in Africa" className="rounded-lg shadow-xl w-full h-auto object-cover" />
+              <img
+                src="/images/aheia.jpg"
+                alt="Advancing Health Education in Africa"
+                className="rounded-lg shadow-xl w-full h-auto object-cover"
+              />
             </div>
             <div>
               <div className="prose max-w-none dark:prose-invert">
@@ -66,13 +94,13 @@ export default function Home() {
                   The Africa Health Collaborative (AHC) is a network of health
                   professionals, educators, and institutions dedicated to
                   advancing health professions education and research in Africa.
-                  We foster collaboration, knowledge exchange, and scholarship to
-                  address the continent's pressing health challenges.
+                  We foster collaboration, knowledge exchange, and scholarship
+                  to address the continent's pressing health challenges.
                 </p>
                 <p>
                   Our work is guided by a commitment to excellence, equity, and
-                  innovation. We believe that by working together, we can build a
-                  healthier future for all Africans.
+                  innovation. We believe that by working together, we can build
+                  a healthier future for all Africans.
                 </p>
               </div>
               <div className="mt-8">
@@ -417,7 +445,6 @@ export default function Home() {
           <SectionHeader
             eyebrow="Our Purpose"
             title="Our Mission & Vision"
-            
             centerTitle={true}
           />
           <div className="grid gap-8 md:grid-cols-2">

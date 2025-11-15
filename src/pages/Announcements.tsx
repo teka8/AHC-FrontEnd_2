@@ -8,7 +8,11 @@ import Loader from "../components/Loader";
 import Pagination from "../components/ui/Pagination";
 import Hero from "../components/announcements/Hero";
 
-const UNCATEGORIZED_CATEGORY = { id: -1, name: "Uncategorized", slug: "uncategorized" };
+const UNCATEGORIZED_CATEGORY = {
+  id: -1,
+  name: "Uncategorized",
+  slug: "uncategorized",
+};
 
 export default function Announcements() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,24 +53,31 @@ export default function Announcements() {
         });
     });
 
-    return Array.from(seen.values()).sort((a, b) => a.name.localeCompare(b.name));
+    return Array.from(seen.values()).sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
   }, [announcements]);
 
-  const baseCategories = apiCategories.length > 0 ? apiCategories : derivedCategories;
+  const baseCategories =
+    apiCategories.length > 0 ? apiCategories : derivedCategories;
 
   const hasUncategorized = useMemo(
     () =>
       announcements.some(
         (item) =>
-          (item.terms ?? []).filter((term) => (term.taxonomy ?? "").toLowerCase() === "category").length ===
-          0
+          (item.terms ?? []).filter(
+            (term) => (term.taxonomy ?? "").toLowerCase() === "category"
+          ).length === 0
       ),
     [announcements]
   );
 
   const categories = useMemo(() => {
     const prepared = [...baseCategories];
-    if (hasUncategorized && !prepared.some((cat) => cat.slug === UNCATEGORIZED_CATEGORY.slug)) {
+    if (
+      hasUncategorized &&
+      !prepared.some((cat) => cat.slug === UNCATEGORIZED_CATEGORY.slug)
+    ) {
       prepared.push(UNCATEGORIZED_CATEGORY);
     }
 
@@ -181,6 +192,39 @@ export default function Announcements() {
     <>
       <Helmet>
         <title>Announcements – AHC</title>
+        <meta
+          name="description"
+          content="Stay updated with the latest announcements from the Africa Health Collaborative (AHC). Explore news, events, and important updates that drive our mission to strengthen primary healthcare across Africa."
+        />
+        <meta
+          name="keywords"
+          content="AHC Announcements, Africa Health Collaborative News, AHC Updates, Health Initiatives, African Healthcare News, AHC Events"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta property="og:title" content="AHC Announcements" />
+        <meta
+          property="og:description"
+          content="Stay updated with the latest announcements from the Africa Health Collaborative (AHC). Explore news, events, and important updates that drive our mission to strengthen primary healthcare across Africa."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://ahc.tewostechsolutions.com/announcement"
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AHC Announcements" />
+        <meta
+          name="twitter:description"
+          content="Stay updated with the latest announcements from the Africa Health Collaborative (AHC). Explore news, events, and important updates that drive our mission to strengthen primary healthcare across Africa."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
       <Hero search={searchTerm} setSearch={setSearchTerm} />
 
@@ -188,7 +232,8 @@ export default function Announcements() {
         <div className="mb-10 space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              {hasSearchQuery ? "Found" : "Showing"} {totalVisible} announcement{totalVisible === 1 ? "" : "s"}
+              {hasSearchQuery ? "Found" : "Showing"} {totalVisible} announcement
+              {totalVisible === 1 ? "" : "s"}
             </div>
             <div className="hidden flex-wrap items-center gap-4 md:flex">
               <CategoryTab
@@ -208,7 +253,10 @@ export default function Announcements() {
           </div>
 
           <div className="md:hidden">
-            <label htmlFor="announcement-category" className="mb-2 block text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+            <label
+              htmlFor="announcement-category"
+              className="mb-2 block text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400"
+            >
               Select announcements
             </label>
             <div className="relative">
@@ -225,7 +273,9 @@ export default function Announcements() {
                   </option>
                 ))}
               </select>
-              <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">▾</span>
+              <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+                ▾
+              </span>
             </div>
           </div>
         </div>
@@ -237,7 +287,9 @@ export default function Announcements() {
         ) : totalVisible === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white/70 py-16 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800/70">
             <p className="text-lg font-semibold text-ahc-dark dark:text-white">
-              {hasSearchQuery ? "No announcements match your search." : "No announcements yet."}
+              {hasSearchQuery
+                ? "No announcements match your search."
+                : "No announcements yet."}
             </p>
             <p className="mt-2 text-slate-500 dark:text-slate-400">
               {hasSearchQuery
@@ -379,7 +431,9 @@ function AnnouncementHighlights({ items }: { items: PostItem[] }) {
           <p className="text-xs uppercase tracking-[0.3em] text-ahc-green-dark/80 dark:text-ahc-green-light/80">
             Highlights
           </p>
-          <h3 className="mt-1 text-lg font-semibold text-ahc-dark dark:text-white">Latest spotlights</h3>
+          <h3 className="mt-1 text-lg font-semibold text-ahc-dark dark:text-white">
+            Latest spotlights
+          </h3>
         </div>
         <Link
           to="/announcement"
@@ -418,10 +472,13 @@ function NewsletterInvite() {
   return (
     <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-ahc-green-dark via-ahc-green to-ahc-green-light p-6 text-white shadow-lg">
       <div className="space-y-3">
-        <p className="text-xs uppercase tracking-[0.3em] text-white/70">Stay informed</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+          Stay informed
+        </p>
         <h3 className="text-2xl font-semibold">Subscribe to our updates</h3>
         <p className="text-sm text-white/80">
-          Join our mailing list to receive important announcements, milestones, and opportunities directly in your inbox.
+          Join our mailing list to receive important announcements, milestones,
+          and opportunities directly in your inbox.
         </p>
       </div>
       <form
