@@ -208,7 +208,7 @@ export default function About() {
             
 
               <img
-                src="/public/images/partners/AAU.webp"
+                src="/images/partners/AAU.webp"
                 alt="Our collaborative network across Africa"
                 className="rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 object-fill w-full h-full"
               />
