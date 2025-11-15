@@ -49,6 +49,7 @@ import ProgressUpdates from '../pages/healthInnovation/ProgressUpdates'
 import ScholarshipHome from '../pages/scholarship/ScholarshipHome'
 import ApplicationForm from '../pages/scholarship/ApplicationForm'
 import ApplicationTracker from '../pages/scholarship/ApplicationTracker'
+import ScholarshipDetail from '../pages/scholarship/ScholarshipDetail'
 import {PartnerDetail} from '../pages/PartnerDetail'
 
 export const router = createBrowserRouter([
@@ -84,6 +85,7 @@ export const router = createBrowserRouter([
       { path: 'scholarship', element: <ScholarshipHome /> },
       { path: 'scholarship/apply', element: <ApplicationForm /> },
       { path: 'scholarship/track', element: <ApplicationTracker /> },
+      { path: 'scholarship/:id', element: <ScholarshipDetail /> },
       
       { path: '*', element: <NotFound /> },
 //about us ,ahc , values routes

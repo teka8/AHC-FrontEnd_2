@@ -69,28 +69,36 @@ export default function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
           )}
         </div>
 
-        {scholarship.status === "open" ? (
+        <div className="flex items-center gap-2">
+          {scholarship.status === "open" ? (
+            <Link
+              to={`/scholarship/apply?id=${scholarship.id}`}
+              className="block text-center bg-ahc-green text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+            >
+              Apply Now
+            </Link>
+          ) : scholarship.status === "upcoming" ? (
+            <button
+              disabled
+              className="block w-full text-center bg-gray-300 dark:bg-gray-700 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed"
+            >
+              Not Yet Open
+            </button>
+          ) : (
+            <button
+              disabled
+              className="block w-full text-center bg-gray-300 dark:bg-gray-700 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed"
+            >
+              Applications Closed
+            </button>
+          )}
           <Link
-            to={`/scholarship/apply?id=${scholarship.id}`}
-            className="block text-center bg-ahc-green text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+            to={`/scholarship/${scholarship.id}`}
+            className="block text-center bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition"
           >
-            Apply Now
+            View Details
           </Link>
-        ) : scholarship.status === "upcoming" ? (
-          <button
-            disabled
-            className="block w-full text-center bg-gray-300 dark:bg-gray-700 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed"
-          >
-            Not Yet Open
-          </button>
-        ) : (
-          <button
-            disabled
-            className="block w-full text-center bg-gray-300 dark:bg-gray-700 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed"
-          >
-            Applications Closed
-          </button>
-        )}
+        </div>
       </div>
     </div>
   );
