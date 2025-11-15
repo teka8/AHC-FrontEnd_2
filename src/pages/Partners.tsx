@@ -69,6 +69,45 @@ export default function Partners() {
     <>
       <Helmet>
         <title>Partners – Africa Health Collaborative</title>
+        <meta
+          name="description"
+          content="Discover the esteemed partners of the Africa Health Collaborative (AHC) at Addis Ababa University. Learn about our collaborations with leading institutions across Africa and beyond, working together to strengthen primary healthcare and empower youth in the health sector."
+        />
+        <meta
+          name="keywords"
+          content="AHC Partners, Africa Health Collaborative Partners, Health Collaborations Africa, Addis Ababa University Partners, AHC Partnerships, African Health Collaborations"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta
+          property="og:title"
+          content="AHC Partners – Africa Health Collaborative"
+        />
+        <meta
+          property="og:description"
+          content="Discover the esteemed partners of the Africa Health Collaborative (AHC) at Addis Ababa University. Learn about our collaborations with leading institutions across Africa and beyond, working together to strengthen primary healthcare and empower youth in the health sector."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://ahc.tewostechsolutions.com/partners"
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="AHC Partners – Africa Health Collaborative"
+        />
+        <meta
+          name="twitter:description"
+          content="Discover the esteemed partners of the Africa Health Collaborative (AHC) at Addis Ababa University. Learn about our collaborations with leading institutions across Africa and beyond, working together to strengthen primary healthcare and empower youth in the health sector."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
       <Hero />
       <div className="bg-white dark:bg-ahc-dark">

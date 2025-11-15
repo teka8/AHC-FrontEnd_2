@@ -19,6 +19,46 @@ export default function About() {
     <>
       <Helmet>
         <title>About Us – Africa Health Collaborative</title>
+        <meta
+          name="description"
+          content="Learn more about the Africa Health Collaborative (AHC), our mission to strengthen primary healthcare across Africa by empowering youth, and our partnership with Addis Ababa University in Ethiopia."
+        />
+        <meta
+          name="keywords"
+          content="Africa Health Collaborative, AHC, primary healthcare, youth empowerment, Addis Ababa University, Ethiopia, health transformation, collaboration, health systems, Africa health initiatives, health ecosystem, health inovation, health employment"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <link rel="canonical" href="https://ahc.tewostechsolutions.com/about" />
+        <meta
+          property="og:title"
+          content="About Us – Africa Health Collaborative"
+        />
+        <meta
+          property="og:description"
+          content="Learn more about the Africa Health Collaborative (AHC), our mission to strengthen primary healthcare across Africa by empowering youth, and our partnership with Addis Ababa University in Ethiopia."
+        />
+        <meta
+          property="og:url"
+          content="https://ahc.tewostechsolutions.com/about"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="About Us – Africa Health Collaborative"
+        />
+        <meta
+          name="twitter:description"
+          content="Learn more about the Africa Health Collaborative (AHC), our mission to strengthen primary healthcare across Africa by empowering youth, and our partnership with Addis Ababa University in Ethiopia."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
       <Hero />
       <div className="bg-white dark:bg-ahc-dark">
@@ -34,10 +74,23 @@ export default function About() {
                 Transforming Primary Healthcare in Africa
               </h3>
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
-                The Africa Health Collaborative (AHC) is a transformative initiative launched in partnership with Mastercard Foundation to reimagine and strengthen Primary Health Care systems across. The Collaborative works to build equitable, contextually relevant, and sustainable health systems inspired by a unified commitment to develop a new generation of diverse youth capable of advancing health and well-being throughout Africa.
+                The Africa Health Collaborative (AHC) is a transformative
+                initiative launched in partnership with Mastercard Foundation to
+                reimagine and strengthen Primary Health Care systems across. The
+                Collaborative works to build equitable, contextually relevant,
+                and sustainable health systems inspired by a unified commitment
+                to develop a new generation of diverse youth capable of
+                advancing health and well-being throughout Africa.
               </p>
               <p className="text-slate-600 dark:text-slate-300 mb-6">
-               The Africa Health Collaborative – Addis Ababa University (AHC–AAU) serves as Ethiopia’s hub within collaboration of nine universities. It engages a constellation of local implementing partners  Wollo University, Debre Berhan University, and Wolkite University. Together, these institutions are working to equip youth, particularly women, with the skills, resources, and innovative mindset needed to transform Ethiopia’s health sector from the ground up.
+                The Africa Health Collaborative – Addis Ababa University
+                (AHC–AAU) serves as Ethiopia’s hub within collaboration of nine
+                universities. It engages a constellation of local implementing
+                partners Wollo University, Debre Berhan University, and Wolkite
+                University. Together, these institutions are working to equip
+                youth, particularly women, with the skills, resources, and
+                innovative mindset needed to transform Ethiopia’s health sector
+                from the ground up.
               </p>
               {/* <p className="text-slate-600 dark:text-slate-300 mb-6">
                 The Africa Health Collaborative features a networked approach
@@ -127,27 +180,45 @@ export default function About() {
           </div>
         </section>
         <section></section>
-        <section
-          className="py-16 md:py-24 bg-white dark:bg-ahc-dark"
-        >
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+        <section className="py-24 bg-slate-100 dark:bg-slate-900">
+          <div className="bg-white dark:bg-ahc-dark container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 p-8 md:p-12">
             <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">About Addis Ababa University</h2>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
+                About Addis Ababa University
+              </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
-                Founded in 1950, Addis Ababa University is Ethiopia’s oldest and largest institution of higher learning and research. With over 47,000 students, 8,700 staff, and 14 campuses, AAU is a national leader in education, innovation, and community engagement.
-As a proud founding partner of the Africa Health Collaborative, AAU continues to shape Ethiopia’s future through excellence in teaching, research, and social impact—training the next generation of professionals dedicated to improving Africa’s health.
+                Founded in 1950, Addis Ababa University is Ethiopia’s oldest and
+                largest institution of higher learning and research. With over
+                47,000 students, 8,700 staff, and 14 campuses, AAU is a national
+                leader in education, innovation, and community engagement. As a
+                proud founding partner of the Africa Health Collaborative, AAU
+                continues to shape Ethiopia’s future through excellence in
+                teaching, research, and social impact—training the next
+                generation of professionals dedicated to improving Africa’s
+                health.
               </p>
-             
-              
+              <Link
+                to="/partners/Addis%20Ababa%20University"
+                className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors inline-block mt-4"
+              >
+                Learn more
+              </Link>
             </div>
             <div className="relative h-80 md:h-96">
-              <img src="/images/Addis ababa university.jpeg" alt="Our collaborative network across Africa" className="rounded-lg shadow-2xl object-fill w-full h-full"/>
+            
+
+              <img
+                src="/public/images/partners/AAU.webp"
+                alt="Our collaborative network across Africa"
+                className="rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 object-fill w-full h-full"
+              />
+
             </div>
           </div>
         </section>
 
         {/* Our Values Section */}
-        <section className="py-24 bg-slate-100 dark:bg-slate-900 text-center">
+        <section className="py-16 md:py-24 bg-white dark:bg-ahc-dark text-center">
           <div className="container mx-auto px-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
               Our Core Values

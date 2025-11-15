@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Home, Mail, Phone, UserRound } from "lucide-react";
 import { useGetProgramQuery } from "../features/healthPillars/programsApi";
 import CountryBadge from "../components/CountryBadge";
+import { Helmet } from "react-helmet-async";
 
 const CONTACT_PLACEHOLDER = "/images/placeholders/contact-avatar.svg";
 
@@ -236,6 +237,51 @@ const ProgramDetail: React.FC = () => {
 
   return (
     <div className="bg-white text-gray-800">
+      <Helmet>
+        <title>{program.title} – AHC Program</title>
+        <meta
+          name="description"
+          content={
+            heroSummary || `Learn more about the ${program.title} program.`
+          }
+        />
+        <meta property="og:title" content={`${program.title} – AHC Program`} />
+        <meta
+          property="og:description"
+          content={
+            heroSummary || `Learn more about the ${program.title} program.`
+          }
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://ahc.tewostechsolutions.com/programs/${program.id}`}
+        />
+        <meta
+          property="og:image"
+          content={
+            imageSrc.startsWith("http")
+              ? imageSrc
+              : `https://ahc.tewostechsolutions.com${imageSrc}`
+          }
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${program.title} – AHC Program`} />
+        <meta
+          name="twitter:description"
+          content={
+            heroSummary || `Learn more about the ${program.title} program.`
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            imageSrc.startsWith("http")
+              ? imageSrc
+              : `https://ahc.tewostechsolutions.com${imageSrc}`
+          }
+        />
+      </Helmet>
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0">
           <img

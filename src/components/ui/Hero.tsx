@@ -79,13 +79,13 @@ export default function Hero() {
   }, [logos.length]);
 
   return (
-    <section className="relative overflow-hidden min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-4rem)] hero-aurora">
-      <div className="h-full flex flex-col">
+    <section className="relative overflow-hidden min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-4rem)] hero-aurora !min-w-full">
+      <div className="h-full flex flex-col !min-w-full">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/15 to-transparent !min-w-full" />
 
         {/* Africa outline watermark  */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center !min-w-full">
           <img
             src="/images/africa-map.png"
             alt="Africa map"
@@ -107,7 +107,7 @@ export default function Hero() {
         </div>
 
         {/* Africa health network overlay */}
-        <div className="hero-network" aria-hidden="true">
+        <div className="hero-network min-w-full" aria-hidden="true">
           <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
             <path
               className="net-link"
@@ -213,7 +213,7 @@ export default function Hero() {
         </div>
 
         {/* Content Section */}
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 md:pt-12 md:pb-20 grid gap-6 md:grid-cols-2 items-start flex-grow">
+        <div className="min-w-full relative container mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 md:pt-12 md:pb-20 grid gap-6 md:grid-cols-2 items-start flex-grow">
           {/* Text content */}
           <div className="text-center md:text-left">
             <div className="text-xs sm:text-sm tracking-wider uppercase text-ahc-green font-semibold mb-2 sm:mb-3">

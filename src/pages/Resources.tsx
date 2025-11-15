@@ -658,13 +658,33 @@ export default function Resources() {
     <div className="min-h-screen bg-gray-50 dark:bg-ahc-dark-dark">
       <Helmet>
         <title>Resources – AHC</title>
+        <meta
+          name="description"
+          content="Explore a comprehensive collection of health resources, including research papers, policy briefs, reports, guidelines, and educational materials, curated by the Africa Health Collaborative (AHC) to support primary healthcare improvement across Africa."
+        />
+        <meta property="og:title" content="Resources – AHC" />
+        <meta
+          property="og:description"
+          content="Explore a comprehensive collection of health resources, including research papers, policy briefs, reports, guidelines, and educational materials, curated by the Africa Health Collaborative (AHC) to support primary healthcare improvement across Africa."
+        />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:title" content="Resources – AHC" />
+        <meta
+          name="twitter:description"
+          content="Explore a comprehensive collection of health resources, including research papers, policy briefs, reports, guidelines, and educational materials, curated by the Africa Health Collaborative (AHC) to support primary healthcare improvement across Africa."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
       <Hero search={search} setSearch={setSearch} />
 
       {/* Header Section */}
-      <div className="bg-white dark:bg-ahc-dark border-b border-gray-200 dark:border-gray-800">
-        
-      </div>
+      <div className="bg-white dark:bg-ahc-dark border-b border-gray-200 dark:border-gray-800"></div>
 
       {/* Main Content */}
       <div className="container py-12 pt-16 md:pt-20">

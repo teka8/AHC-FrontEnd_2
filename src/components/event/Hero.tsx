@@ -4,7 +4,7 @@ import "../../styles/Hero.css";
 
 const Hero: React.FC = () => {
   return (
-    <div className="ahehc-banner alignfull hero-aurora pl-8">
+    <div className="ahehc-banner alignfull hero-aurora pl-8 min-w-full">
       <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/30 to-transparent -z-10" />
       <div className="ahehc-banner__inner">
         <svg
@@ -28,10 +28,12 @@ const Hero: React.FC = () => {
                 decoding="async"
                 width="1320"
                 height="880"
-                src="/images/hero/about.jpg"
+                src="https://africahealthcollaborative.org/wp-content/uploads/2023/12/0118TCB00919-1320x880.jpg"
                 className="attachment-large size-large"
                 alt=""
                 style={{ objectPosition: "82% 51%" }}
+                srcSet="https://africahealthcollaborative.org/wp-content/uploads/2023/12/0118TCB00919-1320x880.jpg 1320w, https://africahealthcollaborative.org/wp-content/uploads/2023/12/0118TCB00919-760x507.jpg 760w, https://africahealthcollaborative.org/wp-content/uploads/2023/12/0118TCB00919-150x100.jpg 150w, https://africahealthcollaborative.org/wp-content/uploads/2023/12/0118TCB00919-768x512.jpg 768w, https://africahealthcollaborative.org/wp-content/uploads/2023/12/0118TCB00919-1536x1024.jpg 1536w, https://africahealthcollaborative.org/wp-content/uploads/2023/12/0118TCB00919-2048x1365.jpg 2048w"
+                sizes="(max-width: 1320px) 100vw, 1320px"
               />
             </foreignObject>
           </g>
@@ -59,13 +61,29 @@ const Hero: React.FC = () => {
               </li>
             </ol>
           </nav>
-          <h1 className="ahehc-banner__title">About Us</h1>
+          <h1 className="ahehc-banner__title">Events</h1>
           <p className="is-size-large">
-            The Africa Health Collaborative (AHC) strengthens primary healthcare
-            across Africa by empowering youth. AHC–AAU leads this work in
-            Ethiopia, partnering with local universities to equip young people,
-            especially women, to drive health sector transformation.
+            Discover the latest developments and upcoming events of the
+            Collaborative.
           </p>
+          <div className="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+            <div className="wp-block-button">
+              <Link
+                to="/submit-a-news-item"
+                className="wp-block-button__link wp-element-button"
+              >
+                Submit a News Item
+              </Link>
+            </div>
+            <div className="wp-block-button">
+              <Link
+                to="/submit-an-event"
+                className="wp-block-button__link wp-element-button"
+              >
+                Submit an Event
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -39,13 +39,37 @@ export default function Home() {
     <div>
       <Helmet>
         <title>AHC – Home</title>
+        <meta
+          name="description"
+          content="Welcome to the Africa Health Collaborative (AHC) at Addis Ababa University. Discover our mission to advance health professions education and research across Africa through collaboration, innovation, and community engagement."
+        />
+        <meta
+          name="keywords"
+          content="Africa Health Collaborative, AHC, Addis Ababa University, Health Professions Education, Health Research Africa, Primary Healthcare Africa, Health Collaboration, African Health Initiatives"
+        />
+        <meta name="author" content="Africa Health Collaborative" />
+        <meta property="og:title" content="AHC – Home" />
+        <meta
+          property="og:description"
+          content="Welcome to the Africa Health Collaborative (AHC) at Addis Ababa University. Discover our mission to advance health professions education and research across Africa through collaboration, innovation, and community engagement."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ahc.tewostechsolutions.com/" />
+        <meta
+          property="og:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AHC – Home" />
+        <meta
+          name="twitter:description"
+          content="Welcome to the Africa Health Collaborative (AHC) at Addis Ababa University. Discover our mission to advance health professions education and research across Africa through collaboration, innovation, and community engagement."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
+        />
       </Helmet>
-
-      {/* Scoped styles for the "sunshine edge" hover effect */}
-      <Helmet>
-        <title>AHC – Home</title>
-      </Helmet>
-
       <Hero />
 
       {/* About AHC */}
@@ -57,75 +81,84 @@ export default function Home() {
             centerTitle={true}
           />
           <div className="grid gap-12 md:grid-cols-2 items-center">
-            <div className="prose max-w-none dark:prose-invert">
-              <p>
-                The Africa Health Collaborative (AHC) is a network of health
-                professionals, educators, and institutions dedicated to
-                advancing health professions education and research in Africa.
-                We foster collaboration, knowledge exchange, and scholarship to
-                address the continent's pressing health challenges.
-              </p>
-              <p>
-                Our work is guided by a commitment to excellence, equity, and
-                innovation. We believe that by working together, we can build a
-                healthier future for all Africans.
-              </p>
+            <div>
+              <img
+                src="/images/aheia.jpg"
+                alt="Advancing Health Education in Africa"
+                className="rounded-lg shadow-xl w-full h-auto object-cover"
+              />
             </div>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
-                  Our Reach
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">
-                  12+ Universities
-                </div>
-                <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
-                  A growing network of institutions across Africa.
+            <div>
+              <div className="prose max-w-none dark:prose-invert">
+                <p>
+                  The Africa Health Collaborative (AHC) is a network of health
+                  professionals, educators, and institutions dedicated to
+                  advancing health professions education and research in Africa.
+                  We foster collaboration, knowledge exchange, and scholarship
+                  to address the continent's pressing health challenges.
+                </p>
+                <p>
+                  Our work is guided by a commitment to excellence, equity, and
+                  innovation. We believe that by working together, we can build
+                  a healthier future for all Africans.
                 </p>
               </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Resources
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  500+ Items
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  A rich library of educational materials and research.
-                </p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Community
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  3k+ Members
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  A vibrant community of health professionals and educators.
-                </p>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Impact
-                </div>
-                <div className="mt-1 text-3xl font-bold font-display">
-                  Pan-African
-                </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  Driving positive change in health education across the
-                  continent.
-                </p>
+              <div className="mt-8">
+                <a
+                  href="/about"
+                  className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
+                >
+                  Learn more
+                </a>
               </div>
             </div>
           </div>
-          <div className="flex justify-center mt-8">
-            <a
-              href="/about"
-              className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
-            >
-              Learn more
-            </a>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+            <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                Our Reach
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display text-ahc-green-dark dark:text-white">
+                12+ Universities
+              </div>
+              <p className="mt-2 text-sm text-ahc-green-dark dark:text-ahc-green-light">
+                A growing network of institutions across Africa.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Resources
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                500+ Items
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                A rich library of educational materials and research.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Community
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                3k+ Members
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                A vibrant community of health professionals and educators.
+              </p>
+            </div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                Impact
+              </div>
+              <div className="mt-1 text-3xl font-bold font-display">
+                Pan-African
+              </div>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                Driving positive change in health education across the
+                continent.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -142,21 +175,21 @@ export default function Home() {
               and sustainable primary healthcare.
             </p>
 
-      {/* Pillars Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {/* Pillar Card */}
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-employment/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HEMP.jpg"
-              alt="Health"
-              className="w-full h-[500px] object-cover"
-            /> 
-          </a>
+            {/* Pillars Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {/* Pillar Card */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-employment/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HEMP.jpg"
+                    alt="Health"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -194,18 +227,18 @@ export default function Home() {
                 </a>
               </div>
 
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HENT.jpg"
-              alt="Education"
-              className="w-full h-[500px] object-cover"
-            />
-          </a>
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HENT.jpg"
+                    alt="Education"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -243,17 +276,17 @@ export default function Home() {
                 </a>
               </div>
 
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <a
-            href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./images/HECO.jpg"
-              alt="Innovation"
-              className="w-full h-[500px] object-cover"
-            />
-          </a>
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HECO.jpg"
+                    alt="Innovation"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
 
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -407,7 +440,7 @@ export default function Home() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-24 bg-green-50 dark:bg-slate-950 transition-colors duration-300">
+      <section className="py-16 md:py-24 bg-green-50 dark:bg-slate-950 transition-colors duration-300 bg-green-50/50">
         <div className="container">
           <SectionHeader
             eyebrow="Our Purpose"
@@ -432,7 +465,10 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Mission</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-               To leverage the power of higher education institutions as centres of innovation, knowledge exchange, and community collaboration, driving inclusive transformation of primary healthcare in Ethiopia and beyond.
+                To leverage the power of higher education institutions as
+                centres of innovation, knowledge exchange, and community
+                collaboration, driving inclusive transformation of primary
+                healthcare in Ethiopia and beyond.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
@@ -453,7 +489,10 @@ export default function Home() {
                 <h3 className="text-2xl font-bold font-display">Vision</h3>
               </div>
               <p className="mt-4 text-slate-600 dark:text-slate-300">
-               To prepare diverse youth for meaningful work in transforming health and well-being in Africa through contextually appropriate, equitable, and sustainable primary healthcare systems.
+                To prepare diverse youth for meaningful work in transforming
+                health and well-being in Africa through contextually
+                appropriate, equitable, and sustainable primary healthcare
+                systems.
               </p>
             </div>
           </div>
