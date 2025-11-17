@@ -64,7 +64,7 @@ export default function About() {
       <div className="bg-white dark:bg-ahc-dark">
         <CollaborationSection />
 
-        <section className="py-16 md:py-24 bg-white dark:bg-ahc-dark">
+        <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-ahc-dark">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
@@ -112,7 +112,7 @@ export default function About() {
         </section>
 
         {/* What We Do Section */}
-        <section className="py-24 bg-slate-100 dark:bg-slate-900">
+        <section className="py-12 md:py-16 dark:bg-slate-900" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div className="relative h-80 md:h-96">
               <img
@@ -142,7 +142,7 @@ export default function About() {
           </div>
         </section>
 
-        <section className="py-16 md:py-24 bg-white dark:bg-ahc-dark">
+        <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-ahc-dark">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
@@ -180,7 +180,7 @@ export default function About() {
           </div>
         </section>
         <section></section>
-        <section className="py-24 bg-slate-100 dark:bg-slate-900">
+        <section className="py-12 md:py-16 dark:bg-slate-900" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
           <div className="bg-white dark:bg-ahc-dark container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 p-8 md:p-12">
             <div>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
@@ -218,7 +218,7 @@ export default function About() {
         </section>
 
         {/* Our Values Section */}
-        <section className="py-16 md:py-24 bg-white dark:bg-ahc-dark text-center">
+        <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-ahc-dark text-center">
           <div className="container mx-auto px-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
               Our Core Values
@@ -346,7 +346,7 @@ export default function About() {
         </section> */}
 
         {/* Impact Section */}
-        <section className="py-16 md:py-24 bg-slate-100 dark:bg-slate-900">
+        <section className="py-12 md:py-16 dark:bg-slate-900" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
               Our Impact at a Glance
@@ -402,7 +402,7 @@ export default function About() {
         </section>
 
         {/* Join Us Section */}
-        <section className="py-32 text-center">
+        <section className="py-12 md:py-16 text-center bg-[#FFF9E9]">
           <div className="container mx-auto px-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-4">
               Join Our Mission

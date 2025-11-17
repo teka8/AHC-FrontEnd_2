@@ -111,7 +111,7 @@ export default function NewsList() {
         />
       </Helmet>
       <Hero />
-      <div className="container py-16 md:py-24">
+      <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
         <div className="mb-8 flex items-center justify-between gap-4">
           {/* <input
           value={search}
@@ -193,6 +193,7 @@ export default function NewsList() {
             />
           </>
         )}
+      </div>
       </div>
     </>
   );

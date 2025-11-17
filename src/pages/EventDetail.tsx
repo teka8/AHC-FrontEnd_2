@@ -9,7 +9,7 @@ export default function EventDetail() {
   const { id = "" } = useParams();
   const { data, isLoading } = useGetEventQuery(id);
   return (
-    <div className="container pt-24 pb-16 md:pb-24">
+    <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
       <Helmet>
         <title>{data?.title ?? "Event"} – AHC</title>
         <meta
@@ -222,6 +222,7 @@ export default function EventDetail() {
           </aside>
         </div>
       ) : null}
+    </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import SectionHeader from "../components/ui/SectionHeader";
 
 export default function Contact() {
   return (
-    <div className="container py-16 md:py-24">
+    <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
       <Helmet>
         <title>Contact – AHC</title>
         <meta
@@ -122,6 +122,7 @@ export default function Contact() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

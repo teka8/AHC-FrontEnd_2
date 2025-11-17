@@ -45,7 +45,7 @@ export default function AhcLeaders() {
 
       <Hero />
 
-      <div className="bg-slate-50 dark:bg-ahc-dark py-20">
+      <div className="dark:bg-ahc-dark py-12 md:py-16" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
         <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-extrabold text-ahc-dark dark:text-white mb-2">
             Meet our Leaders
