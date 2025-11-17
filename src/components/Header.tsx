@@ -7,7 +7,7 @@ export default function Header() {
   const { data } = useGetNavigationQuery();
   const links: Array<{ label: string; path: string }> = data?.links || [
     // { label: "About", path: "/about" },
-    { label: "Partners", path: "/partners" },
+    // { label: "Partners", path: "/partners" },
     { label: "Resources", path: "/resources" },
     { label: "Media", path: "/media" },
     { label: "Contact", path: "/contact" },
@@ -25,6 +25,10 @@ export default function Header() {
   const [showPillarsDropdown, setShowPillarsDropdown] = useState(false);
   const [showMobilePillarsDropdown, setShowMobilePillarsDropdown] =
     useState(false);
+ const [showPartnerDropdown, setShowPartnerDropdown] = useState(false);
+  const [showMobilePartnersDropdown, setShowMobilePartnersDropdown] =
+    useState(false);
+
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
     const saved = localStorage.getItem("theme") as "light" | "dark" | null;
@@ -43,7 +47,19 @@ export default function Header() {
   const AboutLinks = [
     { label: "About Us", path: "/about" },
     { label: "AHC Leadership", path: "/ahcleaders" },
+  {
+  label: "About AAU",
+  path: "/partners/addisababauniversity"
+},
+
     { label: "Values & Principles", path: "/valuesandprinciples" },
+  ];
+  //partner link
+   const partnerLinks = [
+    { label: "Founder Partners", path: "/partners" },
+    { label: "Local Partners", path: "/local-partners" },
+ 
+
   ];
 
   const healthPillarsLinks = [
@@ -218,6 +234,43 @@ export default function Header() {
               </div>
             )}
           </div>
+           <div
+            className="relative"
+            onMouseEnter={() => setShowPartnerDropdown(true)}
+            onMouseLeave={() => setShowPartnerDropdown(false)}
+          >
+            <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+              <span className="inline-block">Partners</span>
+              <span
+                className={`inline-block transition-transform duration-200 ${
+                  showPartnerDropdown ? "rotate-180" : ""
+                }`}
+              >
+                <ChevronDown className="h-4 w-4" />
+              </span>
+            </button>
+            {showPartnerDropdown && (
+              <div className="absolute top-full left-0 pt-3">
+                <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                  {partnerLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `block px-4 py-2.5 text-sm transition-colors ${
+                          isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           {links.map((l) => (
             <NavLink
@@ -315,6 +368,8 @@ export default function Header() {
                 </div>
               )}
             </div>
+            
+
 
             {/* latest */}
             <div className="relative">
@@ -370,6 +425,41 @@ export default function Header() {
               {showMobilePillarsDropdown && (
                 <div className="mt-4 flex flex-col items-center gap-4">
                   {healthPillarsLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `text-xl font-medium transition-colors duration-200 ${
+                          isActive
+                            ? "text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
+             <div className="relative">
+              <button
+                onClick={() =>
+                  setShowMobilePartnersDropdown(!showMobilePartnersDropdown)
+                }
+                className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+              >
+                <span>Partners</span>
+                <ChevronDown
+                  className={`h-6 w-6 transition-transform duration-200 ${
+                    showMobilePartnersDropdown ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {showMobilePartnersDropdown && (
+                <div className="mt-4 flex flex-col items-center gap-4">
+                  {partnerLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
