@@ -86,7 +86,7 @@ export default function EventsList() {
         />
       </Helmet>
       <Hero />
-      <div className="container py-16 md:py-24">
+      <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
         <SectionHeader eyebrow="What’s Next" title="All Events" />
         <div className="flex items-center gap-3 mb-6">
           <div className="inline-flex rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
@@ -202,6 +202,7 @@ export default function EventsList() {
             </div>
           </div>
         )}
+      </div>
       </div>
     </>
   );

@@ -31,7 +31,7 @@ export default function AhcLeaderDetail() {
 
       <Hero />
 
-      <div className="bg-slate-100 dark:bg-slate-900 py-16">
+      <div className="dark:bg-slate-900 py-12 md:py-16" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
         <div className="container mx-auto px-6 md:flex md:gap-12 items-center">
           <div className="md:w-1/2">
             <img

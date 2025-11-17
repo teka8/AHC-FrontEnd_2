@@ -29,7 +29,7 @@ export default function Login() {
   }
 
   return (
-    <div className="container py-16 flex justify-center">
+    <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16 flex justify-center">
       <Helmet>
         <title>Login – AHC</title>
       </Helmet>
@@ -68,6 +68,7 @@ export default function Login() {
           {isLoading ? "Signing in..." : "Sign in"}
         </button>
       </form>
+    </div>
     </div>
   );
 }

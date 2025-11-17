@@ -93,7 +93,7 @@ export default function PartnersStrip() {
   }, [emblaApi]);
 
   return (
-    <section className="py-16 md:py-24 dark:bg-slate-900 transition-colors duration-300 bg-green-50/50">
+    <section className="py-12 md:py-16 dark:bg-slate-900 transition-colors duration-300" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 dark:text-white">

@@ -16,7 +16,7 @@ export default function Media() {
     return Array.isArray(arr) ? arr : [];
   }, [data]);
   return (
-    <div className="container py-10">
+    <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
       <Helmet>
         <title>Media – AHC</title>
         <meta
@@ -113,6 +113,7 @@ export default function Media() {
           })}
         </div>
       )}
+    </div>
     </div>
   );
 }
