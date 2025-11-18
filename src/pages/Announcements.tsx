@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import dayjs from "dayjs";
 import type { PostItem } from "../features/posts/postsApi";
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
+import { useGetScholarshipsQuery } from "../features/scholarship/scholarshipsApi";
+import type { Scholarship } from "../features/scholarship/types";
 import { useSubscribeMutation } from "../features/subscriptions/subscriptionApi";
 import Loader from "../components/Loader";
 import Pagination from "../components/ui/Pagination";
@@ -15,21 +17,29 @@ const UNCATEGORIZED_CATEGORY = {
   slug: "uncategorized",
 };
 
+const SCHOLARSHIP_CATEGORY = {
+  id: -2,
+  name: "Scholarships",
+  slug: "scholarships",
+};
+
 export default function Announcements() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = parseInt(searchParams.get("page") ?? "1", 10);
   const pageSize = 9;
 
-  const { data, isLoading } = useGetPublicPostsQuery({
+  const { data: postsData, isLoading: isLoadingPosts } = useGetPublicPostsQuery({
     page,
     perPage: pageSize,
     postType: "announcement",
   });
 
-  const items = data?.data ?? [];
-  const meta = data?.meta;
-  const apiCategories = Array.isArray(data?.filters?.categories)
-    ? data.filters.categories
+  const { data: scholarshipsData, isLoading: isLoadingScholarships } = useGetScholarshipsQuery();
+
+  const items = postsData?.data ?? [];
+  const meta = postsData?.meta;
+  const apiCategories = Array.isArray(postsData?.filters?.categories)
+    ? postsData.filters.categories
     : [];
 
   const announcements = useMemo(
@@ -37,6 +47,18 @@ export default function Announcements() {
       items.filter((item) => item.post_type?.toLowerCase() === "announcement"),
     [items]
   );
+
+  const scholarships = useMemo(() => (scholarshipsData ?? []).map((s: Scholarship): PostItem => ({
+    id: s.id,
+    title: s.title,
+    excerpt: s.eligibility_criteria,
+    content: s.description,
+    published_at: s.deadline, // Using deadline for sorting purposes
+    post_type: 'scholarship',
+    terms: [{ id: SCHOLARSHIP_CATEGORY.id, name: SCHOLARSHIP_CATEGORY.name, slug: SCHOLARSHIP_CATEGORY.slug, taxonomy: 'category' }]
+  })), [scholarshipsData]);
+
+  const combinedItems = useMemo(() => [...announcements, ...scholarships], [announcements, scholarships]);
 
   const derivedCategories = useMemo(() => {
     const seen = new Map<string, { id: number; name: string; slug: string }>();
@@ -74,7 +96,7 @@ export default function Announcements() {
   );
 
   const categories = useMemo(() => {
-    const prepared = [...baseCategories];
+    const prepared = [...baseCategories, SCHOLARSHIP_CATEGORY];
     if (
       hasUncategorized &&
       !prepared.some((cat) => cat.slug === UNCATEGORIZED_CATEGORY.slug)
@@ -104,6 +126,8 @@ export default function Announcements() {
     categories.forEach((category) => {
       collection.set(category.slug, []);
     });
+    
+    collection.set(SCHOLARSHIP_CATEGORY.slug, scholarships);
 
     const append = (slug: string, item: PostItem) => {
       if (!collection.has(slug)) {
@@ -125,12 +149,12 @@ export default function Announcements() {
     });
 
     return collection;
-  }, [announcements, categories]);
+  }, [announcements, scholarships, categories]);
 
   const filteredItems = useMemo(() => {
     const baseItems =
       selectedCategory === "all"
-        ? announcements
+        ? combinedItems
         : postsByCategory.get(selectedCategory) ?? [];
 
     const normalizedQuery = searchTerm.trim().toLowerCase();
@@ -168,10 +192,11 @@ export default function Announcements() {
 
       return b.id - a.id;
     });
-  }, [announcements, postsByCategory, selectedCategory, searchTerm]);
+  }, [combinedItems, postsByCategory, selectedCategory, searchTerm]);
 
+  const isLoading = isLoadingPosts || isLoadingScholarships;
   const totalVisible = filteredItems.length;
-  const paginationTotal = meta?.total ?? announcements.length;
+  const paginationTotal = meta?.total ?? combinedItems.length;
   const hasSearchQuery = searchTerm.trim().length > 0;
 
   const sidebarItems = useMemo(() => {
@@ -179,8 +204,8 @@ export default function Announcements() {
       return filteredItems.slice(0, 5);
     }
 
-    return announcements.slice(0, 5);
-  }, [announcements, filteredItems]);
+    return combinedItems.slice(0, 5);
+  }, [combinedItems, filteredItems]);
 
   const onPageChange = (newPage: number) => {
     setSearchParams((prev) => {
@@ -234,12 +259,12 @@ export default function Announcements() {
         <div className="mb-10 space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              {hasSearchQuery ? "Found" : "Showing"} {totalVisible} announcement
+              {hasSearchQuery ? "Found" : "Showing"} {totalVisible} item
               {totalVisible === 1 ? "" : "s"}
             </div>
             <div className="hidden flex-wrap items-center gap-4 md:flex">
               <CategoryTab
-                label="All Announcements"
+                label="All"
                 active={selectedCategory === "all"}
                 onClick={() => setSelectedCategory("all")}
               />
@@ -259,7 +284,7 @@ export default function Announcements() {
               htmlFor="announcement-category"
               className="mb-2 block text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400"
             >
-              Select announcements
+              Select Category
             </label>
             <div className="relative">
               <select
@@ -268,7 +293,7 @@ export default function Announcements() {
                 onChange={(event) => setSelectedCategory(event.target.value)}
                 className="w-full appearance-none rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition focus:border-ahc-green-dark focus:outline-none focus:ring-2 focus:ring-ahc-green-dark/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               >
-                <option value="all">All Announcements</option>
+                <option value="all">All</option>
                 {categories.map((category) => (
                   <option key={category.slug} value={category.slug}>
                     {category.name}
@@ -290,20 +315,20 @@ export default function Announcements() {
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white/70 py-16 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800/70">
             <p className="text-lg font-semibold text-ahc-dark dark:text-white">
               {hasSearchQuery
-                ? "No announcements match your search."
-                : "No announcements yet."}
+                ? "No items match your search."
+                : "No items found."}
             </p>
             <p className="mt-2 text-slate-500 dark:text-slate-400">
               {hasSearchQuery
                 ? "Try adjusting your keywords or explore another category."
-                : "Check back soon for the latest updates from the collective."}
+                : "Check back soon for the latest updates."}
             </p>
           </div>
         ) : (
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_360px]">
             <div className="space-y-6">
               {filteredItems.map((item) => (
-                <AnnouncementListItem key={item.id} item={item} />
+                <AnnouncementListItem key={`${item.post_type}-${item.id}`} item={item} />
               ))}
 
               <div className="pt-6">
@@ -376,9 +401,11 @@ function AnnouncementListItem({ item }: { item: PostItem }) {
     [item.terms]
   );
 
+  const linkTo = item.post_type === 'scholarship' ? `/scholarship/${item.id}` : `/announcement/${item.id}`;
+
   return (
     <Link
-      to={`/announcement/${item.id}`}
+      to={linkTo}
       className="group block rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:border-ahc-green-dark hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green-dark/30 dark:border-slate-700 dark:bg-slate-900/90"
     >
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
@@ -450,11 +477,12 @@ function AnnouncementHighlights({ items }: { items: PostItem[] }) {
           const dateLabel = item.published_at
             ? dayjs(item.published_at).format("MMM DD, YYYY")
             : "Pending";
+          const linkTo = item.post_type === 'scholarship' ? `/scholarship/${item.id}` : `/announcement/${item.id}`;
 
           return (
             <Link
-              key={item.id}
-              to={`/announcement/${item.id}`}
+              key={`${item.post_type}-${item.id}`}
+              to={linkTo}
               className="group block rounded-xl border border-transparent bg-white/60 p-4 transition hover:border-ahc-green-dark/40 hover:bg-white dark:bg-slate-900/60 dark:hover:border-ahc-green-dark/40"
             >
               <p className="text-sm font-semibold text-ahc-dark transition group-hover:text-ahc-green-dark dark:text-white dark:group-hover:text-ahc-green-light">
