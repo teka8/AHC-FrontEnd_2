@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { faqGroups } from '../../data/faq';
 
 interface FaqSectionProps {
-  onQuestionSelect: (answer: string) => void;
+  onQuestionSelect: (question: string, answer: string) => void;
 }
 
 export default function FaqSection({ onQuestionSelect }: FaqSectionProps) {

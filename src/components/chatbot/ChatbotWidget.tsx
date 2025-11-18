@@ -19,8 +19,7 @@ export default function ChatbotWidget() {
 
   function handleSend() {
     if (!input.trim()) return;
-    const next = [...messages, { role: "user", text: input }];
-    setMessages(next);
+    setMessages(prev => [...prev, { role: 'user' as const, text: input }]);
     setInput("");
     // Here you would typically add logic to get a bot response
   }
@@ -28,8 +27,8 @@ export default function ChatbotWidget() {
   const handleFaqSelect = (question: string, answer: string) => {
     setMessages(prevMessages => [
       ...prevMessages,
-      { role: 'user', text: question },
-      { role: 'bot', text: answer }
+      { role: 'user' as const, text: question },
+      { role: 'bot' as const, text: answer }
     ]);
   };
 
