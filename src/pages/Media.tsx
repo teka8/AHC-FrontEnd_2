@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ChevronLeft, ChevronRight, CornerUpLeft, FileText, Folder, Image as ImageIcon, Music2, Video, X } from "lucide-react";
@@ -37,30 +38,6 @@ const getPreviewSlots = (preview: MediaPreviewItem[]) => {
 };
 
 export default function Media() {
-  const apiBaseUrl = useMemo(() => {
-    if (import.meta.env.DEV) {
-      if (typeof window !== "undefined") {
-        return `${window.location.origin}/api`;
-      }
-
-      return "/api";
-    }
-
-    return import.meta.env.VITE_API_BASE_URL ?? "https://ahc.tewostech.com/api";
-  }, []);
-
-  const backendOrigin = useMemo(() => {
-    try {
-      return new URL(apiBaseUrl).origin;
-    } catch (error) {
-      if (typeof window !== "undefined") {
-        return window.location.origin;
-      }
-
-      return "";
-    }
-  }, [apiBaseUrl]);
-
   const resolveMediaUrl = useCallback(
     (value?: string | null) => {
       if (!value) {
@@ -68,42 +45,36 @@ export default function Media() {
       }
 
       if (/^https?:\/\//i.test(value)) {
-        try {
-          const absolute = new URL(value);
-          const hostname = absolute.hostname.toLowerCase();
-
-          if (backendOrigin) {
-            const backendUrl = new URL(backendOrigin);
-
-            if (
-              hostname === backendUrl.hostname.toLowerCase() &&
-              absolute.protocol !== backendUrl.protocol
-            ) {
-              return `${backendOrigin}${absolute.pathname}${absolute.search}${absolute.hash}`;
-            }
-
-            if (hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1") {
-              return `${backendOrigin}${absolute.pathname}${absolute.search}${absolute.hash}`;
-            }
-          }
-
-          return value;
-        } catch (error) {
-          return value;
-        }
-      }
-
-      try {
-        return new URL(value, apiBaseUrl).toString();
-      } catch (error) {
-        if (typeof value === "string" && value.startsWith("/") && apiBaseUrl.startsWith("http")) {
-          return `${apiBaseUrl.replace(/\/+$/, "")}${value}`;
-        }
-
         return value;
       }
+
+      if (value.startsWith("//")) {
+        if (typeof window !== "undefined") {
+          return `${window.location.protocol}${value}`;
+        }
+
+        return `https:${value}`;
+      }
+
+      if (value.startsWith("/")) {
+        const assetBase = import.meta.env.VITE_ASSET_BASE_URL ?? import.meta.env.VITE_API_BASE_URL;
+
+        if (assetBase) {
+          try {
+            return new URL(value, assetBase).toString();
+          } catch (error) {
+            return `${assetBase.replace(/\/+$/, "")}${value}`;
+          }
+        }
+
+        if (typeof window !== "undefined") {
+          return `${window.location.origin}${value}`;
+        }
+      }
+
+      return value;
     },
-    [apiBaseUrl, backendOrigin]
+    []
   );
 
   const [selectedFolder, setSelectedFolder] = useState<number | null>(null);
@@ -197,7 +168,7 @@ export default function Media() {
   const loading = isLoading && !data;
 
   return (
-    <div style={{ backgroundColor: "rgb(255, 253, 246)" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "rgb(255, 253, 246)" }}>
       <div className="container py-12 md:py-16">
         <Helmet>
           <title>Media – AHC</title>
@@ -600,6 +571,15 @@ function MediaPreviewModal({
   resolveUrl: (value?: string | null) => string;
 }) {
   const item = items[index];
+  const [portalNode] = useState(() => {
+    if (typeof document === "undefined") {
+      return null;
+    }
+
+    const element = document.createElement("div");
+    element.className = "media-preview-modal";
+    return element;
+  });
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -624,12 +604,27 @@ function MediaPreviewModal({
   useEffect(() => {
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
       document.body.style.overflow = original;
     };
   }, []);
 
-  if (!item) {
+  useEffect(() => {
+    if (!portalNode) {
+      return;
+    }
+
+    document.body.appendChild(portalNode);
+
+    return () => {
+      if (portalNode.parentNode) {
+        portalNode.parentNode.removeChild(portalNode);
+      }
+    };
+  }, [portalNode]);
+
+  if (!item || !portalNode) {
     return null;
   }
 
@@ -642,7 +637,7 @@ function MediaPreviewModal({
         <img
           src={resolvedDisplayUrl || resolvedMediaUrl}
           alt={item.name || item.file_name || ""}
-          className="max-h-[70vh] w-full object-contain"
+          className="max-h-[80vh] w-full object-contain"
         />
       );
     }
@@ -653,7 +648,7 @@ function MediaPreviewModal({
           src={resolvedMediaUrl}
           controls
           controlsList="nodownload"
-          className="max-h-[70vh] w-full"
+          className="max-h-[80vh] w-full"
         />
       );
     }
@@ -690,74 +685,133 @@ function MediaPreviewModal({
     );
   };
 
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-[9999] flex flex-col bg-black"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
         }
       }}
     >
-      <button
-        type="button"
-        onClick={onPrev}
-        className="absolute inset-y-0 left-0 flex w-16 items-center justify-center text-white/70 transition hover:text-white"
-        aria-label="Previous media"
-      >
-        <ChevronLeft className="h-10 w-10" />
-      </button>
-
-      <div className="relative w-full max-w-5xl">
+      <div className="flex flex-1 items-center justify-center px-4 py-6 md:py-10">
         <button
           type="button"
-          onClick={onClose}
-          className="absolute -top-12 right-0 text-white transition hover:text-ahc-green"
-          aria-label="Close preview"
+          onClick={(event) => {
+            event.stopPropagation();
+            onPrev();
+          }}
+          className="mr-6 hidden h-16 w-16 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-white/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 md:flex"
+          aria-label="Previous media"
         >
-          <X className="h-8 w-8" />
+          <ChevronLeft className="h-8 w-8" />
         </button>
 
-        <div className="overflow-hidden rounded-3xl border border-white/10 bg-white shadow-2xl">
-          <div className="flex items-center justify-center bg-black/90 p-6">
+        <div className="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[32px] border border-white/10 bg-neutral-950/95 shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
+          <div className="relative flex flex-1 items-center justify-center bg-neutral-950 p-4 sm:p-8">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                onClose();
+              }}
+              className="absolute right-4 top-4 hidden h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 md:flex"
+              aria-label="Close preview"
+            >
+              <X className="h-6 w-6" />
+            </button>
             {renderContent()}
           </div>
-          <div className="space-y-4 p-6">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">
+          <div className="space-y-4 bg-white/95 p-6 shadow-inner">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div className="space-y-1 text-slate-900">
+                <h3 className="text-lg font-semibold">
                   {item.name || item.file_name || "Untitled media"}
                 </h3>
-                {item.caption && (
-                  <p className="mt-1 text-sm text-slate-600">{item.caption}</p>
-                )}
+                {item.caption && <p className="text-sm text-slate-600">{item.caption}</p>}
               </div>
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium uppercase tracking-wide text-slate-500">
-                {item.type}
-              </span>
+              <div className="flex flex-col items-start gap-1 text-xs uppercase tracking-wide text-slate-500 sm:items-end">
+                <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-slate-600">
+                  <ImageIcon className="h-4 w-4" />
+                  {item.type}
+                </span>
+                <span>{item.mime_type}</span>
+                {item.size && <span>{formatBytes(item.size)}</span>}
+              </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
-              {item.mime_type && <span>{item.mime_type}</span>}
-              {item.size && <span>{formatBytes(item.size)}</span>}
-              {item.created_at && (
-                <span>
-                  Added on {new Date(item.created_at).toLocaleDateString()}
+            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  ID: {item.id}
                 </span>
-              )}
+                {item.created_at && (
+                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Uploaded: {new Date(item.created_at).toLocaleString()}
+                  </span>
+                )}
+              </div>
+              <a
+                href={resolvedMediaUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-ahc-green px-4 py-2 text-sm font-semibold text-black shadow hover:bg-ahc-green/90"
+              >
+                <FileText className="h-4 w-4" />
+                Download original
+              </a>
             </div>
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onNext();
+          }}
+          className="ml-6 hidden h-16 w-16 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-white/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 md:flex"
+          aria-label="Next media"
+        >
+          <ChevronRight className="h-8 w-8" />
+        </button>
       </div>
 
-      <button
-        type="button"
-        onClick={onNext}
-        className="absolute inset-y-0 right-0 flex w-16 items-center justify-center text-white/70 transition hover:text-white"
-        aria-label="Next media"
-      >
-        <ChevronRight className="h-10 w-10" />
-      </button>
+      <div className="flex items-center justify-between gap-4 px-4 pb-6 md:hidden">
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onClose();
+          }}
+          className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-white/40 hover:text-white"
+          aria-label="Close preview"
+        >
+          <X className="h-6 w-6" />
+        </button>
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onPrev();
+          }}
+          className="flex-1 rounded-full border border-white/20 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white/80 transition hover:border-white/40 hover:text-white"
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onNext();
+          }}
+          className="flex-1 rounded-full border border-white/20 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white/80 transition hover:border-white/40 hover:text-white"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
+
+  return createPortal(modalContent, portalNode);
 }
