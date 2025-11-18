@@ -1,23 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import FaqSection from './FaqSection';
 
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<
     { role: "user" | "bot"; text: string }[]
-  >([{ role: "bot", text: "Hello! How can we help you today?" }]);
+  >([{ role: "bot", text: "Hello! How can we help you today? You can ask a question or browse our FAQs." }]);
   const [input, setInput] = useState("");
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   function handleSend() {
     if (!input.trim()) return;
     const next = [...messages, { role: "user", text: input }];
-    //setMessages(next)
+    setMessages(next);
     setInput("");
+    // Here you would typically add logic to get a bot response
   }
+
+  const handleFaqSelect = (question: string, answer: string) => {
+    setMessages(prevMessages => [
+      ...prevMessages,
+      { role: 'user', text: question },
+      { role: 'bot', text: answer }
+    ]);
+  };
 
   return (
     <div>
       {/* Premium Chatbot Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50 group">
         {/* Animated background glow */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-ahc-green via-emerald-400 to-teal-400 opacity-75 blur-xl animate-pulse"></div>
         
@@ -31,8 +50,7 @@ export default function ChatbotWidget() {
                      transition-all duration-500 ease-out
                      hover:scale-110 hover:rotate-12
                      before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-tr before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300
-                     group overflow-hidden
-                     animate-bounce-slow"
+                     overflow-hidden"
           style={{
             animation: open ? 'none' : 'float 3s ease-in-out infinite'
           }}
@@ -111,40 +129,46 @@ export default function ChatbotWidget() {
         }
       `}</style>
       {open && (
-        <div className="fixed bottom-20 right-4 z-50 w-80 sm:w-96 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
-          <div className="px-4 py-3 bg-gradient-to-r from-ahc-green to-emerald-400 font-semibold text-black flex items-center gap-2">
+        <div className="fixed bottom-24 right-4 z-50 w-80 sm:w-96 h-[70vh] max-h-[600px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+          <div className="px-4 py-3 bg-gradient-to-r from-ahc-green to-emerald-400 font-semibold text-black flex items-center gap-2 flex-shrink-0">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
             AHC Assistant
           </div>
-          <div className="p-4 space-y-3 h-64 overflow-y-auto bg-slate-50 dark:bg-slate-900">
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={`flex ${m.role === "user" ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-bottom-2 duration-300`}
-                style={{ animationDelay: `${i * 50}ms` }}
-              >
-                {m.role === "bot" && (
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-ahc-green to-emerald-400 flex items-center justify-center mr-2">
-                    <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                )}
-                <span
-                  className={`inline-block px-4 py-2.5 rounded-2xl shadow-sm max-w-[75%] ${
-                    m.role === "user"
-                      ? "bg-gradient-to-br from-ahc-green to-emerald-400 text-black font-medium rounded-br-sm"
-                      : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-bl-sm"
-                  }`}
+          
+          <div className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-900">
+            <FaqSection onQuestionSelect={handleFaqSelect} />
+            <div className="p-4 space-y-3">
+              {messages.map((m, i) => (
+                <div
+                  key={i}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-bottom-2 duration-300`}
+                  style={{ animationDelay: `${i * 50}ms` }}
                 >
-                  {m.text}
-                </span>
-              </div>
-            ))}
+                  {m.role === "bot" && (
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-ahc-green to-emerald-400 flex items-center justify-center mr-2">
+                      <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  )}
+                  <span
+                    className={`inline-block px-4 py-2.5 rounded-2xl shadow-sm max-w-[75%] ${
+                      m.role === "user"
+                        ? "bg-gradient-to-br from-ahc-green to-emerald-400 text-black font-medium rounded-br-sm"
+                        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-bl-sm"
+                    }`}
+                  >
+                    {m.text}
+                  </span>
+                </div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
           </div>
-          <div className="p-4 flex gap-2 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+
+          <div className="p-4 flex gap-2 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex-shrink-0">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
