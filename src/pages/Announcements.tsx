@@ -51,6 +51,7 @@ export default function Announcements() {
   const scholarships = useMemo(() => (scholarshipsData ?? []).map((s: Scholarship): PostItem => ({
     id: s.id,
     title: s.title,
+    slug: s.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, ''),
     excerpt: s.eligibility_criteria,
     content: s.description,
     published_at: s.deadline, // Using deadline for sorting purposes
