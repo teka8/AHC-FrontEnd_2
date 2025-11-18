@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import dayjs from "dayjs";
 import type { PostItem } from "../features/posts/postsApi";
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
+import { useSubscribeMutation } from "../features/subscriptions/subscriptionApi";
 import Loader from "../components/Loader";
 import Pagination from "../components/ui/Pagination";
 import Hero from "../components/announcements/Hero";
@@ -471,6 +472,10 @@ function AnnouncementHighlights({ items }: { items: PostItem[] }) {
 }
 
 function NewsletterInvite() {
+  const [email, setEmail] = useState('');
+  const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [subscribe, { isLoading }] = useSubscribeMutation();
+
   return (
     <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-ahc-green-dark via-ahc-green to-ahc-green-light p-6 text-white shadow-lg">
       <div className="space-y-3">
@@ -485,22 +490,51 @@ function NewsletterInvite() {
       </div>
       <form
         className="mt-6 space-y-3"
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           event.preventDefault();
+          setFeedback(null);
+
+          try {
+            await subscribe({ email: email.trim(), wants_announcements: true }).unwrap();
+            setFeedback({
+              type: 'success',
+              message: 'Thanks for subscribing! You will hear from us soon.',
+            });
+            setEmail('');
+          } catch (error: any) {
+            const message =
+              error?.data?.message ??
+              (error?.status === 422
+                ? 'Please enter a valid email address.'
+                : 'We could not complete your subscription right now. Please try again later.');
+            setFeedback({ type: 'error', message });
+          }
         }}
       >
         <input
           type="email"
           required
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           placeholder="Email address"
           className="w-full rounded-full border border-white/40 bg-white/10 px-5 py-3 text-sm font-medium text-white placeholder-white/70 backdrop-blur focus:border-white focus:outline-none"
         />
         <button
           type="submit"
-          className="w-full rounded-full bg-white px-5 py-3 text-sm font-semibold text-ahc-green-dark transition hover:bg-white/90"
+          disabled={isLoading}
+          className="w-full rounded-full bg-white px-5 py-3 text-sm font-semibold text-ahc-green-dark transition hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          Notify me
+          {isLoading ? 'Subscribing…' : 'Notify me'}
         </button>
+        {feedback && (
+          <p
+            className={`text-sm ${feedback.type === 'success' ? 'text-white' : 'text-red-200'}`}
+            role="status"
+            aria-live="polite"
+          >
+            {feedback.message}
+          </p>
+        )}
       </form>
     </div>
   );

@@ -20,6 +20,7 @@ import Contact from '../pages/Contact'
 import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import NotFound from '../pages/NotFound'
+import Unsubscribe from '../pages/Unsubscribe'
 import Protected from '../components/Protected'
 import VisionGoalsValues from '../pages/VisionGoalsValues'
 import Partners from '../pages/Partners'
@@ -72,6 +73,7 @@ export const router = createBrowserRouter([
       { path: 'events/:id', element: <EventDetail /> },
       { path: 'media', element: <Media /> },
       { path: 'contact', element: <Contact /> },
+      { path: 'unsubscribe', element: <Unsubscribe /> },
       { path: 'login', element: <Login /> },
       { path: 'dashboard', element: <Protected><Dashboard /></Protected> },
       { path: 'programs', element: <Programs /> },

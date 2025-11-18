@@ -11,7 +11,7 @@ export default defineConfig({
         target:
           process.env.NODE_ENV === "production"
             ? "https://ahc.tewostech.com"
-            : "https://ahc.tewostech.com",
+            : "http://localhost:8000",
 
         // target: 'http://localhost:8000',  // Local Laravel backend
         changeOrigin: true,

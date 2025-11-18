@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
 import { Calendar, Clock, ArrowRight, Search, BookOpen } from 'lucide-react'
+import { useSubscribeMutation } from '../../features/subscriptions/subscriptionApi'
 
 const blogPosts = [
   {
@@ -76,6 +77,9 @@ const categories = ['All', 'Industry Insights', 'Entrepreneurship', 'Regulatory'
 export default function HIBlog() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [newsletterFeedback, setNewsletterFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
+  const [subscribe, { isLoading: isSubscribing }] = useSubscribeMutation()
 
   const filteredPosts = blogPosts.filter((post) => {
     const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory
@@ -275,16 +279,52 @@ export default function HIBlog() {
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
                   Subscribe to our newsletter for the latest insights on health innovation and exclusive content
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                <form
+                  className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
+                  onSubmit={async (event) => {
+                    event.preventDefault()
+                    setNewsletterFeedback(null)
+
+                    try {
+                      await subscribe({ email: newsletterEmail.trim() }).unwrap()
+                      setNewsletterFeedback({ type: 'success', message: 'Thanks for subscribing! We will keep you updated with new stories.' })
+                      setNewsletterEmail('')
+                    } catch (error: any) {
+                      const message =
+                        error?.data?.message ??
+                        (error?.status === 422
+                          ? 'Please enter a valid email address.'
+                          : 'We could not process your subscription right now. Please try again later.')
+
+                      setNewsletterFeedback({ type: 'error', message })
+                    }
+                  }}
+                >
                   <input 
                     type="email" 
                     placeholder="Enter your email address" 
+                    value={newsletterEmail}
+                    onChange={(event) => setNewsletterEmail(event.target.value)}
+                    required
                     className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all"
                   />
-                  <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                    Subscribe
+                  <button
+                    type="submit"
+                    disabled={isSubscribing}
+                    className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubscribing ? 'Subscribing…' : 'Subscribe'}
                   </button>
-                </div>
+                </form>
+                {newsletterFeedback && (
+                  <p
+                    className={`mt-4 text-sm ${newsletterFeedback.type === 'success' ? 'text-white' : 'text-red-200'}`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {newsletterFeedback.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>

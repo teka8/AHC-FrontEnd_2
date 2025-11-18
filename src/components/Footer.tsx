@@ -1,7 +1,12 @@
+import { FormEvent, useState } from 'react'
 import { useGetFooterQuery } from '../features/navigation/navigationApi'
+import { useSubscribeMutation } from '../features/subscriptions/subscriptionApi'
 
 export default function Footer() {
   const { data } = useGetFooterQuery()
+  const [subscribe, { isLoading }] = useSubscribeMutation()
+  const [email, setEmail] = useState('')
+  const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
 
   return (
     <footer className="relative text-gray-300 bg-gray-800 border-t border-gray-700 overflow-x-hidden">
@@ -68,15 +73,54 @@ export default function Footer() {
             <h4 className="font-display font-semibold text-lg mb-4 text-white">Stay Connected</h4>
             <p className="max-w-sm text-sm text-gray-400">{data?.contact ?? 'Addis Ababa University, Ethiopia'}</p>
             <div className="mt-4">
-              <form className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 max-w-md justify-items-start">
+              <form
+                className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 max-w-md justify-items-start"
+                onSubmit={async (event: FormEvent<HTMLFormElement>) => {
+                  event.preventDefault()
+                  setFeedback(null)
+
+                  try {
+                    await subscribe({ email: email.trim() }).unwrap()
+                    setFeedback({ type: 'success', message: 'Thanks for subscribing! We will keep you posted with new updates.' })
+                    setEmail('')
+                  } catch (error: any) {
+                    const message =
+                      error?.data?.message ??
+                      (error?.status === 422
+                        ? 'Please enter a valid email address.'
+                        : 'We could not complete your subscription right now. Please try again later.')
+
+                    setFeedback({ type: 'error', message })
+                  }
+                }}
+              >
                 <input
                   type="email"
                   placeholder="Your email address"
                   className="w-full rounded-full px-4 py-3 bg-gray-700 border border-gray-600 shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-ahc-green/40 focus:border-ahc-green/50 transition-all"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                  aria-label="Email address"
                 />
-                <button className="btn bg-ahc-green hover:bg-ahc-green-dark text-white font-semibold rounded-full px-6 py-3 transition-colors">Subscribe</button>
+                <button
+                  type="submit"
+                  className="btn bg-ahc-green hover:bg-ahc-green-dark text-white font-semibold rounded-full px-6 py-3 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Subscribing…' : 'Subscribe'}
+                </button>
               </form>
-              <p className="mt-2 text-xs text-gray-400">Get the latest news and updates from AHC.</p>
+              <p className="mt-2 text-xs text-gray-400">Get the latest news, events, and scholarship updates from AHC.</p>
+              {feedback && (
+                <p
+                  className={`mt-2 text-sm ${feedback.type === 'success' ? 'text-ahc-green-light' : 'text-red-300'}`}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {feedback.message}
+                </p>
+              )}
             </div>
           </div>
         </div>
