@@ -10,7 +10,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ search, setSearch }) => {
   return (
-    <div className="ahehc-banner alignfull hero-aurora">
+    <div className="ahehc-banner alignfull hero-aurora pl-8 min-h-[600px] md:min-h-[650px] lg:min-h-[720px]">
       <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/30 to-transparent -z-10" />
       <div className="ahehc-banner__inner">
         <svg
