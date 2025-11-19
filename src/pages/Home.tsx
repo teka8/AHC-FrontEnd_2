@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import EventCard from "../components/cards/EventCard";
 import PartnersStrip from "../components/ui/PartnersStrip";
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
+import { localPartners } from "../data/localPartners";
 import {
   BookOpenCheck,
   Users,
@@ -439,62 +440,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-12 md:py-16 dark:bg-slate-950 transition-colors duration-300" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
-        <div className="container">
+      {/* Local Partners - New Design */}
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
           <SectionHeader
-            eyebrow="Our Purpose"
-            title="Our Mission & Vision"
+            eyebrow="Our Valued Collaborators"
+            title="In Partnership With Local Universities"
             centerTitle={true}
           />
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
-              <div className="flex items-center gap-4">
-                <svg
-                  className="w-8 h-8 text-ahc-green"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 20l9-5-9-5-9 5 9 5z" />
-                  <path d="M12 12l9-5-9-5-9 5 9 5z" />
-                </svg>
-                <h3 className="text-2xl font-bold font-display">Mission</h3>
-              </div>
-              <p className="mt-4 text-slate-600 dark:text-slate-300">
-                To leverage the power of higher education institutions as
-                centres of innovation, knowledge exchange, and community
-                collaboration, driving inclusive transformation of primary
-                healthcare in Ethiopia and beyond.
-              </p>
-            </div>
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-md">
-              <div className="flex items-center gap-4">
-                <svg
-                  className="w-8 h-8 text-ahc-green"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M2 12h20" />
-                  <path d="M12 2a15.3 15.3 0 0 1 0 20" />
-                </svg>
-                <h3 className="text-2xl font-bold font-display">Vision</h3>
-              </div>
-              <p className="mt-4 text-slate-600 dark:text-slate-300">
-                To prepare diverse youth for meaningful work in transforming
-                health and well-being in Africa through contextually
-                appropriate, equitable, and sustainable primary healthcare
-                systems.
-              </p>
-            </div>
+          <p className="text-center text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
+            We are proud to collaborate with leading local universities, fostering innovation, education, and community health initiatives across Ethiopia.
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 items-center justify-items-center">
+            {localPartners.map((partner) => (
+              <Link to={`/partners/${partner.name.replace(/\s+/g, "").toLowerCase()}`} key={partner.name} className="flex flex-col items-center group">
+                <img
+                  src={partner.logo}
+                  alt={`${partner.name} Logo`}
+                  className="w-32 h-32 object-contain mb-3 grayscale hover:grayscale-0 transition-all duration-300 ease-in-out transform group-hover:scale-105"
+                />
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white group-hover:text-ahc-green transition-colors duration-300">{partner.name}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 hidden md:block">{partner.description.descriptionTitle}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

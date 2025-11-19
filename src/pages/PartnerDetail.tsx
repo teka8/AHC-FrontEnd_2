@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { partners } from "../data/partners";
+import { localPartners } from "../data/localPartners"; // Import localPartners
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
@@ -7,7 +8,10 @@ import { Helmet } from "react-helmet-async";
 export function PartnerDetail() {
   const { name } = useParams<{ name: string }>();
 
-  const partner = partners.find(
+  // Combine partners and localPartners arrays for searching
+  const allPartners = [...partners, ...localPartners];
+
+  const partner = allPartners.find( // Search in the combined array
     (p: any) =>
       p.name.replace(/\s+/g, "").toLowerCase() ===
       name?.replace(/\s+/g, "").toLowerCase()

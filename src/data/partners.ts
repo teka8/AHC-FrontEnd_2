@@ -1,4 +1,4 @@
-type Partner = {     
+export type Partner = {     
   name: string;     
   contact: {         
     website: string;         
