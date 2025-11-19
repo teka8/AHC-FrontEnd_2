@@ -39,6 +39,7 @@ import HIAbout from '../pages/healthInnovation/HIAbout'
 import HIBlog from '../pages/healthInnovation/HIBlog'
 import HIContact from '../pages/healthInnovation/HIContact'
 import HIDemo from '../pages/healthInnovation/HIDemo'
+import Demo from '../pages/healthPillars/Demo'
 import HIPrivacy from '../pages/healthInnovation/HIPrivacy'
 import HITerms from '../pages/healthInnovation/HITerms'
 import VentureApplication from '../pages/healthInnovation/VentureApplication'
@@ -79,7 +80,10 @@ export const router = createBrowserRouter([
       { path: 'programs', element: <Programs /> },
       { path: 'programs/:id', element: <ProgramDetail /> },
       { path: 'health-pillars/health-employment', element: <HealthEmployment /> },
-      // { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
+      { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
+      { path: 'health-pillars/health-entrepreneurship/ventures', element: <VentureShowcase /> },
+      { path: 'health-pillars/health-entrepreneurship/contact', element: <Contact /> },
+      { path: 'health-pillars/health-entrepreneurship/demo', element: <HIDemo /> },
       { path: 'health-pillars/health-ecosystems', element: <HealthEcosystems /> },
       {path: 'partners/:name', element: <PartnerDetail /> },
       
@@ -93,29 +97,8 @@ export const router = createBrowserRouter([
 //about us ,ahc , values routes
  { path: 'ahcleaders', element: <AhcLeaders /> },
  {path:'valuesandprinciples' ,element:<ValuesandPrinciples/>},
- {path:'/ahc-leaders/:id' ,element:<AhcLeaderDetail/>}
+ {path:'/ahc-leaders/:id' ,element:<AhcLeaderDetail/>},
 
     ],
   },
-  // Health Innovation routes with separate layout
-  {
-    path: 'health-pillars/health-entrepreneurship',
-    element: <HILayout />,
-    children: [
-      { index: true, element: <HIHome /> },
-      { path: 'programs', element: <HIPrograms /> },
-      { path: 'services', element: <HIServices /> },
-      { path: 'about', element: <HIAbout /> },
-      { path: 'blog', element: <HIBlog /> },
-      { path: 'contact', element: <HIContact /> },
-      { path: 'demo', element: <HIDemo /> },
-      { path: 'privacy', element: <HIPrivacy /> },
-      { path: 'terms', element: <HITerms /> },
-      { path: 'apply', element: <VentureApplication /> },
-      { path: 'ventures', element: <VentureShowcase /> },
-      { path: 'ventures/:id', element: <VentureDetail /> },
-      { path: 'updates', element: <ProgressUpdates /> },
-      {path: '*', element: <NotFound /> },
-    ],
-  },
-])
+]);
