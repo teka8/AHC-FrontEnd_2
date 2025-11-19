@@ -97,7 +97,7 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="w-full rounded-full px-4 py-3 bg-gray-700 border border-gray-600 shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-ahc-green/40 focus:border-ahc-green/50 transition-all"
+                  className="w-full rounded-full px-4 py-3 bg-gray-700 border border-gray-600 shadow-sm placeholder:text-gray-400 text-gray-200 focus:outline-none focus:ring-2 focus:ring-ahc-green/40 focus:border-ahc-green/50 transition-all"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   required
