@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import FaqSection from './FaqSection';
+import axios from 'axios';
 
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
@@ -17,11 +18,30 @@ export default function ChatbotWidget() {
     scrollToBottom();
   }, [messages]);
 
-  function handleSend() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleSend() {
     if (!input.trim()) return;
-    setMessages(prev => [...prev, { role: 'user' as const, text: input }]);
+
+    const userMessage = input;
+    setMessages(prev => [...prev, { role: 'user' as const, text: userMessage }]);
     setInput("");
-    // Here you would typically add logic to get a bot response
+    setIsLoading(true);
+
+    try {
+      // Assuming backend is running on localhost:8000. Adjust URL if needed.
+      const response = await axios.post('http://localhost:8000/api/v1/public/chat', {
+        message: userMessage
+      });
+
+      const botReply = response.data.reply || "I'm sorry, I didn't get that.";
+      setMessages(prev => [...prev, { role: 'bot' as const, text: botReply }]);
+    } catch (error) {
+      console.error("Chat error:", error);
+      setMessages(prev => [...prev, { role: 'bot' as const, text: "Sorry, I'm having trouble connecting to the server right now." }]);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   const handleFaqSelect = (question: string, answer: string) => {
@@ -38,7 +58,7 @@ export default function ChatbotWidget() {
       <div className="fixed bottom-6 right-6 z-50 group">
         {/* Animated background glow */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-ahc-green via-emerald-400 to-teal-400 opacity-75 blur-xl animate-pulse"></div>
-        
+
         {/* Main button with glass effect */}
         <button
           aria-label="Open chatbot"
@@ -58,15 +78,15 @@ export default function ChatbotWidget() {
           <div className="absolute inset-0 rounded-full overflow-hidden">
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"></div>
           </div>
-          
+
           {/* Icon container with 3D effect */}
           <div className="relative z-10 transform transition-all duration-300 group-hover:scale-110">
             {open ? (
               // Close icon with rotation
-              <svg 
-                className="w-7 h-7 text-white drop-shadow-lg transition-all duration-500 group-hover:rotate-180" 
-                fill="none" 
-                stroke="currentColor" 
+              <svg
+                className="w-7 h-7 text-white drop-shadow-lg transition-all duration-500 group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
                 strokeWidth={2.5}
                 viewBox="0 0 24 24"
               >
@@ -75,17 +95,17 @@ export default function ChatbotWidget() {
             ) : (
               // Chat icon with messaging theme
               <div className="relative">
-                <svg 
-                  className="w-7 h-7 text-white drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6" 
+                <svg
+                  className="w-7 h-7 text-white drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.38 0-2.68-.28-3.87-.78l-.28-.12-2.85.48.48-2.85-.12-.28C4.78 14.68 4.5 13.38 4.5 12c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5-3.36 7.5-7.5 7.5z"/>
-                  <circle cx="8.5" cy="12" r="1.25" fill="white"/>
-                  <circle cx="12" cy="12" r="1.25" fill="white"/>
-                  <circle cx="15.5" cy="12" r="1.25" fill="white"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.38 0-2.68-.28-3.87-.78l-.28-.12-2.85.48.48-2.85-.12-.28C4.78 14.68 4.5 13.38 4.5 12c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5-3.36 7.5-7.5 7.5z" />
+                  <circle cx="8.5" cy="12" r="1.25" fill="white" />
+                  <circle cx="12" cy="12" r="1.25" fill="white" />
+                  <circle cx="15.5" cy="12" r="1.25" fill="white" />
                 </svg>
-                
+
                 {/* Typing indicator dots */}
                 <div className="absolute -bottom-1 -right-1 flex gap-0.5 bg-white rounded-full px-1.5 py-0.5 shadow-lg">
                   <div className="w-1 h-1 rounded-full bg-ahc-green animate-bounce" style={{ animationDelay: '0ms' }}></div>
@@ -95,7 +115,7 @@ export default function ChatbotWidget() {
               </div>
             )}
           </div>
-          
+
           {/* Notification badge with pulse */}
           {!open && (
             <span className="absolute -top-1 -right-1 flex h-5 w-5 z-20">
@@ -105,11 +125,11 @@ export default function ChatbotWidget() {
               </span>
             </span>
           )}
-          
+
           {/* Border ring animation */}
           <div className="absolute inset-0 rounded-full border-2 border-white/20 group-hover:border-white/40 transition-colors duration-300"></div>
         </button>
-        
+
         {/* Help text tooltip */}
         {!open && (
           <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -120,7 +140,7 @@ export default function ChatbotWidget() {
           </div>
         )}
       </div>
-      
+
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
@@ -135,7 +155,7 @@ export default function ChatbotWidget() {
             </svg>
             AHC Assistant
           </div>
-          
+
           <div className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-900">
             <FaqSection onQuestionSelect={handleFaqSelect} />
             <div className="p-4 space-y-3">
@@ -153,16 +173,31 @@ export default function ChatbotWidget() {
                     </div>
                   )}
                   <span
-                    className={`inline-block px-4 py-2.5 rounded-2xl shadow-sm max-w-[75%] ${
-                      m.role === "user"
-                        ? "bg-gradient-to-br from-ahc-green to-emerald-400 text-black font-medium rounded-br-sm"
-                        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-bl-sm"
-                    }`}
+                    className={`inline-block px-4 py-2.5 rounded-2xl shadow-sm max-w-[75%] ${m.role === "user"
+                      ? "bg-gradient-to-br from-ahc-green to-emerald-400 text-black font-medium rounded-br-sm"
+                      : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-bl-sm"
+                      }`}
                   >
                     {m.text}
                   </span>
                 </div>
               ))}
+              {isLoading && (
+                <div className="flex justify-start animate-in fade-in slide-in-from-bottom-2 duration-300">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-ahc-green to-emerald-400 flex items-center justify-center mr-2">
+                    <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-2xl rounded-bl-sm shadow-sm">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    </div>
+                  </div>
+                </div>
+              )}
               <div ref={messagesEndRef} />
             </div>
           </div>
@@ -173,10 +208,11 @@ export default function ChatbotWidget() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Type a message..."
-              className="flex-1 border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ahc-green focus:border-transparent bg-white dark:bg-slate-900 dark:text-white transition-all duration-200"
+              className="flex-1 border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ahc-green focus:border-transparent bg-white dark:bg-slate-900 dark:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isLoading}
             />
-            <button 
-              onClick={handleSend} 
+            <button
+              onClick={handleSend}
               className="bg-gradient-to-br from-ahc-green to-emerald-400 text-black px-4 py-2.5 rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
