@@ -52,6 +52,7 @@ import ApplicationForm from '../pages/scholarship/ApplicationForm'
 import ApplicationTracker from '../pages/scholarship/ApplicationTracker'
 import ScholarshipDetail from '../pages/scholarship/ScholarshipDetail'
 import {PartnerDetail} from '../pages/PartnerDetail'
+import LocalPartners from '../pages/LocalPartners'
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,8 @@ export const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'vision-goals-values', element: <VisionGoalsValues /> },
       { path: 'partners', element: <Partners /> },
+      { path: 'local-partners', element: <LocalPartners /> },
+      { path: 'local-partners/:name', element: <PartnerDetail /> },
       { path: 'resources', element: <Resources /> },
       { path: 'resources/:section/:id', element: <ResourceDetail /> },
       { path: 'news', element: <NewsList /> },

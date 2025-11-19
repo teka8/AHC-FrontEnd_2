@@ -452,17 +452,26 @@ export default function Home() {
             We are proud to collaborate with leading local universities, fostering innovation, education, and community health initiatives across Ethiopia.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 items-center justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
             {localPartners.map((partner) => (
-              <Link to={`/partners/${partner.name.replace(/\s+/g, "").toLowerCase()}`} key={partner.name} className="flex flex-col items-center group">
-                <img
-                  src={partner.logo}
-                  alt={`${partner.name} Logo`}
-                  className="w-32 h-32 object-contain mb-3 grayscale hover:grayscale-0 transition-all duration-300 ease-in-out transform group-hover:scale-105"
-                />
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white group-hover:text-ahc-green transition-colors duration-300">{partner.name}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 hidden md:block">{partner.description.descriptionTitle}</p>
-              </Link>
+              <div className="logo-card" key={partner.name}>
+                <div className="logo-card-inner">
+                  <div className="logo-card-front">
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} Logo`}
+                      className="w-48 h-48 object-contain"
+                    />
+                  </div>
+                  <div className="logo-card-back">
+                    <h3 className="text-xl font-bold mb-2">{partner.name}</h3>
+                    <p className="text-sm mb-4">{partner.description.descriptionTitle}</p>
+                    <Link to={`/local-partners/${partner.name.replace(/\s+/g, "").toLowerCase()}`} className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors">
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
