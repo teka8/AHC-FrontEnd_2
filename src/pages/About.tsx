@@ -180,45 +180,9 @@ export default function About() {
           </div>
         </section>
         <section></section>
-        <section className="py-12 md:py-16 dark:bg-slate-900" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
-          <div className="bg-white dark:bg-ahc-dark container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 p-8 md:p-12">
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
-                About Addis Ababa University
-              </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
-                Founded in 1950, Addis Ababa University is Ethiopia’s oldest and
-                largest institution of higher learning and research. With over
-                47,000 students, 8,700 staff, and 14 campuses, AAU is a national
-                leader in education, innovation, and community engagement. As a
-                proud founding partner of the Africa Health Collaborative, AAU
-                continues to shape Ethiopia’s future through excellence in
-                teaching, research, and social impact—training the next
-                generation of professionals dedicated to improving Africa’s
-                health.
-              </p>
-              <Link
-                to="/partners/Addis%20Ababa%20University"
-                className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors inline-block mt-4"
-              >
-                Learn more
-              </Link>
-            </div>
-            <div className="relative h-80 md:h-96">
-            
-
-              <img
-                src="/images/partners/AAU.webp"
-                alt="Our collaborative network across Africa"
-                className="rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 object-fill w-full h-full"
-              />
-
-            </div>
-          </div>
-        </section>
-
+        
         {/* Our Values Section */}
-        <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-ahc-dark text-center">
+        <section className="py-12 md:py-16 dark:bg-ahc-dark text-center" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
           <div className="container mx-auto px-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
               Our Core Values
