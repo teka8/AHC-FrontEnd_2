@@ -9,7 +9,7 @@ interface HeroProps {
 
 export default function Hero({ search, setSearch }: HeroProps) {
   return (
-    <div className="ahehc-banner alignfull hero-aurora pl-8 min-h-[600px] md:min-h-[650px] lg:min-h-[720px]">
+    <div className="ahehc-banner alignfull hero-aurora pl-8 ">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ahc-green/30 to-transparent" />
       <div className="ahehc-banner__inner">
         <svg
@@ -68,7 +68,8 @@ export default function Hero({ search, setSearch }: HeroProps) {
           </nav>
           <h1 className="ahehc-banner__title">Announcements</h1>
           <p className="is-size-large">
-            Stay informed with official statements, milestones, and updates from the Africa Health Collaborative community.
+            Stay informed with official statements, milestones, and updates from
+            the Africa Health Collaborative community.
           </p>
 
           <div className="relative mt-8 max-w-2xl">
