@@ -11,8 +11,7 @@
 .ahehc-banner__inner {
   display: flex;
   position: relative;
-  min-height: 28rem;
-  /* Base min-height */
+  min-height: 28rem; /* Base min-height */
 }
 
 .ahehc-banner__poster {
@@ -22,11 +21,6 @@
   z-index: -1;
   transform: scale(0.85);
   transform-origin: top right;
-}
-
-/* Hide the background triangle path so the shape ends where the image ends */
-.ahehc-banner__poster>path:first-child {
-  display: none;
 }
 
 .has-accent-teal {
@@ -46,7 +40,7 @@
   transform-origin: top left;
 }
 
-.ahehc-banner__content>* {
+.ahehc-banner__content > * {
   max-width: 42rem;
 }
 
@@ -128,12 +122,11 @@
 /* Medium laptops (13-14 inch screens) */
 @media screen and (max-width: 1440px) and (min-width: 1024px) {
   .ahehc-banner__inner {
-    min-height: calc(100vh - 4rem) !important;
+    min-height: 26rem;
   }
 
   .ahehc-banner__poster {
-    transform: scale(1);
-    /* Increased scale to cover full height */
+    transform: scale(0.85);
     left: 15%;
   }
 
@@ -155,12 +148,11 @@
 /* Small laptops (13.5 inch and similar) */
 @media screen and (max-width: 1366px) and (min-width: 1024px) {
   .ahehc-banner__inner {
-    min-height: calc(100vh - 4rem) !important;
+    min-height: 24rem;
   }
 
   .ahehc-banner__poster {
-    transform: scale(0.95);
-    /* Adjusted scale */
+    transform: scale(0.85);
     left: 10%;
   }
 
@@ -303,7 +295,7 @@
   }
 }
 
-.contains-wraps>* {
+.contains-wraps > * {
   margin-left: 1rem;
   margin-right: auto;
   max-width: var(--block-width, 72rem);
