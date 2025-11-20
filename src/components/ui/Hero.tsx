@@ -3,7 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
-import PixelCard from "./PixelCard";
+import PixelTransition from "../ahc/PixelTransition";
 
 const AUTOPLAY_DELAY = 7000;
 
@@ -217,26 +217,39 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Strategic Partners - Individual Pixel Cards */}
+      {/* Strategic Partners - Pixel Transition Logos */}
       <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30 flex flex-wrap justify-end gap-3 md:gap-4 pointer-events-none">
         {logos.map((logo, idx) => (
           <div key={idx} className="pointer-events-auto">
-            <PixelCard className="rounded-lg" contentClassName="!p-0">
-              <div className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="max-w-full max-h-full object-contain drop-shadow-md transition-transform duration-300 hover:scale-110"
-                  onError={(e) => {
-                    const img = e.currentTarget as HTMLImageElement;
-                    if (logo.fallback && img.dataset.fallback !== "1") {
-                      img.src = logo.fallback;
-                      img.dataset.fallback = "1";
-                    }
-                  }}
-                />
-              </div>
-            </PixelCard>
+            <PixelTransition
+              gridSize={8}
+              pixelColor="rgba(255, 255, 255, 0.9)"
+              animationStepDuration={0.2}
+              className="rounded-lg w-16 h-16 md:w-24 md:h-24 bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:border-white/40 transition-all duration-500"
+              firstContent={
+                <div className="flex items-center justify-center w-full h-full p-1.5 md:p-2">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-w-full max-h-full object-contain drop-shadow-md"
+                    onError={(e) => {
+                      const img = e.currentTarget as HTMLImageElement;
+                      if (logo.fallback && img.dataset.fallback !== "1") {
+                        img.src = logo.fallback;
+                        img.dataset.fallback = "1";
+                      }
+                    }}
+                  />
+                </div>
+              }
+              secondContent={
+                <div className="flex items-center justify-center w-full h-full p-3 md:p-4 bg-gradient-to-br from-ahc-green to-blue-600">
+                  <h3 className="text-white font-bold text-center text-[10px] md:text-xs leading-tight drop-shadow-lg">
+                    {logo.alt}
+                  </h3>
+                </div>
+              }
+            />
           </div>
         ))}
       </div>
