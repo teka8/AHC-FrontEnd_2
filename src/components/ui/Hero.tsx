@@ -1,6 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { Link } from "react-router-dom";
+import { ArrowRight, Play } from "lucide-react";
+import PixelCard from "./PixelCard";
 
-const LOGO_ROTATION_INTERVAL = 3500;
+const AUTOPLAY_DELAY = 7000;
 
 type HeroLogo = {
   src: string;
@@ -8,348 +13,234 @@ type HeroLogo = {
   fallback?: string;
 };
 
+const slides = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+    title: "Advancing Health Education",
+    subtitle: "Empowering the next generation of African health leaders through collaboration and innovation.",
+    tag: "Education",
+    accent: "bg-ahc-green",
+    textAccent: "text-ahc-green-dark",
+    ctaText: "Join Our Network",
+    ctaLink: "https://www.ahc.tewostech.com/admin/login",
+    secondaryCtaText: "View Programs",
+    secondaryCtaLink: "/programs",
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=2032&auto=format&fit=crop",
+    title: "Transforming Healthcare",
+    subtitle: "Building resilient health systems across Africa by strengthening education and workforce training.",
+    tag: "Impact",
+    accent: "bg-blue-600",
+    textAccent: "text-blue-700",
+    ctaText: "Explore Impact",
+    ctaLink: "/about",
+    secondaryCtaText: "Our Partners",
+    secondaryCtaLink: "/partners",
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
+    title: "Fostering Innovation",
+    subtitle: "Creating a culture of entrepreneurship to solve the continent's most pressing health challenges.",
+    tag: "Innovation",
+    accent: "bg-amber-500",
+    textAccent: "text-amber-600",
+    ctaText: "Start Innovating",
+    ctaLink: "/health-pillars/health-entrepreneurship",
+    secondaryCtaText: "Read News",
+    secondaryCtaLink: "/news",
+  },
+];
+
+const logos: HeroLogo[] = [
+  {
+    src: `/images/logo_dark.png`,
+    alt: "Africa Health Collaborative",
+    fallback: `/images/ahc-logo.png`,
+  },
+  {
+    src: `/images/partners/Addis_Ababa_University_logo.png`,
+    alt: "Addis Ababa University",
+    fallback: `/images/partners/addis-ababa-university.png`,
+  },
+  {
+    src: `/images/partners/mastercard_foundation_-_logo.png`,
+    alt: "Mastercard Foundation",
+    fallback: `/images/partners/mastercard-foundation.svg`,
+  },
+];
+
 export default function Hero() {
-  // Get the base URL for the public directory
-  const baseUrl = window.location.origin;
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 60 }, [
+    Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false }),
+  ]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const logos = useMemo<HeroLogo[]>(
-    () => [
-      {
-        src: `/images/logo_dark.png`,
-        alt: "Africa Health Collaborative",
-        fallback: `/images/ahc-logo.png`,
-      },
-      {
-        src: `/images/partners/Addis_Ababa_University_logo.png`,
-        alt: "Addis Ababa University",
-        fallback: `/images/partners/addis-ababa-university.png`,
-      },
-      {
-        src: `/images/partners/mastercard_foundation_-_logo.png`,
-        alt: "Mastercard Foundation",
-        fallback: `/images/partners/mastercard-foundation.svg`,
-      },
-    ],
-    []
-  );
-
-  // Debug: Test image loading
-  useEffect(() => {
-    const testImage = (url: string) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => {
-          //console.log(`✅ Image loaded: ${url}`);
-          resolve(true);
-        };
-        img.onerror = () => {
-          //console.error(`❌ Failed to load: ${url}`);
-          resolve(false);
-        };
-        img.src = url;
-      });
-    };
-
-    // Test each logo
-    const testAllImages = async () => {
-      for (const logo of logos) {
-        const success = await testImage(logo.src);
-        if (!success && logo.fallback) {
-          //console.log(`Trying fallback for ${logo.alt}...`);
-          await testImage(logo.fallback);
-        }
-      }
-    };
-
-    testAllImages();
-  }, [logos]);
-
-  const [activeLogo, setActiveLogo] = useState(0);
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   useEffect(() => {
-    if (logos.length <= 1) {
-      return;
-    }
-
-    const timer = window.setInterval(() => {
-      setActiveLogo((current) => (current + 1) % logos.length);
-    }, LOGO_ROTATION_INTERVAL);
-
-    return () => window.clearInterval(timer);
-  }, [logos.length]);
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   return (
-    <section className="relative overflow-hidden min-h-[calc(100dvh-3.5rem)] md:min-h-[calc(100dvh-4rem)] hero-aurora !min-w-full">
-      <div className="h-full flex flex-col !min-w-full">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ahc-green/15 to-transparent !min-w-full" />
-
-        {/* Africa outline watermark  */}
-        <div className="absolute inset-0 flex items-center justify-center !min-w-full">
-          <img
-            src="/images/africa-map.png"
-            alt="Africa map"
-            className="h-[110%] w-auto object-cover dark:opacity-5 opacity-10"
-            style={{
-              animation: "float 8s ease-in-out infinite",
-              filter: "brightness(1.5)",
-            }}
-            onError={(e) => {
-              const img = e.currentTarget as HTMLImageElement;
-              if (img.dataset.fallback !== "1") {
-                img.src = "/images/africa-map.jpg";
-                img.dataset.fallback = "1";
-              } else {
-                img.src = "/images/ahc-logo.png";
-              }
-            }}
-          />
-        </div>
-
-        {/* Africa health network overlay */}
-        <div className="hero-network min-w-full" aria-hidden="true">
-          <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
-            <path
-              className="net-link"
-              stroke="rgba(122,201,67,.85)"
-              fill="none"
-              d="M300,380 C420,340 520,300 640,320 S900,380 980,360"
-            />
-            <path
-              className="net-link"
-              stroke="rgba(56,189,248,.6)"
-              fill="none"
-              d="M260,320 C380,280 520,260 700,300 S960,360 1100,340"
-            />
-            <path
-              className="net-link"
-              stroke="rgba(148,163,184,.6)"
-              fill="none"
-              d="M340,420 C480,380 600,360 760,380 S980,420 1120,400"
-            />
-            <circle
-              className="net-node"
-              cx="300"
-              cy="380"
-              r="3"
-              fill="rgba(122,201,67,.9)"
-            />
-            <circle
-              className="net-node"
-              cx="480"
-              cy="330"
-              r="3"
-              fill="rgba(122,201,67,.9)"
-            />
-            <circle
-              className="net-node"
-              cx="640"
-              cy="320"
-              r="3"
-              fill="rgba(56,189,248,.9)"
-            />
-            <circle
-              className="net-node"
-              cx="760"
-              cy="360"
-              r="3"
-              fill="rgba(56,189,248,.9)"
-            />
-            <circle
-              className="net-node"
-              cx="900"
-              cy="380"
-              r="3"
-              fill="rgba(122,201,67,.9)"
-            />
-            <circle
-              className="net-node"
-              cx="1040"
-              cy="350"
-              r="3"
-              fill="rgba(148,163,184,.95)"
-            />
-          </svg>
-        </div>
-
-        {/* Decorative wave */}
-        <div className="hero-wave" aria-hidden="true">
-          <svg viewBox="0 0 1200 140" preserveAspectRatio="none">
-            <defs>
-              <linearGradient
-                id="wave-grad-1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="rgba(122,201,67,0.9)" />
-                <stop offset="50%" stopColor="rgba(56,189,248,0.7)" />
-                <stop offset="100%" stopColor="rgba(122,201,67,0.9)" />
-              </linearGradient>
-              <linearGradient
-                id="wave-grad-2"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="rgba(122,201,67,0.6)" />
-                <stop offset="60%" stopColor="rgba(148,163,184,0.5)" />
-                <stop offset="100%" stopColor="rgba(56,189,248,0.6)" />
-              </linearGradient>
-            </defs>
-            <path
-              className="wave-1"
-              fill="url(#wave-grad-1)"
-              d="M0,100 C150,80 300,110 450,95 C600,80 750,120 900,100 C1050,80 1200,110 1350,95 L1350,140 L0,140 Z"
-            />
-            <path
-              className="wave-2"
-              fill="url(#wave-grad-2)"
-              d="M0,115 C160,95 320,125 480,110 C640,95 800,135 960,115 C1120,95 1280,125 1440,110 L1440,140 L0,140 Z"
-            />
-          </svg>
-        </div>
-
-        {/* Content Section */}
-        <div className="min-w-full relative container mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 md:pt-12 md:pb-20 grid gap-6 md:grid-cols-2 items-start flex-grow">
-          {/* Text content */}
-          <div className="text-center md:text-left">
-            <div className="text-xs sm:text-sm tracking-wider uppercase text-ahc-green font-semibold mb-2 sm:mb-3">
-              Africa Health Collaborative
-            </div>
-            <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight"
-              style={{
-                fontFamily:
-                  'Merriweather, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
-              }}
+    <section className="relative h-[calc(100vh-3.5rem)] md:h-[calc(100vh-4rem)] w-full overflow-hidden bg-white font-sans">
+      {/* Carousel */}
+      <div className="absolute inset-0 z-0" ref={emblaRef}>
+        <div className="flex h-full w-full">
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className="relative h-full min-w-full flex-[0_0_100%]"
             >
-              Advancing Health Professions Education in Africa
-            </h1>
-            <p className="mt-4 sm:mt-6 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto md:mx-0 text-base sm:text-lg">
-              Collaboration, knowledge exchange, and scholarship across Addis
-              Ababa University and partner universities.
-            </p>
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-              <a
-                href="https://www.ahc.tewostech.com/admin/login"
-                className="btn px-6 py-3 text-sm sm:text-base hover:shadow-md transition-all duration-300"
-              >
-                Portal
-              </a>
-              <a
-                href="/health-pillars/health-entrepreneurship"
-                className="px-6 py-3 text-sm sm:text-base font-medium border border-slate-200 dark:border-slate-700 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-center"
-              >
-                Health Innovation & Entrepreneurship
-              </a>
-            </div>
-          </div>
-
-          {/* Logo section */}
-          <div className="flex justify-center mt-4 md:mt-0">
-            <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 rounded-full bg-white/80 dark:bg-slate-800/80 border-2 border-slate-200/80 dark:border-slate-600/80 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 grid place-content-center backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-ahc-green/20 dark:hover:shadow-ahc-green/30 hover:scale-[1.02] group glow-border overflow-hidden">
-              {/* Pulsing gradient background */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-ahc-green/20 via-white/20 to-ahc-green/20 dark:from-ahc-green/30 dark:via-slate-800/40 dark:to-ahc-green/30 animate-pulse"></div>
-
-              {/* Glow effect - visible in both light and dark modes */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-ahc-green/20 via-transparent to-ahc-green/20 dark:from-ahc-green/30 dark:via-transparent dark:to-ahc-green/30 opacity-50 dark:opacity-50 group-hover:opacity-80 dark:group-hover:opacity-80 transition-opacity duration-300"></div>
-
-              {/* Shine effect - enhanced for better visibility */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/70 via-transparent to-transparent opacity-50 dark:opacity-30 group-hover:opacity-70 dark:group-hover:opacity-40 transition-opacity duration-300"></div>
-
-              {/* Inner shadow */}
-              <div className="absolute inset-0 rounded-full shadow-[inset_0_2px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_12px_rgba(0,0,0,0.4)]"></div>
-              <div className="relative z-10 flex h-full w-full items-center justify-center">
-                {logos.map((logo, index) => {
-                  const isActive = index === activeLogo;
-                  // console.log(
-                  //   `Rendering logo ${index}: ${logo.src}, active: ${isActive}`
-                  // );
-
-                  return (
-                    <div
-                      key={`${logo.alt}-${index}`}
-                      className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-out ${
-                        isActive
-                          ? "opacity-100 z-20"
-                          : "opacity-0 z-10 pointer-events-none"
-                      }`}
-                    >
-                      <div className="relative w-full h-full flex items-center justify-center p-4">
-                        <div className="relative w-full h-full flex items-center justify-center">
-                          <img
-                            src={logo.src}
-                            alt={logo.alt}
-                            className="max-h-full max-w-full object-contain"
-                            style={{
-                              backgroundColor: "transparent",
-                              width: "auto",
-                              height: "auto",
-                              maxHeight: "100%",
-                              maxWidth: "100%",
-                              minWidth: "180px",
-                              minHeight: "160px",
-                              padding: "10px",
-                              transform: "scale(1.2)",
-                            }}
-                            loading="eager"
-                            onError={(e) => {
-                              const img = e.currentTarget as HTMLImageElement;
-                              // console.log(
-                              //   `❌ Failed to load image: ${img.src}`
-                              // );
-                              if (
-                                logo.fallback &&
-                                img.dataset.fallback !== "1"
-                              ) {
-                                // console.log(
-                                //   `🔄 Trying fallback: ${logo.fallback}`
-                                // );
-                                img.src = logo.fallback;
-                                img.dataset.fallback = "1";
-                              } else {
-                                // Create a fallback div with text
-                                const fallbackDiv =
-                                  document.createElement("div");
-                                fallbackDiv.className =
-                                  "flex items-center justify-center w-full h-full";
-                                fallbackDiv.style.border = "2px dashed #ef4444";
-                                fallbackDiv.style.borderRadius = "8px";
-                                fallbackDiv.style.padding = "16px";
-                                fallbackDiv.style.backgroundColor =
-                                  "rgba(239, 68, 68, 0.1)";
-                                fallbackDiv.textContent = logo.alt;
-                                img.parentNode?.replaceChild(fallbackDiv, img);
-                              }
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
-                {logos.map((logo, index) => (
-                  <span
-                    key={`${logo.alt}-dot-${index}`}
-                    className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                      index === activeLogo
-                        ? "bg-ahc-green-dark scale-125"
-                        : "bg-white/50"
+              {/* Background Image */}
+              <div className="absolute inset-0 overflow-hidden">
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className={`h-full w-full object-cover transition-transform duration-[10000ms] ease-linear ${selectedIndex === index ? "scale-110" : "scale-100"
                     }`}
-                    aria-hidden="true"
-                  />
-                ))}
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+
+                {/* White Gradient Overlay - Reduced Opacity for Clarity */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent/10 sm:to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30" />
+              </div>
+
+              {/* Content */}
+              <div className="relative h-full container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center z-10">
+                <div className="max-w-4xl relative pt-20 md:pt-0">
+
+                  {/* Organic Shape Decoration */}
+                  <div className={`absolute -top-20 -left-20 w-64 h-64 bg-gradient-to-br ${slide.accent.replace('bg-', 'from-')} to-transparent opacity-10 rounded-full blur-3xl transition-all duration-1000 ${selectedIndex === index ? 'scale-100' : 'scale-50'}`} />
+
+                  {/* Animated Tag */}
+                  <div className="overflow-hidden mb-6 relative">
+                    <div
+                      className={`inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white border border-slate-100 shadow-sm text-xs font-bold tracking-[0.2em] uppercase text-slate-500 transform transition-transform duration-700 ${selectedIndex === index ? 'translate-y-0' : 'translate-y-full'}`}
+                    >
+                      <span className={`w-2 h-2 rounded-full ${slide.accent} animate-pulse`}></span>
+                      {slide.tag}
+                    </div>
+                  </div>
+
+                  {/* Title with Editorial Typography */}
+                  <div className="overflow-hidden mb-6 relative">
+                    <h1
+                      className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-slate-900 leading-[1.1] tracking-tight transform transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${selectedIndex === index ? 'translate-y-0' : 'translate-y-[120%]'}`}
+                    >
+                      {slide.title.split(' ').map((word, i) => (
+                        <span key={i} className={`inline-block mr-3 sm:mr-4 ${i === 1 ? 'italic font-light text-slate-600' : ''}`}>
+                          {word}
+                        </span>
+                      ))}
+                    </h1>
+                  </div>
+
+                  {/* Subtitle Fade In */}
+                  <p
+                    className={`text-base sm:text-lg md:text-2xl text-slate-600 mb-8 md:mb-12 max-w-xl leading-relaxed font-medium transition-all duration-1000 delay-200 ${selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                  >
+                    {slide.subtitle}
+                  </p>
+
+                  {/* Dynamic Buttons */}
+                  <div
+                    className={`flex flex-wrap gap-4 md:gap-5 transition-all duration-1000 delay-300 ${selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                  >
+                    <a
+                      href={slide.ctaLink}
+                      className="group relative px-6 py-3 md:px-8 md:py-4 bg-ahc-green text-white font-bold text-xs md:text-sm tracking-widest uppercase rounded-full overflow-hidden shadow-lg hover:shadow-ahc-green/30 transition-all hover:-translate-y-1"
+                    >
+                      <span className="relative z-10 flex items-center gap-2 md:gap-3">
+                        {slide.ctaText}
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    </a>
+
+                    <Link
+                      to={slide.secondaryCtaLink}
+                      className="group px-6 py-3 md:px-8 md:py-4 bg-transparent border border-slate-300 text-slate-700 font-bold text-xs md:text-sm tracking-widest uppercase rounded-full hover:bg-slate-50 hover:border-slate-400 transition-all flex items-center gap-2 md:gap-3 hover:-translate-y-1"
+                    >
+                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white transition-colors shadow-sm">
+                        <Play className="w-2.5 h-2.5 md:w-3 md:h-3 fill-slate-700 ml-0.5" />
+                      </div>
+                      {slide.secondaryCtaText}
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
+
+      {/* Navigation Dots - Vertical on Desktop */}
+      <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col gap-4">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => emblaApi?.scrollTo(idx)}
+            className={`group relative w-3 rounded-full transition-all duration-500 ${idx === selectedIndex ? "h-12 bg-ahc-green" : "h-3 bg-slate-300 hover:bg-slate-400"
+              }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          >
+            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              0{idx + 1}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* Mobile Navigation Dots */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex lg:hidden gap-3">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => emblaApi?.scrollTo(idx)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === selectedIndex ? "bg-ahc-green w-6" : "bg-slate-300"
+              }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Strategic Partners - Individual Pixel Cards */}
+      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30 flex flex-wrap justify-end gap-3 md:gap-4 pointer-events-none">
+        {logos.map((logo, idx) => (
+          <div key={idx} className="pointer-events-auto">
+            <PixelCard className="rounded-lg" contentClassName="!p-0">
+              <div className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="max-w-full max-h-full object-contain drop-shadow-md transition-transform duration-300 hover:scale-110"
+                  onError={(e) => {
+                    const img = e.currentTarget as HTMLImageElement;
+                    if (logo.fallback && img.dataset.fallback !== "1") {
+                      img.src = logo.fallback;
+                      img.dataset.fallback = "1";
+                    }
+                  }}
+                />
+              </div>
+            </PixelCard>
+          </div>
+        ))}
+      </div>
+
     </section>
   );
 }
