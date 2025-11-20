@@ -96,7 +96,7 @@ export default function ChatbotWidget() {
               // Chat icon with messaging theme
               <div className="relative">
                 <svg
-                  className="w-7 h-7 text-white drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6"
+                  className="w-10 h-10 text-white drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -117,14 +117,14 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Notification badge with pulse */}
-          {!open && (
+          {/* {!open && (
             <span className="absolute -top-1 -right-1 flex h-5 w-5 z-20">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-5 w-5 bg-gradient-to-br from-red-500 to-red-600 shadow-lg items-center justify-center">
                 <span className="text-white text-xs font-bold">1</span>
               </span>
             </span>
-          )}
+          )} */}
 
           {/* Border ring animation */}
           <div className="absolute inset-0 rounded-full border-2 border-white/20 group-hover:border-white/40 transition-colors duration-300"></div>
