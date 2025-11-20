@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EventCard from "../components/cards/EventCard";
 import PartnersStrip from "../components/ui/PartnersStrip";
-import PillarsAccordion from "../components/sections/PillarsAccordion";
+
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
 import { localPartners } from "../data/localPartners";
 import {
@@ -165,8 +165,166 @@ export default function Home() {
         </div>
       </section>
       {/* Discovering pillars*/}
-      {/* Discovering pillars */}
-      <PillarsAccordion />
+        <section className="py-12 md:py-16">
+          <div className="container mx-auto text-center px-4">
+            {/* Section Title */}
+            <h2 className="text-5xl font-bold mb-4">Explore our Pillars</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto mb-12">
+              Preparing diverse youth for the meaningful work of transforming
+              health and wellbeing in Africa through contextually appropriate
+              and sustainable primary healthcare.
+            </p>
+
+            {/* Pillars Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {/* Pillar Card */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-employment/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HEMP.jpg"
+                    alt="Health"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
+
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+                <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
+                  {/* Icon */}
+                  <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                    </svg>
+                  </div>
+
+                  {/* Text */}
+                  <h3 className="text-2xl font-extrabold drop-shadow-lg">
+                    Health Employment (HEMP)
+                  </h3>
+                  <p className="text-sm mt-2 max-w-xs mx-auto">
+                    Expand capacity to train primary health care workers to meet
+                    growing demand.
+                  </p>
+                </div>
+
+                {/* Learn More Button */}
+                <a
+                  href="health-pillars/health-employment"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
+                >
+                  Learn More
+                </a>
+              </div>
+
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HENT.jpg"
+                    alt="Education"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
+
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+                <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
+                  {/* Icon */}
+                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                    </svg>
+                  </div>
+
+                  {/* Text */}
+                  <h3 className="text-2xl font-extrabold drop-shadow-lg">
+                    Health Entrepreneurship (HENT)
+                  </h3>
+                  <p className="text-sm mt-2 max-w-xs mx-auto">
+                    Implement and sustain entrepreneurial ecosystems that launch
+                    health start-ups, generate revenue, and create meaningful
+                    employment.
+                  </p>
+                </div>
+                {/* Learn More Button */}
+                <a
+                  href="health-pillars/health-entrepreneurship"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
+                >
+                  Learn More
+                </a>
+              </div>
+
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <a
+                  href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="./images/HECO.jpg"
+                    alt="Innovation"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </a>
+
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+                <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center text-white">
+                  <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                    </svg>
+                  </div>
+
+                  <h3 className="text-2xl font-extrabold drop-shadow-lg">
+                    Health Ecosystems (HECO)
+                  </h3>
+                  <p className="text-sm mt-2 max-w-xs mx-auto">
+                    Enabling the growth and transformation of Africa’s health
+                    sector.
+                  </p>
+                </div>
+
+                {/* Learn More Button */}
+                <a
+                  href="health-pillars/health-ecosystems"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-500 transition"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
       <section className="py-12 md:py-16 animate-page dark:bg-slate-800" style={{ backgroundColor: 'rgb(255, 253, 246)' }}>
         <div className="container">
           <SectionHeader
