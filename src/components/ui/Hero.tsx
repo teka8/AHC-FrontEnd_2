@@ -94,7 +94,7 @@ export default function Hero() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="relative h-[calc(100vh-3.5rem)] md:h-[calc(100vh-4rem)] w-full overflow-hidden bg-white font-sans">
+    <section className="relative h-[calc(100vh-3.5rem)] md:h-[calc(100vh-4rem)] w-full overflow-hidden bg-white dark:bg-slate-900 font-sans">
       {/* Carousel */}
       <div className="absolute inset-0 z-0" ref={emblaRef}>
         <div className="flex h-full w-full">
@@ -113,9 +113,9 @@ export default function Hero() {
                   loading={index === 0 ? "eager" : "lazy"}
                 />
 
-                {/* White Gradient Overlay - Reduced Opacity for Clarity */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent/10 sm:to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30" />
+                {/* White/Dark Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent/10 sm:to-transparent dark:from-slate-900 dark:via-slate-900/70 dark:to-transparent/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30 dark:from-slate-900 dark:via-transparent dark:to-transparent" />
               </div>
 
               {/* Content */}
@@ -128,7 +128,7 @@ export default function Hero() {
                   {/* Animated Tag */}
                   <div className="overflow-hidden mb-6 relative">
                     <div
-                      className={`inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white border border-slate-100 shadow-sm text-xs font-bold tracking-[0.2em] uppercase text-slate-500 transform transition-transform duration-700 ${selectedIndex === index ? 'translate-y-0' : 'translate-y-full'}`}
+                      className={`inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm text-xs font-bold tracking-[0.2em] uppercase text-slate-500 dark:text-slate-300 transform transition-transform duration-700 ${selectedIndex === index ? 'translate-y-0' : 'translate-y-full'}`}
                     >
                       <span className={`w-2 h-2 rounded-full ${slide.accent} animate-pulse`}></span>
                       {slide.tag}
@@ -138,7 +138,7 @@ export default function Hero() {
                   {/* Title with Editorial Typography */}
                   <div className="overflow-hidden mb-6 relative">
                     <h1
-                      className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-slate-900 leading-[1.1] tracking-tight transform transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${selectedIndex === index ? 'translate-y-0' : 'translate-y-[120%]'}`}
+                      className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight transform transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${selectedIndex === index ? 'translate-y-0' : 'translate-y-[120%]'}`}
                     >
                       {slide.title.split(' ').map((word, i) => (
                         <span key={i} className={`inline-block mr-3 sm:mr-4 ${i === 1 ? 'italic font-light text-slate-600' : ''}`}>
@@ -150,7 +150,7 @@ export default function Hero() {
 
                   {/* Subtitle Fade In */}
                   <p
-                    className={`text-base sm:text-lg md:text-2xl text-slate-600 mb-8 md:mb-12 max-w-xl leading-relaxed font-medium transition-all duration-1000 delay-200 ${selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    className={`text-base sm:text-lg md:text-2xl text-slate-600 dark:text-slate-300 mb-8 md:mb-12 max-w-xl leading-relaxed font-medium transition-all duration-1000 delay-200 ${selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                   >
                     {slide.subtitle}
                   </p>
@@ -172,7 +172,7 @@ export default function Hero() {
 
                     <Link
                       to={slide.secondaryCtaLink}
-                      className="group px-6 py-3 md:px-8 md:py-4 bg-transparent border border-slate-300 text-slate-700 font-bold text-xs md:text-sm tracking-widest uppercase rounded-full hover:bg-slate-50 hover:border-slate-400 transition-all flex items-center gap-2 md:gap-3 hover:-translate-y-1"
+                      className="group px-6 py-3 md:px-8 md:py-4 bg-transparent border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-bold text-xs md:text-sm tracking-widest uppercase rounded-full hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500 transition-all flex items-center gap-2 md:gap-3 hover:-translate-y-1"
                     >
                       <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white transition-colors shadow-sm">
                         <Play className="w-2.5 h-2.5 md:w-3 md:h-3 fill-slate-700 ml-0.5" />
