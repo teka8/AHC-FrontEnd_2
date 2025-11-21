@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EventCard from "../components/cards/EventCard";
 import PartnersStrip from "../components/ui/PartnersStrip";
+import LocalPartnersStrip from "../components/ui/LocalPartnersStrip";
 
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
-import { localPartners } from "../data/localPartners";
 import {
   BookOpenCheck,
   Users,
@@ -439,43 +439,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Local Partners - New Design */}
-      <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            eyebrow="Our Valued Collaborators"
-            title="In Partnership With Local Universities"
-            centerTitle={true}
-          />
-          <p className="text-center text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
-            We are proud to collaborate with leading local universities, fostering innovation, education, and community health initiatives across Ethiopia.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
-            {localPartners.map((partner) => (
-              <div className="logo-card" key={partner.name}>
-                <div className="logo-card-inner">
-                  <div className="logo-card-front">
-                    <img
-                      src={partner.logo}
-                      alt={`${partner.name} Logo`}
-                      className="w-48 h-48 object-contain"
-                    />
-                  </div>
-                  <div className="logo-card-back">
-                    <h3 className="text-xl font-bold mb-2">{partner.name}</h3>
-                    <p className="text-sm mb-4">{partner.description.descriptionTitle}</p>
-                    <Link to={`/local-partners/${partner.name.replace(/\s+/g, "").toLowerCase()}`} className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors">
-                      Learn More
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Focus Areas */}
       <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-slate-900">
         <div className="container">
@@ -537,6 +500,7 @@ export default function Home() {
       </section>
 
       <PartnersStrip />
+      <LocalPartnersStrip />
     </div>
   );
 }
