@@ -261,7 +261,7 @@ export default function Media() {
                     className="inline-flex items-center gap-2 rounded-full border border-transparent bg-ahc-green/10 px-4 py-2 text-sm font-semibold text-ahc-green transition hover:bg-ahc-green/20"
                   >
                     <CornerUpLeft className="h-4 w-4" />
-                    {parentBreadcrumb ? `Back to ${parentBreadcrumb.name}` : "Back to folders"}
+                    {parentBreadcrumb ? `Back to ${parentBreadcrumb.name}` : "Back to collections"}
                   </button>
                 </div>
 
