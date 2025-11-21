@@ -709,7 +709,7 @@ function MediaPreviewModal({
         </button>
 
         <div className="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[32px] border border-white/10 bg-neutral-950/95 shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
-          <div className="relative flex flex-1 items-center justify-center bg-neutral-950 p-4 sm:p-8">
+          <div className="relative z-0 flex flex-1 items-center justify-center bg-neutral-950 p-4 sm:p-8">
             <button
               type="button"
               onClick={(event) => {
@@ -723,7 +723,7 @@ function MediaPreviewModal({
             </button>
             {renderContent()}
             {captionText && (
-              <div className="pointer-events-none absolute inset-x-0 bottom-0">
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10">
                 <div className="mx-4 mb-4 rounded-lg bg-black/60 px-3 py-2 text-sm text-white shadow-lg">
                   {captionText}
                 </div>
@@ -785,7 +785,7 @@ function MediaPreviewModal({
         </button>
       </div>
 
-      <div className="flex items-center justify-between gap-4 px-4 pb-6 md:hidden">
+      <div className="z-20 flex items-center justify-between gap-4 px-4 pb-6 md:hidden">
         <button
           type="button"
           onClick={(event) => {
