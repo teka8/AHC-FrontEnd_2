@@ -224,7 +224,7 @@ export default function Hero() {
             key={idx}
             className={
               "pointer-events-auto" +
-              (idx === logos.length - 1 ? " ml-auto md:ml-18" : "")
+              (idx === logos.length - 1 ? " ml-auto md:ml-20" : "")
             }
           >
             <PixelTransition
