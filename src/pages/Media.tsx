@@ -688,7 +688,7 @@ function MediaPreviewModal({
 
   const modalContent = (
     <div
-      className="fixed inset-0 z-[9999] flex flex-col bg-black"
+      className="fixed inset-0 z-[9999] flex flex-col bg-black max-h-screen"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
