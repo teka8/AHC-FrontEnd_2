@@ -630,6 +630,7 @@ function MediaPreviewModal({
 
   const resolvedMediaUrl = resolveUrl(item.url);
   const resolvedDisplayUrl = resolveUrl(item.thumb_url || item.url);
+  const captionText = (item as any).caption || (item as any).description || (item as any).alt || (item as any).alt_text || "";
 
   const renderContent = () => {
     if (item.type === "image") {
@@ -721,6 +722,13 @@ function MediaPreviewModal({
               <X className="h-6 w-6" />
             </button>
             {renderContent()}
+            {captionText && (
+              <div className="pointer-events-none absolute inset-x-0 bottom-0">
+                <div className="mx-4 mb-4 rounded-lg bg-black/60 px-3 py-2 text-sm text-white shadow-lg">
+                  {captionText}
+                </div>
+              </div>
+            )}
           </div>
           <div className="space-y-4 bg-white/95 p-6 shadow-inner">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -728,7 +736,7 @@ function MediaPreviewModal({
                 <h3 className="text-lg font-semibold">
                   {item.name || item.file_name || "Untitled media"}
                 </h3>
-                {item.caption && <p className="text-sm text-slate-600">{item.caption}</p>}
+                {captionText && <p className="text-sm text-slate-600">{captionText}</p>}
               </div>
               <div className="flex flex-col items-start gap-1 text-xs uppercase tracking-wide text-slate-500 sm:items-end">
                 <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-slate-600">
