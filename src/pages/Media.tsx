@@ -571,6 +571,8 @@ function MediaPreviewModal({
   resolveUrl: (value?: string | null) => string;
 }) {
   const item = items[index];
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const [portalNode] = useState(() => {
     if (typeof document === "undefined") {
       return null;
@@ -688,7 +690,7 @@ function MediaPreviewModal({
 
   const modalContent = (
     <div
-      className="fixed inset-0 z-[9999] flex flex-col bg-black max-h-screen"
+      className="fixed inset-0 z-[9999] flex flex-col bg-black"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -709,7 +711,30 @@ function MediaPreviewModal({
         </button>
 
         <div className="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[32px] border border-white/10 bg-neutral-950/95 shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
-          <div className="relative z-0 flex flex-1 items-center justify-center bg-neutral-950 p-4 sm:p-8">
+          <div
+            className="relative z-0 flex flex-1 items-center justify-center bg-neutral-950 p-4 sm:p-8"
+            onTouchStart={(e) => {
+              if (e.changedTouches && e.changedTouches.length > 0) {
+                setTouchStartX(e.changedTouches[0].clientX);
+                setTouchEndX(null);
+              }
+            }}
+            onTouchMove={(e) => {
+              if (e.changedTouches && e.changedTouches.length > 0) {
+                setTouchEndX(e.changedTouches[0].clientX);
+              }
+            }}
+            onTouchEnd={() => {
+              if (touchStartX !== null && touchEndX !== null) {
+                const dx = touchStartX - touchEndX;
+                if (Math.abs(dx) > 50) {
+                  if (dx > 0) onNext(); else onPrev();
+                }
+              }
+              setTouchStartX(null);
+              setTouchEndX(null);
+            }}
+          >
             <button
               type="button"
               onClick={(event) => {
@@ -724,13 +749,13 @@ function MediaPreviewModal({
             {renderContent()}
             {captionText && (
               <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10">
-                <div className="mx-4 mb-4 rounded-lg bg-black/60 px-3 py-2 text-sm text-white shadow-lg">
+                <div className="mx-4 mb-24 md:mb-4 rounded-lg bg-black/60 px-3 py-2 text-sm text-white shadow-lg">
                   {captionText}
                 </div>
               </div>
             )}
           </div>
-          <div className="space-y-4 bg-white/95 p-6 shadow-inner">
+          <div className="hidden md:block space-y-4 bg-white/95 p-6 shadow-inner">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div className="space-y-1 text-slate-900">
                 <h3 className="text-lg font-semibold">
@@ -785,25 +810,33 @@ function MediaPreviewModal({
         </button>
       </div>
 
-      <div className="z-20 flex items-center justify-between gap-4 px-4 pb-6 md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-4 px-4 py-3 bg-black/40 backdrop-blur-sm md:hidden">
         <button
           type="button"
           onClick={(event) => {
             event.stopPropagation();
             onClose();
           }}
-          className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-white/40 hover:text-white"
+          className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
           aria-label="Close preview"
         >
           <X className="h-6 w-6" />
         </button>
+        <a
+          href={resolvedMediaUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full border border-white/20 bg-white/5 px-3 py-3 text-center text-xs font-semibold uppercase tracking-wide text-white/80 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
+        >
+          Download
+        </a>
         <button
           type="button"
           onClick={(event) => {
             event.stopPropagation();
             onPrev();
           }}
-          className="flex-1 rounded-full border border-white/20 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white/80 transition hover:border-white/40 hover:text-white"
+          className="flex-1 rounded-full border border-white/20 bg-white/5 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white/80 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
         >
           Previous
         </button>
@@ -813,7 +846,7 @@ function MediaPreviewModal({
             event.stopPropagation();
             onNext();
           }}
-          className="flex-1 rounded-full border border-white/20 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white/80 transition hover:border-white/40 hover:text-white"
+          className="flex-1 rounded-full border border-white/20 bg-white/5 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white/80 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
         >
           Next
         </button>
