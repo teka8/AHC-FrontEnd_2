@@ -218,9 +218,15 @@ export default function Hero() {
       </div>
 
       {/* Strategic Partners - Pixel Transition Logos */}
-      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30 flex flex-wrap justify-end gap-3 md:gap-4 pointer-events-none">
+      <div className="absolute top-4 left-4 right-4 md:top-8 md:right-8 md:left-auto z-30 flex flex-nowrap md:flex-wrap items-center justify-start md:justify-end gap-3 md:gap-4 pointer-events-none">
         {logos.map((logo, idx) => (
-          <div key={idx} className="pointer-events-auto">
+          <div
+            key={idx}
+            className={
+              "pointer-events-auto" +
+              (idx === logos.length - 1 ? " ml-auto md:ml-18" : "")
+            }
+          >
             <PixelTransition
               gridSize={8}
               pixelColor="rgba(255, 255, 255, 0.9)"
