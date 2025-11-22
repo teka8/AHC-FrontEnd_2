@@ -94,9 +94,9 @@ export default function Hero() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="relative h-[calc(100vh-3.5rem)] md:h-[calc(100vh-4rem)] w-full overflow-hidden bg-white dark:bg-slate-900 font-sans">
-      {/* Carousel */}
-      <div className="absolute inset-0 z-0" ref={emblaRef}>
+    <section className="relative -mt-[3.5rem] md:-mt-16 pt-[3.5rem] md:pt-16 h-screen w-full overflow-hidden bg-white dark:bg-slate-900 font-sans">
+      {/* Carousel - Background extends to top of screen */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 z-0" ref={emblaRef}>
         <div className="flex h-full w-full">
           {slides.map((slide, index) => (
             <div
@@ -120,7 +120,7 @@ export default function Hero() {
 
               {/* Content */}
               <div className="relative h-full container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center z-10">
-                <div className="max-w-4xl relative pt-20 md:pt-0">
+                <div className="max-w-4xl relative pt-32 md:pt-24">
 
                   {/* Organic Shape Decoration */}
                   <div className={`absolute -top-20 -left-20 w-64 h-64 bg-gradient-to-br ${slide.accent.replace('bg-', 'from-')} to-transparent opacity-10 rounded-full blur-3xl transition-all duration-1000 ${selectedIndex === index ? 'scale-100' : 'scale-50'}`} />
@@ -218,7 +218,7 @@ export default function Hero() {
       </div>
 
       {/* Strategic Partners - Pixel Transition Logos */}
-      <div className="absolute top-4 left-4 right-4 md:top-8 md:right-8 md:left-auto z-30 flex flex-nowrap md:flex-wrap items-center justify-start md:justify-end gap-3 md:gap-4 pointer-events-none">
+      <div className="absolute top-20 left-4 right-4 md:top-24 md:right-8 md:left-auto z-30 flex flex-nowrap md:flex-wrap items-center justify-start md:justify-end gap-3 md:gap-4 pointer-events-none">
         {logos.map((logo, idx) => (
           <div
             key={idx}

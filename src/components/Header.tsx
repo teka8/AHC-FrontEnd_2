@@ -25,7 +25,7 @@ export default function Header() {
   const [showPillarsDropdown, setShowPillarsDropdown] = useState(false);
   const [showMobilePillarsDropdown, setShowMobilePillarsDropdown] =
     useState(false);
- const [showPartnerDropdown, setShowPartnerDropdown] = useState(false);
+  const [showPartnerDropdown, setShowPartnerDropdown] = useState(false);
   const [showMobilePartnersDropdown, setShowMobilePartnersDropdown] =
     useState(false);
 
@@ -47,18 +47,18 @@ export default function Header() {
   const AboutLinks = [
     { label: "About Us", path: "/about" },
     { label: "AHC Leadership", path: "/ahcleaders" },
-  {
-  label: "About AAU",
-  path: "/partners/addisababauniversity"
-},
+    {
+      label: "About AAU",
+      path: "/partners/addisababauniversity"
+    },
 
     { label: "Values & Principles", path: "/valuesandprinciples" },
   ];
   //partner link
-   const partnerLinks = [
+  const partnerLinks = [
     { label: "Founder Partners", path: "/partners" },
     { label: "Local Partners", path: "/local-partners" },
- 
+
 
   ];
 
@@ -84,281 +84,283 @@ export default function Header() {
   }, [theme]);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b animate-fade bg-white dark:bg-ahc-dark shadow-md border-slate-200 dark:border-slate-800`}
-    >
-      <div className="container flex h-14 md:h-16 items-center justify-between min-w-full">
-        <Link to="/" className="flex items-center gap-3">
-          <img
-            src="/images/ahc-logo.png"
-            alt="AHC Logo"
-            className="h-10 w-10 object-contain"
-            onError={(e) => {
-              const img = e.currentTarget as HTMLImageElement;
-              if (img.dataset.fallback !== "1") {
-                img.src = "/images/ahc-logo.jpg";
-                img.dataset.fallback = "1";
-              } else {
-                img.src = "/images/favicon.png";
-              }
-            }}
-          />
-          <span className="font-display text-xl font-bold">
-            Africa Health Collaborative
-          </span>
-        </Link>
-        <nav className="hidden md:flex items-center gap-8">
-          <NavLink
-            to={hPath}
-            className={({ isActive }) =>
-              `text-sm font-medium transition-colors duration-200 ${
-                isActive
+    <>
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-out mt-3 mx-4 md:mx-8 lg:mx-12 ${scrolled
+          ? 'rounded-[20px] backdrop-blur-2xl bg-gradient-to-r from-white/70 via-white/60 to-white/70 dark:from-slate-900/70 dark:via-slate-900/60 dark:to-slate-900/70 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border-2 border-white/40 dark:border-slate-700/40 ring-1 ring-ahc-green/20 dark:ring-ahc-green/30'
+          : 'rounded-2xl backdrop-blur-lg bg-white/60 dark:bg-slate-900/60 shadow-md border-2 border-white/30 dark:border-slate-800/30'
+          }`}
+      >
+        <div className={`mx-auto max-w-7xl px-6 md:px-8 lg:px-12 flex items-center justify-between transition-all duration-700 ${scrolled ? 'h-14' : 'h-12 md:h-14'
+          }`}>
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="/images/ahc-logo.png"
+              alt="AHC Logo"
+              className="h-10 w-10 object-contain"
+              onError={(e) => {
+                const img = e.currentTarget as HTMLImageElement;
+                if (img.dataset.fallback !== "1") {
+                  img.src = "/images/ahc-logo.jpg";
+                  img.dataset.fallback = "1";
+                } else {
+                  img.src = "/images/favicon.png";
+                }
+              }}
+            />
+            <span className="font-display text-xl font-bold">
+              Africa Health Collaborative
+            </span>
+          </Link>
+          <nav className="hidden min-[1061px]:flex items-center gap-8">
+            <NavLink
+              to={hPath}
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors duration-200 ${isActive
                   ? "text-ahc-green-dark font-semibold"
                   : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
-              }`
-            }
-          >
-            {hPath === "/" ? <Home className="h-5 w-5" /> : "Home"}
-          </NavLink>
-
-          <div
-            className="relative"
-            onMouseEnter={() => setShowAboutDropdown(true)}
-            onMouseLeave={() => setShowAboutDropdown(false)}
-          >
-            <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
-              <span className="inline-block">About</span>
-              <span
-                className={`inline-block transition-transform duration-200 ${
-                  showAboutDropdown ? "rotate-180" : ""
-                }`}
-              >
-                <ChevronDown className="h-4 w-4" />
-              </span>
-            </button>
-            {showAboutDropdown && (
-              <div className="absolute top-full left-0 pt-3">
-                <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
-                  {AboutLinks.map((link) => (
-                    <NavLink
-                      key={link.path}
-                      to={link.path}
-                      className={({ isActive }) =>
-                        `block px-4 py-2.5 text-sm transition-colors ${
-                          isActive
-                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div
-            className="relative"
-            onMouseEnter={() => setShowLatestDropdown(true)}
-            onMouseLeave={() => setShowLatestDropdown(false)}
-          >
-            <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
-              <span className="inline-block">Latest</span>
-              <span
-                className={`inline-block transition-transform duration-200 ${
-                  showLatestDropdown ? "rotate-180" : ""
-                }`}
-              >
-                <ChevronDown className="h-4 w-4" />
-              </span>
-            </button>
-            {showLatestDropdown && (
-              <div className="absolute top-full left-0 pt-3">
-                <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
-                  {latestLinks.map((link) => (
-                    <NavLink
-                      key={link.path}
-                      to={link.path}
-                      className={({ isActive }) =>
-                        `block px-4 py-2.5 text-sm transition-colors ${
-                          isActive
-                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div
-            className="relative"
-            onMouseEnter={() => setShowPillarsDropdown(true)}
-            onMouseLeave={() => setShowPillarsDropdown(false)}
-          >
-            <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
-              <span className="inline-block">Health Pillars</span>
-              <span
-                className={`inline-block transition-transform duration-200 ${
-                  showPillarsDropdown ? "rotate-180" : ""
-                }`}
-              >
-                <ChevronDown className="h-4 w-4" />
-              </span>
-            </button>
-            {showPillarsDropdown && (
-              <div className="absolute top-full left-0 pt-3">
-                <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
-                  {healthPillarsLinks.map((link) => (
-                    <NavLink
-                      key={link.path}
-                      to={link.path}
-                      className={({ isActive }) =>
-                        `block px-4 py-2.5 text-sm transition-colors ${
-                          isActive
-                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-           <div
-            className="relative"
-            onMouseEnter={() => setShowPartnerDropdown(true)}
-            onMouseLeave={() => setShowPartnerDropdown(false)}
-          >
-            <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
-              <span className="inline-block">Partners</span>
-              <span
-                className={`inline-block transition-transform duration-200 ${
-                  showPartnerDropdown ? "rotate-180" : ""
-                }`}
-              >
-                <ChevronDown className="h-4 w-4" />
-              </span>
-            </button>
-            {showPartnerDropdown && (
-              <div className="absolute top-full left-0 pt-3">
-                <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
-                  {partnerLinks.map((link) => (
-                    <NavLink
-                      key={link.path}
-                      to={link.path}
-                      className={({ isActive }) =>
-                        `block px-4 py-2.5 text-sm transition-colors ${
-                          isActive
-                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {links.map((l) => (
-            <NavLink
-              key={l.path}
-              to={l.path}
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "text-ahc-green-dark font-semibold"
-                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                 }`
               }
             >
-              {l.path === "/" ? <Home className="h-5 w-5" /> : l.label}
+              {hPath === "/" ? <Home className="h-5 w-5" /> : "Home"}
             </NavLink>
-          ))}
 
+            <div
+              className="relative"
+              onMouseEnter={() => setShowAboutDropdown(true)}
+              onMouseLeave={() => setShowAboutDropdown(false)}
+            >
+              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+                <span className="inline-block">About</span>
+                <span
+                  className={`inline-block transition-transform duration-200 ${showAboutDropdown ? "rotate-180" : ""
+                    }`}
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </span>
+              </button>
+              {showAboutDropdown && (
+                <div className="absolute top-full left-0 pt-3">
+                  <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                    {AboutLinks.map((link) => (
+                      <NavLink
+                        key={link.path}
+                        to={link.path}
+                        className={({ isActive }) =>
+                          `block px-4 py-2.5 text-sm transition-colors ${isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                          }`
+                        }
+                      >
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setShowLatestDropdown(true)}
+              onMouseLeave={() => setShowLatestDropdown(false)}
+            >
+              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+                <span className="inline-block">Latest</span>
+                <span
+                  className={`inline-block transition-transform duration-200 ${showLatestDropdown ? "rotate-180" : ""
+                    }`}
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </span>
+              </button>
+              {showLatestDropdown && (
+                <div className="absolute top-full left-0 pt-3">
+                  <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                    {latestLinks.map((link) => (
+                      <NavLink
+                        key={link.path}
+                        to={link.path}
+                        className={({ isActive }) =>
+                          `block px-4 py-2.5 text-sm transition-colors ${isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                          }`
+                        }
+                      >
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setShowPillarsDropdown(true)}
+              onMouseLeave={() => setShowPillarsDropdown(false)}
+            >
+              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+                <span className="inline-block">Health Pillars</span>
+                <span
+                  className={`inline-block transition-transform duration-200 ${showPillarsDropdown ? "rotate-180" : ""
+                    }`}
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </span>
+              </button>
+              {showPillarsDropdown && (
+                <div className="absolute top-full left-0 pt-3">
+                  <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                    {healthPillarsLinks.map((link) => (
+                      <NavLink
+                        key={link.path}
+                        to={link.path}
+                        className={({ isActive }) =>
+                          `block px-4 py-2.5 text-sm transition-colors ${isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                          }`
+                        }
+                      >
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            <div
+              className="relative"
+              onMouseEnter={() => setShowPartnerDropdown(true)}
+              onMouseLeave={() => setShowPartnerDropdown(false)}
+            >
+              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+                <span className="inline-block">Partners</span>
+                <span
+                  className={`inline-block transition-transform duration-200 ${showPartnerDropdown ? "rotate-180" : ""
+                    }`}
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </span>
+              </button>
+              {showPartnerDropdown && (
+                <div className="absolute top-full left-0 pt-3">
+                  <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
+                    {partnerLinks.map((link) => (
+                      <NavLink
+                        key={link.path}
+                        to={link.path}
+                        className={({ isActive }) =>
+                          `block px-4 py-2.5 text-sm transition-colors ${isActive
+                            ? "bg-ahc-green/10 text-ahc-green-dark font-semibold"
+                            : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                          }`
+                        }
+                      >
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {links.map((l) => (
+              <NavLink
+                key={l.path}
+                to={l.path}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors duration-200 ${isActive
+                    ? "text-ahc-green-dark font-semibold"
+                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                  }`
+                }
+              >
+                {l.path === "/" ? <Home className="h-5 w-5" /> : l.label}
+              </NavLink>
+            ))}
+
+            <button
+              className="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
+              onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+              aria-label="Toggle theme"
+              title={
+                theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+              }
+            >
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" aria-hidden="true" />
+              ) : (
+                <Moon className="h-5 w-5" aria-hidden="true" />
+              )}
+            </button>
+          </nav>
           <button
-            className="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
-            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
-            aria-label="Toggle theme"
-            title={
-              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-            }
+            className="min-[1061px]:hidden z-[60] relative"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
           >
-            {theme === "dark" ? (
-              <Sun className="h-5 w-5" aria-hidden="true" />
-            ) : (
-              <Moon className="h-5 w-5" aria-hidden="true" />
-            )}
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-        </nav>
-        <button
-          className="md:hidden z-50"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
+        </div>
+      </header>
       <div
-        className={`md:hidden fixed inset-0 z-60 bg-white dark:bg-ahc-dark transition-transform duration-300 ease-in-out ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`min-[1061px]:hidden fixed inset-y-0 right-0 z-[55] w-80 bg-white dark:bg-slate-900 shadow-2xl transition-transform duration-300 ease-in-out ${open ? "translate-x-0" : "translate-x-full invisible"
+          }`}
       >
-        <div className="container h-full flex flex-col items-center justify-center">
-          <nav className="flex flex-col items-center gap-8">
+        <button
+          className="absolute top-6 right-6 z-[60] p-2 text-slate-700 dark:text-slate-200"
+          onClick={() => setOpen(false)}
+          aria-label="Close menu"
+        >
+          <X className="h-8 w-8" />
+        </button>
+        <div className="h-full w-full flex flex-col items-start justify-start pt-24 pb-8 overflow-y-auto px-6">
+          <nav className="flex flex-col items-start gap-2 w-full">
             {/* home */}
             <NavLink
               to="/"
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `text-2xl font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "text-ahc-green-dark font-semibold"
-                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                `text-lg font-medium w-full text-left py-2 transition-colors duration-200 ${isActive
+                  ? "text-ahc-green-dark font-semibold"
+                  : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                 }`
               }
             >
-              <Home className="h-5 w-5" />
+              <div className="flex items-center gap-3">
+                <Home className="h-5 w-5" />
+                <span>Home</span>
+              </div>
             </NavLink>
 
-            <div className="relative">
+            <div className="w-full">
               <button
                 onClick={() =>
                   setShowMobileAboutDropdown(!showMobileAboutDropdown)
                 }
-                className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
               >
                 <span>About</span>
                 <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-200 ${
-                    showMobileAboutDropdown ? "rotate-180" : ""
-                  }`}
+                  className={`h-5 w-5 transition-transform duration-200 ${showMobileAboutDropdown ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               {showMobileAboutDropdown && (
-                <div className="mt-4 flex flex-col items-center gap-4">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
                   {AboutLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `text-xl font-medium transition-colors duration-200 ${
-                          isActive
-                            ? "text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        `text-base font-medium w-full text-left py-2 transition-colors duration-200 ${isActive
+                          ? "text-ahc-green-dark font-semibold"
+                          : "text-slate-600 hover:text-ahc-green-dark dark:text-slate-400 dark:hover:text-white"
                         }`
                       }
                     >
@@ -368,36 +370,35 @@ export default function Header() {
                 </div>
               )}
             </div>
-            
+
 
 
             {/* latest */}
-            <div className="relative">
+            {/* latest */}
+            <div className="w-full">
               <button
                 onClick={() =>
                   setShowMobileLatestDropdown(!showMobileLatestDropdown)
                 }
-                className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
               >
                 <span>Latest</span>
                 <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-200 ${
-                    showMobileLatestDropdown ? "rotate-180" : ""
-                  }`}
+                  className={`h-5 w-5 transition-transform duration-200 ${showMobileLatestDropdown ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               {showMobileLatestDropdown && (
-                <div className="mt-4 flex flex-col items-center gap-4">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
                   {latestLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `text-xl font-medium transition-colors duration-200 ${
-                          isActive
-                            ? "text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        `text-base font-medium w-full text-left py-2 transition-colors duration-200 ${isActive
+                          ? "text-ahc-green-dark font-semibold"
+                          : "text-slate-600 hover:text-ahc-green-dark dark:text-slate-400 dark:hover:text-white"
                         }`
                       }
                     >
@@ -408,32 +409,30 @@ export default function Header() {
               )}
             </div>
 
-            <div className="relative">
+            <div className="w-full">
               <button
                 onClick={() =>
                   setShowMobilePillarsDropdown(!showMobilePillarsDropdown)
                 }
-                className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
               >
                 <span>Health Pillars</span>
                 <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-200 ${
-                    showMobilePillarsDropdown ? "rotate-180" : ""
-                  }`}
+                  className={`h-5 w-5 transition-transform duration-200 ${showMobilePillarsDropdown ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               {showMobilePillarsDropdown && (
-                <div className="mt-4 flex flex-col items-center gap-4">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
                   {healthPillarsLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `text-xl font-medium transition-colors duration-200 ${
-                          isActive
-                            ? "text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        `text-base font-medium w-full text-left py-2 transition-colors duration-200 ${isActive
+                          ? "text-ahc-green-dark font-semibold"
+                          : "text-slate-600 hover:text-ahc-green-dark dark:text-slate-400 dark:hover:text-white"
                         }`
                       }
                     >
@@ -443,32 +442,30 @@ export default function Header() {
                 </div>
               )}
             </div>
-             <div className="relative">
+            <div className="w-full">
               <button
                 onClick={() =>
                   setShowMobilePartnersDropdown(!showMobilePartnersDropdown)
                 }
-                className="text-2xl font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
               >
                 <span>Partners</span>
                 <ChevronDown
-                  className={`h-6 w-6 transition-transform duration-200 ${
-                    showMobilePartnersDropdown ? "rotate-180" : ""
-                  }`}
+                  className={`h-5 w-5 transition-transform duration-200 ${showMobilePartnersDropdown ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               {showMobilePartnersDropdown && (
-                <div className="mt-4 flex flex-col items-center gap-4">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
                   {partnerLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `text-xl font-medium transition-colors duration-200 ${
-                          isActive
-                            ? "text-ahc-green-dark font-semibold"
-                            : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                        `text-base font-medium w-full text-left py-2 transition-colors duration-200 ${isActive
+                          ? "text-ahc-green-dark font-semibold"
+                          : "text-slate-600 hover:text-ahc-green-dark dark:text-slate-400 dark:hover:text-white"
                         }`
                       }
                     >
@@ -485,10 +482,9 @@ export default function Header() {
                 to={l.path}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `text-2xl font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "text-ahc-green-dark font-semibold"
-                      : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                  `text-lg font-medium w-full text-left py-2 transition-colors duration-200 ${isActive
+                    ? "text-ahc-green-dark font-semibold"
+                    : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
                   }`
                 }
               >
@@ -515,6 +511,6 @@ export default function Header() {
           </nav>
         </div>
       </div>
-    </header>
+    </>
   );
 }
