@@ -84,6 +84,7 @@ export const router = createBrowserRouter([
       { path: 'health-pillars/health-employment', element: <HealthEmployment /> },
       { path: 'health-pillars/health-entrepreneurship', element: <HealthEntrepreneurship /> },
       { path: 'health-pillars/health-entrepreneurship/ventures', element: <VentureShowcase /> },
+      { path: 'health-pillars/health-entrepreneurship/apply', element: <VentureApplication /> },
       { path: 'health-pillars/health-entrepreneurship/contact', element: <Contact /> },
       { path: 'health-pillars/health-entrepreneurship/demo', element: <HIDemo /> },
       { path: 'health-pillars/health-ecosystems', element: <HealthEcosystems /> },
