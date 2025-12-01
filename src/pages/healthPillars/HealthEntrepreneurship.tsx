@@ -240,7 +240,7 @@ export default function HealthEntrepreneurship() {
         </section>
 
         {/* Featured Ventures Section */}
-        <section className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+        {/* <section className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center text-ahc-green-dark mb-12">Featured Ventures</h2>
             {isLoadingVentures ? (
@@ -253,10 +253,10 @@ export default function HealthEntrepreneurship() {
                   to={`/health-pillars/health-entrepreneurship/ventures/${venture.id}`}
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100 dark:border-gray-700 relative overflow-hidden"
                 >
-                  {/* Gradient accent border */}
+                   
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
                   
-                  {/* Badge */}
+                  
                   {venture.featured && ( // Assuming 'featured' property exists on Venture type
                     <div className="absolute top-4 right-4">
                       <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-xs font-semibold rounded-full shadow-md">
@@ -265,7 +265,7 @@ export default function HealthEntrepreneurship() {
                     </div>
                   )}
 
-                  {/* Logo */}
+                  
                   <div className="w-20 h-20 bg-gradient-to-br from-teal-50 to-green-50 dark:from-teal-900/30 dark:to-green-900/30 rounded-2xl mb-4 flex items-center justify-center overflow-hidden shadow-md">
                     {venture.logo ? (
                       <img
@@ -280,7 +280,7 @@ export default function HealthEntrepreneurship() {
                     )}
                   </div>
 
-                  {/* Name & Tagline */}
+                
                   <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                     {venture.title}
                   </h3>
@@ -290,17 +290,17 @@ export default function HealthEntrepreneurship() {
                     </p>
                   )}
 
-                  {/* Focus Area */}
+                 
                   <div className="inline-block px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-semibold rounded-full mb-4 capitalize">
                     {venture.focusArea.replace("-", " ")}
                   </div>
 
-                  {/* Description */}
+                  
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 leading-relaxed">
                     {venture.description || "Innovative healthcare solution"}
                   </p>
 
-                  {/* Stats */}
+                
                   <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
                     {venture.country && ( // Assuming 'country' property exists on Venture type
                       <div className="flex items-center gap-1.5">
@@ -324,12 +324,11 @@ export default function HealthEntrepreneurship() {
                     )}
                   </div>
 
-                  {/* Footer */}
+                  
                   <div className="flex items-center justify-between pt-2">
                     <span className="text-sm font-semibold text-teal-600 dark:text-teal-400 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                       Learn More →
                     </span>
-                    {/* Vote button is removed as it's not part of the featured section interaction */}
                   </div>
                 </Link>
               ))}
@@ -347,8 +346,9 @@ export default function HealthEntrepreneurship() {
               </Link>
             </div>
           </div>
-        </section>
+        </section> */}
 
+        
         {/* Pillar News Section */}
         <PillarNewsSection
           pillar="health_entrepreneurship"
@@ -489,7 +489,7 @@ export default function HealthEntrepreneurship() {
                     </div>
                   ))}
                 </div>
-                <Link to="/health-pillars/health-entrepreneurship/apply">
+                <Link to="#">
                   <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
                     Apply Now <ArrowRight className="ml-2 -mr-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </button>
