@@ -1,9 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { partners } from "../data/partners";
-import { localPartners } from "../data/localPartners"; // Import localPartners
+import { localPartners } from "../data/localPartners";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { useGetPublicPostsQuery } from "../features/posts/postsApi";
+import dayjs from "dayjs";
 
 export function PartnerDetail() {
   const { name } = useParams<{ name: string }>();
@@ -11,11 +13,23 @@ export function PartnerDetail() {
   // Combine partners and localPartners arrays for searching
   const allPartners = [...partners, ...localPartners];
 
-  const partner = allPartners.find( // Search in the combined array
+  const partner = allPartners.find(
     (p: any) =>
       p.name.replace(/\s+/g, "").toLowerCase() ===
       name?.replace(/\s+/g, "").toLowerCase()
   );
+
+  // Check if this is a local partner (university) that should show news
+  const isLocalPartner = localPartners.some(
+    (p) => p.name.replace(/\s+/g, "").toLowerCase() === name?.replace(/\s+/g, "").toLowerCase()
+  );
+
+  // Fetch news for this university if it's a local partner
+  const { data: newsData, isLoading: newsLoading } = useGetPublicPostsQuery(
+    isLocalPartner && partner ? { category: partner.name, perPage: 6, postType: "news" } : undefined,
+    { skip: !isLocalPartner || !partner }
+  );
+  const universityNews = newsData?.data ?? [];
 
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
   const galleryImages = partner?.galery.filter((img: string) => img) || [];
@@ -206,6 +220,92 @@ export function PartnerDetail() {
                 ))}
               </div>
             </>
+          )}
+
+          {/* University News Section */}
+          {isLocalPartner && (
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+                Latest News from {partner.name}
+              </h2>
+              {newsLoading ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-ahc-green mx-auto"></div>
+                  <p className="mt-2 text-gray-500">Loading news...</p>
+                </div>
+              ) : universityNews.length === 0 ? (
+                <div className="text-center py-8 bg-gray-50 dark:bg-slate-800 rounded-lg">
+                  <p className="text-gray-500 dark:text-gray-400">
+                    No news available for {partner.name} at this time.
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {universityNews.map((news: any) => {
+                    const firstImgMatch = (news.content ?? "").match(
+                      /<img[^>]+src=["']([^"']+)["']/i
+                    );
+                    const galleryFirst =
+                      news.gallery && Array.isArray(news.gallery) && news.gallery.length > 0
+                        ? news.gallery[0].original || news.gallery[0].url
+                        : "";
+                    const imgUrl =
+                      news.featured_image ||
+                      galleryFirst ||
+                      (firstImgMatch ? firstImgMatch[1] : "");
+
+                    return (
+                      <Link
+                        key={news.id}
+                        to={`/news/${news.id}`}
+                        className="group bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                      >
+                        {imgUrl ? (
+                          <img
+                            src={imgUrl}
+                            alt={news.title}
+                            className="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className="aspect-[16/9] bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                            <span className="text-slate-400">No Image</span>
+                          </div>
+                        )}
+                        <div className="p-4">
+                          {news.published_at && (
+                            <div className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                              {dayjs(news.published_at).format("MMM DD, YYYY")}
+                            </div>
+                          )}
+                          <h3 className="mt-2 text-lg font-bold font-display group-hover:text-ahc-green-dark transition-colors line-clamp-2">
+                            {news.title}
+                          </h3>
+                          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                            {news.excerpt ??
+                              (news.content ?? "")
+                                .replace(/<[^>]+>/g, "")
+                                .slice(0, 100)}
+                          </p>
+                          <span className="mt-3 inline-block text-sm font-medium text-ahc-green-dark group-hover:underline">
+                            Read more →
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+              {universityNews.length > 0 && (
+                <div className="mt-6 text-center">
+                  <Link
+                    to={`/news?category=${encodeURIComponent(partner.name)}`}
+                    className="inline-flex items-center px-6 py-3 bg-ahc-green text-white font-semibold rounded-lg hover:bg-ahc-green-dark transition-colors"
+                  >
+                    View All {partner.name} News →
+                  </Link>
+                </div>
+              )}
+            </div>
           )}
         </div>
 

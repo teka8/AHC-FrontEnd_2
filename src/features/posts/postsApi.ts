@@ -42,7 +42,7 @@ export const postsApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getPublicPosts: build.query<
       PostListResponse,
-      { search?: string; perPage?: number; page?: number; pillar?: string | string[]; postType?: string | string[] } | void
+      { search?: string; perPage?: number; page?: number; pillar?: string | string[]; postType?: string | string[]; category?: string } | void
     >({
       query: (args) => {
         const search = args && 'search' in (args as any) ? (args as any).search : undefined
@@ -50,6 +50,7 @@ export const postsApi = baseApi.injectEndpoints({
         const page = args && 'page' in (args as any) ? (args as any).page : 1
         const pillar = args && 'pillar' in (args as any) ? (args as any).pillar : undefined
         const postType = args && 'postType' in (args as any) ? (args as any).postType : undefined
+        const category = args && 'category' in (args as any) ? (args as any).category : undefined
         const params = new URLSearchParams()
         if (search) params.set('search', search)
         if (perPage) params.set('per_page', String(perPage))
@@ -68,6 +69,7 @@ export const postsApi = baseApi.injectEndpoints({
             params.set('type', postType)
           }
         }
+        if (category) params.set('category', category)
         const qs = params.toString()
         return { url: `/v1/public/posts${qs ? `?${qs}` : ''}` }
       },
