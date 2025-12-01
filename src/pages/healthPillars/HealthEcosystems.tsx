@@ -319,7 +319,7 @@ Train professionals across a broad range of disciplines critical for sustainable
       {/* News Section */}
       <PillarNewsSection
         pillar="health_ecosystems"
-        title="Health Ecosystems In Focus"
+        title="Latest Health Ecosystems News"
         description="Read the most recent developments strengthening health ecosystems across Africa."
         backgroundClassName="bg-gradient-to-br from-teal-50 via-white to-green-100 dark:from-[#0b1120] dark:via-[#0f1729] dark:to-[#020617]"
       />
@@ -421,8 +421,8 @@ Train professionals across a broad range of disciplines critical for sustainable
       </div>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-        {/* Decorative Background Elements */}
+      {/* <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+        
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
             <img 
@@ -497,7 +497,7 @@ Train professionals across a broad range of disciplines critical for sustainable
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

@@ -218,7 +218,7 @@ export default function Hero() {
       </div>
 
       {/* Strategic Partners - Pixel Transition Logos */}
-      <div className="absolute top-20 left-4 right-4 md:top-24 md:right-8 md:left-auto z-30 flex flex-nowrap md:flex-wrap items-center justify-start md:justify-end gap-3 md:gap-4 pointer-events-none">
+      <div className="absolute top-20 left-4 right-4 md:top-24 md:right-8 md:left-auto z-30 flex flex-nowrap md:flex-wrap items-center justify-start md:justify-end gap-3 md:gap-4 pointer-events-none bg-white/20 backdrop-blur-2xl border-2 border-white/30 rounded-2xl p-3 md:p-4 shadow-[0_8px_32px_0_rgba(31,38,135,0.25)]">
         {logos.map((logo, idx) => (
           <div
             key={idx}
@@ -231,13 +231,13 @@ export default function Hero() {
               gridSize={8}
               pixelColor="rgba(255, 255, 255, 0.9)"
               animationStepDuration={0.2}
-              className="rounded-lg w-16 h-16 md:w-24 md:h-24 bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:border-white/40 transition-all duration-500"
+              className="rounded-lg w-16 h-16 md:w-24 md:h-24 bg-white/30 backdrop-blur-2xl border-2 border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.2)] hover:shadow-[0_12px_40px_0_rgba(31,38,135,0.3)] hover:border-white/60 hover:bg-white/40 transition-all duration-500"
               firstContent={
                 <div className="flex items-center justify-center w-full h-full p-1.5 md:p-2">
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="max-w-full max-h-full object-contain drop-shadow-md"
+                    className="max-w-full max-h-full object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] brightness-110 contrast-110"
                     onError={(e) => {
                       const img = e.currentTarget as HTMLImageElement;
                       if (logo.fallback && img.dataset.fallback !== "1") {

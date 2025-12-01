@@ -352,7 +352,7 @@ export default function HealthEntrepreneurship() {
         {/* Pillar News Section */}
         <PillarNewsSection
           pillar="health_entrepreneurship"
-          title="Health Entrepreneurship Highlights"
+          title="Latest Health Entrepreneurship News"
           description="Catch up on fresh insights, success stories, and opportunities emerging from the Health Entrepreneurship pillar."
           backgroundClassName="bg-gradient-to-br from-emerald-50 via-white to-teal-100 dark:from-[#0b1120] dark:via-[#0f1729] dark:to-[#020617]"
         />
@@ -597,14 +597,14 @@ export default function HealthEntrepreneurship() {
             </div>
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-5xl mx-auto">
-              {/* Main CTA Card */}
+              {/* Main CTA Card 
               <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
-                {/* Gradient accent border */}
+                {/* Gradient accent border 
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
                 
-                {/* Small decorative AHC Symbol - Top Right */}
+                {/* Small decorative AHC Symbol - Top Right 
                 <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
                   <img 
                     src="/images/ahc-health-symbol.png" 
@@ -615,7 +615,7 @@ export default function HealthEntrepreneurship() {
                 </div>
 
                 <div className="text-center relative z-10">
-                  {/* Icon Badge */}
+                  {/* Icon Badge
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
                     <Rocket className="w-8 h-8 text-white" />
                   </div>
@@ -629,7 +629,7 @@ export default function HealthEntrepreneurship() {
                     and transform your ideas into impactful solutions.
                   </p>
 
-                  {/* CTA Buttons */}
+                  {/* CTA Buttons 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <Link to="/health-pillars/health-entrepreneurship/contact" className="w-full sm:w-auto">
                       <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center group">
@@ -646,7 +646,7 @@ export default function HealthEntrepreneurship() {
                     </Link>
                   </div>
 
-                  {/* Stats or Trust Indicators */}
+                  {/* Stats or Trust Indicators 
                   <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                     <div className="text-center">
                       <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">150+</div>
@@ -664,7 +664,7 @@ export default function HealthEntrepreneurship() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
       </div>
       </>

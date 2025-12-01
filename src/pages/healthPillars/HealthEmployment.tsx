@@ -698,14 +698,14 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
           </div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto">
-            {/* Main CTA Card */}
+            Main CTA Card
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
-              {/* Gradient accent border */}
+              /* Gradient accent border 
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
               
-              {/* Small decorative AHC Symbol - Top Right */}
+               Small decorative AHC Symbol - Top Right 
               <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
                 <img 
                   src="/images/ahc-health-symbol.png" 
@@ -716,7 +716,7 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
               </div>
 
               <div className="text-center relative z-10">
-                {/* Icon Badge */}
+                // Icon Badge 
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -731,7 +731,7 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
                   Join our mission to build a healthier future for Africa. Together, we can create lasting impact through education, employment, and empowerment in the healthcare sector.
                 </p>
 
-                {/* CTA Buttons */}
+                /* CTA Buttons *
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Link to="/contact" className="w-full sm:w-auto">
                     <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center group">
@@ -750,7 +750,7 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
                   </Link>
                 </div>
 
-                {/* Stats or Trust Indicators */}
+                /* Stats or Trust Indicators 
                 <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                   <div className="text-center">
                     <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">10,000+</div>
@@ -768,7 +768,7 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   );
