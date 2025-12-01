@@ -175,7 +175,7 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
               <h3 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
                 Impact of Employment on Africa
               </h3>
-              <div className="space-y-4 text-2xl text-gray-700 dark:text-gray-300">
+              <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
                 <p>
                 The Health Employment Pillar (HEMP) addresses the chronic mismatch between the demand for healthcare
                  and the supply of a skilled health workforce in Africa, aiming to bridge this crucial gap.

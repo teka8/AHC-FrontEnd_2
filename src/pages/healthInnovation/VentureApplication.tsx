@@ -266,7 +266,7 @@ export default function VentureApplication() {
         </section>
 
         {/* Main Content */}
-        <div className="container mx-auto px-4 max-w-4xl py-12">
+        <div className="mx-auto px-4 max-w-4xl py-12">
 
           {submitError && (
             <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
