@@ -1,25 +1,39 @@
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { leaders } from "../data/ahcLeaders";
+import { useGetLeaderQuery } from "../features/leaders/leadersApi";
 import Hero from "../components/partners/Hero";
 
 export default function AhcLeaderDetail() {
   const { id } = useParams();
-  const leader = leaders.find((l) => l.id === Number(id));
+  const { data: leader, isLoading, isError } = useGetLeaderQuery(Number(id));
 
-  if (!leader) {
+  if (isLoading) {
     return (
-      <div className="text-center py-20">
-        <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-          Leader not found
-        </h2>
-        <Link
-          to="/ahc-leaders"
-          className="text-blue-600 hover:text-blue-800 mt-4 inline-block"
-        >
-          ← Back to Leaders
-        </Link>
-      </div>
+      <>
+        <Hero />
+        <div className="flex justify-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-ahc-green"></div>
+        </div>
+      </>
+    );
+  }
+
+  if (isError || !leader) {
+    return (
+      <>
+        <Hero />
+        <div className="text-center py-20">
+          <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            Leader not found
+          </h2>
+          <Link
+            to="/ahcleaders"
+            className="text-blue-600 hover:text-blue-800 mt-4 inline-block"
+          >
+            ← Back to Leaders
+          </Link>
+        </div>
+      </>
     );
   }
 
@@ -35,7 +49,7 @@ export default function AhcLeaderDetail() {
         <div className="container mx-auto px-6 md:flex md:gap-12 items-center">
           <div className="md:w-1/2">
             <img
-              src={leader.image}
+              src={leader.image || '/images/placeholder.png'}
               alt={leader.name}
               className="rounded-2xl shadow-xl bg-white p-6 w-full h-auto object-contain"
             />
