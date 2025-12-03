@@ -60,9 +60,10 @@ export default function AhcLeaderDetail() {
               {leader.name}
             </h2>
             <p className="text-lg text-ahc-green mb-6">{leader.position}</p>
-            <p className="text-gray-500 dark:text-gray-300 leading-relaxed">
-              {leader.description}
-            </p>
+            <div 
+              className="text-gray-500 dark:text-gray-300 leading-relaxed prose prose-sm max-w-none"
+              dangerouslySetInnerHTML={{ __html: leader.description || '' }}
+            />
             <Link
               to="/ahcleaders"
               className="mt-8 inline-block btn bg-ahc-green hover:bg-ahc-green-dark font-semibold rounded-full px-6 py-3 transition-colors "
