@@ -75,7 +75,7 @@ export const router = createBrowserRouter([
       { path: 'events', element: <EventsList /> },
       { path: 'events/:id', element: <EventDetail /> },
       { path: 'media', element: <Media /> },
-      { path: 'contact', element: <Contact /> },
+      { path: 'contact', element: <HIContact /> },
       { path: 'unsubscribe', element: <Unsubscribe /> },
       { path: 'login', element: <Login /> },
       { path: 'dashboard', element: <Protected><Dashboard /></Protected> },

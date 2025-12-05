@@ -29,7 +29,7 @@ export default function PillarNewsSection({
   const resolvedCtaHref = ctaHref ?? `/news?pillar=${encodeURIComponent(pillar)}`
 
   return (
-    <section className={`relative overflow-hidden py-20 ${backgroundClassName} mb-20`}>
+    <section className={`relative overflow-hidden px-20 py-20 ${backgroundClassName} mb-20`}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-24 -left-20 h-64 w-64 rounded-full bg-ahc-green/20 blur-3xl dark:bg-ahc-green/10" />
         <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-emerald-300/30 blur-3xl dark:bg-emerald-500/10" />
