@@ -543,7 +543,7 @@ export default function Resources() {
         )}
 
         {/* Tags Filter */}
-        {tags.length > 0 && (
+        {/* {tags.length > 0 && (
           <>
             <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
@@ -568,10 +568,10 @@ export default function Resources() {
               </div>
             </div>
           </>
-        )}
+        )} */}
 
         {/* Authors Filter */}
-        {authors.length > 0 && (
+        {/* {authors.length > 0 && (
           <>
             <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
@@ -596,7 +596,7 @@ export default function Resources() {
               </div>
             </div>
           </>
-        )}
+        )} */}
 
         {/* Publication Date Filter */}
         <>
