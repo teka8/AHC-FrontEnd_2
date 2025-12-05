@@ -11,7 +11,8 @@
 .ahehc-banner__inner {
   display: flex;
   position: relative;
-  min-height: 28rem; /* Base min-height */
+  min-height: 28rem;
+  /* Base min-height */
 }
 
 .ahehc-banner__poster {
@@ -40,7 +41,7 @@
   transform-origin: top left;
 }
 
-.ahehc-banner__content > * {
+.ahehc-banner__content>* {
   max-width: 42rem;
 }
 
@@ -295,7 +296,7 @@
   }
 }
 
-.contains-wraps > * {
+.contains-wraps>* {
   margin-left: 1rem;
   margin-right: auto;
   max-width: var(--block-width, 72rem);

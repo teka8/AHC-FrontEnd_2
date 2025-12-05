@@ -15,9 +15,8 @@ export default function Layout() {
       <div ref={topRef} />
       <Header />
       <main
-        className={`flex-1 pt-12 md:pt-16 overflow-x-hidden ${
-          isHome ? 'bg-gradient-to-b from-ahc-green/15 to-transparent' : ''
-        }`}
+        className={`flex-1 overflow-x-hidden ${isHome ? 'pt-12 md:pt-16 bg-gradient-to-b from-ahc-green/15 to-transparent' : ''
+          }`}
       >
         <div key={location.pathname} className="animate-fade">
           <Outlet />
