@@ -181,14 +181,6 @@ export default function HIContact() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-teal-100 via-green-100 to-emerald-100 dark:from-gray-750 dark:to-gray-800 rounded-3xl p-8 shadow-xl border-2 border-teal-300 dark:border-teal-700">
-                  <h3 className="font-bold text-2xl mb-4 text-gray-900 dark:text-white">Office Hours</h3>
-                  <div className="space-y-2 text-base text-gray-700 dark:text-gray-300">
-                    <p className="flex justify-between"><span className="font-semibold">Monday - Friday:</span> <span>9:00 AM - 5:00 PM</span></p>
-                    <p className="flex justify-between"><span className="font-semibold">Saturday:</span> <span>10:00 AM - 2:00 PM</span></p>
-                    <p className="flex justify-between"><span className="font-semibold">Sunday:</span> <span>Closed</span></p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
