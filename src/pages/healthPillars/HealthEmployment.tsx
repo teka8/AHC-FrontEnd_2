@@ -144,7 +144,7 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
       </section>
 
       {/* Impact of Employment Section - Redesigned */}
-      <section id="impact" className="py-20 px-4 lg:px-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
+      <section id="impact" className="py-20 px-4 lg:px-20 bg-white dark:bg-gray-900 relative overflow-hidden min-h-screen">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">

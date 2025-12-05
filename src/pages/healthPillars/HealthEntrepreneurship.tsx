@@ -420,53 +420,104 @@ export default function HealthEntrepreneurship() {
         </section>
 
         {/* Accelerators Section */}
+        <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Large AHC Symbol - Top Right */}
+            <div className="absolute right-0 top-10 translate-x-1/4 w-80 h-80 opacity-[0.06]">
+              <img 
+                src="/images/ahc-health-symbol.png" 
+                alt="" 
+                aria-hidden="true"
+                className="w-full h-full object-contain"
+                style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+              />
+            </div>
+            
+            {/* Large AHC Symbol - Bottom Left */}
+            <div className="absolute left-0 bottom-10 -translate-x-1/4 w-72 h-72 opacity-[0.05]">
+              <img 
+                src="/images/ahc-health-symbol.png" 
+                alt="" 
+                aria-hidden="true"
+                className="w-full h-full object-contain"
+                style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+              />
+            </div>
 
-        <section className="py-20 bg-gradient-to-br from-green-500 via-emerald-100 to-teal-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500 rounded-t-3xl"></div>
+            {/* Decorative Circles */}
+            <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
+            
+            {/* Decorative Triangles */}
+            <div className="absolute top-16 right-1/4 w-14 h-14 opacity-15" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+              <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
+            </div>
+            <div className="absolute bottom-24 left-1/4 w-18 h-18 opacity-15" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}>
+              <div className="w-full h-full bg-gradient-to-t from-green-400 to-teal-500"></div>
+            </div>
 
-          {/* Decorative Elements - Right */}
-          <div className="absolute right-0 bottom-0 w-96 h-96 opacity-20">
-            <div className="absolute right-0 bottom-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(100% 0, 0 100%, 100% 100%)' }}></div>
-          </div>
-
-          {/* Decorative Elements - left */}
-          <div className="absolute left-0 top-0 w-96 h-96 opacity-20">
-            <div className="absolute left-0 top-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
+            {/* Grid Pattern Overlay */}
+            <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]" 
+              style={{ 
+                backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
+                backgroundSize: '60px 60px'
+              }}>
+            </div>
           </div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300 order-2 lg:order-1">
+              {/* Cohort Overview Card */}
+              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-300 order-2 lg:order-1 relative overflow-hidden">
                 {/* Gradient accent border */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
                 
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Cohort Overview</h3>
                 <p className="text-sm text-teal-600 dark:text-teal-400 mb-6 font-semibold">Our proven acceleration model</p>
                 <div className="space-y-6">
-                  <div>
-                    <div className="font-semibold mb-2 text-lg text-gray-900 dark:text-white">Phase 1: Foundation (Weeks 1-4)</div>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                      Business model refinement, customer discovery, and market validation
-                    </p>
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-100 to-green-100 dark:from-teal-900/30 dark:to-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-lg font-bold text-teal-600 dark:text-teal-400">1</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold mb-1 text-lg text-gray-900 dark:text-white">Foundation (Weeks 1-4)</div>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Business model refinement, customer discovery, and market validation
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-semibold mb-2 text-lg text-gray-900 dark:text-white">Phase 2: Growth (Weeks 5-8)</div>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                      Product development, early traction, and metrics optimization
-                    </p>
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-100 to-green-100 dark:from-teal-900/30 dark:to-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-lg font-bold text-teal-600 dark:text-teal-400">2</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold mb-1 text-lg text-gray-900 dark:text-white">Growth (Weeks 5-8)</div>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Product development, early traction, and metrics optimization
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-semibold mb-2 text-lg text-gray-900 dark:text-white">Phase 3: Scale (Weeks 9-12)</div>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                      Fundraising preparation, pitch refinement, and investor introductions
-                    </p>
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-100 to-green-100 dark:from-teal-900/30 dark:to-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-lg font-bold text-teal-600 dark:text-teal-400">3</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold mb-1 text-lg text-gray-900 dark:text-white">Scale (Weeks 9-12)</div>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Fundraising preparation, pitch refinement, and investor introductions
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* Content Side */}
               <div className="order-1 lg:order-2">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-green-500 rounded-2xl blur-lg opacity-30"></div>
-                    <div className="relative bg-gradient-to-br from-teal-400 to-teal-600 p-4 rounded-2xl relative overflow-hidden">
+                    <div className="relative bg-gradient-to-br from-teal-400 to-teal-600 p-4 rounded-2xl overflow-hidden">
                       <Rocket className="w-12 h-12 text-white relative z-10" />
                       {/* Small decorative triangles around icon */}
                       <div className="absolute -top-2 -left-2 w-6 h-6 bg-green-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
@@ -483,41 +534,69 @@ export default function HealthEntrepreneurship() {
                 </p>
                 <div className="space-y-3 mb-8">
                   {acceleratorFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-2">
+                    <div key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
-                <Link to="#">
+                {/* <Link to="#">
                   <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
                     Apply Now <ArrowRight className="ml-2 -mr-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
         </section>
 
         {/* Consulting Section */}
-        <section className="py-20 bg-gradient-to-br from-green-500 via-emerald-100 to-teal-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-          {/* Decorative Elements - Right */}
-          <div className="absolute right-0 bottom-0 w-96 h-96 opacity-20">
-            <div className="absolute right-0 bottom-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(100% 0, 0 100%, 100% 100%)' }}></div>
-          </div>
+        <section className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Large AHC Symbol - Top Left */}
+            <div className="absolute left-0 top-10 -translate-x-1/4 w-72 h-72 opacity-[0.04]">
+              <img 
+                src="/images/ahc-health-symbol.png" 
+                alt="" 
+                aria-hidden="true"
+                className="w-full h-full object-contain"
+                style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+              />
+            </div>
+            
+            {/* Large AHC Symbol - Bottom Right */}
+            <div className="absolute right-0 bottom-10 translate-x-1/4 w-80 h-80 opacity-[0.03]">
+              <img 
+                src="/images/ahc-health-symbol.png" 
+                alt="" 
+                aria-hidden="true"
+                className="w-full h-full object-contain"
+                style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+              />
+            </div>
 
-          {/* Decorative Elements - left */}
-          <div className="absolute left-0 top-0 w-96 h-96 opacity-20">
-            <div className="absolute left-0 top-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
+            {/* Decorative Circles */}
+            <div className="absolute top-40 right-10 w-48 h-48 bg-gradient-to-br from-teal-100/30 to-green-100/30 dark:from-teal-600/5 dark:to-green-600/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 left-10 w-64 h-64 bg-gradient-to-br from-green-100/30 to-emerald-100/30 dark:from-green-600/5 dark:to-emerald-600/5 rounded-full blur-3xl"></div>
+            
+            {/* Decorative Triangles */}
+            <div className="absolute top-20 left-1/3 w-12 h-12 opacity-10" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+              <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
+            </div>
+            <div className="absolute bottom-32 right-1/3 w-16 h-16 opacity-10" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}>
+              <div className="w-full h-full bg-gradient-to-t from-green-400 to-teal-500"></div>
+            </div>
           </div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+              {/* Content Side */}
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-green-500 rounded-2xl blur-lg opacity-30"></div>
-                    <div className="relative bg-gradient-to-br from-teal-400 to-teal-600 p-4 rounded-2xl relative overflow-hidden">
+                    <div className="relative bg-gradient-to-br from-teal-400 to-teal-600 p-4 rounded-2xl overflow-hidden">
                       <Users className="w-12 h-12 text-white relative z-10" />
                       {/* Small decorative triangles around icon */}
                       <div className="absolute -top-2 -left-2 w-6 h-6 bg-yellow-400 opacity-70" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}></div>
@@ -527,14 +606,14 @@ export default function HealthEntrepreneurship() {
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Consulting</h2>
                 </div>
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                   Strategic advisory services tailored to your unique challenges. Our experienced 
                   consultants bring deep healthcare industry expertise to help you navigate 
                   complex decisions and achieve your business objectives.
                 </p>
                 <div className="space-y-3 mb-8">
                   {consultingFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-2">
+                    <div key={index} className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                     </div>
@@ -546,10 +625,14 @@ export default function HealthEntrepreneurship() {
                   </button>
                 </Link>
               </div>
+
+              {/* Cards Side */}
               <div className="grid gap-6">
-                <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center">
+                <div className="bg-gradient-to-br from-teal-50 to-green-50 dark:bg-gray-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden border border-teal-100 dark:border-gray-700">
+                  {/* Gradient accent border */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
                       <Target className="h-8 w-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">Strategic Planning</h3>
@@ -558,9 +641,11 @@ export default function HealthEntrepreneurship() {
                     Develop comprehensive strategies aligned with market opportunities and your organizational capabilities.
                   </p>
                 </div>
-                <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:bg-gray-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden border border-green-100 dark:border-gray-700">
+                  {/* Gradient accent border */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-teal-400 to-green-500"></div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
                       <TrendingUp className="h-8 w-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">Growth Advisory</h3>
