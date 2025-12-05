@@ -7,6 +7,7 @@ export interface SubscriptionPayload {
   wants_events?: boolean
   wants_announcements?: boolean
   wants_scholarships?: boolean
+  wants_newsletters?: boolean
 }
 
 export interface SubscriptionResponse {
@@ -17,6 +18,7 @@ export interface SubscriptionResponse {
     wants_events: boolean
     wants_announcements: boolean
     wants_scholarships: boolean
+    wants_newsletters: boolean
   }
 }
 

@@ -52,7 +52,7 @@ export default function Header() {
     },
 
     { label: "Values & Principles", path: "/valuesandprinciples" },
-    { label: "AHC Leads", path: "/ahcleaders" },
+    
   ];
   //partner link
   const partnerLinks = [
