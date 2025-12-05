@@ -11,8 +11,8 @@
 .ahehc-banner__inner {
   display: flex;
   position: relative;
-  min-height: 28rem;
-  /* Base min-height */
+  min-height: 93vh;
+  /* Responsive height - 93% of viewport, allows content to expand */
 }
 
 .ahehc-banner__poster {
@@ -123,7 +123,7 @@
 /* Medium laptops (13-14 inch screens) */
 @media screen and (max-width: 1440px) and (min-width: 1024px) {
   .ahehc-banner__inner {
-    min-height: 26rem;
+    min-height: 88vh;
   }
 
   .ahehc-banner__poster {
@@ -149,7 +149,7 @@
 /* Small laptops (13.5 inch and similar) */
 @media screen and (max-width: 1366px) and (min-width: 1024px) {
   .ahehc-banner__inner {
-    min-height: 24rem;
+    min-height: 88vh;
   }
 
   .ahehc-banner__poster {
@@ -175,7 +175,7 @@
 /* Tablets and smaller laptops */
 @media screen and (max-width: 1023px) and (min-width: 768px) {
   .ahehc-banner__inner {
-    min-height: 22rem;
+    min-height: 83vh;
   }
 
   .ahehc-banner__poster {
@@ -204,7 +204,7 @@
 /* Large tablets */
 @media screen and (max-width: 767px) and (min-width: 481px) {
   .ahehc-banner__inner {
-    min-height: 20rem;
+    min-height: 78vh;
   }
 
   .ahehc-banner__poster {
@@ -306,12 +306,12 @@
 
 @media screen and (min-width: 62.5em) {
   .ahehc-banner__inner {
-    min-height: 32rem;
+    height: 30rem;
   }
 }
 
 @media screen and (min-width: 37.5em) {
   .ahehc-banner__inner {
-    min-height: 20rem;
+    height: 22rem;
   }
 }

@@ -48,7 +48,7 @@ export function PartnerDetail() {
   return (
     <div
       id="content"
-      className="bg-slate-50 dark:bg-ahc-dark min-h-screen py-12 px-4 md:px-8 lg:px-16"
+      className="bg-slate-50 dark:bg-ahc-dark min-h-screen py-12 pt-24 px-4 md:px-8 lg:px-16"
     >
       <Helmet>
         <title>{partner.name} – Africa Health Collaborative</title>

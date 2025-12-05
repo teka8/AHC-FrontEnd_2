@@ -46,13 +46,13 @@ export default function Header() {
   ];
   const AboutLinks = [
     { label: "About Us", path: "/about" },
-    { label: "AHC Leadership", path: "/ahcleaders" },
     {
       label: "About AAU",
       path: "/partners/addisababauniversity"
     },
 
     { label: "Values & Principles", path: "/valuesandprinciples" },
+    { label: "AHC Leads", path: "/ahcleaders" },
   ];
   //partner link
   const partnerLinks = [

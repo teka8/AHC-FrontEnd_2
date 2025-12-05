@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
       // Main site routes
       { index: true, element: <Home /> },
       { path: 'about', element: <About /> },
-      { path: 'vision-goals-values', element: <VisionGoalsValues /> },
+      //{ path: 'vision-goals-values', element: <VisionGoalsValues /> },
       { path: 'partners', element: <Partners /> },
       { path: 'local-partners', element: <LocalPartners /> },
       { path: 'local-partners/:name', element: <PartnerDetail /> },
