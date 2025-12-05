@@ -187,8 +187,8 @@ export default function HIContact() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 via-teal-50 to-green-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-          {/* Decorative Elements */}
+        {/* <section className="py-20 bg-gradient-to-br from-gray-50 via-teal-50 to-green-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+        
           <div className="absolute left-0 bottom-0 w-96 h-96 opacity-20">
             <div className="absolute left-0 bottom-0 w-64 h-64 bg-teal-600" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
           </div>
@@ -229,7 +229,7 @@ export default function HIContact() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     </>
   )
