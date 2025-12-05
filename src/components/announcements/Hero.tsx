@@ -42,18 +42,6 @@ export default function Hero({ search, setSearch }: HeroProps) {
               />
             </foreignObject>
           </g>
-          <path
-            className="has-accent-green"
-            d="M153.824,-8.438 L0,-8.438 L76.912,106.188 L153.824,-8.438 L0,-8.438 L76.912,106.188 L153.824,-8.438 Z"
-          />
-          <path
-            className="has-accent-teal"
-            d="M112.671,124.39 L266.494,124.39 L189.582,9.764 L112.671,124.39 L266.494,124.39 L189.582,9.764 L112.671,124.39 Z"
-          />
-          <path
-            className="has-accent-green"
-            d="M712.824,489.052 L559,489.052 L635.912,603.678 L712.824,489.052 L559,489.052 L635.912,603.678 L712.824,489.052 Z"
-          />
         </svg>
 
         <div className="ahehc-banner__content px-4 sm:px-6 lg:px-8">
