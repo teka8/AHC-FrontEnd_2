@@ -1,12 +1,31 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useGetFooterQuery } from '../features/navigation/navigationApi'
 import { useSubscribeMutation } from '../features/subscriptions/subscriptionApi'
+import { useGetFooterPagesQuery } from '../features/pages/pagesApi'
 
 export default function Footer() {
   const { data } = useGetFooterQuery()
+  const { data: fetchedFooterPages } = useGetFooterPagesQuery(undefined, {
+    refetchOnMountOrArgChange: false,
+    refetchOnReconnect: true,
+  })
   const [subscribe, { isLoading }] = useSubscribeMutation()
   const [email, setEmail] = useState('')
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
+  
+  // Use state to persist footer pages
+  const [footerPages, setFooterPages] = useState<Array<{
+    id: number;
+    title: string;
+    slug: string;
+  }>>([])
+  
+  useEffect(() => {
+    if (fetchedFooterPages && fetchedFooterPages.length > 0) {
+      setFooterPages(fetchedFooterPages)
+    }
+  }, [fetchedFooterPages])
 
   return (
     <footer className="relative text-gray-300 bg-gray-800 border-t border-gray-700 overflow-x-hidden">
@@ -48,7 +67,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 md:col-span-2">
+          <div className="grid grid-cols-3 gap-8 md:col-span-2">
             <div>
               <h4 className="font-display font-semibold text-lg mb-4 text-white">Quick Links</h4>
               <ul className="space-y-3 text-sm">
@@ -65,6 +84,23 @@ export default function Footer() {
                 <li><a href="/resources#educational" className="hover:text-ahc-green-dark dark:hover:text-white transition-colors">Educational Hub</a></li>
                 <li><a href="/resources#others" className="hover:text-ahc-green-dark dark:hover:text-white transition-colors">Other Resources</a></li>
                 <li><a href="/contact" className="hover:text-ahc-green-dark dark:hover:text-white transition-colors">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <div className="font-display font-semibold text-lg mb-4 h-7 text-white"></div>
+              <ul className="space-y-3 text-sm">
+                
+                {/* Dynamic Footer Pages */}
+                {footerPages.map(page => (
+                  <li key={page.id}>
+                    <Link 
+                      to={`/pages/${page.slug}`} 
+                      className="hover:text-ahc-green-dark dark:hover:text-white transition-colors"
+                    >
+                      {page.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
