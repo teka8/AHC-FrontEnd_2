@@ -1,10 +1,31 @@
 import { Link, NavLink } from "react-router-dom";
 import { useGetNavigationQuery } from "../features/navigation/navigationApi";
-import { useEffect, useState } from "react";
+import { useGetNavigationPagesQuery } from "../features/pages/pagesApi";
+import { useEffect, useState, useMemo } from "react";
 import { Moon, Sun, ChevronDown, Home, Menu, X } from "lucide-react";
 
 export default function Header() {
   const { data } = useGetNavigationQuery();
+  const { data: fetchedPages, isLoading: isLoadingPages } = useGetNavigationPagesQuery(undefined, {
+    refetchOnMountOrArgChange: false,
+    refetchOnReconnect: true,
+  });
+  
+  // Use state to persist pages and prevent disappearing on re-render
+  const [dynamicPages, setDynamicPages] = useState<Array<{
+    id: number;
+    title: string;
+    slug: string;
+    section: string;
+    is_custom_section: boolean;
+  }>>([]);
+  
+  useEffect(() => {
+    if (fetchedPages && fetchedPages.length > 0) {
+      setDynamicPages(fetchedPages);
+    }
+  }, [fetchedPages]);
+  
   const links: Array<{ label: string; path: string }> = data?.links || [
     // { label: "About", path: "/about" },
     // { label: "Partners", path: "/partners" },
@@ -44,16 +65,28 @@ export default function Header() {
     { label: "Announcements", path: "/announcement" },
     { label: "News", path: "/news" },
   ];
-  const AboutLinks = [
+  // Predefined About links
+  const predefinedAboutLinks = [
     { label: "About Us", path: "/about" },
     {
       label: "About AAU",
       path: "/partners/addisababauniversity"
     },
-
     { label: "Values & Principles", path: "/valuesandprinciples" },
     { label: "AHC Leads", path: "/ahcleaders" },
   ];
+
+  // Merge predefined About links with dynamic pages from 'about' section
+  const AboutLinks = useMemo(() => {
+    const dynamicAboutPages = dynamicPages
+      .filter(page => page.section === 'about')
+      .map(page => ({
+        label: page.title,
+        path: `/pages/${page.slug}`,
+      }));
+    return [...predefinedAboutLinks, ...dynamicAboutPages];
+  }, [dynamicPages]);
+
   //partner link
   const partnerLinks = [
     { label: "Founder Partners", path: "/partners" },
@@ -268,6 +301,24 @@ export default function Header() {
               )}
             </div>
 
+            {/* Custom Section Links (direct clickable links) */}
+            {dynamicPages
+              .filter(page => page.is_custom_section)
+              .map(page => (
+                <NavLink
+                  key={page.slug}
+                  to={`/pages/${page.slug}`}
+                  className={({ isActive }) =>
+                    `text-sm font-medium transition-colors duration-200 ${isActive
+                      ? "text-ahc-green-dark font-semibold"
+                      : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                    }`
+                  }
+                >
+                  {page.title}
+                </NavLink>
+              ))}
+
             {links.map((l) => (
               <NavLink
                 key={l.path}
@@ -475,6 +526,25 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            {/* Mobile Custom Section Links (direct clickable links) */}
+            {dynamicPages
+              .filter(page => page.is_custom_section)
+              .map(page => (
+                <NavLink
+                  key={page.slug}
+                  to={`/pages/${page.slug}`}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `text-lg font-medium w-full text-left py-2 transition-colors duration-200 ${isActive
+                      ? "text-ahc-green-dark font-semibold"
+                      : "text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                    }`
+                  }
+                >
+                  {page.title}
+                </NavLink>
+              ))}
 
             {links.map((l) => (
               <NavLink

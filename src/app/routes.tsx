@@ -53,6 +53,7 @@ import ApplicationTracker from '../pages/scholarship/ApplicationTracker'
 import ScholarshipDetail from '../pages/scholarship/ScholarshipDetail'
 import {PartnerDetail} from '../pages/PartnerDetail'
 import LocalPartners from '../pages/LocalPartners'
+import DynamicPage from '../pages/DynamicPage'
 
 export const router = createBrowserRouter([
   {
@@ -101,6 +102,9 @@ export const router = createBrowserRouter([
  { path: 'ahcleaders', element: <AhcLeaders /> },
  {path:'valuesandprinciples' ,element:<ValuesandPrinciples/>},
  {path:'/ahc-leaders/:id' ,element:<AhcLeaderDetail/>},
+
+      // Dynamic pages route
+      { path: 'pages/:slug', element: <DynamicPage /> },
 
     ],
   },
