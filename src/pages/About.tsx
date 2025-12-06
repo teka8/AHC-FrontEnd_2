@@ -61,10 +61,10 @@ export default function About() {
         />
       </Helmet>
       <Hero />
-      <div className="bg-white dark:bg-ahc-dark">
+      <div>
         <CollaborationSection />
 
-        <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-ahc-dark">
+        <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
@@ -112,7 +112,7 @@ export default function About() {
         </section>
 
         {/* What We Do Section */}
-        <section className="py-12 md:py-16 dark:bg-slate-900" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
+        <section className="py-12 md:py-16 bg-white dark:bg-slate-900">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div className="relative h-80 md:h-96">
               <img
@@ -142,7 +142,7 @@ export default function About() {
           </div>
         </section>
 
-        <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-ahc-dark">
+        <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
@@ -179,10 +179,8 @@ export default function About() {
             </div>
           </div>
         </section>
-        <section></section>
-        
         {/* Our Values Section */}
-        <section className="py-12 md:py-16 dark:bg-ahc-dark text-center" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
+        <section className="py-12 md:py-16 bg-white dark:bg-slate-900 text-center">
           <div className="container mx-auto px-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
               Our Core Values
@@ -310,7 +308,7 @@ export default function About() {
         </section> */}
 
         {/* Impact Section */}
-        <section className="py-12 md:py-16 dark:bg-slate-900" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
+        <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
               Our Impact at a Glance
@@ -366,12 +364,12 @@ export default function About() {
         </section>
 
         {/* Join Us Section */}
-        <section className="py-12 md:py-16 text-center bg-[#FFF9E9]">
+        <section className="py-12 md:py-16 text-center bg-white dark:bg-slate-900">
           <div className="container mx-auto px-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-4">
               Join Our Mission
             </h2>
-            <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 mb-8">
+            <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-300 mb-8">
               Whether you are a student, an innovator, a potential partner, or
               simply passionate about health equity in Africa, there is a place
               for you at AHC.

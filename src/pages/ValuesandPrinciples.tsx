@@ -144,7 +144,7 @@ export default function ValuesandPrinciples() {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-ahc-dark py-24">
+      <section className="bg-gray-50 dark:bg-ahc-dark px-20 py-24">
         <div className="container mx-auto px-6 lg:px-0 lg:flex lg:gap-12">
           <div className="lg:w-2/3 space-y-4">
             {accordionData.map((item, index) => (

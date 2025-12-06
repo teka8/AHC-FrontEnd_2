@@ -75,7 +75,7 @@ export default function Home() {
       <Hero />
 
       {/* About AHC */}
-      <section className="py-12 md:py-16 animate-page dark:bg-slate-900" style={{ backgroundColor: 'rgb(255, 253, 246)' }}>
+      <section className="py-12 md:py-16 animate-page bg-white dark:bg-slate-900">
         <div className="container">
           <SectionHeader
             eyebrow="Who we are"
@@ -328,7 +328,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 animate-page dark:bg-slate-800" style={{ backgroundColor: 'rgb(255, 253, 246)' }}>
+      <section className="py-12 md:py-16 animate-page bg-white dark:bg-slate-900">
         <div className="container">
           <SectionHeader
             eyebrow="Stay Informed"
@@ -411,7 +411,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 animate-page bg-[#FFF9E9] dark:bg-slate-800">
+      <section className="py-12 md:py-16 animate-page bg-slate-50 dark:bg-slate-800">
         <div className="container">
           <SectionHeader
             eyebrow="Join Us"
@@ -443,7 +443,7 @@ export default function Home() {
       </section>
 
       {/* Focus Areas */}
-      <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-slate-900">
+      <section className="py-12 md:py-16 bg-white dark:bg-slate-900">
         <div className="container">
           <SectionHeader
             eyebrow="Our Priorities"

@@ -77,9 +77,9 @@ const CollaborationSection: React.FC = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 dark:bg-slate-900" style={{backgroundColor: 'rgb(255, 253, 246)'}}>
+    <section className="py-12 md:py-16 bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4">
-        <div className="bg-white dark:bg-ahc-dark-secondary rounded-xl shadow-2xl p-8 md:p-12 lg:p-16">
+        <div className="bg-slate-50 dark:bg-slate-800 rounded-xl shadow-2xl p-8 md:p-12 lg:p-16">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-4">Driven by Collaboration, Focused on Health Transformation</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
