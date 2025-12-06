@@ -7,6 +7,7 @@ import NewsList from '../pages/NewsList'
 import NewsDetail from '../pages/NewsDetail'
 
 import AhcLeaders from '../pages/AhcLeaders'
+import AhcTeam from '../pages/AhcTeam'
 import ValuesandPrinciples from '../pages/ValuesandPrinciples'
 import AhcLeaderDetail from "../pages/AhcLeaderDetail"
 
@@ -100,6 +101,7 @@ export const router = createBrowserRouter([
       { path: '*', element: <NotFound /> },
 //about us ,ahc , values routes
  { path: 'ahcleaders', element: <AhcLeaders /> },
+ { path: 'ahc-team', element: <AhcTeam /> },
  {path:'valuesandprinciples' ,element:<ValuesandPrinciples/>},
  {path:'/ahc-leaders/:id' ,element:<AhcLeaderDetail/>},
 
