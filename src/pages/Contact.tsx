@@ -1,9 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import SectionHeader from "../components/ui/SectionHeader";
+import { useGetCompanyInfoQuery } from "../features/settings/companyInfoApi";
 
 export default function Contact() {
+  const { data: companyInfo } = useGetCompanyInfoQuery();
+
   return (
-    <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
+    <div style={{ backgroundColor: 'rgb(255, 253, 246)' }}><div className="container py-12 md:py-16">
       <Helmet>
         <title>Contact – AHC</title>
         <meta
@@ -52,22 +55,22 @@ export default function Contact() {
           <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
             <h3 className="font-display text-xl font-bold mb-2">Address</h3>
             <p className="text-slate-600 dark:text-slate-300">
-              Addis Ababa University, Ethiopia
+              {companyInfo?.company_address || 'Addis Ababa University, Ethiopia'}
             </p>
           </div>
           <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
             <h3 className="font-display text-xl font-bold mb-2">Email</h3>
             <a
               className="text-ahc-green-dark hover:underline"
-              href="mailto:info@aau.edu.et"
+              href={`mailto:${companyInfo?.company_email || 'info@aau.edu.et'}`}
             >
-              info@aau.edu.et
+              {companyInfo?.company_email || 'info@aau.edu.et'}
             </a>
           </div>
           <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
             <h3 className="font-display text-xl font-bold mb-2">Phone</h3>
             <p className="text-slate-600 dark:text-slate-300">
-              +251 000 000 000
+              {companyInfo?.company_phone || '+251 000 000 000'}
             </p>
           </div>
         </div>

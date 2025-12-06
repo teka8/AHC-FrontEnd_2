@@ -2,8 +2,10 @@ import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react'
 import { useSubmitContactMessageMutation } from '../../features/contact/contactApi'
+import { useGetCompanyInfoQuery } from '../../features/settings/companyInfoApi'
 
 export default function HIContact() {
+  const { data: companyInfo } = useGetCompanyInfoQuery()
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -55,19 +57,19 @@ export default function HIContact() {
         <section className="relative bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 py-20 overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
-            <img 
-              src="/images/ahc-health-symbol.png" 
-              alt="" 
+            <img
+              src="/images/ahc-health-symbol.png"
+              alt=""
               aria-hidden="true"
               className="w-full h-full object-contain"
               style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
             />
           </div>
-          
+
           <div className="absolute right-0 top-1/4 translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
-            <img 
-              src="/images/ahc-health-symbol.png" 
-              alt="" 
+            <img
+              src="/images/ahc-health-symbol.png"
+              alt=""
               aria-hidden="true"
               className="w-full h-full object-contain"
               style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
@@ -94,7 +96,7 @@ export default function HIContact() {
               {/* Contact Form */}
               <div className="bg-gradient-to-br from-teal-50 to-green-50 dark:from-gray-800 dark:to-gray-750 rounded-3xl p-8 shadow-xl">
                 <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Send us a Message</h2>
-                
+
                 {/* Success Message */}
                 {successMessage && (
                   <div className="mb-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-xl flex items-start gap-3">
@@ -142,7 +144,7 @@ export default function HIContact() {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-base font-semibold mb-2 text-gray-900 dark:text-white">
                       Email Address *
@@ -157,7 +159,7 @@ export default function HIContact() {
                       disabled={isLoading}
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-base font-semibold mb-2 text-gray-900 dark:text-white">
                       Subject *
@@ -172,7 +174,7 @@ export default function HIContact() {
                       disabled={isLoading}
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-base font-semibold mb-2 text-gray-900 dark:text-white">
                       Message *
@@ -187,7 +189,7 @@ export default function HIContact() {
                       disabled={isLoading}
                     />
                   </div>
-                  
+
                   <button
                     type="submit"
                     disabled={isLoading}
@@ -226,8 +228,7 @@ export default function HIContact() {
                       </div>
                       <div>
                         <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Email</h3>
-                        <p className="text-gray-700 dark:text-gray-300">info@healthventures.org</p>
-                        <p className="text-gray-700 dark:text-gray-300">apply@healthventures.org</p>
+                        <p className="text-gray-700 dark:text-gray-300">{companyInfo?.company_email || 'info@healthventures.org'}</p>
                       </div>
                     </div>
 
@@ -237,7 +238,7 @@ export default function HIContact() {
                       </div>
                       <div>
                         <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Phone</h3>
-                        <p className="text-gray-700 dark:text-gray-300">+251 11 123 4567</p>
+                        <p className="text-gray-700 dark:text-gray-300">{companyInfo?.company_phone || '+251 11 123 4567'}</p>
                         <p className="text-gray-700 dark:text-gray-300">Mon-Fri: 9am - 5pm EAT</p>
                       </div>
                     </div>
@@ -249,9 +250,7 @@ export default function HIContact() {
                       <div>
                         <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Address</h3>
                         <p className="text-gray-700 dark:text-gray-300">
-                          Addis Ababa University<br />
-                          College of Health Sciences<br />
-                          Addis Ababa, Ethiopia
+                          {companyInfo?.company_address || 'Addis Ababa University\nCollege of Health Sciences\nAddis Ababa, Ethiopia'}
                         </p>
                       </div>
                     </div>
