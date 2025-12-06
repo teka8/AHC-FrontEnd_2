@@ -255,8 +255,8 @@ export default function Announcements() {
       </Helmet>
       <Hero search={searchTerm} setSearch={setSearchTerm} />
 
-      <div style={{backgroundColor: 'rgb(255, 253, 246)'}}>
-      <div className="container py-12 md:py-16">
+      <section className="bg-white dark:bg-slate-900">
+        <div className="container py-12 md:py-16">
         <div className="mb-10 space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
@@ -348,8 +348,8 @@ export default function Announcements() {
             </aside>
           </div>
         )}
-      </div>
-    </div>
+        </div>
+      </section>
     </>
   );
 }

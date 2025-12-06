@@ -75,7 +75,7 @@ export default function Home() {
       <Hero />
 
       {/* About AHC */}
-      <section className="py-12 md:py-16 animate-page dark:bg-slate-900" style={{ backgroundColor: 'rgb(255, 253, 246)' }}>
+      <section className="py-12 md:py-16 animate-page bg-white dark:bg-slate-900">
         <div className="container">
           <SectionHeader
             eyebrow="Who we are"
@@ -165,11 +165,11 @@ export default function Home() {
         </div>
       </section>
       {/* Discovering pillars*/}
-        <section className="py-12 md:py-16">
+        <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
           <div className="container mx-auto text-center px-4">
             {/* Section Title */}
-            <h2 className="text-5xl font-bold mb-4">Explore our Pillars</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-12">
+            <h2 className="text-5xl font-bold mb-4 text-slate-900 dark:text-white">Explore our Pillars</h2>
+            <p className="text-gray-600 dark:text-slate-300 max-w-3xl mx-auto mb-12">
               Preparing diverse youth for the meaningful work of transforming
               health and wellbeing in Africa through contextually appropriate
               and sustainable primary healthcare.
@@ -178,7 +178,7 @@ export default function Home() {
             {/* Pillars Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {/* Pillar Card */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
+              <div className="relative rounded-xl overflow-hidden shadow-lg dark:shadow-slate-700/30">
                 <a
                   href="https://africahealthcollaborative.org/health-pillars/health-employment/"
                   target="_blank"
@@ -227,7 +227,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
+              <div className="relative rounded-xl overflow-hidden shadow-lg dark:shadow-slate-700/30">
                 <a
                   href="https://africahealthcollaborative.org/health-pillars/health-entrepreneurship/"
                   target="_blank"
@@ -276,7 +276,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
+              <div className="relative rounded-xl overflow-hidden shadow-lg dark:shadow-slate-700/30">
                 <a
                   href="https://africahealthcollaborative.org/health-pillars/health-ecosystem/"
                   rel="noopener noreferrer"
@@ -325,7 +325,7 @@ export default function Home() {
           </div>
         </section>
 
-      <section className="py-12 md:py-16 animate-page dark:bg-slate-800" style={{ backgroundColor: 'rgb(255, 253, 246)' }}>
+      <section className="py-12 md:py-16 animate-page bg-white dark:bg-slate-900">
         <div className="container">
           <SectionHeader
             eyebrow="Stay Informed"
@@ -408,7 +408,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 animate-page bg-[#FFF9E9] dark:bg-slate-800">
+      <section className="py-12 md:py-16 animate-page bg-slate-50 dark:bg-slate-800">
         <div className="container">
           <SectionHeader
             eyebrow="Join Us"
@@ -440,7 +440,7 @@ export default function Home() {
       </section>
 
       {/* Focus Areas */}
-      <section className="py-12 md:py-16 bg-[#FFF9E9] dark:bg-slate-900">
+      <section className="py-12 md:py-16 bg-white dark:bg-slate-900">
         <div className="container">
           <SectionHeader
             eyebrow="Our Priorities"
