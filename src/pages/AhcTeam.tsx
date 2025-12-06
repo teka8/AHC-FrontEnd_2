@@ -3,41 +3,41 @@ import { Link } from "react-router-dom";
 import Hero from "../components/about/LeaderHero";
 import { useGetLeadersQuery } from "../features/leaders/leadersApi";
 
-export default function AhcLeaders() {
-  const { data: leaders = [], isLoading, isError } = useGetLeadersQuery({ type: 'leader' });
+export default function AhcTeam() {
+  const { data: team = [], isLoading, isError } = useGetLeadersQuery({ type: 'team' });
 
   return (
     <>
       <Helmet>
-        <title>AHC Leaders – Africa Health Collaborative</title>
+        <title>AHC Team – Africa Health Collaborative</title>
         <meta
           name="description"
-          content="Meet the dedicated leaders of the Africa Health Collaborative at Addis Ababa University, driving transformative health initiatives across the continent."
+          content="Meet the dedicated team members of the Africa Health Collaborative at Addis Ababa University, working together to drive transformative health initiatives across the continent."
         />
         <meta
           name="keywords"
-          content="AHC Leaders, Africa Health Collaborative, Addis Ababa University, Health Leadership, African Health Initiatives, AHC-AAU Team"
+          content="AHC Team, Africa Health Collaborative, Addis Ababa University, Health Team, African Health Initiatives, AHC-AAU Team Members"
         />
         <meta name="author" content="Africa Health Collaborative" />
-        <meta property="og:title" content="AHC-AAU Leaders" />
+        <meta property="og:title" content="AHC-AAU Team" />
         <meta
           property="og:description"
-          content="Meet the dedicated leaders of the Africa Health Collaborative at Addis Ababa University, driving transformative health initiatives across the continent."
+          content="Meet the dedicated team members of the Africa Health Collaborative at Addis Ababa University."
         />
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://ahc.tewostechsolutions.com/ahc-leaders"
+          content="https://ahc.tewostechsolutions.com/ahc-team"
         />
         <meta
           property="og:image"
           content="https://ahc.tewostechsolutions.com/images/logo_dark.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AHC-AAU Leaders" />
+        <meta name="twitter:title" content="AHC-AAU Team" />
         <meta
           name="twitter:description"
-          content="Meet the dedicated leaders of the Africa Health Collaborative at Addis Ababa University, driving transformative health initiatives across the continent."
+          content="Meet the dedicated team members of the Africa Health Collaborative at Addis Ababa University."
         />
         <meta
           name="twitter:image"
@@ -50,18 +50,16 @@ export default function AhcLeaders() {
       <section className="bg-white dark:bg-slate-900 py-12 md:py-16">
         <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-extrabold text-ahc-dark dark:text-white mb-2">
-            Meet our Leaders
+            Meet our Team
           </h1>
           <div className="flex items-center mb-12">
             <div className="w-24 h-1 bg-ahc-green rounded-full"></div>
             <div className="w-12 h-1 bg-ahc-blue rounded-full ml-2"></div>
           </div>
           <p className="max-w-3xl text-lg text-slate-600 dark:text-slate-300 mb-12">
-            From its earliest days as a university college to its present
-            position as Ethiopia's first autonomous public university, AAU has
-            been shaped by its presidents. AAU's current President is Dr Samuel
-            Kifle who has been entrusted with the historic task of leading the
-            university's transition to autonoms.
+            Our dedicated team members work tirelessly to support the Africa Health 
+            Collaborative's mission of advancing health initiatives across the continent. 
+            Together, we strive to create lasting impact in healthcare delivery and research.
           </p>
 
           {isLoading && (
@@ -72,28 +70,28 @@ export default function AhcLeaders() {
 
           {isError && (
             <div className="text-center py-12 text-red-500 dark:text-red-400">
-              Failed to load leaders. Please try again later.
+              Failed to load team members. Please try again later.
             </div>
           )}
 
           {!isLoading && !isError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              {leaders.map((leader) => (
+              {team.map((member) => (
                 <Link
-                  to={`/ahc-leaders/${leader.id}`}
-                  key={leader.id}
+                  to={`/ahc-leaders/${member.id}`}
+                  key={member.id}
                   className="bg-slate-50 dark:bg-slate-800 rounded-lg shadow-md hover:shadow-xl border border-slate-200 dark:border-slate-700 transition-all duration-300 overflow-hidden group"
                 >
                   <div className="relative overflow-hidden">
                     <img
-                      src={leader.image || '/images/placeholder.png'}
-                      alt={leader.name}
+                      src={member.image || '/images/placeholder.png'}
+                      alt={member.name}
                       className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    {leader.linkedin_url && (
+                    {member.linkedin_url && (
                       <a
-                        href={leader.linkedin_url}
+                        href={member.linkedin_url}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
@@ -108,10 +106,10 @@ export default function AhcLeaders() {
                   </div>
                   <div className="p-6 text-left">
                     <h3 className="text-xl font-bold text-ahc-dark dark:text-white">
-                      {leader.name}
+                      {member.name}
                     </h3>
                     <p className="text-sm text-ahc-green dark:text-ahc-green-light mt-1">
-                      {leader.position}
+                      {member.position}
                     </p>
                     <div className="mt-4 text-sm font-semibold text-ahc-blue hover:text-ahc-blue-dark dark:text-ahc-blue-light dark:hover:text-white transition-colors">
                       View Details →
@@ -122,16 +120,16 @@ export default function AhcLeaders() {
             </div>
           )}
 
-          {/* AHC Team Button */}
+          {/* Back to Leaders Button */}
           <div className="mt-16 text-center">
             <Link
-              to="/ahc-team"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-ahc-blue hover:bg-ahc-blue-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              to="/ahcleaders"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-ahc-green hover:bg-ahc-green-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Meet Our AHC Team
+              Back to AHC Leaders
             </Link>
           </div>
         </div>
