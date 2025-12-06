@@ -417,16 +417,16 @@ export default function Resources() {
   };
 
   const renderFilterSidebar = (isMobile: boolean = false) => (
-    <div className={isMobile ? "p-6" : "card p-6 sticky top-4"}>
+    <div className={isMobile ? "p-6" : "bg-slate-50 dark:bg-slate-800 rounded-lg shadow-md p-6 sticky top-4"}>
       {isMobile && (
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold flex items-center gap-2">
+          <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
             <Filter className="h-5 w-5" />
             Filters
           </h3>
           <button
             onClick={() => setShowFiltersMobile(false)}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+            className="p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg text-gray-700 dark:text-gray-300"
           >
             <X className="h-5 w-5" />
           </button>
@@ -435,7 +435,7 @@ export default function Resources() {
 
       {!isMobile && (
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold flex items-center gap-2">
+          <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
             <Filter className="h-5 w-5" />
             Filters
           </h3>
@@ -467,7 +467,7 @@ export default function Resources() {
       >
         {/* Resource Type Filter */}
         <div>
-          <h4 className="font-medium mb-3 text-sm">Resource Type</h4>
+          <h4 className="font-medium mb-3 text-sm text-gray-900 dark:text-white">Resource Type</h4>
           <div className="space-y-2">
             {Object.values(RESOURCE_TYPE_NAMES).map((typeName) => (
               <label
@@ -492,7 +492,7 @@ export default function Resources() {
           <>
             <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
-              <h4 className="font-medium mb-3 text-sm">{typesLabel}</h4>
+              <h4 className="font-medium mb-3 text-sm text-gray-900 dark:text-white">{typesLabel}</h4>
               <div className="space-y-2">
                 {displayedTypes.map((type) => (
                   <label
@@ -519,7 +519,7 @@ export default function Resources() {
           <>
             <div className="border-t border-gray-200 dark:border-gray-700"></div>
             <div>
-              <h4 className="font-medium mb-3 text-sm">Category</h4>
+              <h4 className="font-medium mb-3 text-sm text-gray-900 dark:text-white">Category</h4>
               <div className="space-y-2">
                 {categories.map((cat) => (
                   <label
@@ -602,7 +602,7 @@ export default function Resources() {
         <>
           <div className="border-t border-gray-200 dark:border-gray-700"></div>
           <div>
-            <h4 className="font-medium mb-3 text-sm">Publication Date</h4>
+            <h4 className="font-medium mb-3 text-sm text-gray-900 dark:text-white">Publication Date</h4>
             <div className="space-y-3">
               <div>
                 <label
@@ -655,7 +655,7 @@ export default function Resources() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-ahc-dark-dark">
+    <div className="min-h-screen bg-white dark:bg-slate-900">
       <Helmet>
         <title>Resources – AHC</title>
         <meta
@@ -684,7 +684,7 @@ export default function Resources() {
       <Hero search={search} setSearch={setSearch} />
 
       {/* Header Section */}
-      <div className="bg-white dark:bg-ahc-dark border-b border-gray-200 dark:border-gray-800"></div>
+      <div className="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-700"></div>
 
       {/* Main Content */}
       <div className="container py-12 pt-16 md:pt-20">
@@ -737,7 +737,7 @@ export default function Resources() {
             {/* Results Section */}
             <section className="flex-1 min-w-0">
               {/* Results Count and Sort */}
-              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Showing{" "}
                   <span className="font-semibold text-gray-900 dark:text-white">
@@ -761,7 +761,7 @@ export default function Resources() {
                     id="sort-by"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortOption)}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-colors"
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-colors"
                   >
                     <option value="date-newest">Newest First</option>
                     <option value="date-oldest">Oldest First</option>
@@ -773,7 +773,7 @@ export default function Resources() {
               </div>
 
               {sortedResources.length === 0 ? (
-                <div className="text-center py-20 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+                <div className="text-center py-20 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                   <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                   <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">
                     No resources found
@@ -787,7 +787,7 @@ export default function Resources() {
                   {sortedResources.map((resource) => (
                     <div
                       key={`${resource.sourceType}-${resource.id}`}
-                      className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-ahc-green"
+                      className="bg-slate-50 dark:bg-slate-800 rounded-lg shadow-md p-6 flex flex-col h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-200 dark:border-slate-700 hover:border-ahc-green"
                     >
                       {/* Header with Badge and Download Count */}
                       <div className="flex items-start justify-between mb-4">
@@ -888,7 +888,7 @@ export default function Resources() {
                         )}
                         <Link
                           to={`/resources/${resource.sourceType}/${resource.id}`}
-                          className="px-4 py-2.5 text-sm font-semibold border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                          className="px-4 py-2.5 text-sm font-semibold border border-gray-300 dark:border-slate-600 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white transition-colors"
                         >
                           Details
                         </Link>

@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+:root.dark .ahehc-banner {
+  background: rgb(15, 23, 42);
+}
+
 .alignfull {
   max-width: none;
 }
@@ -52,6 +56,10 @@
   text-transform: uppercase;
 }
 
+:root.dark .ahehc-breadcrumb {
+  color: rgb(203, 213, 225);
+}
+
 .ahehc-breadcrumb__items {
   display: flex;
   flex-wrap: wrap;
@@ -76,6 +84,15 @@
 
 .ahehc-breadcrumb__link {
   text-decoration: none;
+  color: inherit;
+}
+
+:root.dark .ahehc-breadcrumb__link {
+  color: rgb(203, 213, 225);
+}
+
+:root.dark .ahehc-breadcrumb__link:hover {
+  color: rgb(255, 255, 255);
 }
 
 .ahehc-banner__title {
@@ -86,10 +103,19 @@
   line-height: 1.1;
 }
 
+:root.dark .ahehc-banner__title {
+  color: #ffffff;
+}
+
 .is-size-large {
   font-size: 1.8rem;
   margin-top: 1.5rem;
   line-height: 1.4;
+  color: rgb(71, 85, 105);
+}
+
+:root.dark .is-size-large {
+  color: rgb(203, 213, 225);
 }
 
 .wp-block-buttons {

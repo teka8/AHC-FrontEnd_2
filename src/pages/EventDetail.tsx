@@ -9,7 +9,8 @@ export default function EventDetail() {
   const { id = "" } = useParams();
   const { data, isLoading } = useGetEventQuery(id);
   return (
-    <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
+    <section className="bg-white dark:bg-slate-900 min-h-screen">
+      <div className="container py-12 md:py-16">
       <Helmet>
         <title>{data?.title ?? "Event"} – AHC</title>
         <meta
@@ -69,12 +70,12 @@ export default function EventDetail() {
       {isLoading ? (
         <Loader />
       ) : data ? (
-        <div className="grid gap-12 md:grid-cols-3">
+        <div className="grid gap-12 py-20 md:grid-cols-3">
           <div className="md:col-span-2">
             <div className="mb-8">
               <a
                 href="/events"
-                className="text-sm font-medium text-ahc-green-dark hover:underline"
+                className="text-sm font-medium text-ahc-green-dark dark:text-ahc-green-light hover:underline"
               >
                 &larr; All events
               </a>
@@ -95,8 +96,8 @@ export default function EventDetail() {
             </article>
           </div>
           <aside className="md:col-span-1 space-y-6">
-            <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
-              <h3 className="font-display text-xl font-bold mb-4">Details</h3>
+            <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-200 dark:border-slate-700">
+              <h3 className="font-display text-xl font-bold mb-4 text-gray-900 dark:text-white">Details</h3>
               <ul className="text-sm text-slate-700 dark:text-slate-300 space-y-3">
                 <li>
                   <strong className="text-slate-500 dark:text-slate-400 font-semibold">
@@ -180,8 +181,8 @@ export default function EventDetail() {
               )}
             </div>
             {data.attachments && data.attachments.length > 0 && (
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
-                <h3 className="font-display text-xl font-bold mb-4">
+              <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-200 dark:border-slate-700">
+                <h3 className="font-display text-xl font-bold mb-4 text-gray-900 dark:text-white">
                   Attachments
                 </h3>
                 <ul className="text-sm text-slate-700 dark:text-slate-300 space-y-2">
@@ -189,7 +190,7 @@ export default function EventDetail() {
                     <li key={i}>
                       <a
                         title={a.file_name}
-                        className="text-ahc-green-dark hover:underline flex items-center gap-2"
+                        className="text-ahc-green-dark dark:text-ahc-green-light hover:underline flex items-center gap-2"
                         href={a.path ?? "#"}
                         target="_blank"
                         rel="noreferrer"
@@ -222,7 +223,7 @@ export default function EventDetail() {
           </aside>
         </div>
       ) : null}
-    </div>
-    </div>
+      </div>
+    </section>
   );
 }

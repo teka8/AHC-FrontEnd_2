@@ -168,8 +168,8 @@ export default function Media() {
   const loading = isLoading && !data;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "rgb(255, 253, 246)" }}>
-      <div className="container py-12 md:py-16">
+    <div className="min-h-screen bg-[rgb(255,253,246)] dark:bg-slate-900 transition-colors duration-300">
+      <div className="container py-20 md:py-40">
         <Helmet>
           <title>Media – AHC</title>
           <meta
@@ -211,13 +211,13 @@ export default function Media() {
         ) : (
           <div className="space-y-10">
             {folderDetails ? (
-              <div className="space-y-6 rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm">
+              <div className="space-y-6 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 p-6 shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                     <button
                       type="button"
                       onClick={goBackToRoot}
-                      className="inline-flex items-center gap-1 rounded-full border border-transparent bg-slate-100 px-3 py-1 font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-800"
+                      className="inline-flex items-center gap-1 rounded-full border border-transparent bg-slate-100 dark:bg-slate-700 px-3 py-1 font-medium text-slate-600 dark:text-slate-300 transition hover:border-slate-300 dark:hover:border-slate-500 hover:text-slate-800 dark:hover:text-white"
                     >
                       <ChevronLeft className="h-4 w-4" />
                       All media
@@ -226,7 +226,7 @@ export default function Media() {
                       <button
                         type="button"
                         onClick={() => handleBreadcrumbClick(breadcrumbs.length - 2)}
-                        className="inline-flex items-center gap-1 rounded-full border border-transparent bg-slate-100 px-3 py-1 font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-800"
+                        className="inline-flex items-center gap-1 rounded-full border border-transparent bg-slate-100 dark:bg-slate-700 px-3 py-1 font-medium text-slate-600 dark:text-slate-300 transition hover:border-slate-300 dark:hover:border-slate-500 hover:text-slate-800 dark:hover:text-white"
                       >
                         <CornerUpLeft className="h-4 w-4" />
                         Up one level
@@ -234,14 +234,14 @@ export default function Media() {
                     )}
                     {breadcrumbs.map((crumb, index) => (
                       <div key={crumb.id} className="flex items-center gap-2">
-                        <span className="text-slate-300">/</span>
+                        <span className="text-slate-300 dark:text-slate-600">/</span>
                         {index === breadcrumbs.length - 1 ? (
-                          <span className="font-semibold text-slate-800">{crumb.name}</span>
+                          <span className="font-semibold text-slate-800 dark:text-white">{crumb.name}</span>
                         ) : (
                           <button
                             type="button"
                             onClick={() => handleBreadcrumbClick(index)}
-                            className="text-slate-600 transition hover:text-slate-900"
+                            className="text-slate-600 dark:text-slate-400 transition hover:text-slate-900 dark:hover:text-white"
                           >
                             {crumb.name}
                           </button>
@@ -258,7 +258,7 @@ export default function Media() {
                         goBackToRoot();
                       }
                     }}
-                    className="inline-flex items-center gap-2 rounded-full border border-transparent bg-ahc-green/10 px-4 py-2 text-sm font-semibold text-ahc-green transition hover:bg-ahc-green/20"
+                    className="inline-flex items-center gap-2 rounded-full border border-transparent bg-ahc-green/10 dark:bg-ahc-green/20 px-4 py-2 text-sm font-semibold text-ahc-green dark:text-ahc-green-light transition hover:bg-ahc-green/20 dark:hover:bg-ahc-green/30"
                   >
                     <CornerUpLeft className="h-4 w-4" />
                     {parentBreadcrumb ? `Back to ${parentBreadcrumb.name}` : "Back to collections"}
@@ -267,24 +267,24 @@ export default function Media() {
 
                 <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                   <div>
-                    <h2 className="text-2xl font-semibold text-slate-900">{folderDetails.name}</h2>
+                    <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">{folderDetails.name}</h2>
                     {folderDetails.description && (
-                      <p className="mt-2 max-w-2xl text-sm text-slate-600">
+                      <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-400">
                         {folderDetails.description}
                       </p>
                     )}
                   </div>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600">
+                    <span className="rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 font-medium text-slate-600 dark:text-slate-300">
                       Items: {folderDetails.media_count}
                     </span>
-                    <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600">
+                    <span className="rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 font-medium text-slate-600 dark:text-slate-300">
                       Subfolders: {folderDetails.children_count}
                     </span>
                   </div>
                 </div>
 
-                <div className="inline-flex rounded-full border border-slate-200 bg-white p-1 shadow-inner">
+                <div className="inline-flex rounded-full border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 p-1 shadow-inner">
                   {TYPE_OPTIONS.map((option) => (
                     <button
                       key={option}
@@ -294,7 +294,7 @@ export default function Media() {
                         setPage(1);
                       }}
                       className={`rounded-full px-3 py-1 text-sm capitalize transition ${
-                        type === option ? "bg-ahc-green text-black shadow" : "text-slate-500 hover:text-slate-800"
+                        type === option ? "bg-ahc-green text-black shadow" : "text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white"
                       }`}
                     >
                       {option}
@@ -303,8 +303,8 @@ export default function Media() {
                 </div>
               </div>
             ) : (
-              <div className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm">
-                <p className="text-sm text-slate-600">
+              <div className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 p-6 shadow-sm">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
                   Step into our visual archive. Browse curated folders that capture moments from across the Africa Health Collaborative. Select a collection to open its window and explore every asset inside.
                 </p>
               </div>
@@ -313,7 +313,7 @@ export default function Media() {
             <div className="space-y-10">
               <section>
                 <header className="mb-6 flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-slate-900">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
                     {isRoot ? "Media collections" : "Subfolders"}
                   </h3>
                   {isFetching && <span className="text-xs text-slate-400">Refreshing…</span>}
@@ -330,7 +330,7 @@ export default function Media() {
                     ))}
                   </div>
                 ) : (
-                  <div className="rounded-2xl border border-dashed border-slate-300 bg-white/70 p-8 text-center text-sm text-slate-500">
+                  <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-600 bg-white/70 dark:bg-slate-800/70 p-8 text-center text-sm text-slate-500 dark:text-slate-400">
                     {isRoot
                       ? "No media folders are available yet. Please check back soon."
                       : "This folder does not contain any subfolders."}
@@ -341,26 +341,26 @@ export default function Media() {
               {folderDetails && (
                 <section className="space-y-6">
                   <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <h3 className="text-lg font-semibold text-slate-900">Media</h3>
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Media</h3>
                     {mediaMeta && mediaMeta.last_page > 1 && (
                       <div className="flex items-center gap-2 text-sm">
                         <button
                           type="button"
                           onClick={() => setPage((prev) => Math.max(1, prev - 1))}
                           disabled={mediaMeta.current_page <= 1}
-                          className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-slate-600 transition hover:border-slate-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:text-slate-300"
+                          className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-600 px-3 py-1 text-slate-600 dark:text-slate-300 transition hover:border-slate-400 dark:hover:border-slate-500 disabled:cursor-not-allowed disabled:border-slate-100 dark:disabled:border-slate-700 disabled:text-slate-300 dark:disabled:text-slate-600"
                         >
                           <ChevronLeft className="h-4 w-4" />
                           Prev
                         </button>
-                        <span className="text-xs text-slate-500">
+                        <span className="text-xs text-slate-500 dark:text-slate-400">
                           Page {mediaMeta.current_page} of {mediaMeta.last_page}
                         </span>
                         <button
                           type="button"
                           onClick={() => setPage((prev) => prev + 1)}
                           disabled={mediaMeta.current_page >= mediaMeta.last_page}
-                          className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-slate-600 transition hover:border-slate-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:text-slate-300"
+                          className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-600 px-3 py-1 text-slate-600 dark:text-slate-300 transition hover:border-slate-400 dark:hover:border-slate-500 disabled:cursor-not-allowed disabled:border-slate-100 dark:disabled:border-slate-700 disabled:text-slate-300 dark:disabled:text-slate-600"
                         >
                           Next
                           <ChevronRight className="h-4 w-4" />
@@ -381,7 +381,7 @@ export default function Media() {
                       ))}
                     </div>
                   ) : (
-                    <div className="rounded-2xl border border-dashed border-slate-300 bg-white/70 p-8 text-center text-sm text-slate-500">
+                    <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-600 bg-white/70 dark:bg-slate-800/70 p-8 text-center text-sm text-slate-500 dark:text-slate-400">
                       No media files found in this folder.
                     </div>
                   )}
@@ -421,13 +421,13 @@ function FolderCard({
     <button
       type="button"
       onClick={() => onOpen(folder)}
-      className="group h-full rounded-3xl border border-slate-200 bg-white/90 p-4 text-left shadow-sm transition hover:-translate-y-1 hover:border-ahc-green/60 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green/50"
+      className="group h-full rounded-3xl border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 p-4 text-left shadow-sm transition hover:-translate-y-1 hover:border-ahc-green/60 dark:hover:border-ahc-green/40 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green/50"
     >
-      <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl border border-slate-100 bg-gradient-to-br from-white via-slate-50 to-slate-100">
+      <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl border border-slate-100 dark:border-slate-700 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-700 dark:to-slate-800">
         {previewSlots.some(Boolean) ? (
           <div className="grid h-full grid-cols-2 grid-rows-2 gap-1">
             {previewSlots.map((slot, index) => (
-              <div key={index} className="relative h-full w-full overflow-hidden rounded-lg bg-slate-200">
+              <div key={index} className="relative h-full w-full overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
                 {slot ? (
                   slot.type === "image" ? (
                     <img
@@ -448,37 +448,37 @@ function FolderCard({
                     </div>
                   )
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-white/70">
-                    <ImageIcon className="h-6 w-6 text-slate-300" />
+                  <div className="flex h-full w-full items-center justify-center bg-white/70 dark:bg-slate-700/70">
+                    <ImageIcon className="h-6 w-6 text-slate-300 dark:text-slate-500" />
                   </div>
                 )}
               </div>
             ))}
           </div>
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-slate-400">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-slate-400 dark:text-slate-500">
             <Folder className="h-10 w-10" />
             <span className="text-xs font-medium uppercase tracking-wide">Empty</span>
           </div>
         )}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/40" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/40 dark:border-slate-600/40" />
       </div>
 
       <div className="space-y-2">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-base font-semibold text-slate-900">{folder.name}</p>
+            <p className="text-base font-semibold text-slate-900 dark:text-white">{folder.name}</p>
             {folder.description && (
-              <p className="mt-1 line-clamp-2 text-xs text-slate-500">{folder.description}</p>
+              <p className="mt-1 line-clamp-2 text-xs text-slate-500 dark:text-slate-400">{folder.description}</p>
             )}
           </div>
-          <span className="inline-flex h-8 items-center rounded-full bg-slate-100 px-3 text-xs font-medium text-slate-600">
+          <span className="inline-flex h-8 items-center rounded-full bg-slate-100 dark:bg-slate-700 px-3 text-xs font-medium text-slate-600 dark:text-slate-300">
             {folder.media_count} items
           </span>
         </div>
-        <div className="flex items-center gap-2 text-xs text-slate-500">
+        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
           <span>{folder.children_count} subfolders</span>
-          <span className="text-slate-300">•</span>
+          <span className="text-slate-300 dark:text-slate-600">•</span>
           <span className="inline-flex items-center gap-1 text-ahc-green">
             Open collection
             <ChevronRight className="h-3 w-3" />
@@ -508,9 +508,9 @@ function MediaTile({
     <button
       type="button"
       onClick={onClick}
-      className="group h-full overflow-hidden rounded-3xl border border-slate-200 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:border-ahc-green/60 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green/50"
+      className="group h-full overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-left shadow-sm transition hover:-translate-y-1 hover:border-ahc-green/60 dark:hover:border-ahc-green/40 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ahc-green/50"
     >
-      <div className="relative aspect-video overflow-hidden bg-slate-100">
+      <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-700">
         {isImage ? (
           <img
             src={previewUrl}
@@ -532,7 +532,7 @@ function MediaTile({
             <span className="text-xs font-medium uppercase tracking-wide">Audio</span>
           </div>
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-slate-200 text-slate-600">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400">
             <FileText className="h-8 w-8" />
             <span className="text-xs font-medium uppercase tracking-wide">File</span>
           </div>
@@ -542,13 +542,13 @@ function MediaTile({
 
       <div className="space-y-2 p-4">
         <div>
-          <p className="text-sm font-semibold text-slate-900 line-clamp-2">
+          <p className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2">
             {media.name || media.file_name || "Untitled media"}
           </p>
-          <p className="text-xs uppercase tracking-wide text-slate-400">{media.type}</p>
+          <p className="text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">{media.type}</p>
         </div>
         {media.caption && (
-          <p className="text-xs text-slate-500 line-clamp-2">{media.caption}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{media.caption}</p>
         )}
       </div>
     </button>
@@ -755,16 +755,16 @@ function MediaPreviewModal({
               </div>
             )}
           </div>
-          <div className="hidden md:block space-y-4 bg-white/95 p-6 shadow-inner">
+          <div className="hidden md:block space-y-4 bg-white/95 dark:bg-slate-800/95 p-6 shadow-inner">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div className="space-y-1 text-slate-900">
+              <div className="space-y-1 text-slate-900 dark:text-white">
                 <h3 className="text-lg font-semibold">
                   {item.name || item.file_name || "Untitled media"}
                 </h3>
-                {captionText && <p className="text-sm text-slate-600">{captionText}</p>}
+                {captionText && <p className="text-sm text-slate-600 dark:text-slate-400">{captionText}</p>}
               </div>
-              <div className="flex flex-col items-start gap-1 text-xs uppercase tracking-wide text-slate-500 sm:items-end">
-                <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-slate-600">
+              <div className="flex flex-col items-start gap-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 sm:items-end">
+                <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 text-slate-600 dark:text-slate-300">
                   <ImageIcon className="h-4 w-4" />
                   {item.type}
                 </span>
@@ -773,13 +773,13 @@ function MediaPreviewModal({
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600">
+            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600 dark:text-slate-400">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <span className="rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   ID: {item.id}
                 </span>
                 {item.created_at && (
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <span className="rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                     Uploaded: {new Date(item.created_at).toLocaleString()}
                   </span>
                 )}

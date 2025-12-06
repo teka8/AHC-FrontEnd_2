@@ -36,9 +36,9 @@ export function PartnerDetail() {
 
   if (!partner) {
     return (
-      <div className="p-10 text-center">
-        <h1 className="text-3xl font-bold text-gray-700">Partner not found</h1>
-        <Link to="/partners" className="text-blue-600 underline mt-4 block">
+      <div className="p-10 text-center min-h-screen bg-white dark:bg-slate-900">
+        <h1 className="text-3xl font-bold text-gray-700 dark:text-white">Partner not found</h1>
+        <Link to="/partners" className="text-blue-600 dark:text-blue-400 underline mt-4 block">
           ← Back to Partners
         </Link>
       </div>
@@ -48,7 +48,7 @@ export function PartnerDetail() {
   return (
     <div
       id="content"
-      className="bg-slate-50 dark:bg-ahc-dark min-h-screen py-12 pt-24 px-4 md:px-8 lg:px-16"
+      className="bg-white dark:bg-slate-900 min-h-screen py-12 pt-24 px-4 md:px-8 lg:px-16"
     >
       <Helmet>
         <title>{partner.name} – Africa Health Collaborative</title>
@@ -90,7 +90,7 @@ export function PartnerDetail() {
       </Helmet>
       <div className="flex flex-col md:flex-row items-center gap-8 max-w-6xl mx-auto mb-10">
         <div className="flex-1">
-          <h1 className="font-black text-4xl md:text-5xl text-gray-900 mb-6">
+          <h1 className="font-black text-4xl md:text-5xl text-gray-900 dark:text-white mb-6">
             {partner.name}
           </h1>
         </div>
@@ -117,18 +117,18 @@ export function PartnerDetail() {
       <div className="flex flex-col md:flex-row gap-10 max-w-6xl mx-auto">
         <div className="flex-1">
           {partner.description?.descriptionTitle && (
-            <h3 className="font-bold text-2xl mb-4 text-gray-800">
+            <h3 className="font-bold text-2xl mb-4 text-gray-800 dark:text-white">
               {partner.description.descriptionTitle}
             </h3>
           )}
-          <h2 className="text-gray-700 leading-relaxed mb-8 whitespace-pre-line">
+          <h2 className="text-gray-700 dark:text-slate-300 leading-relaxed mb-8 whitespace-pre-line">
             {partner.description?.description}
           </h2>
 
           {/* ✅ New Gallery Slider under description and above scholars */}
           {galleryImages.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-gray-800">Gallery</h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Gallery</h2>
 
               {/* Arrow buttons above image, aligned to right */}
               {galleryImages.length > 1 && (
@@ -195,14 +195,14 @@ export function PartnerDetail() {
           {/* ✅ Scholars Section (image enlarged) */}
           {partner.scholars && partner.scholars.length > 0 && (
             <>
-              <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
                 Scholars
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {partner.scholars.map((sch: any, idx: number) => (
                   <div
                     key={idx}
-                    className="border border-gray-200 bg-white p-4 rounded-lg shadow-sm flex gap-6 items-center"
+                    className="border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4 rounded-lg shadow-sm flex gap-6 items-center"
                   >
                     {sch.image && (
                       <img
@@ -212,9 +212,9 @@ export function PartnerDetail() {
                       />
                     )}
                     <div>
-                      <p className="font-semibold text-gray-800">{sch.name}</p>
-                      <p className="text-sm text-gray-600">{sch.eduLavel}</p>
-                      <p className="text-sm text-gray-600">{sch.description}</p>
+                      <p className="font-semibold text-gray-800 dark:text-white">{sch.name}</p>
+                      <p className="text-sm text-gray-600 dark:text-slate-400">{sch.eduLavel}</p>
+                      <p className="text-sm text-gray-600 dark:text-slate-400">{sch.description}</p>
                     </div>
                   </div>
                 ))}
@@ -231,10 +231,10 @@ export function PartnerDetail() {
               {newsLoading ? (
                 <div className="text-center py-8">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-ahc-green mx-auto"></div>
-                  <p className="mt-2 text-gray-500">Loading news...</p>
+                  <p className="mt-2 text-gray-500 dark:text-gray-400">Loading news...</p>
                 </div>
               ) : universityNews.length === 0 ? (
-                <div className="text-center py-8 bg-gray-50 dark:bg-slate-800 rounded-lg">
+                <div className="text-center py-8 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                   <p className="text-gray-500 dark:text-gray-400">
                     No news available for {partner.name} at this time.
                   </p>
@@ -258,7 +258,7 @@ export function PartnerDetail() {
                       <Link
                         key={news.id}
                         to={`/news/${news.id}`}
-                        className="group bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                        className="group bg-slate-50 dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden border border-slate-200 dark:border-slate-700"
                       >
                         {imgUrl ? (
                           <img
@@ -277,7 +277,7 @@ export function PartnerDetail() {
                               {dayjs(news.published_at).format("MMM DD, YYYY")}
                             </div>
                           )}
-                          <h3 className="mt-2 text-lg font-bold font-display group-hover:text-ahc-green-dark transition-colors line-clamp-2">
+                          <h3 className="mt-2 text-lg font-bold font-display text-gray-900 dark:text-white group-hover:text-ahc-green-dark transition-colors line-clamp-2">
                             {news.title}
                           </h3>
                           <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
@@ -286,7 +286,7 @@ export function PartnerDetail() {
                                 .replace(/<[^>]+>/g, "")
                                 .slice(0, 100)}
                           </p>
-                          <span className="mt-3 inline-block text-sm font-medium text-ahc-green-dark group-hover:underline">
+                          <span className="mt-3 inline-block text-sm font-medium text-ahc-green-dark dark:text-ahc-green-light group-hover:underline">
                             Read more →
                           </span>
                         </div>
@@ -309,11 +309,11 @@ export function PartnerDetail() {
           )}
         </div>
 
-        <div className="bg-white dark:bg-ahc-dark-secondary border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-8 md:min-w-[300px] lg:min-w-[350px] h-fit">
-          <p className="text-gray-900 mb-1 text-3xl font-bold">
+        <div className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-8 md:min-w-[300px] lg:min-w-[350px] h-fit">
+          <p className="text-gray-900 dark:text-white mb-1 text-3xl font-bold">
             Learn about the Partner
           </p>
-          <p className="text-gray-600 mb-4 text-2xl">Stay informed</p>
+          <p className="text-gray-600 dark:text-slate-300 mb-4 text-2xl">Stay informed</p>
 
           <div className="flex gap-3 mb-4">
             {partner.website && (

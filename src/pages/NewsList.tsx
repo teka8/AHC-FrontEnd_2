@@ -111,7 +111,8 @@ export default function NewsList() {
         />
       </Helmet>
       <Hero />
-      <div style={{backgroundColor: 'rgb(255, 253, 246)'}}><div className="container py-12 md:py-16">
+      <section className="bg-white dark:bg-slate-900">
+        <div className="container py-12 md:py-16">
         <div className="mb-8 flex items-center justify-between gap-4">
           {/* <input
           value={search}
@@ -127,7 +128,7 @@ export default function NewsList() {
           <Loader />
         ) : totalVisible === 0 ? (
           <div className="text-center py-16">
-            <p className="text-lg font-semibold">No news found.</p>
+            <p className="text-lg font-semibold text-gray-900 dark:text-white">No news found.</p>
             <p className="text-slate-500 dark:text-slate-400 mt-2">
               Try adjusting your search or check back later.
             </p>
@@ -151,7 +152,7 @@ export default function NewsList() {
                   <Link
                     key={n.id}
                     to={`/news/${n.id}`}
-                    className="group bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                    className="group bg-slate-50 dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
                   >
                     {imgUrl ? (
                       <img
@@ -168,7 +169,7 @@ export default function NewsList() {
                           {dayjs(n.published_at).format("MMM DD, YYYY")}
                         </div>
                       )}
-                      <h3 className="mt-2 text-lg font-bold font-display group-hover:text-ahc-green-dark transition-colors">
+                      <h3 className="mt-2 text-lg font-bold font-display text-gray-900 dark:text-white group-hover:text-ahc-green-dark transition-colors">
                         {n.title}
                       </h3>
                       <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">
@@ -177,7 +178,7 @@ export default function NewsList() {
                             .replace(/<[^>]+>/g, "")
                             .slice(0, 160)}
                       </p>
-                      <span className="mt-4 inline-block text-sm font-medium text-ahc-green-dark group-hover:underline">
+                      <span className="mt-4 inline-block text-sm font-medium text-ahc-green-dark dark:text-ahc-green-light group-hover:underline">
                         Read more →
                       </span>
                     </div>
@@ -193,8 +194,8 @@ export default function NewsList() {
             />
           </>
         )}
-      </div>
-      </div>
+        </div>
+      </section>
     </>
   );
 }
