@@ -17,7 +17,7 @@ const slides = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
-    title: "Togehter for Stronger Health Systems",
+    title: "Together for Stronger Health Systems",
     subtitle: "Collaboration, knowledge exchange, and health innovation across Ethiopia and Africa",
     tag: "Collaboration",
     accent: "bg-ahc-green",
@@ -151,7 +151,7 @@ export default function Hero() {
                   {/* Title with Editorial Typography */}
                   <div className="overflow-hidden mb-6 relative">
                     <h1
-                      className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight transform transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${selectedIndex === index ? 'translate-y-0' : 'translate-y-[120%]'}`}
+                      className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight transform transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${selectedIndex === index ? 'translate-y-0' : 'translate-y-[120%]'}`}
                     >
                       {slide.title.split(' ').map((word, i) => (
                         <span key={i} className={`inline-block mr-3 sm:mr-4 ${i === 1 ? 'italic font-light text-slate-600' : ''}`}>
@@ -163,7 +163,7 @@ export default function Hero() {
 
                   {/* Subtitle Fade In */}
                   <p
-                    className={`text-base sm:text-lg md:text-2xl text-slate-600 dark:text-slate-300 mb-8 md:mb-12 max-w-xl leading-relaxed font-medium transition-all duration-1000 delay-200 ${selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    className={`text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-8 md:mb-12 max-w-xl leading-relaxed font-medium transition-all duration-1000 delay-200 ${selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                   >
                     {slide.subtitle}
                   </p>
