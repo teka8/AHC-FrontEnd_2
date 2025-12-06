@@ -93,7 +93,7 @@ const HealthEcosystems: React.FC = () => {
               Health Ecosystems (HECO)
             </h1>
             <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
-              The Health Ecosystems Pillar enables students and professionals to acquire advanced skills in a broad range of disciplines critical for sustainable health sector growth and transformation in Africa.            </p>
+              HECO aims at developing a dynamic and sustainable health ecosystem network that integrates local knowledge, supports policy development, and equips actors with the skills needed for sustainable health sector growth, transformation, and job creation across Africa.</p>
             <div className="flex flex-col items-center gap-4">
               <a
                 href="#impact"
@@ -176,7 +176,7 @@ const HealthEcosystems: React.FC = () => {
               <h3 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
                 Impact of Ecosystems on Africa
               </h3>
-              <div className="space-y-4 text-2xl text-gray-700 dark:text-gray-300">
+              <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
                 <p>
                   To enhance the stability and growth of African health sectors, HECO focuses on increasing the number of primary
                   healthcare workers with stable employment by assembling essential building blocks for these sectors.                
@@ -193,6 +193,15 @@ const HealthEcosystems: React.FC = () => {
                   Programs under the Health Ecosystem Pillar are tailored to equip young leaders with the perspective, skills, training, and 
                   credentials essential for developing innovative, sustainable, and equitable health sectors.                
                 </p>
+                <p>As part of these initiatives AAU</p>
+                <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
+                  <li>Establishes an African Hub for Innovation and Critical Scholarship in Health Professions Education and Policy Studies to amplify regional health education initiatives.</li>
+                  <li>Fosters a conducive policy environment for primary healthcare development.</li>
+                  <li>Supports the design and development of new health graduate program in indigenous health and health law in AAU; and three new health graduate programs programsother (one program in each of the three local implementing partner universities).
+                  </li>
+                  <li>Undertakes a comprehensive evaluation of the capacities of Ethiopian Higher Education Institutions in areas encompassing teaching, research and community engagement within the realm of primary healthcare.</li>
+                  <li>Creates awareness on emerging health issue through mass media</li>
+                </ul>
               </div>
             </div>
             <div className="lg:col-span-1">
@@ -268,51 +277,6 @@ Train professionals across a broad range of disciplines critical for sustainable
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Programs Section with Background Design */}
-      <section className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
-            <img 
-              src="/images/ahc-health-symbol.png" 
-              alt="" 
-              aria-hidden="true"
-              className="w-full h-full object-contain"
-              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
-            />
-          </div>
-          
-          <div className="absolute right-0 bottom-20 translate-x-1/4 w-96 h-96 opacity-[0.06]">
-            <img 
-              src="/images/ahc-health-symbol.png" 
-              alt="" 
-              aria-hidden="true"
-              className="w-full h-full object-contain"
-              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
-            />
-          </div>
-
-          {/* Decorative Circles */}
-          <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-40 left-20 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
-          
-          {/* Grid Pattern Overlay */}
-          <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]" 
-            style={{ 
-              backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
-              backgroundSize: '60px 60px'
-            }}>
-          </div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <PillarProgramsSection
-            category="health_ecosystems"
-            title="Explore HECO Activities"
-          />
         </div>
       </section>
 

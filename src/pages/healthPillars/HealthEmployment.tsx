@@ -102,7 +102,7 @@ const HealthEmployment: React.FC = () => {
               Health Employment (HEMP)
             </h1>
             <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
-The Health Employment Pillar builds the capacity and skills of primary health care workers to meet growing demand and to contribute to the extension of health systems that employ and retain this primary care workforce.            </p>
+HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevant skills that productively match the health and well-being needs of the Ethiopian population. As part of this initiatives, AAU</p>
             <div className="flex flex-col items-center gap-4">
               <a
                 href="#impact"
@@ -195,6 +195,11 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
                 plays a crucial role in cultivating an empowered and proficient health workforce, pivotal for responsive and efficient health systems.
                 </p>
               </div>
+              <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
+                  <li>Establishes scholarship development, health employment, and health and wellness program desks at AAU – CHS.</li>
+                  <li>Provides soft skills and leadership trainings to health sciences students to equip them with effective communication, empathy and teamwork abilities.</li>
+                  <li>Fosters academic collaboration of students and faculty members to co-teach and develop innovative health programs and curricula through faculty and student exchange programs with Moi University and KNUST.</li>
+                </ul>
             </div>
             <div className="lg:col-span-1">
               <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
@@ -271,92 +276,6 @@ The Health Employment Pillar builds the capacity and skills of primary health ca
           </div>
         </div>
       </section>
-
-      {/* Programs Section */}
-      <section className="py-20 px-4 lg:px-20 bg-white dark:bg-gray-900 relative overflow-hidden min-h-screen">
-        <div className="container mx-auto px-4">
-          <PillarProgramsSection
-            category="health_employment"
-            title="Explore HEMP Activities"
-          />
-        </div>
-      </section>
-
-      {/* Scholarships Section */}
-      <div className="mb-20 relative bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 py-20 relative overflow-hidden">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Large AHC Symbol - Top Right */}
-          <div className="absolute right-0 top-10 translate-x-1/4 w-70 h-70 opacity-[0.07]">
-            <img 
-              src="/images/ahc-health-symbol.png" 
-              alt="" 
-              aria-hidden="true"
-              className="w-full h-full object-contain"
-              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
-            />
-          </div>
-          
-          {/* Large AHC Symbol - Bottom Left */}
-          <div className="absolute left-0 bottom-10 -translate-x-1/4 w-80 h-80 opacity-[0.06]">
-            <img 
-              src="/images/ahc-health-symbol.png" 
-              alt="" 
-              aria-hidden="true"
-              className="w-full h-full object-contain"
-              style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
-            />
-          </div>
-
-          {/* Decorative Circles */}
-          <div className="absolute top-20 left-1/4 w-60 h-60 bg-gradient-to-br from-teal-200/15 to-green-200/15 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-gradient-to-br from-green-200/15 to-emerald-200/15 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
-          
-          {/* Decorative Triangles */}
-          <div className="absolute top-16 left-16 w-12 h-12 opacity-10" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
-            <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
-          </div>
-          <div className="absolute bottom-16 right-20 w-16 h-16 opacity-10" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}>
-            <div className="w-full h-full bg-gradient-to-t from-green-400 to-teal-500"></div>
-          </div>
-
-          {/* Grid Pattern Overlay */}
-          <div className="absolute inset-0 opacity-[0.01] dark:opacity-[0.015]" 
-            style={{ 
-              backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
-              backgroundSize: '50px 50px'
-            }}>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white">Scholarships</h2>
-            <Link to="/scholarship" className="text-ahc-green hover:text-ahc-green-dark hover:underline font-semibold text-lg transition-colors">
-              View All
-            </Link>
-          </div>
-          <div className="absolute top-1/2 -left-4 z-20">
-            <button onClick={() => scroll('left', scholarshipsScrollRef)} className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
-            </button>
-          </div>
-          <div
-            ref={scholarshipsScrollRef}
-            className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
-            style={{ WebkitOverflowScrolling: 'touch' }}
-          >
-            {scholarships.map((scholarship) => (
-              <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
-            ))}
-          </div>
-          <div className="absolute top-1/2 -right-4 z-20">
-            <button onClick={() => scroll('right', scholarshipsScrollRef)} className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />
-            </button>
-          </div>
-        </div>
-      </div>
 
       {/* News Section */}
       <PillarNewsSection

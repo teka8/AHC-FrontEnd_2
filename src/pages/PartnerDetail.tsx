@@ -121,9 +121,10 @@ export function PartnerDetail() {
               {partner.description.descriptionTitle}
             </h3>
           )}
-          <h2 className="text-gray-700 leading-relaxed mb-8 whitespace-pre-line">
-            {partner.description?.description}
-          </h2>
+          <div
+            className="text-gray-700 leading-relaxed mb-8 whitespace-pre-line prose max-w-none dark:prose-invert"
+            dangerouslySetInnerHTML={{ __html: partner.description?.description || "" }}
+          />
 
           {/* ✅ New Gallery Slider under description and above scholars */}
           {galleryImages.length > 0 && (

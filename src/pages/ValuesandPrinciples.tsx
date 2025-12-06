@@ -10,12 +10,31 @@ export default function ValuesandPrinciples() {
     {
       title: "Our Mission",
       content:
-        "To cultivate a future where Africa’s diverse youth lead the transformation of health and well-being across the continent. We envision a generation equipped with the knowledge, skills, and opportunities to shape primary healthcare systems that are equitable, resilient, and responsive to local realities. By fostering inclusive, community-centered, and sustainable approaches, we aim to support young people—especially those historically underrepresented—to become driving forces in creating healthier, thriving African societies.",
+        "To prepare diverse youth for meaningful work in transforming health and well-being in Africa through contextually appropriate, equitable, and sustainable primary healthcare systems.",
     },
     {
       title: "Our Goal",
       content:
-        "To empower Africa’s next generation of health leaders by strengthening primary healthcare through transformative education, innovation, and entrepreneurship fostering a vibrant ecosystem that advances equitable health and employment opportunities.",
+        "The overall goal of the AHC program is to prepare diverse young people, for the meaningful work of transforming health and well-being in Africa through contextually appropriate, equitable and sustainable primary healthcare.",
+    },
+    {
+      title: "Our Objectives",
+      content:
+        "The objectives of AHC are to strengthen primary healthcare across Africa and empowering the continent's health sector through transformative education and innovation, creating conductive health eco-system and self -employment.",
+    },
+    {
+      title: "Our Values",
+      content:
+        `<ul style="padding-left: 40px;">
+        <li style="margin-bottom: 10px; list-style-type: disc;"><strong>Respect:</strong> 	Respect the values of partners from different cultures </li>
+        <li style="margin-bottom: 10px; list-style-type: disc;"><strong>Inclusivity:</strong> 	Ensure there’s inclusivity of partners’ voices in all planning, processes, policies, and programs </li>
+        <li style="margin-bottom: 10px; list-style-type: disc;"><strong>Equity:</strong> 	Ensure an equity-lens across programs, policies, processes, and practices so that interests of all parties are served </li>
+        <li style="margin-bottom: 10px; list-style-type: disc;"><strong>Reciprocity:</strong> 	Ongoing engagement with members of the Collaborative to ensure that programs and processes are of mutual benefit </li>
+        <li style="margin-bottom: 10px; list-style-type: disc;"><strong>Ethics:</strong> 	Engage in ethical research practices, ethical recruitment and selection, and ethical procurement processes </li>
+        <li style="margin-bottom: 10px; list-style-type: disc;"><strong>Dynamism:</strong> 	Commit to actively engaging in, reviewing, and revisiting the priorities, roles, and responsibilities to reflect evolving partner needs </li>
+        <li style="margin-bottom: 10px; list-style-type: disc;"><strong>Stewardship:</strong> 	Ensure we are good stewards of the network resources with the goal of producing results that have positive impact to our communities</li>
+        </ul>
+`,
     },
     {
       title: "Principles of Partnership",
@@ -148,7 +167,9 @@ export default function ValuesandPrinciples() {
 
                 {activeIndex === index && (
                   <div className="px-6 py-4  dark:bg-gray-900 text-gray-500 dark:text-gray-300  ">
-                    {item.content}
+                    <div
+                      dangerouslySetInnerHTML={{ __html: item.content || "" }}
+                    />
                   </div>
                 )}
               </div>

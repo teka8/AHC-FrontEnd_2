@@ -107,8 +107,7 @@ export default function HealthEntrepreneurship() {
                 Health Entrepreneurship (HENT)
               </h1>
               <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
-                The Health Entrepreneurship Pillar empowers aspiring women and youth entrepreneurs with training, 
-                mentorship and financial support to develop innovations, create jobs, and transform the health sector.
+                The HENT pillar focuses on building robust entrepreneurial ecosystems within Ethiopian universities to accelerate health innovation, strengthen primary health care, and create meaningful employment particularly for youth and women. By fostering health-focused start-ups, HENT aims to address critical gaps in accessibility, affordability, and quality of care across the country.
               </p>
               
               {/* Keep Reading with Down Arrow */}
@@ -186,7 +185,7 @@ export default function HealthEntrepreneurship() {
                 <h3 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
                   Impact of Entrepreneurship on Africa
                 </h3>
-                <div className="space-y-4 text-2xl text-gray-700 dark:text-gray-300">
+                <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
                   <p>
                     As African health sectors grow, health entrepreneurship has immense potential to accelerate that growth 
                     and support better health outcomes by creating self-sustaining market solutions that close gaps in the 
@@ -204,14 +203,16 @@ export default function HealthEntrepreneurship() {
                     generated ideas to fruition and create companies, products, services and health-related jobs that 
                     strengthens health sectors.
                   </p>
-                  <p>
-                    By providing youth with entrepreneurial knowledge and skills, financial support, tools, access to materials, 
-                    access to markets, technology, experience and exposure, they will be able to achieve entrepreneurial 
-                    self-efficacy and significantly contribute to the Health Sector Network's intertwined goals of strengthening 
-                    economies through robust health sectors and employing Africa's youth in stable, dignified jobs.
-                  </p>
+                  <p>As part of this initiative, AAU and its local implementing partner universities:</p>
+                <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
+                  <li className='pb-2'>Establish on-campus entrepreneurial training hubs/centers that offer advanced, innovative training programs in health entrepreneurship to equip students and professionals with the skills needed to develop impactful health solutions.</li>
+                  <li className='pb-2'>Develop innovation incubation hubs that provide mentorship, technical support, financial assistance, and charitable seed funding, enabling aspiring innovators to launch sustainable, community-based ventures.</li>
+                  <li className='pb-2'>Build a collaborative entrepreneurial network across partner universities to strengthen knowledge exchange, resource sharing, and joint innovation, creating a vibrant ecosystem that supports health-focused start-ups from ideation to implementation.</li>
+                </ul>
+                <p>Through these efforts, HENT drives a culture of innovation and empowers the next generation of health entrepreneurs to deliver solutions that improve primary healthcare services nationwide.</p>
+              
                 </div>
-              </div>
+                </div>
               
               <div className="lg:col-span-1">
                 <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
@@ -229,125 +230,6 @@ export default function HealthEntrepreneurship() {
             </div>
           </div>
         </section>
-
-        {/* Programs Section */}
-        <section className="py-20 px-4 lg:px-20 bg-white dark:bg-gray-900 relative overflow-hidden">
-          <div className="container mx-auto px-4">
-            <PillarProgramsSection
-              category="health_entrepreneurship"
-              title="Explore HENT Activities"
-            />          </div>
-        </section>
-
-        {/* Featured Ventures Section */}
-        {/* <section className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-ahc-green-dark mb-12">Featured Ventures</h2>
-            {isLoadingVentures ? (
-              <div className="flex justify-center py-10"><Loader /></div>
-            ) : ventures.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {ventures.slice(0, 6).map((venture) => (
-                <Link
-                  key={venture.id}
-                  to={`/health-pillars/health-entrepreneurship/ventures/${venture.id}`}
-                  className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100 dark:border-gray-700 relative overflow-hidden"
-                >
-                   
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
-                  
-                  
-                  {venture.featured && ( // Assuming 'featured' property exists on Venture type
-                    <div className="absolute top-4 right-4">
-                      <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-xs font-semibold rounded-full shadow-md">
-                        ⭐ Featured
-                      </span>
-                    </div>
-                  )}
-
-                  
-                  <div className="w-20 h-20 bg-gradient-to-br from-teal-50 to-green-50 dark:from-teal-900/30 dark:to-green-900/30 rounded-2xl mb-4 flex items-center justify-center overflow-hidden shadow-md">
-                    {venture.logo ? (
-                      <img
-                        src={venture.logo}
-                        alt={venture.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-green-600 bg-clip-text text-transparent">
-                        {venture.title.charAt(0)}
-                      </span>
-                    )}
-                  </div>
-
-                
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-                    {venture.title}
-                  </h3>
-                  {venture.tagline && ( // Assuming 'tagline' property exists on Venture type
-                    <p className="text-sm text-teal-600 dark:text-teal-400 mb-3 font-medium">
-                      {venture.tagline}
-                    </p>
-                  )}
-
-                 
-                  <div className="inline-block px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-semibold rounded-full mb-4 capitalize">
-                    {venture.focusArea.replace("-", " ")}
-                  </div>
-
-                  
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 leading-relaxed">
-                    {venture.description || "Innovative healthcare solution"}
-                  </p>
-
-                
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
-                    {venture.country && ( // Assuming 'country' property exists on Venture type
-                      <div className="flex items-center gap-1.5">
-                        <MapPin className="w-4 h-4 text-teal-500" />
-                        <span>{venture.country}</span>
-                      </div>
-                    )}
-                    {venture.team_size && ( // Assuming 'team_size' property exists on Venture type
-                      <div className="flex items-center gap-1.5">
-                        <Users className="w-4 h-4 text-teal-500" />
-                        <span>{venture.team_size} team</span>
-                      </div>
-                    )}
-                    {venture.patients_impacted && ( // Assuming 'patients_impacted' property exists on Venture type
-                      <div className="flex items-center gap-1.5">
-                        <TrendingUp className="w-4 h-4 text-teal-500" />
-                        <span>
-                          {venture.patients_impacted.toLocaleString()} patients
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  
-                  <div className="flex items-center justify-between pt-2">
-                    <span className="text-sm font-semibold text-teal-600 dark:text-teal-400 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                      Learn More →
-                    </span>
-                  </div>
-                </Link>
-              ))}
-              </div>
-            ) : (
-              <p className="text-center text-gray-500 dark:text-gray-400">No ventures available at the moment.</p>
-            )}
-            <div className="text-center mt-12">
-              <Link
-                to="/health-pillars/health-entrepreneurship/ventures"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-ahc-green hover:bg-ahc-green-dark transition-colors duration-300"
-              >
-                Show All Ventures
-                <ArrowRight className="ml-2 -mr-1 h-5 w-5" />
-              </Link>
-            </div>
-          </div>
-        </section> */}
-
         
         {/* Pillar News Section */}
         <PillarNewsSection
