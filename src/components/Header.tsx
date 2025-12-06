@@ -73,6 +73,7 @@ export default function Header() {
       path: "/partners/addisababauniversity"
     },
     { label: "Values & Principles", path: "/valuesandprinciples" },
+    { label: "AHC Leaders", path: "/ahcleaders" },
     
   ];
 
