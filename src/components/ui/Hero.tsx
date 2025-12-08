@@ -16,7 +16,7 @@ type HeroLogo = {
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/hero/DSC04818.jpg",
     title: "Together for Stronger Health Systems",
     subtitle: "Collaboration, knowledge exchange, and health innovation across Ethiopia and Africa",
     tag: "Collaboration",
@@ -29,7 +29,7 @@ const slides = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=2032&auto=format&fit=crop",
+    image: "/images/hero/IRCAD-38.jpg",
     title: "Skilled Workforce for Strong Health Systems",
     subtitle: "Enhancing the capacity and competencies of primary health-care providers to meet evolving health-system demands",
     tag: "Employability",
@@ -42,7 +42,7 @@ const slides = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
+    image: "images/hero/_DSC1004 copy.jpg",
     title: "Cultivate and Sustain Dynamic Health Entrepreneurial Ecosystems",
     subtitle: "Launch health start-ups, generate revenue, and create meaningful employment.",
     tag: "Innovation",
@@ -55,7 +55,7 @@ const slides = [
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/hero/_DSC0137.jpg",
     title: "Nurturing Skilled Health Experts for Resilient, Transformative Health Sector",
     subtitle: "Provides future and current health professionals with the advanced, cross-disciplinary skills needed to drive sustainable growth and transformation in the health sector.",
     tag: "Transformation",
