@@ -40,21 +40,21 @@ const slides = [
     secondaryCtaText: "Our Partners",
     secondaryCtaLink: "/partners",
   },
+  // {
+  //   id: 3,
+  //   image: "images/hero/_DSC1004 copy.jpg",
+  //   title: "Cultivate and Sustain Dynamic Health Entrepreneurial Ecosystems",
+  //   subtitle: "Launch health start-ups, generate revenue, and create meaningful employment.",
+  //   tag: "Innovation",
+  //   accent: "bg-amber-500",
+  //   textAccent: "text-amber-600",
+  //   ctaText: "Start Innovating",
+  //   ctaLink: "/health-pillars/health-entrepreneurship",
+  //   secondaryCtaText: "Read News",
+  //   secondaryCtaLink: "/news",
+  // },
   {
     id: 3,
-    image: "images/hero/_DSC1004 copy.jpg",
-    title: "Cultivate and Sustain Dynamic Health Entrepreneurial Ecosystems",
-    subtitle: "Launch health start-ups, generate revenue, and create meaningful employment.",
-    tag: "Innovation",
-    accent: "bg-amber-500",
-    textAccent: "text-amber-600",
-    ctaText: "Start Innovating",
-    ctaLink: "/health-pillars/health-entrepreneurship",
-    secondaryCtaText: "Read News",
-    secondaryCtaLink: "/news",
-  },
-  {
-    id: 4,
     image: "/images/hero/_DSC0137.jpg",
     title: "Nurturing Skilled Health Experts for Resilient, Transformative Health Sector",
     subtitle: "Provides future and current health professionals with the advanced, cross-disciplinary skills needed to drive sustainable growth and transformation in the health sector.",
@@ -244,13 +244,13 @@ export default function Hero() {
               gridSize={8}
               pixelColor="rgba(255, 255, 255, 0.9)"
               animationStepDuration={0.2}
-              className="rounded-lg w-16 h-16 md:w-24 md:h-24 bg-white/30 backdrop-blur-2xl border-2 border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.2)] hover:shadow-[0_12px_40px_0_rgba(31,38,135,0.3)] hover:border-white/60 hover:bg-white/40 transition-all duration-500"
+              className="rounded-lg w-16 h-16 md:w-24 md:h-24 bg-transparent hover:shadow-[0_12px_40px_0_rgba(31,38,135,0.3)] hover:border-white/60 hover:bg-white/40 transition-all duration-500"
               firstContent={
                 <div className="flex items-center justify-center w-full h-full p-1.5 md:p-2">
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="max-w-full max-h-full object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] brightness-110 contrast-110"
+                    className="max-w-full max-h-full object-contain"
                     onError={(e) => {
                       const img = e.currentTarget as HTMLImageElement;
                       if (logo.fallback && img.dataset.fallback !== "1") {
