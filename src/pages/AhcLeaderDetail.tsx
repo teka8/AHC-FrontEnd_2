@@ -1,11 +1,21 @@
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 import { useGetLeaderQuery } from "../features/leaders/leadersApi";
 import Hero from "../components/partners/Hero";
+import { useAnalytics } from "@/contexts/AnalyticsContext";
 
 export default function AhcLeaderDetail() {
   const { id } = useParams();
   const { data: leader, isLoading, isError } = useGetLeaderQuery(Number(id));
+  const analytics = useAnalytics();
+
+  // Track leader view when data is loaded
+  useEffect(() => {
+    if (leader && id) {
+      analytics.trackLeaderView(id, leader.name);
+    }
+  }, [leader, id, analytics]);
 
   if (isLoading) {
     return (
@@ -66,6 +76,7 @@ export default function AhcLeaderDetail() {
                 href={leader.linkedin_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => analytics.trackLinkedInClick(leader.name)}
                 className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-[#0A66C2] hover:bg-[#004182] text-white font-medium rounded-lg transition-colors shadow-md"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">

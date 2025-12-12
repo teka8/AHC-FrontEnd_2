@@ -4,10 +4,18 @@ import { useGetEventQuery } from "../features/events/eventsApi";
 import Loader from "../components/Loader";
 import SectionHeader from "../components/ui/SectionHeader";
 import dayjs from "dayjs";
+import { useAnalytics } from "@/contexts/AnalyticsContext";
 
 export default function EventDetail() {
   const { id = "" } = useParams();
   const { data, isLoading } = useGetEventQuery(id);
+  const analytics = useAnalytics();
+
+  const handleRegisterClick = () => {
+    if (data) {
+      analytics.trackEventRegistration(id, data.title);
+    }
+  };
   return (
     <section className="bg-white dark:bg-slate-900 min-h-screen">
       <div className="container py-12 md:py-16">
@@ -174,6 +182,7 @@ export default function EventDetail() {
                   href={data.registration_link}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={handleRegisterClick}
                   className="btn bg-ahc-green hover:bg-ahc-green-dark text-white font-semibold rounded-full px-8 py-3 transition-colors w-full mt-6 text-center"
                 >
                   Register Now

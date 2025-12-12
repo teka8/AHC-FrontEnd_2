@@ -4,11 +4,17 @@ import Header from './Header'
 import Footer from './Footer'
 import ChatbotWidget from './chatbot/ChatbotWidget'
 import ScrollToTop from './ScrollToTop'
+import { AnalyticsProvider } from '@/contexts/AnalyticsContext'
+import { CookieConsent } from '@/components/CookieConsent'
+import { usePageTracking } from '@/hooks/usePageTracking'
 
-export default function Layout() {
+function LayoutContent() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const topRef = useRef<HTMLDivElement>(null)
+
+  // Auto-track page views
+  usePageTracking()
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
@@ -25,6 +31,15 @@ export default function Layout() {
       <Footer />
       <ChatbotWidget />
       <ScrollToTop topRef={topRef} />
+      <CookieConsent />
     </div>
+  )
+}
+
+export default function Layout() {
+  return (
+    <AnalyticsProvider>
+      <LayoutContent />
+    </AnalyticsProvider>
   )
 }
