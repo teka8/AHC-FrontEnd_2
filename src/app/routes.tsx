@@ -55,6 +55,8 @@ import ScholarshipDetail from '../pages/scholarship/ScholarshipDetail'
 import {PartnerDetail} from '../pages/PartnerDetail'
 import LocalPartners from '../pages/LocalPartners'
 import DynamicPage from '../pages/DynamicPage'
+import { CookiePreferences } from '../pages/CookiePreferences'
+import { PrivacyPolicy } from '../pages/PrivacyPolicy'
 
 export const router = createBrowserRouter([
   {
@@ -107,6 +109,10 @@ export const router = createBrowserRouter([
 
       // Dynamic pages route
       { path: 'pages/:slug', element: <DynamicPage /> },
+
+      // Cookie & Privacy pages
+      { path: 'cookie-preferences', element: <CookiePreferences /> },
+      { path: 'privacy-policy', element: <PrivacyPolicy /> },
 
     ],
   },

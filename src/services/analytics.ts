@@ -4,6 +4,7 @@ import type { GoogleAnalyticsConfig, ConsentPreferences, EventParams } from '@/t
 const CONSENT_STORAGE_KEY = 'ahc_analytics_consent';
 const CONFIG_CACHE_KEY = 'ahc_ga_config';
 const CONFIG_CACHE_DURATION = 3600000; // 1 hour in milliseconds
+const CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000; // 12 months in milliseconds
 
 /**
  * Analytics Service
@@ -13,12 +14,32 @@ class AnalyticsService {
   private initialized = false;
   private config: GoogleAnalyticsConfig | null = null;
   private configTimestamp: number = 0;
+  private initializationPromise: Promise<void> | null = null;
+  private isInitializing = false;
 
   /**
    * Initialize Google Analytics
    * Fetches config from backend and sets up GA4
    */
   async initialize(): Promise<void> {
+    // If already initializing, return existing promise
+    if (this.initializationPromise) {
+      return this.initializationPromise;
+    }
+
+    // Create initialization promise
+    this.initializationPromise = this.performInitialization();
+    return this.initializationPromise;
+  }
+
+  /**
+   * Perform actual initialization
+   */
+  private async performInitialization(): Promise<void> {
+    if (this.isInitializing) return;
+    
+    this.isInitializing = true;
+
     try {
       // Fetch config from backend
       const config = await this.fetchConfig();
@@ -42,7 +63,25 @@ class AnalyticsService {
       this.initializeGA(config);
     } catch (error) {
       console.error('[Analytics] Failed to initialize:', error);
+    } finally {
+      this.isInitializing = false;
     }
+  }
+
+  /**
+   * Wait for initialization to complete
+   */
+  async waitForInitialization(): Promise<void> {
+    if (this.initializationPromise) {
+      await this.initializationPromise;
+    }
+  }
+
+  /**
+   * Check if service is ready (config loaded)
+   */
+  isReady(): boolean {
+    return this.config !== null;
   }
 
   /**
@@ -143,8 +182,28 @@ class AnalyticsService {
   getConsent(): ConsentPreferences | null {
     try {
       const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
-      return stored ? JSON.parse(stored) : null;
-    } catch {
+      if (!stored) return null;
+      
+      const consent: ConsentPreferences = JSON.parse(stored);
+      const now = Date.now();
+      
+      // Check if expired (12 months passed)
+      if (consent.expiresAt && now > consent.expiresAt) {
+        console.log('[Analytics] Consent expired after 12 months, removing...');
+        localStorage.removeItem(CONSENT_STORAGE_KEY);
+        return null; // Banner will show again
+      }
+      
+      // Handle old format (no expiresAt field) - migration
+      if (!consent.expiresAt) {
+        console.log('[Analytics] Old consent format detected, removing...');
+        localStorage.removeItem(CONSENT_STORAGE_KEY);
+        return null; // Banner will show again
+      }
+      
+      return consent;
+    } catch (error) {
+      console.error('[Analytics] Error reading consent:', error);
       return null;
     }
   }
@@ -153,9 +212,11 @@ class AnalyticsService {
    * Set consent preferences
    */
   setConsent(analytics: boolean): void {
+    const now = Date.now();
     const preferences: ConsentPreferences = {
       analytics,
-      timestamp: Date.now(),
+      timestamp: now,
+      expiresAt: now + CONSENT_DURATION, // Expires in 12 months
     };
     
     try {

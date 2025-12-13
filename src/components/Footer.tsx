@@ -181,6 +181,15 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-gray-700 text-center text-xs text-gray-400">
           <p>© {new Date().getFullYear()} AHC-AAU. All rights reserved.</p>
           <p className="mt-1">Designed & Developed by Tewos Technology</p>
+          <p className="mt-2">
+            <Link to="/privacy-policy" className="hover:text-white hover:underline">
+              Privacy Policy
+            </Link>
+            {' • '}
+            <Link to="/cookie-preferences" className="hover:text-white hover:underline">
+              Manage Cookie Settings
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

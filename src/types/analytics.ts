@@ -16,6 +16,7 @@ export interface GoogleAnalyticsConfig {
 export interface ConsentPreferences {
   analytics: boolean;
   timestamp: number;
+  expiresAt: number; // Consent expires after 12 months
 }
 
 /**

@@ -5,7 +5,7 @@ import Footer from './Footer'
 import ChatbotWidget from './chatbot/ChatbotWidget'
 import ScrollToTop from './ScrollToTop'
 import { AnalyticsProvider } from '@/contexts/AnalyticsContext'
-import { CookieConsent } from '@/components/CookieConsent'
+import { CookieBanner } from '@/components/CookieBanner'
 import { usePageTracking } from '@/hooks/usePageTracking'
 
 function LayoutContent() {
@@ -31,7 +31,7 @@ function LayoutContent() {
       <Footer />
       <ChatbotWidget />
       <ScrollToTop topRef={topRef} />
-      <CookieConsent />
+      <CookieBanner />
     </div>
   )
 }
