@@ -27,7 +27,7 @@ export default function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
       key={scholarship.id}
       className="flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
     >
-      <img src={scholarship.image_url ?? 'images/placeholders/eduPASS-1200_800.png'} alt={scholarship.title} className="rounded-t-xl h-48 w-full object-cover" />
+      <img src={scholarship.image_url ?? '/images/placeholders/eduPASS-1200_800.png'} alt={scholarship.title} className="rounded-t-xl h-48 w-full object-cover" />
       <div className="p-6">
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-xl font-bold mb-2">{scholarship.title}</h3>
