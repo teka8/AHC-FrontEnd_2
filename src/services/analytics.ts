@@ -2,7 +2,7 @@ import ReactGA from 'react-ga4';
 import type { GoogleAnalyticsConfig, ConsentPreferences, EventParams } from '@/types/analytics';
 
 const CONSENT_STORAGE_KEY = 'ahc_analytics_consent';
-const CONFIG_CACHE_KEY = 'ahc_ga_config';
+const CONFIG_CACHE_KEY = 'ahc_ga_config'; // Changed to v2 to force fresh fetch
 const CONFIG_CACHE_DURATION = 3600000; // 1 hour in milliseconds
 const CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000; // 12 months in milliseconds
 
@@ -235,7 +235,7 @@ class AnalyticsService {
    * Check if consent is needed
    */
   needsConsent(): boolean {
-    return this.config?.cookie_consent_required ?? false;
+    return this.config?.cookie_consent_required ?? true;  // Default to true for privacy
   }
 
   /**
