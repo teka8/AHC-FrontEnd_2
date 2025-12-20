@@ -105,15 +105,15 @@ export default function ProgressUpdates() {
                       {/* Actions */}
                       <div className="flex gap-4 text-sm text-gray-500">
                         <button className="flex items-center gap-1 hover:text-ahc-green transition">
-                          <ThumbsUp className="w-4 h-4" />
+                          <ThumbsUp className="w-4 h-4" aria-hidden="true" />
                           <span>Like {update.likes_count ? `(${update.likes_count})` : ''}</span>
                         </button>
                         <button className="flex items-center gap-1 hover:text-ahc-green transition">
-                          <MessageCircle className="w-4 h-4" />
+                          <MessageCircle className="w-4 h-4" aria-hidden="true" />
                           <span>Comment {update.comments_count ? `(${update.comments_count})` : ''}</span>
                         </button>
                         <button className="flex items-center gap-1 hover:text-ahc-green transition">
-                          <Share2 className="w-4 h-4" />
+                          <Share2 className="w-4 h-4" aria-hidden="true" />
                           <span>Share</span>
                         </button>
                       </div>

@@ -60,12 +60,13 @@ export default function Hero({ search, setSearch }: HeroProps) {
           </p>
 
           <div className="relative mt-8 max-w-2xl">
-            <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
+            <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" aria-hidden="true" />
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search announcements by title or keyword..."
               className="w-full rounded-full border border-gray-300 bg-white px-14 py-4 text-base shadow-sm transition focus:border-ahc-green focus:outline-none focus:ring-2 focus:ring-ahc-green/40 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+              aria-label="Search announcements"
             />
           </div>
         </div>

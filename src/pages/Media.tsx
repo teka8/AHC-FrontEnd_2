@@ -219,7 +219,7 @@ export default function Media() {
                       onClick={goBackToRoot}
                       className="inline-flex items-center gap-1 rounded-full border border-transparent bg-slate-100 dark:bg-slate-700 px-3 py-1 font-medium text-slate-600 dark:text-slate-300 transition hover:border-slate-300 dark:hover:border-slate-500 hover:text-slate-800 dark:hover:text-white"
                     >
-                      <ChevronLeft className="h-4 w-4" />
+                      <ChevronLeft className="h-4 w-4" aria-hidden="true" />
                       All media
                     </button>
                     {parentBreadcrumb && (
@@ -228,7 +228,7 @@ export default function Media() {
                         onClick={() => handleBreadcrumbClick(breadcrumbs.length - 2)}
                         className="inline-flex items-center gap-1 rounded-full border border-transparent bg-slate-100 dark:bg-slate-700 px-3 py-1 font-medium text-slate-600 dark:text-slate-300 transition hover:border-slate-300 dark:hover:border-slate-500 hover:text-slate-800 dark:hover:text-white"
                       >
-                        <CornerUpLeft className="h-4 w-4" />
+                        <CornerUpLeft className="h-4 w-4" aria-hidden="true" />
                         Up one level
                       </button>
                     )}
@@ -260,7 +260,7 @@ export default function Media() {
                     }}
                     className="inline-flex items-center gap-2 rounded-full border border-transparent bg-ahc-green/10 dark:bg-ahc-green/20 px-4 py-2 text-sm font-semibold text-ahc-green dark:text-ahc-green-light transition hover:bg-ahc-green/20 dark:hover:bg-ahc-green/30"
                   >
-                    <CornerUpLeft className="h-4 w-4" />
+                    <CornerUpLeft className="h-4 w-4" aria-hidden="true" />
                     {parentBreadcrumb ? `Back to ${parentBreadcrumb.name}` : "Back to collections"}
                   </button>
                 </div>
@@ -350,7 +350,7 @@ export default function Media() {
                           disabled={mediaMeta.current_page <= 1}
                           className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-600 px-3 py-1 text-slate-600 dark:text-slate-300 transition hover:border-slate-400 dark:hover:border-slate-500 disabled:cursor-not-allowed disabled:border-slate-100 dark:disabled:border-slate-700 disabled:text-slate-300 dark:disabled:text-slate-600"
                         >
-                          <ChevronLeft className="h-4 w-4" />
+                          <ChevronLeft className="h-4 w-4" aria-hidden="true" />
                           Prev
                         </button>
                         <span className="text-xs text-slate-500 dark:text-slate-400">
@@ -363,7 +363,7 @@ export default function Media() {
                           className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-600 px-3 py-1 text-slate-600 dark:text-slate-300 transition hover:border-slate-400 dark:hover:border-slate-500 disabled:cursor-not-allowed disabled:border-slate-100 dark:disabled:border-slate-700 disabled:text-slate-300 dark:disabled:text-slate-600"
                         >
                           Next
-                          <ChevronRight className="h-4 w-4" />
+                          <ChevronRight className="h-4 w-4" aria-hidden="true" />
                         </button>
                       </div>
                     )}
@@ -481,7 +481,7 @@ function FolderCard({
           <span className="text-slate-300 dark:text-slate-600">•</span>
           <span className="inline-flex items-center gap-1 text-ahc-green">
             Open collection
-            <ChevronRight className="h-3 w-3" />
+            <ChevronRight className="h-3 w-3" aria-hidden="true" />
           </span>
         </div>
       </div>
@@ -707,7 +707,7 @@ function MediaPreviewModal({
           className="mr-6 hidden h-16 w-16 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-white/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 md:flex"
           aria-label="Previous media"
         >
-          <ChevronLeft className="h-8 w-8" />
+          <ChevronLeft className="h-8 w-8" aria-hidden="true" />
         </button>
 
         <div className="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[32px] border border-white/10 bg-neutral-950/95 shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
@@ -744,7 +744,7 @@ function MediaPreviewModal({
               className="absolute right-4 top-4 hidden h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 md:flex"
               aria-label="Close preview"
             >
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6" aria-hidden="true" />
             </button>
             {renderContent()}
             {captionText && (
@@ -806,7 +806,7 @@ function MediaPreviewModal({
           className="ml-6 hidden h-16 w-16 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-white/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 md:flex"
           aria-label="Next media"
         >
-          <ChevronRight className="h-8 w-8" />
+          <ChevronRight className="h-8 w-8" aria-hidden="true" />
         </button>
       </div>
 
@@ -820,7 +820,7 @@ function MediaPreviewModal({
           className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
           aria-label="Close preview"
         >
-          <X className="h-6 w-6" />
+          <X className="h-6 w-6" aria-hidden="true" />
         </button>
         <a
           href={resolvedMediaUrl}

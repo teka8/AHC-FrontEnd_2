@@ -39,8 +39,9 @@ export default function Login() {
       >
         <h1 className="text-xl font-semibold">Sign in</h1>
         <div>
-          <label className="block text-sm mb-1">Email</label>
+          <label className="block text-sm mb-1" htmlFor="login-email">Email</label>
           <input
+            id="login-email"
             type="email"
             {...register("email")}
             className="w-full border rounded-md px-3 py-2"
@@ -51,8 +52,9 @@ export default function Login() {
           )}
         </div>
         <div>
-          <label className="block text-sm mb-1">Password</label>
+          <label className="block text-sm mb-1" htmlFor="login-password">Password</label>
           <input
+            id="login-password"
             type="password"
             {...register("password")}
             className="w-full border rounded-md px-3 py-2"

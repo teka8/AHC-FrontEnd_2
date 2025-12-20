@@ -78,39 +78,43 @@ export default function Contact() {
           <form className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium mb-1 dark:text-slate-300">
+                <label className="block text-sm font-medium mb-1 dark:text-slate-300" htmlFor="contact-first-name">
                   First name
                 </label>
                 <input
+                  id="contact-first-name"
                   className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors"
                   placeholder="First name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1 dark:text-slate-300">
+                <label className="block text-sm font-medium mb-1 dark:text-slate-300" htmlFor="contact-last-name">
                   Last name
                 </label>
                 <input
+                  id="contact-last-name"
                   className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors"
                   placeholder="Last name"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1 dark:text-slate-300">
+              <label className="block text-sm font-medium mb-1 dark:text-slate-300" htmlFor="contact-email">
                 Email
               </label>
               <input
                 type="email"
+                id="contact-email"
                 className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3 focus:ring-ahc-green focus:border-ahc-green transition-colors"
                 placeholder="you@example.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1 dark:text-slate-300">
+              <label className="block text-sm font-medium mb-1 dark:text-slate-300" htmlFor="contact-message">
                 Message
               </label>
               <textarea
+                id="contact-message"
                 className="w-full border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-md px-4 py-3"
                 rows={6}
                 placeholder="How can we help?"

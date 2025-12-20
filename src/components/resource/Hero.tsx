@@ -64,12 +64,13 @@ const Hero: React.FC<HeroProps> = ({ search, setSearch }) => {
 
           {/* Search Bar */}
           <div className="relative mt-8 max-w-2xl">
-            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search resources by title, author, or keyword..."
               className="w-full pl-14 pr-5 py-4 text-base border border-gray-300 dark:border-gray-700 rounded-full bg-white dark:bg-gray-800 focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-shadow shadow-sm"
+              aria-label="Search resources"
             />
           </div>
         </div>

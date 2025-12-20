@@ -126,7 +126,7 @@ export default function HIBlog() {
             <div className="max-w-4xl mx-auto text-center">
               {/* Icon Badge */}
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
-                <BookOpen className="w-10 h-10 text-white" />
+                <BookOpen className="w-10 h-10 text-white" aria-hidden="true" />
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
@@ -138,7 +138,7 @@ export default function HIBlog() {
               
               <div className="relative max-w-2xl mx-auto">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400" />
+                  <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
                 </div>
                 <input
                   type="text"
@@ -146,6 +146,7 @@ export default function HIBlog() {
                   className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search blog articles"
                 />
               </div>
             </div>
@@ -193,18 +194,18 @@ export default function HIBlog() {
                     <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
                       <div className="flex items-center space-x-4">
                         <div className="flex items-center">
-                          <Calendar className="h-4 w-4 mr-1.5 text-teal-500" />
+                          <Calendar className="h-4 w-4 mr-1.5 text-teal-500" aria-hidden="true" />
                           {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </div>
                         <div className="flex items-center">
-                          <Clock className="h-4 w-4 mr-1.5 text-teal-500" />
+                          <Clock className="h-4 w-4 mr-1.5 text-teal-500" aria-hidden="true" />
                           {post.readTime}
                         </div>
                       </div>
                     </div>
                     <p className="text-sm font-semibold mb-6 text-teal-600 dark:text-teal-400">By {post.author}</p>
                     <button className="w-full bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group">
-                      Read Article <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      Read Article <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </button>
                   </div>
                 ))}
@@ -230,15 +231,15 @@ export default function HIBlog() {
                   <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">{post.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-3 pb-3 border-b border-gray-200 dark:border-gray-700">
-                    <Calendar className="h-4 w-4 mr-1.5 text-teal-500" />
+                    <Calendar className="h-4 w-4 mr-1.5 text-teal-500" aria-hidden="true" />
                     {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                     <span className="mx-2">•</span>
-                    <Clock className="h-4 w-4 mr-1.5 text-teal-500" />
+                    <Clock className="h-4 w-4 mr-1.5 text-teal-500" aria-hidden="true" />
                     {post.readTime}
                   </div>
                   <p className="text-sm font-semibold mb-4 text-teal-600 dark:text-teal-400">By {post.author}</p>
                   <button className="w-full bg-white dark:bg-gray-800 border-2 border-teal-500 text-teal-600 dark:text-teal-400 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center group">
-                    Read More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    Read More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </button>
                 </div>
               ))}
@@ -307,6 +308,7 @@ export default function HIBlog() {
                     onChange={(event) => setNewsletterEmail(event.target.value)}
                     required
                     className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-all"
+                    aria-label="Email address"
                   />
                   <button
                     type="submit"

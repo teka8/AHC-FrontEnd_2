@@ -340,8 +340,12 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             </Link>
           </div>
           <div className="absolute top-1/2 -left-4 z-20">
-            <button onClick={() => scroll('left', scholarshipsScrollRef)} className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+            <button 
+              onClick={() => scroll('left', scholarshipsScrollRef)} 
+              className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Scroll scholarships left"
+            >
+              <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" aria-hidden="true" />
             </button>
           </div>
           <div
@@ -354,8 +358,12 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             ))}
           </div>
           <div className="absolute top-1/2 -right-4 z-20">
-            <button onClick={() => scroll('right', scholarshipsScrollRef)} className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+            <button 
+              onClick={() => scroll('right', scholarshipsScrollRef)} 
+              className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Scroll scholarships right"
+            >
+              <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" aria-hidden="true" />
             </button>
           </div>
         </div>

@@ -40,10 +40,20 @@ export const Carousel = ({ children }) => {
       </div>
       <div className="embla__controls">
         <div className="embla__buttons">
-          <button className="embla__button embla__button--prev" onClick={scrollPrev} disabled={prevBtnDisabled}>
+          <button
+            className="embla__button embla__button--prev"
+            onClick={scrollPrev}
+            disabled={prevBtnDisabled}
+            aria-label="Previous slide"
+          >
             Prev
           </button>
-          <button className="embla__button embla__button--next" onClick={scrollNext} disabled={nextBtnDisabled}>
+          <button
+            className="embla__button embla__button--next"
+            onClick={scrollNext}
+            disabled={nextBtnDisabled}
+            aria-label="Next slide"
+          >
             Next
           </button>
         </div>
@@ -53,6 +63,8 @@ export const Carousel = ({ children }) => {
               key={index}
               className={`embla__dot ${index === selectedIndex ? 'is-selected' : ''}`}
               onClick={() => scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === selectedIndex ? 'true' : undefined}
             />
           ))}
         </div>

@@ -77,10 +77,11 @@ export default function FileUpload({
   }
 
   const fileName = getFileName()
+  const inputId = `file-upload-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
 
   return (
     <div className="mb-4">
-      <label className="block text-sm font-medium mb-2">
+      <label className="block text-sm font-medium mb-2" htmlFor={inputId}>
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       
@@ -98,8 +99,11 @@ export default function FileUpload({
           onDragOver={handleDrag}
           onDrop={handleDrop}
           onClick={() => inputRef.current?.click()}
+          role="button"
+          tabIndex={0}
+          aria-label={`Upload ${label}`}
         >
-          <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+          <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" aria-hidden="true" />
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
             Drag and drop or click to upload
           </p>
@@ -108,16 +112,18 @@ export default function FileUpload({
           </p>
           <input
             ref={inputRef}
+            id={inputId}
             type="file"
             accept={accept}
             onChange={handleChange}
             className="hidden"
+            aria-label={label}
           />
         </div>
       ) : (
         <div className="border rounded-lg p-4 flex items-center justify-between bg-gray-50 dark:bg-gray-800">
           <div className="flex items-center gap-3">
-            <FileText className="w-5 h-5 text-ahc-green" />
+            <FileText className="w-5 h-5 text-ahc-green" aria-hidden="true" />
             <div>
               <p className="text-sm font-medium">{fileName}</p>
               {value instanceof File && (
@@ -131,8 +137,9 @@ export default function FileUpload({
             type="button"
             onClick={handleRemove}
             className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition"
+            aria-label={`Remove ${label}`}
           >
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="w-5 h-5 text-gray-500" aria-hidden="true" />
           </button>
         </div>
       )}

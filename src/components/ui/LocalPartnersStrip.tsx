@@ -97,14 +97,16 @@ export default function LocalPartnersStrip() {
           <button
             onClick={scrollPrev}
             className="absolute top-1/2 -translate-y-1/2 left-0 transform -translate-x-1/2 bg-white dark:bg-slate-700 rounded-full p-2 shadow-md hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors"
+            aria-label="Previous partners"
           >
-            <ChevronLeft className="h-6 w-6 text-slate-800 dark:text-white" />
+            <ChevronLeft className="h-6 w-6 text-slate-800 dark:text-white" aria-hidden="true" />
           </button>
           <button
             onClick={scrollNext}
             className="absolute top-1/2 -translate-y-1/2 right-0 transform translate-x-1/2 bg-white dark:bg-slate-700 rounded-full p-2 shadow-md hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors"
+            aria-label="Next partners"
           >
-            <ChevronRight className="h-6 w-6 text-slate-800 dark:text-white" />
+            <ChevronRight className="h-6 w-6 text-slate-800 dark:text-white" aria-hidden="true" />
           </button>
         </div>
         <div className="flex justify-center mt-12">

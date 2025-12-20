@@ -66,6 +66,7 @@ export default function LocalPartners() {
               className="w-full max-w-lg p-4 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-700 dark:text-white focus:ring-2 focus:ring-ahc-green focus:border-ahc-green transition-colors"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
+              aria-label="Search local partners"
             />
           </div>
 

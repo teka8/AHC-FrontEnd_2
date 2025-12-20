@@ -268,13 +268,14 @@ const Programs: React.FC = () => {
           <main className="lg:col-span-3">
             <div className="flex justify-between items-center mb-6">
               <div className="relative flex-grow">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
                 <input
                   type="text"
                   placeholder="Search programs..."
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-ahc-green focus:border-ahc-green bg-white dark:bg-gray-700"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  aria-label="Search programs"
                 />
               </div>
             </div>
@@ -317,8 +318,9 @@ const Programs: React.FC = () => {
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
                   className="p-2 rounded-md disabled:opacity-50"
+                  aria-label="Previous page"
                 >
-                  <ChevronLeft />
+                  <ChevronLeft aria-hidden="true" />
                 </button>
                 <span className="text-sm">
                   Page {currentPage} of {totalPages}
@@ -329,8 +331,9 @@ const Programs: React.FC = () => {
                   }
                   disabled={currentPage === totalPages}
                   className="p-2 rounded-md disabled:opacity-50"
+                  aria-label="Next page"
                 >
-                  <ChevronRight />
+                  <ChevronRight aria-hidden="true" />
                 </button>
               </div>
             )}
@@ -343,7 +346,7 @@ const Programs: React.FC = () => {
         className="lg:hidden fixed bottom-6 left-6 z-40 bg-ahc-green hover:bg-ahc-green-dark text-white px-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-2 font-semibold"
         onClick={() => setIsSidebarOpen(true)}
       >
-        <SlidersHorizontal className="h-5 w-5" />
+        <SlidersHorizontal className="h-5 w-5" aria-hidden="true" />
         <span className="text-sm">Filters</span>
         {hasActiveFilters && (
           <span className="bg-red-500 text-white text-xs font-bold rounded-full min-w-[22px] h-5.5 px-1.5 flex items-center justify-center">
@@ -370,8 +373,9 @@ const Programs: React.FC = () => {
             <button
               className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               onClick={() => setIsSidebarOpen(false)}
+              aria-label="Close filters"
             >
-              <X className="h-6 w-6 text-white" />
+              <X className="h-6 w-6 text-white" aria-hidden="true" />
             </button>
           </div>
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">

@@ -64,6 +64,7 @@ export default function ScholarshipHome() {
                   className="w-full px-4 py-2 border rounded-lg"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search scholarships"
                 />
               </div>
             </div>

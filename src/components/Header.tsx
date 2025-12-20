@@ -164,17 +164,22 @@ export default function Header() {
               onMouseEnter={() => setShowAboutDropdown(true)}
               onMouseLeave={() => setShowAboutDropdown(false)}
             >
-              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+              <button
+                className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                aria-haspopup="menu"
+                aria-expanded={showAboutDropdown}
+                aria-controls="header-about-menu"
+              >
                 <span className="inline-block">About</span>
                 <span
                   className={`inline-block transition-transform duration-200 ${showAboutDropdown ? "rotate-180" : ""
                     }`}
                 >
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </button>
               {showAboutDropdown && (
-                <div className="absolute top-full left-0 pt-3">
+                <div className="absolute top-full left-0 pt-3" id="header-about-menu">
                   <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
                     {AboutLinks.map((link) => (
                       <NavLink
@@ -200,17 +205,22 @@ export default function Header() {
               onMouseEnter={() => setShowLatestDropdown(true)}
               onMouseLeave={() => setShowLatestDropdown(false)}
             >
-              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+              <button
+                className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                aria-haspopup="menu"
+                aria-expanded={showLatestDropdown}
+                aria-controls="header-latest-menu"
+              >
                 <span className="inline-block">Latest</span>
                 <span
                   className={`inline-block transition-transform duration-200 ${showLatestDropdown ? "rotate-180" : ""
                     }`}
                 >
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </button>
               {showLatestDropdown && (
-                <div className="absolute top-full left-0 pt-3">
+                <div className="absolute top-full left-0 pt-3" id="header-latest-menu">
                   <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
                     {latestLinks.map((link) => (
                       <NavLink
@@ -236,17 +246,22 @@ export default function Header() {
               onMouseEnter={() => setShowPillarsDropdown(true)}
               onMouseLeave={() => setShowPillarsDropdown(false)}
             >
-              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+              <button
+                className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                aria-haspopup="menu"
+                aria-expanded={showPillarsDropdown}
+                aria-controls="header-pillars-menu"
+              >
                 <span className="inline-block">Health Pillars</span>
                 <span
                   className={`inline-block transition-transform duration-200 ${showPillarsDropdown ? "rotate-180" : ""
                     }`}
                 >
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </button>
               {showPillarsDropdown && (
-                <div className="absolute top-full left-0 pt-3">
+                <div className="absolute top-full left-0 pt-3" id="header-pillars-menu">
                   <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
                     {healthPillarsLinks.map((link) => (
                       <NavLink
@@ -271,17 +286,22 @@ export default function Header() {
               onMouseEnter={() => setShowPartnerDropdown(true)}
               onMouseLeave={() => setShowPartnerDropdown(false)}
             >
-              <button className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1">
+              <button
+                className="text-sm font-medium transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white flex items-center gap-1"
+                aria-haspopup="menu"
+                aria-expanded={showPartnerDropdown}
+                aria-controls="header-partners-menu"
+              >
                 <span className="inline-block">Partners</span>
                 <span
                   className={`inline-block transition-transform duration-200 ${showPartnerDropdown ? "rotate-180" : ""
                     }`}
                 >
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
                 </span>
               </button>
               {showPartnerDropdown && (
-                <div className="absolute top-full left-0 pt-3">
+                <div className="absolute top-full left-0 pt-3" id="header-partners-menu">
                   <div className="w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 animate-fade">
                     {partnerLinks.map((link) => (
                       <NavLink
@@ -395,15 +415,19 @@ export default function Header() {
                   setShowMobileAboutDropdown(!showMobileAboutDropdown)
                 }
                 className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                aria-haspopup="menu"
+                aria-expanded={showMobileAboutDropdown}
+                aria-controls="header-mobile-about-menu"
               >
                 <span>About</span>
                 <ChevronDown
                   className={`h-5 w-5 transition-transform duration-200 ${showMobileAboutDropdown ? "rotate-180" : ""
                     }`}
+                  aria-hidden="true"
                 />
               </button>
               {showMobileAboutDropdown && (
-                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in" id="header-mobile-about-menu">
                   {AboutLinks.map((link) => (
                     <NavLink
                       key={link.path}
@@ -433,15 +457,19 @@ export default function Header() {
                   setShowMobileLatestDropdown(!showMobileLatestDropdown)
                 }
                 className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                aria-haspopup="menu"
+                aria-expanded={showMobileLatestDropdown}
+                aria-controls="header-mobile-latest-menu"
               >
                 <span>Latest</span>
                 <ChevronDown
                   className={`h-5 w-5 transition-transform duration-200 ${showMobileLatestDropdown ? "rotate-180" : ""
                     }`}
+                  aria-hidden="true"
                 />
               </button>
               {showMobileLatestDropdown && (
-                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in" id="header-mobile-latest-menu">
                   {latestLinks.map((link) => (
                     <NavLink
                       key={link.path}
@@ -467,15 +495,19 @@ export default function Header() {
                   setShowMobilePillarsDropdown(!showMobilePillarsDropdown)
                 }
                 className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                aria-haspopup="menu"
+                aria-expanded={showMobilePillarsDropdown}
+                aria-controls="header-mobile-pillars-menu"
               >
                 <span>Health Pillars</span>
                 <ChevronDown
                   className={`h-5 w-5 transition-transform duration-200 ${showMobilePillarsDropdown ? "rotate-180" : ""
                     }`}
+                  aria-hidden="true"
                 />
               </button>
               {showMobilePillarsDropdown && (
-                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in" id="header-mobile-pillars-menu">
                   {healthPillarsLinks.map((link) => (
                     <NavLink
                       key={link.path}
@@ -500,15 +532,19 @@ export default function Header() {
                   setShowMobilePartnersDropdown(!showMobilePartnersDropdown)
                 }
                 className="text-lg font-medium w-full flex items-center justify-between py-2 transition-colors duration-200 text-slate-700 hover:text-ahc-green-dark dark:text-slate-300 dark:hover:text-white"
+                aria-haspopup="menu"
+                aria-expanded={showMobilePartnersDropdown}
+                aria-controls="header-mobile-partners-menu"
               >
                 <span>Partners</span>
                 <ChevronDown
                   className={`h-5 w-5 transition-transform duration-200 ${showMobilePartnersDropdown ? "rotate-180" : ""
                     }`}
+                  aria-hidden="true"
                 />
               </button>
               {showMobilePartnersDropdown && (
-                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in">
+                <div className="mt-2 flex flex-col items-start gap-2 pl-4 border-l-2 border-slate-100 dark:border-slate-800 ml-2 w-full animate-fade-in" id="header-mobile-partners-menu">
                   {partnerLinks.map((link) => (
                     <NavLink
                       key={link.path}

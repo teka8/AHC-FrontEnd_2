@@ -9,6 +9,7 @@ export default function ChatbotWidget() {
   >([{ role: "bot", text: "Hello! How can we help you today? You can ask a question or browse our FAQs." }]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const inputId = "chatbot-message-input";
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -89,6 +90,7 @@ export default function ChatbotWidget() {
                 stroke="currentColor"
                 strokeWidth={2.5}
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -99,6 +101,7 @@ export default function ChatbotWidget() {
                   className="w-10 h-10 text-white drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.38 0-2.68-.28-3.87-.78l-.28-.12-2.85.48.48-2.85-.12-.28C4.78 14.68 4.5 13.38 4.5 12c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5-3.36 7.5-7.5 7.5z" />
                   <circle cx="8.5" cy="12" r="1.25" fill="white" />
@@ -148,9 +151,14 @@ export default function ChatbotWidget() {
         }
       `}</style>
       {open && (
-        <div className="fixed bottom-24 right-4 z-50 w-80 sm:w-96 h-[70vh] max-h-[600px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+        <div
+          className="fixed bottom-24 right-4 z-50 w-80 sm:w-96 h-[70vh] max-h-[600px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300"
+          role="dialog"
+          aria-modal="false"
+          aria-label="Chatbot"
+        >
           <div className="px-4 py-3 bg-gradient-to-r from-ahc-green to-emerald-400 font-semibold text-black flex items-center gap-2 flex-shrink-0">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
             AHC Assistant
@@ -204,18 +212,20 @@ export default function ChatbotWidget() {
 
           <div className="p-4 flex gap-2 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex-shrink-0">
             <input
+              id={inputId}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Type a message..."
               className="flex-1 border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ahc-green focus:border-transparent bg-white dark:bg-slate-900 dark:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isLoading}
+              aria-label="Chat message"
             />
             <button
               onClick={handleSend}
               className="bg-gradient-to-br from-ahc-green to-emerald-400 text-black px-4 py-2.5 rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center gap-2"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
               </svg>
               Send

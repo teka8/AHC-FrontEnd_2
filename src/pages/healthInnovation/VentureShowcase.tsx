@@ -94,7 +94,7 @@ export default function VentureShowcase() {
             <div className="max-w-4xl mx-auto text-center">
               {/* Icon Badge */}
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
-                <Rocket className="w-10 h-10 text-white" />
+                <Rocket className="w-10 h-10 text-white" aria-hidden="true" />
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
@@ -114,7 +114,7 @@ export default function VentureShowcase() {
             <div className="mb-6 max-w-2xl mx-auto">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400" />
+                  <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
                 </div>
                 <input
                   type="text"
@@ -122,6 +122,7 @@ export default function VentureShowcase() {
                   value={searchQuery}
                   onChange={(e) => handleSearchChange(e.target.value)}
                   className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all"
+                  aria-label="Search ventures"
                 />
               </div>
             </div>
@@ -211,19 +212,19 @@ export default function VentureShowcase() {
                   <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
                     {venture.country && (
                       <div className="flex items-center gap-1.5">
-                        <MapPin className="w-4 h-4 text-teal-500" />
+                        <MapPin className="w-4 h-4 text-teal-500" aria-hidden="true" />
                         <span>{venture.country}</span>
                       </div>
                     )}
                     {venture.team_size && (
                       <div className="flex items-center gap-1.5">
-                        <Users className="w-4 h-4 text-teal-500" />
+                        <Users className="w-4 h-4 text-teal-500" aria-hidden="true" />
                         <span>{venture.team_size} team</span>
                       </div>
                     )}
                     {venture.patients_impacted && (
                       <div className="flex items-center gap-1.5">
-                        <TrendingUp className="w-4 h-4 text-teal-500" />
+                        <TrendingUp className="w-4 h-4 text-teal-500" aria-hidden="true" />
                         <span>
                           {venture.patients_impacted.toLocaleString()} patients
                         </span>
@@ -240,7 +241,7 @@ export default function VentureShowcase() {
                       onClick={(e) => handleVote(venture.id, e)}
                       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-teal-50 dark:hover:bg-teal-900/30 text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-all"
                     >
-                      <ThumbsUp className="w-4 h-4" />
+                      <ThumbsUp className="w-4 h-4" aria-hidden="true" />
                       <span className="font-medium">{venture.votes_count || 0}</span>
                     </button>
                   </div>
@@ -272,7 +273,7 @@ export default function VentureShowcase() {
                           : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-700"
                       }`}
                     >
-                      <ChevronLeft className="w-4 h-4" />
+                      <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                       <span className="hidden sm:inline">Previous</span>
                     </button>
 
@@ -326,7 +327,7 @@ export default function VentureShowcase() {
                       }`}
                     >
                       <span className="hidden sm:inline">Next</span>
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-4 h-4" aria-hidden="true" />
                     </button>
                   </div>
                 </div>
@@ -338,7 +339,7 @@ export default function VentureShowcase() {
           {!isLoading && ventures.length === 0 && (
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-12 text-center shadow-lg">
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 mb-6">
-                <Rocket className="w-10 h-10 text-gray-400" />
+                <Rocket className="w-10 h-10 text-gray-400" aria-hidden="true" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                 No ventures found

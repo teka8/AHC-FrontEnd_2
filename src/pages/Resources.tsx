@@ -421,14 +421,15 @@ export default function Resources() {
       {isMobile && (
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
-            <Filter className="h-5 w-5" />
+            <Filter className="h-5 w-5" aria-hidden="true" />
             Filters
           </h3>
           <button
             onClick={() => setShowFiltersMobile(false)}
             className="p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg text-gray-700 dark:text-gray-300"
+            aria-label="Close filters"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
       )}
@@ -436,7 +437,7 @@ export default function Resources() {
       {!isMobile && (
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
-            <Filter className="h-5 w-5" />
+            <Filter className="h-5 w-5" aria-hidden="true" />
             Filters
           </h3>
           {hasActiveFilters && (
@@ -444,7 +445,7 @@ export default function Resources() {
               onClick={clearFilters}
               className="flex items-center gap-1 text-xs text-ahc-green hover:underline"
             >
-              <X className="h-3 w-3" />
+              <X className="h-3 w-3" aria-hidden="true" />
               Clear All
             </button>
           )}
@@ -720,7 +721,7 @@ export default function Resources() {
               onClick={() => setShowFiltersMobile(true)}
             >
               {" "}
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="h-5 w-5" aria-hidden="true" />
               <span className="text-sm">Filters</span>
               {hasActiveFilters && (
                 <span className="bg-red-500 text-white text-xs font-bold rounded-full min-w-[22px] h-5.5 px-1.5 flex items-center justify-center">
@@ -882,7 +883,7 @@ export default function Resources() {
                             onClick={() => handleDownload(resource)}
                             className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold bg-ahc-green hover:bg-ahc-green-dark text-white rounded-lg transition-colors"
                           >
-                            <Download className="h-4 w-4" />
+                            <Download className="h-4 w-4" aria-hidden="true" />
                             Download
                           </button>
                         )}

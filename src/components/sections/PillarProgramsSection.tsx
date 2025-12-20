@@ -77,7 +77,7 @@ const PillarProgramsSection: React.FC<PillarProgramsSectionProps> = ({ category,
           to={`/programs?category=${category}`}
           className="text-ahc-green hover:text-ahc-green-dark font-semibold inline-flex items-center"
         >
-          See All Programs <ArrowRight className="ml-2 h-5 w-5" />
+          See All Programs <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
         </Link>
       </div>
       <div className="relative px-2">
@@ -85,8 +85,9 @@ const PillarProgramsSection: React.FC<PillarProgramsSectionProps> = ({ category,
           <button
             onClick={() => scroll('left', scrollRef)}
             className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Scroll programs left"
           >
-            <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+            <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-200" aria-hidden="true" />
           </button>
         </div>
         <div
@@ -150,8 +151,9 @@ const PillarProgramsSection: React.FC<PillarProgramsSectionProps> = ({ category,
           <button
             onClick={() => scroll('right', scrollRef)}
             className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Scroll programs right"
           >
-            <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+            <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-200" aria-hidden="true" />
           </button>
         </div>
       </div>
