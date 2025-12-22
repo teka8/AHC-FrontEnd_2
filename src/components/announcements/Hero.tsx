@@ -56,7 +56,7 @@ export default function Hero({ search, setSearch }: HeroProps) {
           </nav>
           <h1 className="ahehc-banner__title">Announcements</h1>
           <p className="is-size-large">
-            Stay informed with official statements, significant milestones, and ongoing updates that highlight the progress of the Africa Health Collaborative community.
+            Stay up to date with official announcements, key milestones, and important updates from the Africa Health Collaborative community.
           </p>
 
           <div className="relative mt-8 max-w-2xl">

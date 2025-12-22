@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
           </nav>
           <h1 className="ahehc-banner__title">Events</h1>
           <p className="is-size-large">
-            Discover the latest developments and emerging initiatives of the Collaborative, and stay up to date with important announcements and upcoming events.
+            Stay informed about the Collaborative latest initiatives, developments, and upcoming events.
           </p>
           <div className="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
             <div className="wp-block-button">
