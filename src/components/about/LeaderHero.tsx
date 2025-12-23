@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
           </nav>
           <h1 className="ahehc-banner__title">Leadership</h1>
           <p className="is-size-large">
-            The AHC–AAU leadership team provides strategic direction and oversight to advance innovation and measurable impact within Ethiopia’s health sector. Grounded in collaboration, accountability, and excellence, the leadership guides program implementation, fosters partnerships, and enables youth-centered initiatives. Through evidence-informed decision-making and long-term vision, the team shapes strategies that contribute to strengthening primary healthcare systems and building a resilient, inclusive health ecosystem across the country.
+            The AHC–AAU leadership team provides strategic direction and oversight to advance innovation and measurable impact within Ethiopia’s health sector. Grounded in collaboration, accountability, and excellence, the leadership enables youth-centered initiatives. Through evidence-informed decision-making and long-term vision, the team shapes strategies that contribute to strengthening primary healthcare systems and building a resilient, inclusive health ecosystem across the country.
           </p>
         </div>
       </div>
