@@ -28,7 +28,7 @@ const LocalHero: React.FC = () => {
                 decoding="async"
                 width="1320"
                 height="880"
-                src="public/images/partners/photo_2025-12-17_16-00-39.jpg"
+                src="/images/partners/photo_2025-12-17_16-00-39.jpg"
                 className="attachment-large size-large"
                 alt=""
                 style={{ objectPosition: "82% 51%" }}
