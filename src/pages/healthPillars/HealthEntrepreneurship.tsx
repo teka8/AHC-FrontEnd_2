@@ -56,7 +56,7 @@ export default function HealthEntrepreneurship() {
   return (
     <>
       <Helmet>
-        <title>Health Entrepreneurship (HENT) - AHC</title>
+        <title>Health Entrepreneurship pillar(HENT) - AHC</title>
         <meta name="description" content="Empowering innovation and entrepreneurship in healthcare across Africa" />
       </Helmet>
 
@@ -85,7 +85,7 @@ export default function HealthEntrepreneurship() {
             />
           </div>
           
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="container mx-auto px-4 py-10 relative z-10">
             <div className="text-center max-w-5xl mx-auto">
               {/* Centered Top Logo */}
               <div className="flex justify-center mb-6">
@@ -100,7 +100,7 @@ export default function HealthEntrepreneurship() {
                 Empowering innovation and entrepreneurship in healthcare
               </p>
               <h1 className="text-3xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
-                Health Entrepreneurship (HENT)
+                Health Entrepreneurship pillar (HENT)
               </h1>
               <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
                 The HENT pillar focuses on building robust entrepreneurial ecosystems within Ethiopian universities to accelerate health innovation, strengthen primary health care, and create meaningful employment particularly for youth and women. By fostering health-focused start-ups, HENT aims to address critical gaps in accessibility, affordability, and quality of care across the country.
@@ -215,17 +215,7 @@ export default function HealthEntrepreneurship() {
                     health sector, meet community needs, generate revenue, and provide resilience and stability, thereby 
                     creating significant employment opportunities.
                   </p>
-                  <p>
-                    In addressing these challenges, HENT equips and empowers aspiring entrepreneurs with essential skills and 
-                    knowledge, mentorship opportunities, and direct financial support, such as seed funding, fostering a robust 
-                    culture of entrepreneurship for their success.
-                  </p>
-                  <p>
-                    Within an African-led framework where health entrepreneurship and health innovation are encouraged and 
-                    sufficiently supported, aspiring entrepreneurs are then able to bring their transformative, locally 
-                    generated ideas to fruition and create companies, products, services and health-related jobs that 
-                    strengthens health sectors.
-                  </p>
+                  
                   <p>As part of this initiative, AAU and its local implementing partner universities:</p>
                 <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
                   <li className='pb-2'>Establish on-campus entrepreneurial training hubs/centers that offer advanced, innovative training programs in health entrepreneurship to equip students and professionals with the skills needed to develop impactful health solutions.</li>

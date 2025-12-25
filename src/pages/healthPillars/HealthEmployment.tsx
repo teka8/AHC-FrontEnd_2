@@ -255,8 +255,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 <div className="flex-1">
                   <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">How HEMP and Partners work together</h3>
                   <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Under the Health Employment Pillar, Health Collaborative Partners co-create medical residencies, and academic and professional programs, leveraging a 'Train the Trainers' (ToT) approach to significantly expand the number of skilled primary healthcare professionals.
-                  </p>
+                    Through coordinated scholarship support, and academic exchange programs with partner institutions, 
+                    the partnership strengthens institutional capacity and equips health professionals with the competencies required for responsive and effective health systems.                  </p>
                 </div>
               </div>
             </div>

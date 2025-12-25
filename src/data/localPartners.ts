@@ -11,7 +11,7 @@ export const localPartners: Partner[] = [
     website: "https://wu.edu.et/",
     logo: "/images/partners/wollo/wollo-university.png",
     description: {
-      descriptionTitle: " Wollo University (WU) is one of Ethiopia’s applied science public universities, established in 2005.",
+      descriptionTitle: "Wollo University (WU) is one of Ethiopia’s applied science public universities, established in 2005.",
       description: `<p>Wollo University (WU) is one of Ethiopia’s applied science public universities, established in 2005 as part of the country’s second-generation universities. It is located in Dessie City in the Amhara National Regional State, South Wollo Zone, about 400 km north of Addis Ababa. The university operates across three campuses: the Dessie Main Campus, the Kombolcha Institute of Technology (KIoT), and the Tita Tertiary Care Campus (TCC). It also hosts three centers of excellence dedicated to health sciences, technology, and art and culture.</p>
       <p>WU began with the Faculty of Education and quickly expanded to include the Faculties of Business and Economics, Informatics, and Engineering. By the 2009/10 academic year, these units were reorganized into colleges, institutes, and schools. Currently, the university consists of academic units distributed across its three campuses.</p>
       <p>The Tertiary Care Campus functions as the College of Medicine and Health Sciences. It encompasses Medicine, Nursing and Midwifery, Medical Laboratory Sciences, Pharmacy, Public Health, and the School of Environmental Health.</p>
@@ -53,7 +53,7 @@ Example: Collaborating with broad universities in research related to sustainabl
       website: "https://dbu.edu.et/",
       contactPerson: { name: "Contact Person", description: "University Representative", email: "info@dbu.edu.et" },
     },
-    galery: ["/images/partners/debrebrehan/db-galery1.jpg", "/images/partners/debrebrehan/db-galery2.jpg", "/images/partners/debrebrehan/db-galery3.webp"],
+    galery: ["/images/partners/debrebrehan/WhatsApp Image 2025-10-21 at 17.13.07_d6a9a24b.jpg", "/images/partners/debrebrehan/db-galery2.jpg", "/images/partners/debrebrehan/db-galery3.webp"],
     website: "https://dbu.edu.et/",
     logo: "/images/partners/debrebrehan/Debrebrehan.jpg",
     description: {
