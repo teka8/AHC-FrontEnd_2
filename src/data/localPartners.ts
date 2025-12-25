@@ -30,28 +30,17 @@ export const localPartners: Partner[] = [
     logo: "/images/partners/wolkite/wolkite.jpg",
     description: {
       descriptionTitle: "Established in 2009, it delivers undergraduate and graduate programs, conducts impactful research, and provides a broad range of community services.",
-      description: `<h2 style="margin: 0;"> 1.	Introduction </h2> <p>
+      description: `<p>
 Wolkite University is a Federal Higher Education Institution established by proclamation No.650/2009 and Establishment Regulation of the Council of Ministers No219/2011 under the Federal Ministry of Education (MOE), and responsible to teach students in undergraduate and graduate programs, conduct impactful researches, and provides wide ranges of community services.
 <b>Vision</b>: To be one of the top ten universities in East Africa by 2030. 
 <b>Mission</b>: Includes producing graduates who are knowledgeable, attitudinally mature, and practically innovative; supplying relevant and demanded technology and knowledge to address national and community development problems; and providing training and consulting services to the community and government.
 <b>Core Values</b>: Excellence; inclusiveness; truth/integrity; being a learning organization; accountability; academic freedom.
 </p>
-   
-<h2 style="margin: 0;"> 2.	Centers of Excellence and Collaboration Areas </h2> 
-<p>
-For Wolkite University, creating partnerships and fostering research collaborations in specialized fields such as health, engineering, agriculture business and economics and Indigenous knowledge through international relations can significantly elevate the institution’s academic and research profile.  
-</p>  
-<h2 style="margin: 0;"> 3.	Bilateral and Multilateral Research Partnership </h2> 
-<p> 
-Description: Wolkite University can engage in bilateral or multilateral partnerships with local or foreign universities, research institutions, and development organizations to jointly conduct research in the key sectors of health, engineering, agriculture, business and economics and indigenous knowledge. 
+<p>For Wolkite University, creating partnerships and fostering research collaborations in specialized fields such as health, engineering, agriculture business and economics and Indigenous knowledge through international relations can significantly elevate the institution’s academic and research profile.
+<b>Description</b>: Wolkite University can engage in bilateral or multilateral partnerships with local or foreign universities, research institutions, and development organizations to jointly conduct research in the key sectors of health, engineering, agriculture, business and economics and indigenous knowledge. 
 Example: Collaborating with broad universities in research related to sustainable technologies, healthcare delivery systems or agribusiness innovations.
-Outcomes: Joint research publications, funding from international agencies, development of new technologies or practices, and enhanced research visibility. 
+<b>Outcomes</b>: Joint research publications, funding from international agencies, development of new technologies or practices, and enhanced research visibility. 
 </p>
-<h2 style="margin: 0;"> 4.	Overview of Partnership  </h2> 
-<p>
-Wolkite University is a public higher learning institution validly existing under the laws of Ethiopia. The University has the corporate power and authority to enter into and perform its obligations under this partnership contract, to act as an independent contractor to perform the Services. The institution will contribute to the AHEHC’s strategic objectives across the areas of health employment, health entrepreneurship,
- health ecosystem, and network development and learning. 
- </p>
 `
 
 
