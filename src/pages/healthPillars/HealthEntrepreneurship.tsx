@@ -125,21 +125,21 @@ export default function HealthEntrepreneurship() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
           <div className="aspect-square overflow-hidden">
             <img 
-              src="/images/pillars/health-entrepreneurship-galary_1.jpg" 
+              src={`"https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.dev/health-entrepreneurship-galary_1.jpg"`} 
               alt="Health system building in Africa" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="/images/pillars/health-entrepreneurship-galary_2.jpg" 
+              src="https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.dev/health-entrepreneurship-galary_2.jpg" 
               alt="Healthcare professionals collaborating" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="/images/pillars/health-entrepreneurship-galary_3.jpg" 
+              src="https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.dev/health-entrepreneurship-galary_3.jpg" 
               alt="Community health workers" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
