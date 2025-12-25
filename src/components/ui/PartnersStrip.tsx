@@ -90,8 +90,7 @@ export default function PartnersStrip() {
             In Partnership With
           </h2>
           <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            We are proud to collaborate with a diverse network of organizations
-            to advance health education and research across Africa.
+            We collaborate with a diverse network of partners to advance health system across Ethiopia and Africa.
           </p>
         </div>
         <div className="relative">

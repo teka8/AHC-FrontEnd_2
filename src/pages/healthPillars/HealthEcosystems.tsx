@@ -112,21 +112,21 @@ const HealthEcosystems: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
           <div className="aspect-square overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=800&fit=crop" 
+              src="/images/pillars/health-ecosystem-galery_1.jpg" 
               alt="Health system building in Africa" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="/images/pillars/health-ecosystem-goal.jpg" 
+              src="/images/pillars/health-ecosystem-galery_2.jpg" 
               alt="Healthcare professionals collaborating" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1599045118108-bf9954418b76?w=800&h=800&fit=crop" 
+              src="/images/pillars/health-ecosystem-galery_3.jpg" 
               alt="Community health workers" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
@@ -207,7 +207,7 @@ const HealthEcosystems: React.FC = () => {
             <div className="lg:col-span-1">
               <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
                 <img 
-                  src="/images/pillars/health-ecosystem-goal.jpg" 
+                  src="/images/pillars/health-ecosystem-galery_1.jpg" 
                   alt="Health Ecosystem Building" 
                   className="w-full h-full object-cover"
                   style={{ aspectRatio: '3/4' }}

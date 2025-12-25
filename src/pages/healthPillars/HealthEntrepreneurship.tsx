@@ -124,6 +124,33 @@ export default function HealthEntrepreneurship() {
           </div>
         </section>
 
+        {/* Image Gallery */}
+        <section className="bg-white dark:bg-gray-900 max-w-screen overflow-x-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
+          <div className="aspect-square overflow-hidden">
+            <img 
+              src="/images/pillars/health-entrepreneurship-galary_1.jpg" 
+              alt="Health system building in Africa" 
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <div className="aspect-square overflow-hidden">
+            <img 
+              src="/images/pillars/health-entrepreneurship-galary_2.jpg" 
+              alt="Healthcare professionals collaborating" 
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <div className="aspect-square overflow-hidden">
+            <img 
+              src="/images/pillars/health-entrepreneurship-galary_3.jpg" 
+              alt="Community health workers" 
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+        </div>
+      </section>
+
         {/* Impact of Entrepreneurship Section */}
         <section id="impact" className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
           {/* Decorative Background Elements */}

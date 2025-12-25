@@ -50,26 +50,18 @@ const Hero: React.FC = () => {
               </li>
             </ol>
           </nav>
-          <h1 className="ahehc-banner__title">News and Events</h1>
+          <h1 className="ahehc-banner__title">News</h1>
           <p className="is-size-large">
             Discover the latest developments and upcoming events of the
             Collaborative.
           </p>
           <div className="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
-            <div className="wp-block-button">
+            <div className="wp-block-button mt-20">
               <Link
-                to="/submit-a-news-item"
+                to="/contact"
                 className="wp-block-button__link wp-element-button"
               >
-                Submit a News Item
-              </Link>
-            </div>
-            <div className="wp-block-button">
-              <Link
-                to="/submit-an-event"
-                className="wp-block-button__link wp-element-button"
-              >
-                Submit an Event
+                Contribute an Event
               </Link>
             </div>
           </div>

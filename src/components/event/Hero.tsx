@@ -56,18 +56,10 @@ const Hero: React.FC = () => {
           <div className="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
             <div className="wp-block-button">
               <Link
-                to="/submit-a-news-item"
-                className="wp-block-button__link wp-element-button"
+                to="/contact"
+                className="wp-block-button__link wp-element-button mt-20"
               >
-                Submit a News Item
-              </Link>
-            </div>
-            <div className="wp-block-button">
-              <Link
-                to="/submit-an-event"
-                className="wp-block-button__link wp-element-button"
-              >
-                Submit an Event
+                Contribute an Event
               </Link>
             </div>
           </div>
