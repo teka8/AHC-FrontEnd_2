@@ -87,7 +87,7 @@ const HealthEcosystems: React.FC = () => {
               />
             </div>
             <p className="text-ahc-green dark:text-ahc-green-light text-md font-semibold mb-4 uppercase tracking-wide">
-              Enabling the growth and transformation of Africa’s health sector
+              Enabling national and continental growth and transformation of Africa’s health sector
             </p>
             <h1 className="text-3xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
               Health Ecosystems (HECO)

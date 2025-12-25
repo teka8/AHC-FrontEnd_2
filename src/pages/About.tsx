@@ -64,59 +64,63 @@ export default function About() {
       <div>
         <CollaborationSection />
 
-        <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
-          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
-                Transforming Primary Healthcare in Africa
-              </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
-                The Africa Health Collaborative (AHC) is a transformative
-                initiative launched in partnership with Mastercard Foundation to
-                reimagine and strengthen Primary Health Care systems across. The
-                Collaborative works to build equitable, contextually relevant,
-                and sustainable health systems inspired by a unified commitment
-                to develop a new generation of diverse youth capable of
-                advancing health and well-being throughout Africa.
-              </p>
-              <p className="text-slate-600 dark:text-slate-300 mb-6">
-                The Africa Health Collaborative – Addis Ababa University
-                (AHC–AAU) serves as Ethiopia’s hub within collaboration of nine
-                universities. It engages a constellation of local implementing
-                partners Wollo University, Debre Berhan University, and Wolkite
-                University. Together, these institutions are working to equip
-                youth, particularly women, with the skills, resources, and
-                innovative mindset needed to transform Ethiopia’s health sector
-                from the ground up.
-              </p>
-              {/* <p className="text-slate-600 dark:text-slate-300 mb-6">
-                The Africa Health Collaborative features a networked approach
-                that allows the partners to reach across borders and sectoral
-                divisions to collectively address health sector challenges in
-                the African context. We leverage the power of institutions as
-                sites of knowledge exchange, community collaboration, and
-                nexuses for cross-sector partnerships.
-              </p> */}
+        <section className="py-12 md:py-16 animate-page bg-slate-50 dark:bg-slate-800">
+          <div className="container">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
+                Advancing Primary Health Care in Ethiopia & Africa
+            </h2>
+            <div className="grid gap-12 md:grid-cols-2 items-center">
+
+              <div>
+                  <div className="prose max-w-none dark:prose-invert">
+
+                    <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+                      Africa Health Collaborative (AHC) is one of the flagship programs to transform primary healthcare service in Africa, in partnership with the Mastercard Foundation. The Collaborative is designed  within the plan of “preparing diverse young people, 
+                      for the meaningful work of transforming health and well-being in Africa 
+                      through contextually appropriate, equitable and sustainable primary healthcare”. 
+                    </p>
+                    <p className="text-slate-600 dark:text-slate-300 mb-6">
+                      The AHC is a multi-stakeholder partnership dedicated to transforming primary health care (PHC) systems across Africa. It brings together eight African higher education institutions 
+                      (AAU-Ethiopia; African Institute for Mathematical Sciences (AIMS)-Rwanda; African Leadership University (ALU)-Rwanda; Amref International University (AMIU)- Kenya; Ashesi University-Ghana; Kwame Nkrumah University of Science and Technology (KNUST)-Ghana; MOi University- Kenya; University of Cape Town (UCT)-South Africa); and the University of Toronto (U of T)-Canada, in partnership with the Mastercard Foundation. Through a networked, cross-border approach,
+                      AHC enables collaboration across institutions and sectors
+                        to collectively address the continent’s most pressing health-sector challenges.
+                    </p>
+
+                    <p className="text-slate-600 dark:text-slate-300 mb-6">
+                      As part of the Collaborative, Africa Health Collaborative -Addis Ababa University (AHC-AAU) was formally launched on February 25, 
+                      2025 to advance health-sector transformation in Ethiopia. The Collaborative operates with three strategic pillars: 
+                      Health Employment (HEMP), Health Entrepreneurship (HENT), and Health Ecosystem (HECO).
+                    </p>
+                  </div>
+              </div>
+
+              <div>
+                <img
+                  src="/images/about/_DSC1096.jpg"
+                  alt="Our collaborative network across Africa"
+                  className="rounded-lg shadow-2xl object-contain w-full h-full"
+                />
+              </div>
             </div>
-            <div className="relative h-80 md:h-96">
-              <img
-                src="/images/about/_DSC1096.jpg"
-                alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-fill w-full h-full"
-              />
+            <div className="prose max-w-none dark:prose-invert mt-6">
+                <p className="text-slate-600 dark:text-slate-300 mb-6">
+                The three pillars work to drive meaningful change in primary healthcare by creating pathways that are relevant, equitable, and sustainable for Ethiopian and African youth. 
+                The Collaborative strategic objectives have been cascaded down through engagement of local implementing partners such as Wollo, Wolkite, and Debre Berhan Universities. 
+                In addition, Woldia University will participate in some of the Collaborative activities, for example, through the AHC-AAU faculty Scholarship Scheme, and regional faculty exchange programs.
+                </p>
             </div>
+            
           </div>
         </section>
 
         {/* What We Do Section */}
         <section className="py-12 md:py-16 bg-white dark:bg-slate-900">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative h-80 md:h-96">
+            <div>
               <img
                 src="/images/partners/photo_2025-11-15_11-19-13.jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-fill w-full h-full"
+                className="rounded-lg shadow-2xl object-contain w-full h-full"
               />
             </div>
             <div>
@@ -168,11 +172,11 @@ export default function About() {
                 and growth in Africa’s health sector.
               </p>
             </div>
-            <div className="relative h-80 md:h-96">
+            <div>
               <img
                 src="/images/about/DSC01888 (1).jpg"
                 alt="Our collaborative network across Africa"
-                className="rounded-lg shadow-2xl object-fill w-full h-full"
+                className="rounded-lg shadow-2xl object-contain w-full h-full"
               />
             </div>
           </div>
@@ -305,52 +309,53 @@ export default function About() {
           </div>
         </section> */}
 
-        {/* Our Commitment Section */}
-        <section className="py-12 md:py-16 bg-gradient-to-br from-ahc-green/10 via-slate-50 to-ahc-blue/10 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
-                Our Commitment to Ethiopia's Health Future
-              </h2>
-              <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
-                AHC–AAU is laying the foundation for transformative change in Ethiopia's healthcare landscape. We are building partnerships, designing innovative programs, and mobilizing resources to empower young Ethiopians to become leaders in health innovation and primary healthcare strengthening.
-              </p>
-              <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                Our vision is clear to create sustainable pathways for youth-led health innovation, strengthen primary healthcare systems, and contribute to a healthier, more equitable Ethiopia. Every program we design, every partnership we forge, and every young person we support brings us closer to realizing this vision.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-5xl mx-auto">
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                <div className="flex items-center justify-center w-14 h-14 bg-ahc-green/10 dark:bg-ahc-green/20 rounded-full mx-auto mb-4">
-                  <Target className="w-8 h-8 text-ahc-green dark:text-ahc-green-light" />
-                </div>
-                <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-3 text-center">
-                  Building Foundations
+        {/* Our Impact at a Glance Section */}
+        <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
+              Our Impact at a Glance
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                <Globe className="w-12 h-12 text-ahc-green dark:text-ahc-green-light mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
+                  Our Reach 12+ Universities
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-center">
-                  Establishing robust programs and partnerships that will drive long-term impact in Ethiopia's health sector.
+                <p className="text-slate-600 dark:text-slate-300">
+                  A growing network of institutions across Ethiopia and Africa.
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                <div className="flex items-center justify-center w-14 h-14 bg-ahc-blue/10 dark:bg-ahc-blue/20 rounded-full mx-auto mb-4">
-                  <Users className="w-8 h-8 text-ahc-blue dark:text-ahc-blue-light" />
-                </div>
-                <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-3 text-center">
-                  Empowering Youth
+              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                <BookOpenCheck className="w-12 h-12 text-ahc-blue dark:text-ahc-blue-light mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
+                  80 Scholars
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-center">
-                  Creating opportunities for young Ethiopians, especially women, to lead innovation in healthcare delivery.
+                <p className="text-slate-600 dark:text-slate-300">
+                  A comprehensive and integrated scholarship delivery model.
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                <div className="flex items-center justify-center w-14 h-14 bg-ahc-green/10 dark:bg-ahc-green/20 rounded-full mx-auto mb-4">
-                  <Globe className="w-8 h-8 text-ahc-green dark:text-ahc-green-light" />
-                </div>
-                <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-3 text-center">
-                  Collaborative Network
+              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                <Users className="w-12 h-12 text-ahc-green dark:text-ahc-green-light mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
+                  Health Entrepreneur Community
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-center">
-                  Connecting with universities, government, and organizations to amplify our collective impact.
+                <p className="text-sm font-semibold text-ahc-green dark:text-ahc-green-light mb-2">
+                  National/Regional
+                </p>
+                <p className="text-slate-600 dark:text-slate-300">
+                  A vibrant community of health professionals, financial sector and educators.
+                </p>
+              </div>
+              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                <Target className="w-12 h-12 text-ahc-blue dark:text-ahc-blue-light mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
+                  Impact
+                </h3>
+                <p className="text-sm font-semibold text-ahc-blue dark:text-ahc-blue-light mb-2">
+                  National/Pan-African
+                </p>
+                <p className="text-slate-600 dark:text-slate-300">
+                  Driving positive change in health education across the continent.
                 </p>
               </div>
             </div>

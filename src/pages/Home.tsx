@@ -83,7 +83,7 @@ export default function Home() {
             centerTitle={true}
           />
           <div className="grid gap-12 md:grid-cols-2 items-center">
-            <div>
+            <div className="relative h-80 md:h-96">
               <img
                 src="/images/aheia.jpg"
                 alt="Advancing Health Education in Africa"
@@ -93,25 +93,31 @@ export default function Home() {
             <div>
               <div className="prose max-w-none dark:prose-invert">
                 <p>
-                  Africa Health Collaborative (AHC) is one of the flagship programs to transform primary healthcare service in Africa, in partnership with the Mastercard Foundation. The Collaborative is designed within the plan of “preparing diverse young people, for the meaningful work of transforming health and well-being in Africa through contextually appropriate, equitable and sustainable primary healthcare”.
+                  Africa Health Collaborative (AHC) is one of the flagship programs to transform primary healthcare service in Africa, 
+                  in partnership with the Mastercard Foundation. The Collaborative is designed within the plan of “preparing diverse young people, 
+                  for the meaningful work of transforming health and well-being in Africa through contextually appropriate, equitable and sustainable primary healthcare”.
                 </p>
                 <p>
-                  The AHC is a multi-stakeholder partnership dedicated to transforming primary health care (PHC) systems across Africa. It brings together eight African higher education institutions (AAU-Ethiopia; African Institute for Mathematical Sciences (AIMS)-Rwanda; African Leadership University (ALU)-Rwanda; Amref International University (AMIU)- Kenya; Ashesi University-Ghana; Kwame Nkrumah University of Science and Technology (KNUST)-Ghana; MOi University- Kenya; University of Cape Town (UCT)-South Africa); and the University of Toronto (U of T)-Canada, in partnership with the Mastercard Foundation. Through a networked, cross-border approach, AHC enables collaboration across institutions and sectors to collectively address the continent’s most pressing health-sector challenges.
+                  The AHC is a multi-stakeholder partnership dedicated to transforming primary health care (PHC) systems across Africa. 
+                  It brings together eight African higher education institutions (AAU-Ethiopia; African Institute for Mathematical Sciences (AIMS)-Rwanda; 
+                  African Leadership University (ALU)-Rwanda; Amref International University (AMIU)- Kenya; Ashesi University-Ghana; Kwame Nkrumah University of Science and Technology (KNUST)-Ghana; 
+                  MOi University- Kenya; University of Cape Town (UCT)-South Africa); and the University of Toronto (U of T)-Canada, in partnership with the Mastercard Foundation. 
+                  Through a networked, cross-border approach, AHC enables collaboration across institutions and sectors to collectively address the continent’s most pressing health-sector challenges.
                 </p>
 
               </div>
 
             </div>
           </div>
-          <div className="prose max-w-none dark:prose-invert mt-6">
+          {/* <div className="prose max-w-none dark:prose-invert mt-6">
             <p>
               As part of the Collaborative, Africa Health Collaborative -Addis Ababa University (AHC-AAU) was formally launched on February 25, 2025 to advance health-sector transformation in Ethiopia. The collaborative operates with three strategic pillars: Health Employment (HEMP), Health Entrepreneurship (HENT), and Health Ecosystem (HECO).
             </p>
             <p>
               The three pillars work to drive meaningful change in primary healthcare by creating pathways that are relevant, equitable, and sustainable for Ethiopian and African youth. The Collaborative strategic objectives have been cascaded down through engagement of local implementing partners such as Wollo, Wolkite, and Debre Berhan Universities. In addition, Woldia University will participate in some of the Collaborative activities, for example, through the AHC-AAU faculty Scholarship Scheme, and regional faculty exchange programs.
             </p>
-            </div>
-            <div className="mt-8">
+            </div> */}
+            <div className="mt-8 text-right">
               <a
                 href="/about"
                 className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
