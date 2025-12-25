@@ -47,18 +47,43 @@ export default function AhcLeaders() {
 
       <Hero />
 
-      <section className="bg-white dark:bg-slate-900 py-12 md:py-16">
+      <section className="bg-transparent dark:bg-transparent -mt-12 md:-mt-16 relative z-10">
         <div className="container mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-ahc-dark dark:text-white mb-2">
-            Meet our Leaders
-          </h1>
-          <div className="flex items-center mb-12">
-            <div className="w-24 h-1 bg-ahc-green rounded-full"></div>
-            <div className="w-12 h-1 bg-ahc-blue rounded-full ml-2"></div>
+
+          
+          {/* Leadership Description - Modern Centered Design */}
+          <div className="relative mb-16">
+            <div className="max-w-5xl mx-auto">
+
+              {/* Content Container */}
+              <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-slate-100 dark:border-slate-700">
+                {/* Opening Quote Mark */}
+                <div className="absolute -top-4 -left-4 text-6xl md:text-8xl text-ahc-green/20 dark:text-ahc-green/30 font-serif leading-none">
+                  "
+                </div>
+                
+                {/* Main Text */}
+                <p className="text-center text-lg md:text-xl leading-relaxed text-slate-700 dark:text-slate-200 relative z-10">
+                  <span className="font-semibold text-ahc-dark dark:text-white">The leadership team</span> brings together senior academics, health system practitioners, and policy leaders with extensive experience at national, regional, and international levels.  Their backgrounds span 
+                  <span className="text-ahc-blue dark:text-ahc-blue-light font-medium"> medical education, public health, health economics, policy formulation, institutional leadership, and large-scale program implementation</span>. 
+                  Collectively, they have led universities, advised governments, shaped health policies, and overseen complex, multi-partner initiatives. This depth of expertise enables the leadership to provide 
+                  <span className="text-ahc-green dark:text-ahc-green-light font-medium">strong strategic guidance, foster cross-sector collaboration</span>, and ensure that AHC–AAU's work remains evidence-informed, responsive to national priorities, and focused on strengthening primary healthcare and health systems in Ethiopia.
+                </p>
+                
+                {/* Closing Quote Mark */}
+                <div className="absolute -bottom-4 -right-4 text-6xl md:text-8xl text-ahc-blue/20 dark:text-ahc-blue/30 font-serif leading-none">
+                  "
+                </div>
+                
+                {/* Decorative Bottom Accent */}
+                <div className="flex justify-center mt-8 space-x-2">
+                  <div className="w-16 h-1 bg-gradient-to-r from-ahc-green to-ahc-blue rounded-full"></div>
+                  <div className="w-2 h-2 bg-ahc-green rounded-full self-center"></div>
+                  <div className="w-16 h-1 bg-gradient-to-r from-ahc-blue to-ahc-green rounded-full"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="max-w-3xl text-lg text-slate-600 dark:text-slate-300 mb-12">
-            The leadership team brings together senior academics, health system practitioners, and policy leaders with extensive  experience at national, regional, and international levels. Their backgrounds span medical education, public health, health economics, policy formulation, institutional leadership, and large-scale program implementation. Collectively, they have led universities, advised governments, shaped health policies, and overseen complex, multi-partner initiatives. This depth of expertise enables the leadership to provide strong strategic guidance, foster cross-sector collaboration, and ensure that AHC–AAU’s work remains evidence-informed, responsive to national priorities, and focused on strengthening primary healthcare and health systems in Ethiopia.
-          </p>
 
           {isLoading && (
             <div className="flex justify-center py-12">
