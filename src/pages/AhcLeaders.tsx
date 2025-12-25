@@ -56,7 +56,7 @@ export default function AhcLeaders() {
             <div className="w-24 h-1 bg-ahc-green rounded-full"></div>
             <div className="w-12 h-1 bg-ahc-blue rounded-full ml-2"></div>
           </div>
-          <p className="max-w-3xl text-lg text-slate-600 dark:text-slate-300 mb-12">
+          <p className="max-w-4xl text-lg text-slate-600 dark:text-slate-300 mb-12 leading-relaxed text-justify">
             The leadership team brings together senior academics, health system practitioners, and policy leaders with extensive  experience at national, regional, and international levels. Their backgrounds span medical education, public health, health economics, policy formulation, institutional leadership, and large-scale program implementation. Collectively, they have led universities, advised governments, shaped health policies, and overseen complex, multi-partner initiatives. This depth of expertise enables the leadership to provide strong strategic guidance, foster cross-sector collaboration, and ensure that AHC–AAU’s work remains evidence-informed, responsive to national priorities, and focused on strengthening primary healthcare and health systems in Ethiopia.
           </p>
 
