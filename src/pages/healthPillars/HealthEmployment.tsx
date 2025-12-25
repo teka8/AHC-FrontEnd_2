@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Target, ChevronDown, ChevronLeft, ChevronRight, Linkedin, Twitter } from 'lucide-react';
+import { Users, Target, ChevronDown, ChevronLeft, ChevronRight, Linkedin, Twitter } from 'lucide-react';
 import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
 import { useGetScholarshipsQuery } from '../../features/scholarship/scholarshipsApi';
 import ScholarshipCard from '../../components/cards/ScholarshipCard';
 import PillarNewsSection from '../../components/sections/PillarNewsSection';
-import PillarProgramsSection from '../../components/sections/PillarProgramsSection';
 
 const HealthEmployment: React.FC = () => {
   const { data: scholarships = [] } = useGetScholarshipsQuery();
@@ -474,15 +473,6 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             ))}
           </div>
 
-          {/* CTA Button */}
-          {/* <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
-              Share Your Story
-              <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div> */}
         </div>
       </div>
 
@@ -638,77 +628,6 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
         </div>
 
-        {/* <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            Main CTA Card
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
-              /* Gradient accent border 
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
-              
-               Small decorative AHC Symbol - Top Right 
-              <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
-                <img 
-                  src="/images/ahc-health-symbol.png" 
-                  alt="" 
-                  aria-hidden="true"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-
-              <div className="text-center relative z-10">
-                // Icon Badge 
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                </div>
-
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-                  Ready to Make a Difference in Healthcare?
-                </h2>
-                
-                <p className="text-base sm:text-lg lg:text-xl mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Join our mission to build a healthier future for Africa. Together, we can create lasting impact through education, employment, and empowerment in the healthcare sector.
-                </p>
-
-                /* CTA Buttons *
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <Link to="/contact" className="w-full sm:w-auto">
-                    <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center group">
-                      Get Involved Now
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </Link>
-                  
-                  <Link to="/programs" className="w-full sm:w-auto">
-                    <button className="w-full sm:w-auto bg-white dark:bg-gray-700 border-2 border-teal-500 text-teal-600 dark:text-teal-400 px-8 py-4 rounded-xl font-semibold hover:bg-teal-50 dark:hover:bg-gray-600 transition-all duration-300 inline-flex items-center justify-center group">
-                      Explore Programs
-                      <svg className="ml-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                  </Link>
-                </div>
-
-                /* Stats or Trust Indicators 
-                <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-                  <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">10,000+</div>
-                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Healthcare Workers Trained</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1">25+</div>
-                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Partner Institutions</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">15</div>
-                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">African Countries</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </section>
     </>
   );

@@ -3,12 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Target, Rocket, ChevronDown, Lightbulb, CheckCircle, TrendingUp, MapPin, ThumbsUp, Linkedin, Twitter } from 'lucide-react';
 import PillarNewsSection from '../../components/sections/PillarNewsSection';
-import PillarProgramsSection from '../../components/sections/PillarProgramsSection';
-import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
 import { useGetVenturesQuery } from '../../features/healthInnovation/venturesApi';
-import type { ProgramItem } from '../../features/healthPillars/programsApi';
 import type { Venture } from '../../features/healthInnovation/types';
-import Loader from '../../components/Loader';
 
 export default function HealthEntrepreneurship() {
   // const { data: programsData = [], isLoading: isLoadingPrograms } = useGetProgramsQuery({ category: 'health_entrepreneurship' });
@@ -449,11 +445,6 @@ export default function HealthEntrepreneurship() {
                     </div>
                   ))}
                 </div>
-                {/* <Link to="#">
-                  <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
-                    Apply Now <ArrowRight className="ml-2 -mr-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </Link> */}
               </div>
             </div>
           </div>

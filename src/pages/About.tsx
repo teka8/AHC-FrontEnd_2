@@ -232,83 +232,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* Our Team Section */}
-        {/* <section className="py-24 text-center">
-          <div className="container mx-auto px-4">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-4">
-              Meet Our Leadership
-            </h2>
-            <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 mb-16">
-              Our diverse team of experts brings together a wealth of experience
-              in health, technology, and social impact, united by a shared
-              passion for our mission. Get to know the individuals driving our
-              vision forward.
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
-              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <div className="relative w-48 h-48 mx-auto mb-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=1"
-                    alt="Dr. Aisha Adebayo"
-                    className="rounded-full object-cover w-full h-full shadow-lg"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-ahc-dark dark:text-white">
-                  Dr. Aisha Adebayo
-                </h3>
-                <p className="text-ahc-green dark:text-ahc-green-light">
-                  Executive Director
-                </p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <div className="relative w-48 h-48 mx-auto mb-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=2"
-                    alt="Kwame Nkrumah Jr."
-                    className="rounded-full object-cover w-full h-full shadow-lg"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-ahc-dark dark:text-white">
-                  Kwame Nkrumah Jr.
-                </h3>
-                <p className="text-ahc-green dark:text-ahc-green-light">
-                  Director of Innovation
-                </p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <div className="relative w-48 h-48 mx-auto mb-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=3"
-                    alt="Nia Wanjiru"
-                    className="rounded-full object-cover w-full h-full shadow-lg"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-ahc-dark dark:text-white">
-                  Nia Wanjiru
-                </h3>
-                <p className="text-ahc-green dark:text-ahc-green-light">
-                  Head of Partnerships
-                </p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <div className="relative w-48 h-48 mx-auto mb-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=4"
-                    alt="Femi Adeboye"
-                    className="rounded-full object-cover w-full h-full shadow-lg"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-ahc-dark dark:text-white">
-                  Femi Adeboye
-                </h3>
-                <p className="text-ahc-green dark:text-ahc-green-light">
-                  Technology Lead
-                </p>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         {/* Our Impact at a Glance Section */}
         <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
           <div className="container mx-auto px-4 text-center">
@@ -382,42 +305,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* <section className="py-16 md:py-24 bg-white dark:bg-ahc-dark">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
-              Governance
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <h3 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">
-                  Pillar Advisory Committee (PAC)
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Our governance structure is strengthened by an Executive
-                  Steering Committee, supported by dedicated Advisory Committees
-                  for each of our three core program pillars.
-                </p>
-                <a
-                  href="https://africahealthcollaborative.org/about-us/ahehc-pillar-advisory-committee-pac/"
-                  className="inline-flex items-center font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors mt-4"
-                >
-                  Learn more about PAC <ArrowRight className="w-5 h-5 ml-2" />
-                </a>
-              </div>
-              <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1">
-                <h3 className="font-bold font-display text-xl mb-3 text-slate-900 dark:text-white">
-                  Governance – Executive Steering Committee (ESC)
-                </h3>
-                <a
-                  href="https://africahealthcollaborative.org/about-us/executive-steering-committee-esc/"
-                  className="inline-flex items-center font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors mt-4"
-                >
-                  Learn more about ESC <ArrowRight className="w-5 h-5 ml-2" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section> */}
       </div>
     </>
   );
