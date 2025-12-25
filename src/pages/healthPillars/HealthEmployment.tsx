@@ -550,8 +550,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 <div className="relative mb-6">
                   <div className="relative inline-block">
                     <img 
-                      src="/images/pillars/tak-koguchi.jpg" 
-                      alt="Tak Koguchi" 
+                      src="/images/pillars/Anteneh-Belete.jpg" 
+                      alt="Prof. Anteneh Belete" 
                       className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
                     />
                     {/* Gradient Overlay */}
@@ -564,9 +564,9 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 {/* Contact Info */}
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                    Tak Koguchi
+                    Prof. Anteneh Belete
                   </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Senior Regional Lead</p>
+                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Health Employment Pillar Lead</p>
                   <p className="text-green-600 dark:text-green-400 font-medium mb-6">Health Employment Pillar</p>
 
                   {/* Social Links */}
