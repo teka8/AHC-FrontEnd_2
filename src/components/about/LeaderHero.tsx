@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
                 decoding="async"
                 width="1320"
                 height="880"
-                src="/images/hero/about.jpg"
+                src="/images/leaders/ahc leader.png"
                 className="attachment-large size-large"
                 alt=""
                 style={{ objectPosition: "82% 51%" }}

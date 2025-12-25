@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
           </nav>
           <h1 className="ahehc-banner__title">Our Partners</h1>
           <p className="is-size-large">
-            AHC - AAU brings together a strong and diverse partnership ecosystem that spans universities, teaching hospitals, research institutions, public sector bodies, private sector actors, and development organizations. Through this collaborative model, partners contribute complementary expertise - ranging from research and training to entrepreneurship, health systems strengthening, and policy translation, ensuring that solutions are evidence-based, contextually grounded, and sustainable. By uniting global and local institutions, AHC–AAU promotes co-creation, knowledge exchange, and sustainable health sector innovations that respond to national and continental priorities, with a strong focus on youth leadership and long-term impact.
+            AHC - AAU brings together a strong and diverse partnership ecosystem that spans universities, teaching hospitals, research institutions, public sector bodies, private sector actors, and development organizations.
           </p>
         </div>
       </div>

@@ -67,12 +67,10 @@ export default function About() {
         <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
-                Driven by Collaboration, Focused on Health Transformation
-              </h2>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
+              
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
                 Transforming Primary Healthcare in Africa
-              </h3>
+              </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
                 The Africa Health Collaborative (AHC) is a transformative
                 initiative launched in partnership with Mastercard Foundation to
@@ -103,7 +101,7 @@ export default function About() {
             </div>
             <div className="relative h-80 md:h-96">
               <img
-                src="/images/collaborative-network.jpg"
+                src="/images/about/_DSC1096.jpg"
                 alt="Our collaborative network across Africa"
                 className="rounded-lg shadow-2xl object-fill w-full h-full"
               />
@@ -132,7 +130,7 @@ export default function About() {
                 potential and transform healthcare landscapes.
               </p>
               <Link
-                to="/vision-goals-values"
+                to="/valuesandprinciples"
                 className="inline-flex items-center font-semibold text-ahc-green hover:text-ahc-green-dark dark:text-ahc-green-light dark:hover:text-white transition-colors"
               >
                 Vision, Goals, Values and Principles of Partnership{" "}
@@ -172,7 +170,7 @@ export default function About() {
             </div>
             <div className="relative h-80 md:h-96">
               <img
-                src="/images/partners/photo_2025-11-15_11-31-55.jpg"
+                src="/images/about/DSC01888 (1).jpg"
                 alt="Our collaborative network across Africa"
                 className="rounded-lg shadow-2xl object-fill w-full h-full"
               />
@@ -307,56 +305,52 @@ export default function About() {
           </div>
         </section> */}
 
-        {/* Impact Section */}
-        <section className="py-12 md:py-16 bg-slate-50 dark:bg-slate-800">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-12">
-              Our Impact at a Glance
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow transform hover:-translate-y-1 flex flex-col items-center justify-center">
-                <Heart className="w-12 h-12 text-ahc-green-dark dark:text-white mb-4" />
-                <p className="font-display text-5xl font-bold text-ahc-dark dark:text-white">
-                  1M+
-                </p>
-                <p className="mt-2 text-slate-600 dark:text-slate-300">
-                  Lives Impacted
-                </p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow transform hover:-translate-y-1 flex flex-col items-center justify-center">
-                <Briefcase className="w-12 h-12 text-ahc-green-dark dark:text-white mb-4" />
-                <p className="font-display text-5xl font-bold text-ahc-dark dark:text-white">
-                  50+
-                </p>
-                <p className="mt-2 text-slate-600 dark:text-slate-300">
-                  Ventures Supported
-                </p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow transform hover:-translate-y-1 flex flex-col items-center justify-center">
-                <Target className="w-12 h-12 text-ahc-green-dark dark:text-white mb-4" />
-                <p className="font-display text-5xl font-bold text-ahc-dark dark:text-white">
-                  15
-                </p>
-                <p className="mt-2 text-slate-600 dark:text-slate-300">
-                  Countries Reached
+        {/* Our Commitment Section */}
+        <section className="py-12 md:py-16 bg-gradient-to-br from-ahc-green/10 via-slate-50 to-ahc-blue/10 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-ahc-dark dark:text-white mb-6">
+                Our Commitment to Ethiopia's Health Future
+              </h2>
+              <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
+                AHC–AAU is laying the foundation for transformative change in Ethiopia's healthcare landscape. We are building partnerships, designing innovative programs, and mobilizing resources to empower young Ethiopians to become leaders in health innovation and primary healthcare strengthening.
+              </p>
+              <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                Our vision is clear to create sustainable pathways for youth-led health innovation, strengthen primary healthcare systems, and contribute to a healthier, more equitable Ethiopia. Every program we design, every partnership we forge, and every young person we support brings us closer to realizing this vision.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-5xl mx-auto">
+              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <div className="flex items-center justify-center w-14 h-14 bg-ahc-green/10 dark:bg-ahc-green/20 rounded-full mx-auto mb-4">
+                  <Target className="w-8 h-8 text-ahc-green dark:text-ahc-green-light" />
+                </div>
+                <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-3 text-center">
+                  Building Foundations
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300 text-center">
+                  Establishing robust programs and partnerships that will drive long-term impact in Ethiopia's health sector.
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow transform hover:-translate-y-1 flex flex-col items-center justify-center">
-                <Users className="w-12 h-12 text-ahc-green-dark dark:text-white mb-4" />
-                <p className="font-display text-5xl font-bold text-ahc-dark dark:text-white">
-                  100+
-                </p>
-                <p className="mt-2 text-slate-600 dark:text-slate-300">
-                  Partnerships Formed
+              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <div className="flex items-center justify-center w-14 h-14 bg-ahc-blue/10 dark:bg-ahc-blue/20 rounded-full mx-auto mb-4">
+                  <Users className="w-8 h-8 text-ahc-blue dark:text-ahc-blue-light" />
+                </div>
+                <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-3 text-center">
+                  Empowering Youth
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300 text-center">
+                  Creating opportunities for young Ethiopians, especially women, to lead innovation in healthcare delivery.
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow transform hover:-translate-y-1 flex flex-col items-center justify-center">
-                <Zap className="w-12 h-12 text-ahc-green-dark dark:text-white mb-4" />
-                <p className="font-display text-5xl font-bold text-ahc-dark dark:text-white">
-                  20+
-                </p>
-                <p className="mt-2 text-slate-600 dark:text-slate-300">
-                  Innovations Deployed
+              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <div className="flex items-center justify-center w-14 h-14 bg-ahc-green/10 dark:bg-ahc-green/20 rounded-full mx-auto mb-4">
+                  <Globe className="w-8 h-8 text-ahc-green dark:text-ahc-green-light" />
+                </div>
+                <h3 className="text-xl font-bold text-ahc-dark dark:text-white mb-3 text-center">
+                  Collaborative Network
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300 text-center">
+                  Connecting with universities, government, and organizations to amplify our collective impact.
                 </p>
               </div>
             </div>

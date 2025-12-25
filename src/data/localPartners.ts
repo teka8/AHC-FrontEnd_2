@@ -11,7 +11,7 @@ export const localPartners: Partner[] = [
     website: "https://wu.edu.et/",
     logo: "/images/partners/wollo/wollo-university.png",
     description: {
-      descriptionTitle: "",
+      descriptionTitle: " Wollo University (WU) is one of Ethiopia’s applied science public universities, established in 2005.",
       description: `<p>Wollo University (WU) is one of Ethiopia’s applied science public universities, established in 2005 as part of the country’s second-generation universities. It is located in Dessie City in the Amhara National Regional State, South Wollo Zone, about 400 km north of Addis Ababa. The university operates across three campuses: the Dessie Main Campus, the Kombolcha Institute of Technology (KIoT), and the Tita Tertiary Care Campus (TCC). It also hosts three centers of excellence dedicated to health sciences, technology, and art and culture.</p>
       <p>WU began with the Faculty of Education and quickly expanded to include the Faculties of Business and Economics, Informatics, and Engineering. By the 2009/10 academic year, these units were reorganized into colleges, institutes, and schools. Currently, the university consists of academic units distributed across its three campuses.</p>
       <p>The Tertiary Care Campus functions as the College of Medicine and Health Sciences. It encompasses Medicine, Nursing and Midwifery, Medical Laboratory Sciences, Pharmacy, Public Health, and the School of Environmental Health.</p>
@@ -29,7 +29,7 @@ export const localPartners: Partner[] = [
     website: "https://wku.edu.et/",
     logo: "/images/partners/wolkite/wolkite.jpg",
     description: {
-      descriptionTitle: "",
+      descriptionTitle: "Established in 2009, it delivers undergraduate and graduate programs, conducts impactful research, and provides a broad range of community services.",
       description: `<h2 style="margin: 0;"> 1.	Introduction </h2> <p>
 Wolkite University is a Federal Higher Education Institution established by proclamation No.650/2009 and Establishment Regulation of the Council of Ministers No219/2011 under the Federal Ministry of Education (MOE), and responsible to teach students in undergraduate and graduate programs, conduct impactful researches, and provides wide ranges of community services.
 <b>Vision</b>: To be one of the top ten universities in East Africa by 2030. 
@@ -68,7 +68,7 @@ Wolkite University is a public higher learning institution validly existing unde
     website: "https://dbu.edu.et/",
     logo: "/images/partners/debrebrehan/Debrebrehan.jpg",
     description: {
-      descriptionTitle: "",
+      descriptionTitle: "Debre Berhan University serves more than 20,000 students across regular, extension, summer, and distance programs.",
       description: `<p>Debre Berhan University (DBU), established in 2007 in the historic town of Debre Berhan 130 km from Addis Ababa. The university began with 725 students, one faculty, 68 instructors, and 7 administrative staff. Currently, it serves more than 20,000 students across regular, extension, summer, and distance programs.</p>
       <p>DBU currently offers 54 undergraduate, 64 postgraduate, and 5 PhD programs under nine colleges. It also implements Ethiopia’s new education roadmap launched in 2019.</p>
       <p>The university is expanding through major projects, including the Professor Asrat Woldeyes Health Science Campus, Hakim Gizaw Memorial Hospital, and ongoing developments such as the engineering college expansion and the Mehal-Meda Highland Agriculture and Tourism Research Center.</p>

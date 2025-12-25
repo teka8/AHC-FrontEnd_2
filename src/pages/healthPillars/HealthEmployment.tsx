@@ -102,7 +102,7 @@ const HealthEmployment: React.FC = () => {
               Health Employment (HEMP)
             </h1>
             <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
-HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevant skills that productively match the health and well-being needs of the Ethiopian population. As part of this initiatives, AAU</p>
+HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevant skills that productively match the health and well-being needs of the Ethiopian population.</p>
             <div className="flex flex-col items-center gap-4">
               <a
                 href="#impact"
@@ -176,24 +176,12 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 Impact of Employment on Africa
               </h3>
               <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
-                <p>
-                The Health Employment Pillar (HEMP) addresses the chronic mismatch between the demand for healthcare
-                 and the supply of a skilled health workforce in Africa, aiming to bridge this crucial gap.
-                </p>
-                <p>
-                In the HEMP pillar, our university partners initially identify critical skills gaps 
-                within national health systems, subsequently developing and delivering bespoke academic and professional 
-                training for primary healthcare workers and health professionals.
-                </p>
-                <p>
-                The inclusion of community health workers in these capacity-building programs 
-                remains a key strategy for supporting improved health delivery services at all levels. A focal point of HEMP is 
-                enhancing the leadership capacities of women in the health and public health sectors, thereby addressing gender inequities in Africa’s health human resources.
-                </p>
+                
                 <p>
                 The diverse array of programs collaboratively created and implemented under HEMP 
                 plays a crucial role in cultivating an empowered and proficient health workforce, pivotal for responsive and efficient health systems.
                 </p>
+                <p> As part of this initiatives, AAU:</p>
               </div>
               <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
                   <li>Establishes scholarship development, health employment, and health and wellness program desks at AAU – CHS.</li>
@@ -487,14 +475,14 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
 
           {/* CTA Button */}
-          <div className="text-center mt-12">
+          {/* <div className="text-center mt-12">
             <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
               Share Your Story
               <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -551,7 +539,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
 
           {/* Contacts Grid */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-1 max-w-4xl mx-[450px]">
             {/* Contact Card 1 */}
             <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
               {/* Gradient Border Effect */}
@@ -608,72 +596,21 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
               </div>
             </div>
 
-            {/* Contact Card 2 */}
-            <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-              {/* Gradient Border Effect */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                {/* Avatar Container */}
-                <div className="relative mb-6">
-                  <div className="relative inline-block">
-                    <img 
-                      src="/images/pillars/suying-hugh.jpg" 
-                      alt="Suying Hugh" 
-                      className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
-                    />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
-                    {/* Status Indicator */}
-                    <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
-                  </div>
-                </div>
-
-                {/* Contact Info */}
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                    Suying Hugh
-                  </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Program Manager</p>
-                  <p className="text-green-600 dark:text-green-400 font-medium mb-6">Mastercard Foundation</p>
-
-                  {/* Social Links */}
-                  <div className="flex justify-center space-x-4">
-                    <a 
-                      href="#" 
-                      className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                    >
-                      <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
-                    </a>
-                    <a 
-                      href="#" 
-                      className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                    >
-                      <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
-                    </a>
-                    <a 
-                      href="mailto:suying@example.com" 
-                      className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                    >
-                      <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+           
           </div>
 
           {/* Additional CTA */}
           <div className="text-center mt-12">
             <p className="text-gray-600 dark:text-gray-300 mb-6">Looking for someone else on our team?</p>
-            <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
-              View Full Team Directory
-              <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
+            <a href="/ahcleaders">
+              <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
+                View Full Team Directory
+                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </a>
+            
           </div>
         </div>
       </div>

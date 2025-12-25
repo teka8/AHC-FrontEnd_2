@@ -2,8 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import { useGetLeaderQuery } from "../features/leaders/leadersApi";
-import Hero from "../components/partners/Hero";
 import { useAnalytics } from "@/contexts/AnalyticsContext";
+import LeaderHero from "../components/about/LeaderHero";
 
 export default function AhcLeaderDetail() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ export default function AhcLeaderDetail() {
   if (isLoading) {
     return (
       <>
-        <Hero />
+        <LeaderHero />
         <div className="flex justify-center py-20 bg-[rgb(255,253,246)] dark:bg-slate-900">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-ahc-green"></div>
         </div>
@@ -31,7 +31,7 @@ export default function AhcLeaderDetail() {
   if (isError || !leader) {
     return (
       <>
-        <Hero />
+        <LeaderHero />
         <div className="text-center py-20 bg-[rgb(255,253,246)] dark:bg-slate-900">
           <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">
             Leader not found
@@ -53,7 +53,7 @@ export default function AhcLeaderDetail() {
         <title>{leader.name} – AHC Leader</title>
       </Helmet>
 
-      <Hero />
+      <LeaderHero />
 
       <div className="bg-[rgb(255,253,246)] dark:bg-slate-900 py-12 md:py-16">
         <div className="container mx-auto px-6 md:flex md:gap-12 items-center">

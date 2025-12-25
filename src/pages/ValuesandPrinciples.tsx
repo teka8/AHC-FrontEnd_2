@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
-import Hero from "../components/partners/Hero";
+import Hero from "../components/values-and-principle/Hero";
 
 export default function ValuesandPrinciples() {
   const [activeIndex, setActiveIndex] = useState(null);

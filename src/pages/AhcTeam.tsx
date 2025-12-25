@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import Hero from "../components/about/LeaderHero";
+import Hero from "../components/about/TeamHero";
 import { useGetLeadersQuery } from "../features/leaders/leadersApi";
 
 export default function AhcTeam() {

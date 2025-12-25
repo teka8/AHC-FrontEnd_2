@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Target, Rocket, ChevronDown, Lightbulb, CheckCircle, TrendingUp, MapPin, ThumbsUp } from 'lucide-react';
+import { ArrowRight, Users, Target, Rocket, ChevronDown, Lightbulb, CheckCircle, TrendingUp, MapPin, ThumbsUp, Linkedin, Twitter } from 'lucide-react';
 import PillarNewsSection from '../../components/sections/PillarNewsSection';
 import PillarProgramsSection from '../../components/sections/PillarProgramsSection';
 import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
@@ -11,7 +11,7 @@ import type { Venture } from '../../features/healthInnovation/types';
 import Loader from '../../components/Loader';
 
 export default function HealthEntrepreneurship() {
-  const { data: programsData = [], isLoading: isLoadingPrograms } = useGetProgramsQuery({ category: 'health_entrepreneurship' });
+  // const { data: programsData = [], isLoading: isLoadingPrograms } = useGetProgramsQuery({ category: 'health_entrepreneurship' });
   const { data: venturesData = [], isLoading: isLoadingVentures } = useGetVenturesQuery();
 
   const ventures = React.useMemo(() => {
@@ -540,6 +540,187 @@ export default function HealthEntrepreneurship() {
             </div>
           </div>
         </section>
+        {/* Key Contacts Section */}
+              <div className="relative py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+                {/* Decorative Background Elements */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  {/* Large AHC Symbols */}
+                  <div className="absolute left-0 -translate-x-1/3 w-70 h-70 opacity-[0.06]">
+                    <img 
+                      src="/images/ahc-health-symbol.png" 
+                      alt="" 
+                      aria-hidden="true"
+                      className="w-full h-full object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+                    />
+                  </div>
+                  <div className="absolute right-0 bottom-1/3 translate-x-1/3 w-80 h-80 opacity-[0.05]">
+                    <img 
+                      src="/images/ahc-health-symbol.png" 
+                      alt="" 
+                      aria-hidden="true"
+                      className="w-full h-full object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
+                    />
+                  </div>
+        
+                  {/* Floating Elements */}
+                  <div className="absolute top-20 right-20 w-8 h-8 opacity-10 animate-float" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+                    <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
+                  </div>
+                  <div className="absolute bottom-20 left-20 w-6 h-6 opacity-10 animate-float" style={{ animationDelay: '1.5s', clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}>
+                    <div className="w-full h-full bg-gradient-to-t from-green-400 to-teal-500"></div>
+                  </div>
+        
+                  {/* Grid Pattern */}
+                  <div className="absolute inset-0 opacity-[0.012] dark:opacity-[0.018]" 
+                    style={{ 
+                      backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
+                      backgroundSize: '50px 50px'
+                    }}>
+                  </div>
+                </div>
+        
+                <div className="container mx-auto px-4 relative z-10">
+                  {/* Section Header */}
+                  <div className="text-center mb-16">
+                    <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                      Key Contacts
+                    </h2>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                      Get in touch with our dedicated team members who are driving the Health Entrepreneurship pillar forward.
+                    </p>
+                  </div>
+        
+                  {/* Contacts Grid */}
+                  <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    {/* Contact Card 1 */}
+                    <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                      {/* Gradient Border Effect */}
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                      
+                      <div className="relative z-10">
+                        {/* Avatar Container */}
+                        <div className="relative mb-6">
+                          <div className="relative inline-block">
+                            <img 
+                              src="/images/pillars/kebede-wondu.jpg" 
+                              alt="Kebede Wondu" 
+                              className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
+                            />
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
+                            {/* Status Indicator */}
+                            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
+                          </div>
+                        </div>
+        
+                        {/* Contact Info */}
+                        <div className="text-center">
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                            Kebede Wondu
+                          </h3>
+                          <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Health Entrepreneurship Pillar Lead</p>
+                          <p className="text-green-600 dark:text-green-400 font-medium mb-6">Health Entrepreneurship Pillar</p>
+        
+                          {/* Social Links */}
+                          <div className="flex justify-center space-x-4">
+                            <a 
+                              href="#" 
+                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                            >
+                              <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                            </a>
+                            <a 
+                              href="#" 
+                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                            >
+                              <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                            </a>
+                            <a 
+                              href="mailto:tak@example.com" 
+                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                            >
+                              <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+        
+                    {/* Contact Card 2 */}
+                    <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                      {/* Gradient Border Effect */}
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                      
+                      <div className="relative z-10">
+                        {/* Avatar Container */}
+                        <div className="relative mb-6">
+                          <div className="relative inline-block">
+                            <img 
+                              src="/images/pillars/buzeye-zegeye.jpg" 
+                              alt="Buzeye Zegeye" 
+                              className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
+                            />
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
+                            {/* Status Indicator */}
+                            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
+                          </div>
+                        </div>
+        
+                        {/* Contact Info */}
+                        <div className="text-center">
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                            Buzeye Zegeye
+                          </h3>
+                          <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Entrepreneurship Expert</p>
+                          <p className="text-green-600 dark:text-green-400 font-medium mb-6">Health Entrepreneurship Pillar</p>
+        
+                          {/* Social Links */}
+                          <div className="flex justify-center space-x-4">
+                            <a 
+                              href="#" 
+                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                            >
+                              <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                            </a>
+                            <a 
+                              href="#" 
+                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                            >
+                              <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                            </a>
+                            <a 
+                              href="mailto:suying@example.com" 
+                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                            >
+                              <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  {/* Additional CTA */}
+                  <div className="text-center mt-12">
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">Looking for someone else on our team?</p>
+                    <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
+                      <Link to={"/ahcleaders"} className='flex items-center'>
+                      View Full Team Directory
+                      <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                      </Link>
+                    </button>
+                  </div>
+                </div>
+              </div>
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
@@ -563,75 +744,6 @@ export default function HealthEntrepreneurship() {
               <div className="w-full h-full bg-gradient-to-b from-green-400 to-teal-500"></div>
             </div>
           </div>
-
-          {/* <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-5xl mx-auto">
-              {/* Main CTA Card 
-              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
-                {/* Gradient accent border 
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
-                
-                {/* Small decorative AHC Symbol - Top Right 
-                <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
-                  <img 
-                    src="/images/ahc-health-symbol.png" 
-                    alt="" 
-                    aria-hidden="true"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-
-                <div className="text-center relative z-10">
-                  {/* Icon Badge
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
-                    <Rocket className="w-8 h-8 text-white" />
-                  </div>
-
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-                    Ready to Get Started?
-                  </h2>
-                  
-                  <p className="text-base sm:text-lg lg:text-xl mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Let's discuss how our services can accelerate your healthcare innovation journey 
-                    and transform your ideas into impactful solutions.
-                  </p>
-
-                  {/* CTA Buttons 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <Link to="/health-pillars/health-entrepreneurship/contact" className="w-full sm:w-auto">
-                      <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center group">
-                        Contact Us 
-                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                      </button>
-                    </Link>
-                    
-                    <Link to="/health-pillars/health-entrepreneurship/demo" className="w-full sm:w-auto">
-                      <button className="w-full sm:w-auto bg-white dark:bg-gray-700 border-2 border-teal-500 text-teal-600 dark:text-teal-400 px-8 py-4 rounded-xl font-semibold hover:bg-teal-50 dark:hover:bg-gray-600 transition-all duration-300 inline-flex items-center justify-center group">
-                        Request Demo 
-                        <Rocket className="ml-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" />
-                      </button>
-                    </Link>
-                  </div>
-
-                  {/* Stats or Trust Indicators 
-                  <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">150+</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Startups Supported</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1">$50M+</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Funding Raised</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-teal-600 dark:text-teal-400 mb-1">95%</div>
-                      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Success Rate</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </section>
       </div>
       </>
