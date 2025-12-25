@@ -144,7 +144,7 @@ export default function AhcLeaders() {
           )}
 
           {/* AHC Team Button */}
-          <div className="mt-16 text-center">
+          <div className="mt-16 mb-10 text-center">
             <Link
               to="/ahc-team"
               className="inline-flex items-center gap-3 px-8 py-4 bg-ahc-blue hover:bg-ahc-blue-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
