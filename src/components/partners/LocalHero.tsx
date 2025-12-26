@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Hero.css";
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 const LocalHero: React.FC = () => {
   return (
@@ -28,7 +29,7 @@ const LocalHero: React.FC = () => {
                 decoding="async"
                 width="1320"
                 height="880"
-                src="/images/partners/photo_2025-12-17_16-00-39.jpg"
+                {...getImageWithFallback('images/partners/photo_2025-12-17_16-00-39.jpg')}
                 className="attachment-large size-large"
                 alt=""
                 style={{ objectPosition: "82% 51%" }}

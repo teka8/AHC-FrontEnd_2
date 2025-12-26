@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { getImageWithFallback } from "../utils/imageUtils";
 
 export default function VisionGoalsValues() {
   const [openSection, setOpenSection] = useState("goals");
@@ -61,7 +62,7 @@ export default function VisionGoalsValues() {
         <section className="relative overflow-hidden min-h-[50vh] md:min-h-[60vh]">
           <div className="absolute inset-0">
             <img
-              src="/images/about-hero.jpg"
+              {...getImageWithFallback('images/about-hero.jpg')}
               alt="About us hero background"
               className="h-full w-full object-cover"
             />
@@ -183,7 +184,7 @@ export default function VisionGoalsValues() {
               <div className="lg:col-span-1 space-y-8">
                 <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg">
                   <img
-                    src="/images/value-partnership.jpg"
+                    {...getImageWithFallback('images/value-partnership.jpg')}
                     alt="Principles of Partnership"
                     className="rounded-md mb-4"
                   />
@@ -200,52 +201,52 @@ export default function VisionGoalsValues() {
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     <img
-                      src="/images/partners/addis-ababa-university.png"
+                      {...getImageWithFallback('images/partners/addis-ababa-university.png')}
                       alt="Addis Ababa University"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/aims.png"
+                      {...getImageWithFallback('images/partners/aims.png')}
                       alt="African Institute for Mathematical Sciences"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/alu.png"
+                      {...getImageWithFallback('images/partners/alu.png')}
                       alt="African Leadership University"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/amref.png"
+                      {...getImageWithFallback('images/partners/amref.png')}
                       alt="Amref International University"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/ashesi-university.png"
+                      {...getImageWithFallback('images/partners/ashesi-university.png')}
                       alt="Ashesi University"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/knust.png"
+                      {...getImageWithFallback('images/partners/knust.png')}
                       alt="Kwame Nkrumah University of Science and Technology"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/mastercard-foundation.png"
+                      {...getImageWithFallback('images/partners/mastercard-foundation.png')}
                       alt="Mastercard Foundation Scholars Program"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/moi-university.png"
+                      {...getImageWithFallback('images/partners/moi-university.png')}
                       alt="Moi University"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/uct.png"
+                      {...getImageWithFallback('images/partners/uct.png')}
                       alt="University of Cape Town"
                       className="h-16 object-contain"
                     />
                     <img
-                      src="/images/partners/utoronto.png"
+                      {...getImageWithFallback('images/partners/utoronto.png')}
                       alt="University of Toronto"
                       className="h-16 object-contain"
                     />

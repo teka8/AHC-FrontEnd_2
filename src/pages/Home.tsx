@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import EventCard from "../components/cards/EventCard";
 import PartnersStrip from "../components/ui/PartnersStrip";
 import LocalPartnersStrip from "../components/ui/LocalPartnersStrip";
+import { getImageWithFallback } from "../utils/imageUtils";
 
 import { useGetPublicPostsQuery } from "../features/posts/postsApi";
 import {
@@ -85,7 +86,7 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-2 items-center">
             <div className="relative h-80 md:h-96">
               <img
-                src="/images/aheia.jpg"
+                {...getImageWithFallback('images/aheia.jpg')}
                 alt="Advancing Health Education in Africa"
                 className="rounded-lg shadow-xl w-full h-auto object-cover"
               />

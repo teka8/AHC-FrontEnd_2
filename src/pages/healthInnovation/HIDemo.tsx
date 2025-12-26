@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
 import { Calendar, Users, Rocket, CheckCircle } from 'lucide-react'
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 export default function HIDemo() {
   const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ export default function HIDemo() {
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -280,7 +281,7 @@ export default function HIDemo() {
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"

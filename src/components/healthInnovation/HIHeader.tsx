@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Activity, Menu, X, Moon, Sun, ChevronDown } from 'lucide-react'
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 export default function HIHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -52,7 +53,7 @@ export default function HIHeader() {
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-green-500 rounded-xl blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
               <div className="relative bg-gradient-to-br from-teal-50 to-green-50 dark:from-teal-900/30 dark:to-green-900/30 p-2 rounded-xl border border-teal-200/50 dark:border-teal-700/50">
                 <img 
-                  src="/images/ahc-health-symbol.png" 
+                  {...getImageWithFallback('images/ahc-health-symbol.png')} 
                   alt="AHC Health Symbol" 
                   className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
                 />

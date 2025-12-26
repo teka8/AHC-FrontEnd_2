@@ -5,6 +5,7 @@ import { ArrowRight, Users, Target, Rocket, ChevronDown, Lightbulb, CheckCircle,
 import PillarNewsSection from '../../components/sections/PillarNewsSection';
 import { useGetVenturesQuery } from '../../features/healthInnovation/venturesApi';
 import type { Venture } from '../../features/healthInnovation/types';
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 export default function HealthEntrepreneurship() {
   // const { data: programsData = [], isLoading: isLoadingPrograms } = useGetProgramsQuery({ category: 'health_entrepreneurship' });
@@ -66,7 +67,7 @@ export default function HealthEntrepreneurship() {
           {/* Left Side Large Decorative Pattern */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+            {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -77,7 +78,7 @@ export default function HealthEntrepreneurship() {
           {/* Right Side Large Decorative Pattern */}
           <div className="absolute right-0 top-3/4 -translate-y-1/2 translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+            {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -90,7 +91,7 @@ export default function HealthEntrepreneurship() {
               {/* Centered Top Logo */}
               <div className="flex justify-center mb-6">
                 <img 
-                  src="/images/ahc-health-symbol.png" 
+                  {...getImageWithFallback('images/ahc-health-symbol.png')} 
                   alt="AHC Health Symbol" 
                   className="w-40 h-40 object-contain"
                 />
@@ -125,21 +126,21 @@ export default function HealthEntrepreneurship() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
           <div className="aspect-square overflow-hidden">
             <img 
-              src={`"https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.dev/health-entrepreneurship-galary_1.jpg"`} 
+            {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_1.jpg')} 
               alt="Health system building in Africa" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.dev/health-entrepreneurship-galary_2.jpg" 
+              {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_2.jpg')} 
               alt="Healthcare professionals collaborating" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.dev/health-entrepreneurship-galary_3.jpg" 
+              {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_3.jpg')}
               alt="Community health workers" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
@@ -154,7 +155,7 @@ export default function HealthEntrepreneurship() {
             {/* Large AHC Symbol - Top Left */}
             <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -165,7 +166,7 @@ export default function HealthEntrepreneurship() {
             {/* Large AHC Symbol - Bottom Right */}
             <div className="absolute right-0 bottom-20 translate-x-1/4 w-96 h-96 opacity-[0.06]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -230,7 +231,7 @@ export default function HealthEntrepreneurship() {
               <div className="lg:col-span-1">
                 <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
                   <img 
-                    src="/images/pillars/health-entrepreneurship-mission.jpg" 
+                    {...getImageWithFallback('images/pillars/health-entrepreneurship-mission.jpg')} 
                     alt="HENT Cohort" 
                     className="w-full h-full object-cover"
                     style={{ aspectRatio: '3/4' }}
@@ -287,7 +288,7 @@ export default function HealthEntrepreneurship() {
               </div>
               <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 border border-teal-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
                 {/* Gradient accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-green-400 rounded-t-3xl"></div>
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-green-400"></div>
                 
                 <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Success Story</h3>
                 <p className="text-sm text-teal-600 dark:text-teal-400 mb-3 font-semibold">MedTech Innovation Challenge 2023</p>
@@ -321,7 +322,7 @@ export default function HealthEntrepreneurship() {
             {/* Large AHC Symbol - Top Right */}
             <div className="absolute right-0 top-10 translate-x-1/4 w-80 h-80 opacity-[0.06]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -332,7 +333,7 @@ export default function HealthEntrepreneurship() {
             {/* Large AHC Symbol - Bottom Left */}
             <div className="absolute left-0 bottom-10 -translate-x-1/4 w-72 h-72 opacity-[0.05]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -447,7 +448,7 @@ export default function HealthEntrepreneurship() {
             {/* Large AHC Symbol - Top Left */}
             <div className="absolute left-0 top-10 -translate-x-1/4 w-72 h-72 opacity-[0.04]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -458,7 +459,7 @@ export default function HealthEntrepreneurship() {
             {/* Large AHC Symbol - Bottom Right */}
             <div className="absolute right-0 bottom-10 translate-x-1/4 w-80 h-80 opacity-[0.03]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -555,7 +556,7 @@ export default function HealthEntrepreneurship() {
                   {/* Large AHC Symbols */}
                   <div className="absolute left-0 -translate-x-1/3 w-70 h-70 opacity-[0.06]">
                     <img 
-                      src="/images/ahc-health-symbol.png" 
+                      {...getImageWithFallback('images/ahc-health-symbol.png')} 
                       alt="" 
                       aria-hidden="true"
                       className="w-full h-full object-contain"
@@ -564,7 +565,7 @@ export default function HealthEntrepreneurship() {
                   </div>
                   <div className="absolute right-0 bottom-1/3 translate-x-1/3 w-80 h-80 opacity-[0.05]">
                     <img 
-                      src="/images/ahc-health-symbol.png" 
+                      {...getImageWithFallback('images/ahc-health-symbol.png')} 
                       alt="" 
                       aria-hidden="true"
                       className="w-full h-full object-contain"
@@ -612,7 +613,7 @@ export default function HealthEntrepreneurship() {
                         <div className="relative mb-6">
                           <div className="relative inline-block">
                             <img 
-                              src="/images/pillars/kebede-wondu.jpg" 
+                              {...getImageWithFallback('images/pillars/kebede-wondu.jpg')} 
                               alt="Kebede Wondu" 
                               className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
                             />
@@ -668,7 +669,7 @@ export default function HealthEntrepreneurship() {
                         <div className="relative mb-6">
                           <div className="relative inline-block">
                             <img 
-                              src="/images/pillars/buzeye-zegeye.jpg" 
+                              {...getImageWithFallback('images/pillars/buzeye-zegeye.jpg')} 
                               alt="Buzeye Zegeye" 
                               className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
                             />
@@ -737,7 +738,7 @@ export default function HealthEntrepreneurship() {
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"

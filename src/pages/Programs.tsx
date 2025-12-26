@@ -9,6 +9,7 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { getImageWithFallback } from "../utils/imageUtils";
 
 const Programs: React.FC = () => {
   const { data: programs = [], isLoading } = useGetProgramsQuery(undefined);
@@ -238,7 +239,7 @@ const Programs: React.FC = () => {
       <section className="relative isolate overflow-hidden bg-gray-900">
         <div className="absolute inset-0">
           <img
-            src="/images/pillars/health-entrepreneurship-hero.jpg"
+            {...getImageWithFallback('images/pillars/health-entrepreneurship-hero.jpg')}
             alt="Programs hero"
             className="h-full w-full object-cover opacity-30"
           />

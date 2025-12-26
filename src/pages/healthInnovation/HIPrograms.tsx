@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { Rocket, Target, Users, TrendingUp, Award, Globe, CheckCircle, ArrowRight } from 'lucide-react'
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 const programs = [
   {
@@ -136,7 +137,7 @@ export default function HIPrograms() {
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -319,7 +320,7 @@ export default function HIPrograms() {
                 {/* Small decorative AHC Symbol */}
                 <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
                   <img 
-                    src="/images/ahc-health-symbol.png" 
+                    {...getImageWithFallback('images/ahc-health-symbol.png')} 
                     alt="" 
                     aria-hidden="true"
                     className="w-full h-full object-contain"

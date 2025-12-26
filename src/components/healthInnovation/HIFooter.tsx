@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Activity, Mail, MapPin, Phone } from 'lucide-react'
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 export default function HIFooter() {
   return (
@@ -12,7 +13,7 @@ export default function HIFooter() {
         {/* Large AHC Symbol - Left */}
         <div className="absolute -left-24 top-1/2 -translate-y-1/2 w-64 h-64 opacity-5">
           <img 
-            src="/images/ahc-health-symbol.png" 
+            {...getImageWithFallback('images/ahc-health-symbol.png')} 
             alt="" 
             aria-hidden="true"
             className="w-full h-full object-contain"
@@ -22,7 +23,7 @@ export default function HIFooter() {
         {/* Large AHC Symbol - Right */}
         <div className="absolute -right-24 bottom-0 w-72 h-72 opacity-5">
           <img 
-            src="/images/ahc-health-symbol.png" 
+            {...getImageWithFallback('images/ahc-health-symbol.png')} 
             alt="" 
             aria-hidden="true"
             className="w-full h-full object-contain"
@@ -45,7 +46,7 @@ export default function HIFooter() {
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-green-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                 <div className="relative bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20">
                   <img 
-                    src="/images/ahc-health-symbol.png" 
+                    {...getImageWithFallback('images/ahc-health-symbol.png')} 
                     alt="AHC Health Symbol" 
                     className="w-14 h-14 object-contain"
                   />

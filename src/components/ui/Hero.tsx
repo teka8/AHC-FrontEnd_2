@@ -4,6 +4,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 import PixelTransition from "../ahc/PixelTransition";
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 const AUTOPLAY_DELAY = 7000;
 
@@ -16,7 +17,7 @@ type HeroLogo = {
 const slides = [
   {
     id: 1,
-    image: "/images/hero/DSC04818.jpg",
+    image: "images/hero/DSC04818.jpg",
     title: "Together for Stronger Health Systems",
     subtitle: "Collaboration, knowledge exchange, and health innovation across Ethiopia and Africa",
     tag: "Collaboration",
@@ -29,7 +30,7 @@ const slides = [
   },
   {
     id: 2,
-    image: "/images/hero/IRCAD-38.jpg",
+    image: "images/hero/IRCAD-38.jpg",
     title: "Skilled Workforce for Strong Health Systems",
     subtitle: "Enhancing the capacity and competencies of primary health-care providers to meet evolving health-system demands",
     tag: "Employability",
@@ -55,7 +56,7 @@ const slides = [
   },
   {
     id: 4,
-    image: "/images/hero/_DSC0137.jpg",
+    image: "images/hero/_DSC0137.jpg",
     title: "Nurturing Skilled Health Experts for Resilient, Transformative Health Sector",
     subtitle: "Provides future and current health professionals with the advanced, cross-disciplinary skills needed to drive sustainable growth and transformation in the health sector.",
     tag: "Transformation",
@@ -70,19 +71,19 @@ const slides = [
 
 const logos: HeroLogo[] = [
   {
-    src: `/images/logo_dark.png`,
+    src: `images/logo_dark.png`,
     alt: "Africa Health Collaborative",
-    fallback: `/images/ahc-logo.png`,
+    fallback: `images/ahc-logo.png`,
   },
   {
-    src: `/images/partners/Addis_Ababa_University_logo.png`,
+    src: `images/partners/Addis_Ababa_University_logo.png`,
     alt: "Addis Ababa University",
-    fallback: `/images/partners/addis-ababa-university.png`,
+    fallback: `images/partners/addis-ababa-university.png`,
   },
   {
-    src: `/images/partners/mastercard_foundation_-_logo.png`,
+    src: `images/partners/mastercard_foundation_-_logo.png`,
     alt: "Mastercard Foundation",
-    fallback: `/images/partners/mastercard-foundation.svg`,
+    fallback: `images/partners/mastercard-foundation.svg`,
   },
 ];
 
@@ -119,7 +120,7 @@ export default function Hero() {
               {/* Background Image */}
               <div className="absolute inset-0 overflow-hidden">
                 <img
-                  src={slide.image}
+                  {...getImageWithFallback(slide.image)}
                   alt={slide.title}
                   className={`h-full w-full object-cover transition-transform duration-[10000ms] ease-linear ${selectedIndex === index ? "scale-110" : "scale-100"
                     }`}
@@ -248,16 +249,9 @@ export default function Hero() {
               firstContent={
                 <div className="flex items-center justify-center w-full h-full p-1.5 md:p-2">
                   <img
-                    src={logo.src}
+                    {...getImageWithFallback(logo.src)}
                     alt={logo.alt}
                     className="max-w-full max-h-full object-contain"
-                    onError={(e) => {
-                      const img = e.currentTarget as HTMLImageElement;
-                      if (logo.fallback && img.dataset.fallback !== "1") {
-                        img.src = logo.fallback;
-                        img.dataset.fallback = "1";
-                      }
-                    }}
                   />
                 </div>
               }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Users, Target, Rocket, ChevronDown } from 'lucide-react'
 import PillarNewsSection from '../../components/sections/PillarNewsSection'
 import PillarProgramsSection from '../../components/sections/PillarProgramsSection'
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 export default function HIHome() {
   return (
@@ -18,7 +19,7 @@ export default function HIHome() {
           {/* Left Side Large Decorative Pattern */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -29,7 +30,7 @@ export default function HIHome() {
           {/* Right Side Large Decorative Pattern */}
           <div className="absolute right-0 top-3/4 -translate-y-1/2 translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -42,7 +43,7 @@ export default function HIHome() {
               {/* Centered Top Logo */}
               <div className="flex justify-center mb-6">
                 <img 
-                  src="/images/ahc-health-symbol.png" 
+                  {...getImageWithFallback('images/ahc-health-symbol.png')} 
                   alt="AHC Health Symbol" 
                   className="w-40 h-40 object-contain"
                 />
@@ -107,7 +108,7 @@ export default function HIHome() {
             {/* Large AHC Symbol - Top Left */}
             <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -118,7 +119,7 @@ export default function HIHome() {
             {/* Large AHC Symbol - Bottom Right */}
             <div className="absolute right-0 bottom-20 translate-x-1/4 w-96 h-96 opacity-[0.06]">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -191,7 +192,7 @@ export default function HIHome() {
               <div className="lg:col-span-1">
                 <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
                   <img 
-                    src="/images/pillars/health-entrepreneurship-mission.jpg" 
+                    {...getImageWithFallback('images/pillars/health-entrepreneurship-mission.jpg')} 
                     alt="HENT Cohort" 
                     className="w-full h-full object-cover"
                     style={{ aspectRatio: '3/4' }}
@@ -304,7 +305,7 @@ export default function HIHome() {
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"
@@ -330,7 +331,7 @@ export default function HIHome() {
                 {/* Small decorative AHC Symbol - Top Right */}
                 <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
                   <img 
-                    src="/images/ahc-health-symbol.png" 
+                    {...getImageWithFallback('images/ahc-health-symbol.png')} 
                     alt="" 
                     aria-hidden="true"
                     className="w-full h-full object-contain"

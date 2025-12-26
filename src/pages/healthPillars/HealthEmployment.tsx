@@ -5,6 +5,7 @@ import { useGetProgramsQuery } from '../../features/healthPillars/programsApi';
 import { useGetScholarshipsQuery } from '../../features/scholarship/scholarshipsApi';
 import ScholarshipCard from '../../components/cards/ScholarshipCard';
 import PillarNewsSection from '../../components/sections/PillarNewsSection';
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 const HealthEmployment: React.FC = () => {
   const { data: scholarships = [] } = useGetScholarshipsQuery();
@@ -68,7 +69,7 @@ const HealthEmployment: React.FC = () => {
         {/* Decorative Background Elements - Similar to HIHome */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
           <img 
-            src="/images/ahc-health-symbol.png" 
+            {...getImageWithFallback('images/ahc-health-symbol.png')} 
             alt="" 
             aria-hidden="true"
             className="w-full h-full object-contain"
@@ -77,7 +78,7 @@ const HealthEmployment: React.FC = () => {
         </div>
         <div className="absolute right-0 top-3/4 -translate-y-1/2 translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
           <img 
-            src="/images/ahc-health-symbol.png" 
+            {...getImageWithFallback('images/ahc-health-symbol.png')} 
             alt="" 
             aria-hidden="true"
             className="w-full h-full object-contain"
@@ -89,7 +90,7 @@ const HealthEmployment: React.FC = () => {
           <div className="text-center max-w-5xl mx-auto">
             <div className="flex justify-center mb-6">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="AHC Health Symbol" 
                 className="w-40 h-40 object-contain"
               />
@@ -120,21 +121,21 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
           <div className="aspect-square overflow-hidden">
             <img 
-              src="/images/pillars/health_employment_1.jpg" 
+              {...getImageWithFallback('images/pillars/health_employment_1.jpg')} 
               alt="Health worker training in Africa" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="/images/pillars/health_employment_2.jpg" 
+              {...getImageWithFallback('images/pillars/health_employment_2.jpg')} 
               alt="Medical professionals collaborating" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
             <img 
-              src="/images/pillars/health_employment_4.jpg" 
+              {...getImageWithFallback('images/pillars/health_employment_4.jpg')} 
               alt="Graduating healthcare students" 
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
@@ -148,7 +149,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -157,7 +158,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
           <div className="absolute right-0 bottom-20 translate-x-1/4 w-96 h-96 opacity-[0.06]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -191,7 +192,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             <div className="lg:col-span-1">
               <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
                 <img 
-                  src="/images/pillars/health-ecosystem-galery_3.jpg" 
+                  {...getImageWithFallback('images/pillars/health-ecosystem-galery_3.jpg')} 
                   alt="Healthcare workers in Africa" 
                   className="w-full h-full object-cover"
                   style={{ aspectRatio: '3/4' }}
@@ -279,7 +280,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           {/* Large AHC Symbol - Top Right */}
           <div className="absolute right-0 top-10 translate-x-1/4 w-70 h-70 opacity-[0.07]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -290,7 +291,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           {/* Large AHC Symbol - Bottom Left */}
           <div className="absolute left-0 bottom-10 -translate-x-1/4 w-80 h-80 opacity-[0.06]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -363,7 +364,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           {/* Large AHC Symbols */}
           <div className="absolute left-0 top-1/4 -translate-x-1/3 w-80 h-80 opacity-[0.05]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -372,7 +373,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
           <div className="absolute right-0 bottom-1/4 translate-x-1/3 w-96 h-96 opacity-[0.04]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -431,7 +432,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                   <div className="relative flex-shrink-0">
                     <div className="relative">
                       <img 
-                        src={story.image} 
+                        {...getImageWithFallback('images/pillars/jesusmiracle-chiadika.jpeg')} 
                         alt={story.name} 
                         className="w-20 h-20 rounded-2xl object-cover shadow-lg"
                       />
@@ -483,7 +484,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           {/* Large AHC Symbols */}
           <div className="absolute left-0 -translate-x-1/3 w-70 h-70 opacity-[0.06]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -492,7 +493,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
           <div className="absolute right-0 bottom-1/3 translate-x-1/3 w-80 h-80 opacity-[0.05]">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -540,7 +541,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 <div className="relative mb-6">
                   <div className="relative inline-block">
                     <img 
-                      src="/images/pillars/Anteneh-Belete.jpg" 
+                      {...getImageWithFallback('images/pillars/Anteneh-Belete.jpg')} 
                       alt="Prof. Anteneh Belete" 
                       className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
                     />
@@ -612,7 +613,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           {/* Large AHC Symbol - Center Background */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"

@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { useParams, Link } from 'react-router-dom'
 import { useGetVentureQuery, useVoteVentureMutation } from '../../features/healthInnovation/venturesApi'
 import { MapPin, Users, TrendingUp, Globe, ThumbsUp, ArrowLeft, ExternalLink, Rocket, Calendar } from 'lucide-react'
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 export default function VentureDetail() {
   const { id } = useParams<{ id: string }>()
@@ -69,7 +70,7 @@ export default function VentureDetail() {
           {/* Decorative Elements */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -79,7 +80,7 @@ export default function VentureDetail() {
           
           <div className="absolute right-0 top-1/4 translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"

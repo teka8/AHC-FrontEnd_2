@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
 import "../../styles/Hero.css";
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 interface HeroProps {
   search: string;
@@ -34,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({ search, setSearch }) => {
                 decoding="async"
                 width="1320"
                 height="880"
-                src="/images/resource.jpg"
+                {...getImageWithFallback('images/resource.jpg')}
                 className="attachment-large size-large"
                 alt=""
                 style={{ objectPosition: "82% 51%" }}

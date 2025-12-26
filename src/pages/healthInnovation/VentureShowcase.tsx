@@ -7,6 +7,7 @@ import {
 } from "../../features/healthInnovation/venturesApi";
 import { ThumbsUp, MapPin, Users, TrendingUp, Rocket, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import Loader from "../../components/Loader";
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 const focusAreas = [
   { value: "all", label: "All" },
@@ -74,7 +75,7 @@ export default function VentureShowcase() {
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
               <img 
-                src="/images/ahc-health-symbol.png" 
+                {...getImageWithFallback('images/ahc-health-symbol.png')} 
                 alt="" 
                 aria-hidden="true"
                 className="w-full h-full object-contain"

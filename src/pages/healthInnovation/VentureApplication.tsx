@@ -8,6 +8,7 @@ import { useCreateApplicationMutation, useSaveDraftApplicationMutation } from '.
 import MultiStepForm from '../../components/ui/MultiStepForm'
 import FileUpload from '../../components/ui/FileUpload'
 import { AlertCircle, CheckCircle2, Rocket } from 'lucide-react'
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 const steps = [
   { title: 'Basic Info', description: 'Venture details' },
@@ -199,7 +200,7 @@ export default function VentureApplication() {
         {/* Decorative Elements */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
           <img 
-            src="/images/ahc-health-symbol.png" 
+            {...getImageWithFallback('images/ahc-health-symbol.png')} 
             alt="" 
             aria-hidden="true"
             className="w-full h-full object-contain"
@@ -234,7 +235,7 @@ export default function VentureApplication() {
           {/* Decorative Elements */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
@@ -244,7 +245,7 @@ export default function VentureApplication() {
           
           <div className="absolute right-0 top-1/4 translate-x-1/4 w-64 h-64 opacity-10 pointer-events-none">
             <img 
-              src="/images/ahc-health-symbol.png" 
+              {...getImageWithFallback('images/ahc-health-symbol.png')} 
               alt="" 
               aria-hidden="true"
               className="w-full h-full object-contain"
