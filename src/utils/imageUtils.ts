@@ -1,4 +1,4 @@
-const CDN_URL = import.meta.env.VITE_CDN_URL || 'https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.de';
+const CDN_URL = import.meta.env.VITE_CDN_URL || 'https://pub-e0db1952b1b745ee88918d19ed5a7c18.r2.dev';
 
 /**
  * Get full CDN URL for an image path
