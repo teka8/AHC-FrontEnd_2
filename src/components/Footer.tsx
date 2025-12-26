@@ -4,6 +4,7 @@ import { useGetFooterQuery } from '../features/navigation/navigationApi'
 import { useSubscribeMutation } from '../features/subscriptions/subscriptionApi'
 import { useGetFooterPagesQuery } from '../features/pages/pagesApi'
 import { useGetCompanyInfoQuery } from '../features/settings/companyInfoApi'
+import { getImageWithFallback } from '../utils/imageUtils'
 
 export default function Footer() {
   const { data } = useGetFooterQuery()
@@ -37,19 +38,9 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/images/ahc-logo.png"
+                {...getImageWithFallback('images/ahc-logo.png')}
                 alt="AHC Logo"
                 className="h-10 w-10 object-contain"
-                onError={(e) => {
-                  const img = e.currentTarget as HTMLImageElement
-                  if (img.dataset.fallback !== '1') {
-                    img.src = '/images/ahc-logo.jpg';
-                    img.dataset.fallback = '1';
-                  }
-                  else {
-                    img.src = '/images/favicon.png';
-                  }
-                }}
               />
               <span className="font-display text-xl font-bold text-white">Africa Health Collaborative</span>
             </div>

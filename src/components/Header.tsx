@@ -3,6 +3,7 @@ import { useGetNavigationQuery } from "../features/navigation/navigationApi";
 import { useGetNavigationPagesQuery } from "../features/pages/pagesApi";
 import { useEffect, useState, useMemo } from "react";
 import { Moon, Sun, ChevronDown, Home, Menu, X } from "lucide-react";
+import { getImageWithFallback } from "../utils/imageUtils";
 
 export default function Header() {
   const { data } = useGetNavigationQuery();
@@ -129,18 +130,9 @@ export default function Header() {
           }`}>
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="/images/ahc-logo.png"
+              {...getImageWithFallback('images/ahc-logo.png')}
               alt="AHC Logo"
               className="h-10 w-10 object-contain"
-              onError={(e) => {
-                const img = e.currentTarget as HTMLImageElement;
-                if (img.dataset.fallback !== "1") {
-                  img.src = "/images/ahc-logo.jpg";
-                  img.dataset.fallback = "1";
-                } else {
-                  img.src = "/images/favicon.png";
-                }
-              }}
             />
             <span className="font-display text-xl font-bold">
               Africa Health Collaborative
