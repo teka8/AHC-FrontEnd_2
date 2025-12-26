@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Hero.css";
+import { getImageWithFallback } from "../../utils/imageUtils";
 
 const TeamHero: React.FC = () => {
   return (
@@ -28,7 +29,7 @@ const TeamHero: React.FC = () => {
                 decoding="async"
                 width="1320"
                 height="880"
-                src="/images/hero/_DSC0208 copy.jpg"
+                {...getImageWithFallback('images/hero/_DSC0208 copy.jpg')}
                 className="attachment-large size-large"
                 alt=""
                 style={{ objectPosition: "82% 51%" }}

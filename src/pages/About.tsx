@@ -13,6 +13,7 @@ import {
 import React from "react";
 import CollaborationSection from "../components/CollaborationSection";
 import Hero from "../components/about/Hero";
+import { getImageWithFallback } from "../utils/imageUtils";
 
 export default function About() {
   return (
@@ -96,7 +97,7 @@ export default function About() {
 
               <div>
                 <img
-                  src="/images/about/_DSC1096.jpg"
+                  {...getImageWithFallback('images/about/_DSC1096.jpg')}
                   alt="Our collaborative network across Africa"
                   className="rounded-lg shadow-2xl object-contain w-full h-full"
                 />
@@ -118,7 +119,7 @@ export default function About() {
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
             <div>
               <img
-                src="/images/partners/photo_2025-11-15_11-19-13.jpg"
+                {...getImageWithFallback('images/partners/photo_2025-11-15_11-19-13.jpg')}
                 alt="Our collaborative network across Africa"
                 className="rounded-lg shadow-2xl object-contain w-full h-full"
               />
@@ -174,7 +175,7 @@ export default function About() {
             </div>
             <div>
               <img
-                src="/images/about/DSC01888 (1).jpg"
+                {...getImageWithFallback('images/about/DSC01888 (1).jpg')}
                 alt="Our collaborative network across Africa"
                 className="rounded-lg shadow-2xl object-contain w-full h-full"
               />
