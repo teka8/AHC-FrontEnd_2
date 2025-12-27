@@ -530,9 +530,9 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
 
           {/* Contacts Grid */}
-          <div className="grid md:grid-cols-1 max-w-4xl mx-[450px]">
+          <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
             {/* Contact Card 1 */}
-            <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+            <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
               {/* Gradient Border Effect */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
               
