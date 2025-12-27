@@ -286,28 +286,35 @@ export default function HealthEntrepreneurship() {
                   </button>
                 </Link>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 border border-teal-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
+              <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 border border-teal-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
                 {/* Gradient accent */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-green-400"></div>
                 
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Success Story</h3>
-                <p className="text-sm text-teal-600 dark:text-teal-400 mb-3 font-semibold">MedTech Innovation Challenge 2023</p>
+                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Transformation Story</h3>
+                <p className="text-sm text-teal-600 dark:text-teal-400 mb-3 font-semibold">From Idea to Impact</p>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Partnered with 5 major hospitals to identify and pilot 12 innovative solutions, 
-                  resulting in 3 successful product deployments and $8M in follow-on funding.
+                  Watch aspiring health innovators evolve from early concepts to market-ready solutions 
+                  through intensive mentorship, hands-on workshops, and strategic guidance that bridges 
+                  the gap between academic research and real-world healthcare delivery.
                 </p>
                 <div className="grid grid-cols-3 gap-4 pt-6 border-t border-teal-100 dark:border-gray-700">
                   <div className="text-center">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400 bg-clip-text text-transparent mb-1">85+</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Applications</div>
+                    <div className="w-10 h-10 mx-auto mb-2 bg-gradient-to-br from-teal-100 to-green-100 dark:from-teal-900/30 dark:to-green-900/30 rounded-xl flex items-center justify-center">
+                      <Rocket className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Rapid Growth</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400 bg-clip-text text-transparent mb-1">12</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Pilot Programs</div>
+                    <div className="w-10 h-10 mx-auto mb-2 bg-gradient-to-br from-teal-100 to-green-100 dark:from-teal-900/30 dark:to-green-900/30 rounded-xl flex items-center justify-center">
+                      <Users className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Strong Networks</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400 bg-clip-text text-transparent mb-1">$8M</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Follow-on Funding</div>
+                    <div className="w-10 h-10 mx-auto mb-2 bg-gradient-to-br from-teal-100 to-green-100 dark:from-teal-900/30 dark:to-green-900/30 rounded-xl flex items-center justify-center">
+                      <ThumbsUp className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">Lasting Impact</div>
                   </div>
                 </div>
               </div>
