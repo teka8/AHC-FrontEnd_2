@@ -27,35 +27,39 @@ export default function Announcements() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = parseInt(searchParams.get("page") ?? "1", 10);
   const pageSize = 9;
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { data: postsData, isLoading: isLoadingPosts } = useGetPublicPostsQuery({
     page,
     perPage: pageSize,
     postType: "announcement",
+    category: selectedCategory === "all" ? undefined : selectedCategory,
+    search: searchTerm.trim() || undefined,
   });
 
   const { data: scholarshipsData, isLoading: isLoadingScholarships } = useGetScholarshipsQuery();
 
-  const items = postsData?.data ?? [];
-  const meta = postsData?.meta;
+  const postsMeta = postsData?.meta;
   const apiCategories = Array.isArray(postsData?.filters?.categories)
     ? postsData.filters.categories
     : [];
 
   const announcements = useMemo(
     () =>
-      items.filter((item) => item.post_type?.toLowerCase() === "announcement"),
-    [items]
+      (postsData?.data ?? []).filter((item) => item.post_type?.toLowerCase() === "announcement"),
+    [postsData]
   );
 
-  const scholarships = useMemo(() => (scholarshipsData ?? []).map((s: Scholarship): PostItem => ({
+  const scholarships = useMemo(() => (scholarshipsData ?? []).map((s: Scholarship): CombinedItem => ({
+    ...s,
+    post_type: 'scholarship' as const,
     id: s.id,
     title: s.title,
     slug: s.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, ''),
     excerpt: s.eligibility_criteria,
     content: s.description,
     published_at: s.deadline, // Using deadline for sorting purposes
-    post_type: 'scholarship',
     terms: [{ id: SCHOLARSHIP_CATEGORY.id, name: SCHOLARSHIP_CATEGORY.name, slug: SCHOLARSHIP_CATEGORY.slug, taxonomy: 'category' }]
   })), [scholarshipsData]);
 
@@ -107,9 +111,6 @@ export default function Announcements() {
 
     return prepared;
   }, [baseCategories, hasUncategorized]);
-
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (selectedCategory === "all") {
@@ -177,13 +178,12 @@ export default function Announcements() {
             );
           });
 
-    const extractTimestamp = (item: PostItem) => {
-      if (item.published_at) {
-        return dayjs(item.published_at).valueOf();
-      }
-
-      return 0;
-    };
+  const extractTimestamp = (item: CombinedItem) => {
+    if (item.published_at) {
+      return dayjs(item.published_at).valueOf();
+    }
+    return 0;
+  };
 
     return [...filteredBySearch].sort((a, b) => {
       const diff = extractTimestamp(b) - extractTimestamp(a);
@@ -196,17 +196,39 @@ export default function Announcements() {
   }, [combinedItems, postsByCategory, selectedCategory, searchTerm]);
 
   const isLoading = isLoadingPosts || isLoadingScholarships;
-  const totalVisible = filteredItems.length;
-  const paginationTotal = meta?.total ?? combinedItems.length;
-  const hasSearchQuery = searchTerm.trim().length > 0;
+  const postsAnnouncements = postsData?.data ?? [];
+  const apiMeta = postsData?.meta;
+  
+  // For now, keep scholarships client-side since they come from different API
+  const filteredScholarships: CombinedItem[] = scholarships.filter((scholarship: CombinedItem) => {
+    if (selectedCategory !== "all" && selectedCategory !== SCHOLARSHIP_CATEGORY.slug) {
+      return false;
+    }
+    if (searchTerm.trim()) {
+      const query = searchTerm.trim().toLowerCase();
+      return scholarship.title.toLowerCase().includes(query) ||
+             (scholarship.excerpt && scholarship.excerpt.toLowerCase().includes(query)) ||
+             (scholarship.content && scholarship.content.toLowerCase().includes(query));
+    }
+    return true;
+  });
+  
+  // Combine server-side announcements with filtered scholarships
+  const allItems: CombinedItem[] = [...postsAnnouncements, ...scholarships];
+  const totalVisible = (apiMeta?.total ?? 0) + scholarships.length;
+  const paginationTotal = totalVisible;
+  
+  // Client-side pagination only for the combined result
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedItems = allItems.slice(startIndex, endIndex);
 
   const sidebarItems = useMemo(() => {
-    if (filteredItems.length > 0) {
-      return filteredItems.slice(0, 5);
+    if (allItems.length > 0) {
+      return allItems.slice(0, 5);
     }
-
-    return combinedItems.slice(0, 5);
-  }, [combinedItems, filteredItems]);
+    return [];
+  }, [allItems]);
 
   const onPageChange = (newPage: number) => {
     setSearchParams((prev) => {
@@ -260,8 +282,7 @@ export default function Announcements() {
         <div className="mb-10 space-y-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              {hasSearchQuery ? "Found" : "Showing"} {totalVisible} item
-              {totalVisible === 1 ? "" : "s"}
+              {totalVisible} item{totalVisible === 1 ? "" : "s"}
             </div>
             <div className="hidden flex-wrap items-center gap-4 md:flex">
               <CategoryTab
@@ -315,12 +336,12 @@ export default function Announcements() {
         ) : totalVisible === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white/70 py-16 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800/70">
             <p className="text-lg font-semibold text-ahc-dark dark:text-white">
-              {hasSearchQuery
+              {searchTerm.trim()
                 ? "No items match your search."
                 : "No items found."}
             </p>
             <p className="mt-2 text-slate-500 dark:text-slate-400">
-              {hasSearchQuery
+              {searchTerm.trim()
                 ? "Try adjusting your keywords or explore another category."
                 : "Check back soon for the latest updates."}
             </p>
@@ -328,7 +349,7 @@ export default function Announcements() {
         ) : (
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_360px]">
             <div className="space-y-6">
-              {filteredItems.map((item) => (
+              {paginatedItems.map((item) => (
                 <AnnouncementListItem key={`${item.post_type}-${item.id}`} item={item} />
               ))}
 
@@ -378,7 +399,16 @@ function CategoryTab({
   );
 }
 
-function AnnouncementListItem({ item }: { item: PostItem }) {
+type CombinedItem = PostItem | (Scholarship & { 
+  post_type: 'scholarship';
+  slug: string;
+  excerpt: string;
+  content: string;
+  published_at: string;
+  terms: Array<{ id: number; name: string; slug: string; taxonomy: string }>;
+});
+
+function AnnouncementListItem({ item }: { item: CombinedItem }) {
   const publishedAt = item.published_at ? dayjs(item.published_at) : null;
   const displayDate = publishedAt ? publishedAt.format("MMM DD") : "Pending";
   const year = publishedAt ? publishedAt.format("YYYY") : "";
@@ -450,7 +480,7 @@ function AnnouncementListItem({ item }: { item: PostItem }) {
   );
 }
 
-function AnnouncementHighlights({ items }: { items: PostItem[] }) {
+function AnnouncementHighlights({ items }: { items: CombinedItem[] }) {
   if (items.length === 0) {
     return null;
   }

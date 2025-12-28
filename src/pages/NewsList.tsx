@@ -43,21 +43,8 @@ export default function NewsList() {
     });
   }, [pillarParam, setSearchParams]);
 
-  // const filtered = useMemo(() => {
-  //   const q = search.trim().toLowerCase()
-  //   if (!q) return items
-  //   return items.filter((n: any) => {
-  //     const title = (n.title ?? '').toLowerCase()
-  //     const content = (n.content ?? '').replace(/<[^>]+>/g, '').toLowerCase()
-  //     return title.includes(q) || content.includes(q)
-  //   })
-  // }, [items, search])
-
-  const current = items.filter(
-    (item) => item.post_type?.toLowerCase() === "news"
-  );
-  const totalVisible = current.length;
-  const paginationTotal = meta?.total ?? totalVisible;
+  const totalVisible = meta?.total ?? 0;
+  const paginationTotal = totalVisible;
 
   const onPageChange = (newPage: number) => {
     setSearchParams((prev) => {
@@ -136,7 +123,7 @@ export default function NewsList() {
         ) : (
           <>
             <div className="grid gap-8 md:grid-cols-3">
-              {current.map((n: any) => {
+              {items.map((n: any) => {
                 const firstImgMatch = (n.content ?? "").match(
                   /<img[^>]+src=["']([^"']+)["']/i
                 );
