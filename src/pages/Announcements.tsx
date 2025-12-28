@@ -203,7 +203,7 @@ export default function Announcements() {
   // const apiMeta = postsData?.meta;
   
   // Use server-side pagination for announcements only
-  const totalVisible = (postsMeta?.total ?? 0) + scholarships.length;
+  const totalVisible = (Number(postsMeta?.total) || 0) + scholarships.length;
   
   // For scholarships, keep them client-side but don't mix with server pagination
   const filteredScholarships: CombinedItem[] = scholarships.filter((scholarship: CombinedItem) => {
@@ -230,7 +230,7 @@ export default function Announcements() {
       filteredScholarships.length : 
       selectedCategory === "all" ? 
       totalVisible : 
-      postsMeta?.total ?? 0;
+      Number(postsMeta?.total) || 0;
   
   // Always use client-side pagination for consistency
   const startIndex = (page - 1) * pageSize;
