@@ -32,9 +32,9 @@ export default function Announcements() {
 
   const { data: postsData, isLoading: isLoadingPosts } = useGetPublicPostsQuery({
     page,
-    perPage: pageSize, // Always use server-side pagination
+    perPage: pageSize,
     postType: "announcement",
-    category: selectedCategory === "all" ? undefined : selectedCategory,
+    // Don't filter by category when "all" - get all announcements
     search: searchTerm.trim() || undefined,
   });
 
@@ -222,15 +222,21 @@ export default function Announcements() {
   // Server-side pagination logic
   const displayItems = selectedCategory === SCHOLARSHIP_CATEGORY.slug ? 
       filteredScholarships : 
-      announcements; // Don't combine when using server-side pagination
+      selectedCategory === "all" ? 
+      [...announcements, ...filteredScholarships] :
+      announcements;
       
   const paginationTotal = selectedCategory === SCHOLARSHIP_CATEGORY.slug ? 
       filteredScholarships.length : 
+      selectedCategory === "all" ? 
+      (Number(postsMeta?.total) || 0) + scholarships.length :
       Number(postsMeta?.total) || 0;
   
-  // Use server-side pagination for announcements, client-side for scholarships
-  const paginatedItems = selectedCategory === SCHOLARSHIP_CATEGORY.slug ? 
-      displayItems.slice((page - 1) * pageSize, page * pageSize) : 
+  // Use server-side pagination for announcements, client-side for scholarships and "all"
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedItems = (selectedCategory === "all" || selectedCategory === SCHOLARSHIP_CATEGORY.slug) ? 
+      displayItems.slice(startIndex, endIndex) : 
       announcements;
 
   // Debug logging
