@@ -219,24 +219,23 @@ export default function Announcements() {
     return true;
   });
   
-  // Show announcements with server-side pagination, scholarships separately
-  const showOnlyScholarships = selectedCategory === SCHOLARSHIP_CATEGORY.slug;
-  const showOnlyAnnouncements = selectedCategory !== "all" && selectedCategory !== SCHOLARSHIP_CATEGORY.slug;
+  // Simplified pagination logic
+  const displayItems = selectedCategory === SCHOLARSHIP_CATEGORY.slug ? 
+      filteredScholarships : 
+      selectedCategory === "all" ? 
+      [...announcements, ...filteredScholarships] : 
+      announcements;
+      
+  const paginationTotal = selectedCategory === SCHOLARSHIP_CATEGORY.slug ? 
+      filteredScholarships.length : 
+      selectedCategory === "all" ? 
+      totalVisible : 
+      postsMeta?.total ?? 0;
   
-  const displayItems = showOnlyScholarships ? filteredScholarships : 
-                      showOnlyAnnouncements ? announcements : 
-                      [...announcements, ...filteredScholarships];
-                      
-  const paginationTotal = showOnlyScholarships ? filteredScholarships.length :
-                          showOnlyAnnouncements ? postsMeta?.total ?? 0 :
-                          totalVisible;
-  
-  // Client-side pagination only when mixing both types or scholarships only
+  // Always use client-side pagination for consistency
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const paginatedItems = (showOnlyScholarships || selectedCategory === "all") ? 
-      displayItems.slice(startIndex, endIndex) : 
-      announcements;
+  const paginatedItems = displayItems.slice(startIndex, endIndex);
 
   const sidebarItems = useMemo(() => {
     if (displayItems.length > 0) {
