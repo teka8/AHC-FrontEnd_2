@@ -355,9 +355,9 @@ const HealthEcosystems: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
             {/* Contact Card 1 */}
-            <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+            <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
 
               <div className="relative z-10 text-center">
