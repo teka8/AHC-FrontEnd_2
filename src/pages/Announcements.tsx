@@ -40,11 +40,13 @@ export default function Announcements() {
 
   const { data: scholarshipsData, isLoading: isLoadingScholarships } = useGetScholarshipsQuery();
 
-  const postsMeta = postsData?.meta;
   const apiCategories = Array.isArray(postsData?.filters?.categories)
     ? postsData.filters.categories
     : [];
 
+  const postsMeta = postsData?.meta;
+
+  // Remove duplicate declarations - use these instead
   const announcements = useMemo(
     () =>
       (postsData?.data ?? []).filter((item) => item.post_type?.toLowerCase() === "announcement"),
@@ -196,10 +198,14 @@ export default function Announcements() {
   }, [combinedItems, postsByCategory, selectedCategory, searchTerm]);
 
   const isLoading = isLoadingPosts || isLoadingScholarships;
-  const postsAnnouncements = postsData?.data ?? [];
-  const apiMeta = postsData?.meta;
+  // Remove unused variables
+  // const postsAnnouncements = postsData?.data ?? [];
+  // const apiMeta = postsData?.meta;
   
-  // For now, keep scholarships client-side since they come from different API
+  // Use server-side pagination for announcements only
+  const totalVisible = (postsMeta?.total ?? 0) + scholarships.length;
+  
+  // For scholarships, keep them client-side but don't mix with server pagination
   const filteredScholarships: CombinedItem[] = scholarships.filter((scholarship: CombinedItem) => {
     if (selectedCategory !== "all" && selectedCategory !== SCHOLARSHIP_CATEGORY.slug) {
       return false;
@@ -213,22 +219,31 @@ export default function Announcements() {
     return true;
   });
   
-  // Combine server-side announcements with filtered scholarships
-  const allItems: CombinedItem[] = [...postsAnnouncements, ...scholarships];
-  const totalVisible = (apiMeta?.total ?? 0) + scholarships.length;
-  const paginationTotal = totalVisible;
+  // Show announcements with server-side pagination, scholarships separately
+  const showOnlyScholarships = selectedCategory === SCHOLARSHIP_CATEGORY.slug;
+  const showOnlyAnnouncements = selectedCategory !== "all" && selectedCategory !== SCHOLARSHIP_CATEGORY.slug;
   
-  // Client-side pagination only for the combined result
+  const displayItems = showOnlyScholarships ? filteredScholarships : 
+                      showOnlyAnnouncements ? announcements : 
+                      [...announcements, ...filteredScholarships];
+                      
+  const paginationTotal = showOnlyScholarships ? filteredScholarships.length :
+                          showOnlyAnnouncements ? postsMeta?.total ?? 0 :
+                          totalVisible;
+  
+  // Client-side pagination only when mixing both types or scholarships only
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const paginatedItems = allItems.slice(startIndex, endIndex);
+  const paginatedItems = (showOnlyScholarships || selectedCategory === "all") ? 
+      displayItems.slice(startIndex, endIndex) : 
+      announcements;
 
   const sidebarItems = useMemo(() => {
-    if (allItems.length > 0) {
-      return allItems.slice(0, 5);
+    if (displayItems.length > 0) {
+      return displayItems.slice(0, 5);
     }
     return [];
-  }, [allItems]);
+  }, [displayItems]);
 
   const onPageChange = (newPage: number) => {
     setSearchParams((prev) => {
