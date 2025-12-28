@@ -31,11 +31,11 @@ export default function Announcements() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const { data: postsData, isLoading: isLoadingPosts } = useGetPublicPostsQuery({
-    page,
-    perPage: pageSize,
+    page: selectedCategory === "all" ? 1 : page, // Always get first page when combining
+    perPage: selectedCategory === "all" ? 1000 : pageSize, // Get all when combining
     postType: "announcement",
     category: selectedCategory === "all" ? undefined : selectedCategory,
-    search: searchTerm.trim() || undefined,
+    search: selectedCategory === "all" ? undefined : searchTerm.trim() || undefined,
   });
 
   const { data: scholarshipsData, isLoading: isLoadingScholarships } = useGetScholarshipsQuery();
@@ -236,6 +236,17 @@ export default function Announcements() {
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const paginatedItems = displayItems.slice(startIndex, endIndex);
+
+  // Debug logging
+  console.log('Pagination Debug:', {
+    selectedCategory,
+    page,
+    pageSize,
+    paginationTotal,
+    displayItemsLength: displayItems.length,
+    paginatedItemsLength: paginatedItems.length,
+    totalPages: Math.ceil(paginationTotal / pageSize)
+  });
 
   const sidebarItems = useMemo(() => {
     if (displayItems.length > 0) {
