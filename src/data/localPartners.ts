@@ -7,7 +7,7 @@ export const localPartners: Partner[] = [
       website: "https://wu.edu.et/",
       contactPerson: { name: "Contact Person", description: "University Representative", email: "info@wollo.edu.et" },
     },
-    galery: ["/images/partners/wollo/wollo-galery1.jpg", "/images/partners/wollo/wollo-galery2.jpg", "/images/partners/wollo/wollo-galery3.jpg", "/images/partners/wollo/wollo-galery4.jpg"],
+    galery: ["/images/partners/wollo/wollo.jpg", "/images/partners/wollo/wollo-galery1.jpg", "/images/partners/wollo/wollo-galery2.jpg", "/images/partners/wollo/wollo-galery3.jpg", "/images/partners/wollo/wollo-galery4.jpg"],
     website: "https://wu.edu.et/",
     logo: "/images/partners/wollo/wollo-university.png",
     description: {
@@ -25,11 +25,11 @@ export const localPartners: Partner[] = [
       website: "https://wku.edu.et/",
       contactPerson: { name: "Contact Person", description: "University Representative", email: "info@wku.edu.et" },
     },
-    galery: ["/images/partners/wolkite/wolkite-galery1.jpg", "/images/partners/wolkite/wolkite-galery2.jpg", "/images/partners/wolkite/wolkite-galery3.jpg", "/images/partners/wolkite/wolkite-galery4.jpg"],
+    galery: ["/images/partners/wolkite/wollkite.jpg", "/images/partners/wolkite/wolkite-galery1.jpg", "/images/partners/wolkite/wolkite-galery2.jpg", "/images/partners/wolkite/wolkite-galery3.jpg", "/images/partners/wolkite/wolkite-galery4.jpg"],
     website: "https://wku.edu.et/",
     logo: "/images/partners/wolkite/wolkite.jpg",
     description: {
-      descriptionTitle: "Established in 2009, it delivers undergraduate and graduate programs, conducts impactful research, and provides a broad range of community services.",
+      descriptionTitle: "Wolkite University is established 2009 and engaged on undergraduate and graduate programs, conduct impactful researches, and provides wide ranges of community services.",
       description: `<p>
 Wolkite University is a Federal Higher Education Institution established by proclamation No.650/2009 and Establishment Regulation of the Council of Ministers No219/2011 under the Federal Ministry of Education (MOE), and responsible to teach students in undergraduate and graduate programs, conduct impactful researches, and provides wide ranges of community services.
 <b>Vision</b>: To be one of the top ten universities in East Africa by 2030. 
