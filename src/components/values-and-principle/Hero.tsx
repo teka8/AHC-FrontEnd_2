@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
           </nav>
           <h1 className="ahehc-banner__title">Our Values and Principles</h1>
           <p className="is-size-large">
-            AHC is guided by respect, inclusivity, and equity in working with diverse partners. It emphasizes ethical practice, mutual benefit, adaptability, and responsible stewardship to ensure sustainable, community-centered impact in strengthening primary healthcare across Africa.
+            AHC is guided by respect, inclusivity, and equity in working with diverse partners. It emphasizes ethical practice, mutual benefit, adaptability, and responsible stewardship to ensure sustainable, community-centered impact in strengthening primary healthcare across Ethiopia.
           </p>
         </div>
       </div>

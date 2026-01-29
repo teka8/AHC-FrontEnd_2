@@ -42,7 +42,7 @@ export default function Footer() {
                 alt="AHC Logo"
                 className="h-10 w-10 object-contain"
               />
-              <span className="font-display text-xl font-bold text-white">Africa Health Collaborative</span>
+              <span className="font-display text-xl font-bold text-white">AHC | AAU</span>
             </div>
             <p className="max-w-sm text-sm text-gray-400">
               {data?.about ?? 'Promoting collaboration, knowledge exchange, and scholarship in health professions education.'}

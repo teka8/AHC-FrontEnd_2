@@ -75,19 +75,19 @@ export default function About() {
               <div>
                   <div className="prose max-w-none dark:prose-invert">
 
-                    <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+                    <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
                       Africa Health Collaborative (AHC) is one of the flagship programs to transform primary healthcare service in Africa, in partnership with the Mastercard Foundation. The Collaborative is designed  within the plan of “preparing diverse young people, 
                       for the meaningful work of transforming health and well-being in Africa 
                       through contextually appropriate, equitable and sustainable primary healthcare”. 
                     </p>
-                    <p className="text-slate-600 dark:text-slate-300 mb-6">
+                    <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
                       The AHC is a multi-stakeholder partnership dedicated to transforming primary health care (PHC) systems across Africa. It brings together eight African higher education institutions 
                       (AAU-Ethiopia; African Institute for Mathematical Sciences (AIMS)-Rwanda; African Leadership University (ALU)-Rwanda; Amref International University (AMIU)- Kenya; Ashesi University-Ghana; Kwame Nkrumah University of Science and Technology (KNUST)-Ghana; MOi University- Kenya; University of Cape Town (UCT)-South Africa); and the University of Toronto (U of T)-Canada, in partnership with the Mastercard Foundation. Through a networked, cross-border approach,
                       AHC enables collaboration across institutions and sectors
                         to collectively address the continent’s most pressing health-sector challenges.
                     </p>
 
-                    <p className="text-slate-600 dark:text-slate-300 mb-6">
+                    <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
                       As part of the Collaborative, Africa Health Collaborative -Addis Ababa University (AHC-AAU) was formally launched on February 25, 
                       2025 to advance health-sector transformation in Ethiopia. The Collaborative operates with three strategic pillars: 
                       Health Employment (HEMP), Health Entrepreneurship (HENT), and Health Ecosystem (HECO).
@@ -104,7 +104,7 @@ export default function About() {
               </div>
             </div>
             <div className="prose max-w-none dark:prose-invert mt-6">
-                <p className="text-slate-600 dark:text-slate-300 mb-6">
+                <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
                 The three pillars work to drive meaningful change in primary healthcare by creating pathways that are relevant, equitable, and sustainable for Ethiopian and African youth. 
                 The Collaborative strategic objectives have been cascaded down through engagement of local implementing partners such as Wollo, Wolkite, and Debre Berhan Universities. 
                 In addition, Woldia University will participate in some of the Collaborative activities, for example, through the AHC-AAU faculty Scholarship Scheme, and regional faculty exchange programs.
@@ -128,7 +128,7 @@ export default function About() {
               <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
                 Our Value of <span className="text-ahc-green">Partnership</span>
               </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+              <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
                 Together, through core partners and strategic alliances of
                 ecosystem partners (corporations, government ministries,
                 industry, NGOs, and healthcare providers), we amplify our
@@ -151,26 +151,26 @@ export default function About() {
               <h3 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
                 Goals and Methods
               </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+              <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
                 Born from a commitment to fostering inclusive, sustainable, and
                 impactful health-focused initiatives, the Health Collaborative
                 represents a fusion of bright minds and leading institutions.
               </p>
-              <p className="text-slate-600 dark:text-slate-300 mb-6">
-                With over 80 comprehensive training programs for healthcare
+              <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
+                Comprehensive training programs for healthcare
                 professionals, our collaborative efforts extend to
                 groundbreaking research and cultivating a vibrant network of
                 emerging young professionals. We champion local, indigenous
-                solutions to confronting Africa’s primary health care and global
+                solutions to confronting Ethiopia’s primary health care and global
                 health challenges. Our vision is bold, our programs are diverse
                 but united to foster transformative change in health systems in
-                Africa.
+                Ethiopia.
               </p>
-              <p className="text-slate-600 dark:text-slate-300 mb-6">
+              <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
                 Together, we are committed to and partnership invested in
                 co-creating diverse programs and initiatives paving the way
                 designed to foster innovative and sustainable health solutions
-                and growth in Africa’s health sector.
+                and growth in Ethiopia’s health sector.
               </p>
             </div>
             <div>
@@ -194,7 +194,7 @@ export default function About() {
                 <h3 className="text-xl font-semibold text-ahc-dark dark:text-white">
                   Empathy
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mt-2">
+                <p className="text-md text-slate-600 dark:text-slate-300 mt-2">
                   We are driven by the needs of the communities we serve,
                   ensuring our solutions are relevant and impactful.
                 </p>
@@ -204,7 +204,7 @@ export default function About() {
                 <h3 className="text-xl font-semibold text-ahc-dark dark:text-white">
                   Innovation
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mt-2">
+                <p className="text-md text-slate-600 dark:text-slate-300 mt-2">
                   We champion creative and sustainable approaches to health
                   challenges, embracing new technologies and ideas.
                 </p>
@@ -214,7 +214,7 @@ export default function About() {
                 <h3 className="text-xl font-semibold text-ahc-dark dark:text-white">
                   Collaboration
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mt-2">
+                <p className="text-md text-slate-600 dark:text-slate-300 mt-2">
                   We believe in the power of partnership, fostering strong
                   relationships to amplify our collective impact.
                 </p>
@@ -224,7 +224,7 @@ export default function About() {
                 <h3 className="text-xl font-semibold text-ahc-dark dark:text-white">
                   Integrity
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mt-2">
+                <p className="text-md text-slate-600 dark:text-slate-300 mt-2">
                   We operate with transparency, accountability, and ethical
                   conduct in all our endeavors.
                 </p>
@@ -245,7 +245,7 @@ export default function About() {
                 <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
                   Our Reach 12+ Universities
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300">
+                <p className="text-md text-slate-600 dark:text-slate-300">
                   A growing network of institutions across Ethiopia and Africa.
                 </p>
               </div>
@@ -254,7 +254,7 @@ export default function About() {
                 <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
                   80 Scholars
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300">
+                <p className="text-md text-slate-600 dark:text-slate-300">
                   A comprehensive and integrated scholarship delivery model.
                 </p>
               </div>
@@ -263,10 +263,10 @@ export default function About() {
                 <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
                   Health Entrepreneur Community
                 </h3>
-                <p className="text-sm font-semibold text-ahc-green dark:text-ahc-green-light mb-2">
+                <p className="text-md font-semibold text-ahc-green dark:text-ahc-green-light mb-2">
                   National/Regional
                 </p>
-                <p className="text-slate-600 dark:text-slate-300">
+                <p className="text-md text-slate-600 dark:text-slate-300">
                   A vibrant community of health professionals, financial sector and educators.
                 </p>
               </div>
@@ -275,10 +275,10 @@ export default function About() {
                 <h3 className="text-2xl font-bold text-ahc-dark dark:text-white mb-2">
                   Impact
                 </h3>
-                <p className="text-sm font-semibold text-ahc-blue dark:text-ahc-blue-light mb-2">
+                <p className="text-md font-semibold text-ahc-blue dark:text-ahc-blue-light mb-2">
                   National/Pan-African
                 </p>
-                <p className="text-slate-600 dark:text-slate-300">
+                <p className="text-md text-slate-600 dark:text-slate-300">
                   Driving positive change in health education across the continent.
                 </p>
               </div>
@@ -294,8 +294,8 @@ export default function About() {
             </h2>
             <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-300 mb-8">
               Whether you are a student, an innovator, a potential partner, or
-              simply passionate about health equity in Africa, there is a place
-              for you at AHC.
+              simply passionate about health equity in Ethiopia, there is a place
+              for you at AHC - AAU.
             </p>
             <a
               href="/contact"

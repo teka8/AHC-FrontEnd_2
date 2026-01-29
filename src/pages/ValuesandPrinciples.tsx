@@ -39,8 +39,7 @@ export default function ValuesandPrinciples() {
     {
       title: "Principles of Partnership",
       content: `All members of the Collaborative share a commitment to partnership building, 
-        identifying areas of fruitful collaboration, and co-creating programs to maximize impact. 
-        Inspired by the African Ubuntu philosophy (community, solidarity, interconnectedness) and the Harambee spirit.`,
+        identifying areas of fruitful collaboration, and co-creating programs to maximize impact.`,
     },
   ];
 
@@ -56,7 +55,7 @@ export default function ValuesandPrinciples() {
     setActiveIndex(activeIndex === index ? null : index);
 
   const visionText = [
-    "To cultivate a future where Africa’s diverse youth lead the transformation of health and well-being across the continent. We envision a generation equipped with the knowledge, skills, and opportunities to shape primary healthcare systems that are equitable, resilient, and responsive to local realities. By fostering inclusive, community-centered, and sustainable approaches, we aim to support young people, especially those historically underrepresented, to become driving forces in creating healthier, thriving African societies.",
+    "To cultivate a future where Ethiopia’s diverse youth lead the transformation of health and well-being across the continent. We envision a generation equipped with the knowledge, skills, and opportunities to shape primary healthcare systems that are equitable, resilient, and responsive to local realities. By fostering inclusive, community-centered, and sustainable approaches, we aim to support young people, especially those historically underrepresented, to become driving forces in creating healthier, thriving Ethiopian societies.",
   ];
 
   const maxVisible = 2;
@@ -184,15 +183,11 @@ export default function ValuesandPrinciples() {
               the following parties:{" "}
             </p>
             <br />
-            <p className=" text-gray-500 dark:text-white">
+            <p className=" text-gray-500 dark:text-white mb-4">
               All members of the Collaborative share a commitment to partnership
               building, with the goals of identifying areas of fruitful
               collaboration and together co-creating programs to maximize impact
-              in Africa. The essence of the Collaborative embodies the African
-              Ubuntu philosophy (community, solidarity, and interconnectedness)
-              and is inspired by the Harambee spirit of collaboration (Swahili:
-              all pulling together). We will be guided by the following
-              principles: .{" "}
+              in Ethiopia.{" "}
             </p>
             <div className="grid grid-cols-2 gap-6">
               {partners.map((p, idx) => (

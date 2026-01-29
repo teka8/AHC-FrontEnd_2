@@ -127,7 +127,7 @@ export default function Home() {
               </a>
             </div>
           
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+          {/* <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
             <div className="bg-green-50 dark:bg-green-950 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="text-sm text-ahc-green-dark dark:text-ahc-green-light">
                 Our Reach
@@ -173,7 +173,7 @@ export default function Home() {
                 continent.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
       {/* Discovering pillars*/}
