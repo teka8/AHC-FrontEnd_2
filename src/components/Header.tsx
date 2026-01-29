@@ -135,7 +135,7 @@ export default function Header() {
               className="h-10 w-10 object-contain"
             />
             <span className="font-display text-xl font-bold">
-              Africa Health Collaborative
+              AHC | AAU
             </span>
           </Link>
           <nav className="hidden min-[1061px]:flex items-center gap-8">

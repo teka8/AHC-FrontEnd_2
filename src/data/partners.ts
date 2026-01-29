@@ -53,20 +53,20 @@ AAU is granted institutional autonomy on August 4, 2023.</p>
 `
     },
 
-    scholars: [
-      {
-        name: "Bethlehem Addisu Demissie",
-        description: "Addis Ababa University,University of Toronto",
-        image: "https://africahealthcollaborative.org/wp-content/uploads/2023/10/Betty-Demissie-1056x1320.jpg",
-        eduLavel: "Master Scolar",
-      },
-      {
-        name: "Bethlehem(Betty) Sisay Tefera",
-        description: "Addis Ababa University,University of Toronto",
-        image: "https://africahealthcollaborative.org/wp-content/uploads/2023/11/Betty-Tefera-1-1056x1320.jpg",
-        eduLavel: "Master Scolar",
-      },
-    ],
+    // scholars: [
+    //   {
+    //     name: "Bethlehem Addisu Demissie",
+    //     description: "Addis Ababa University,University of Toronto",
+    //     image: "https://africahealthcollaborative.org/wp-content/uploads/2023/10/Betty-Demissie-1056x1320.jpg",
+    //     eduLavel: "Master Scolar",
+    //   },
+    //   {
+    //     name: "Bethlehem(Betty) Sisay Tefera",
+    //     description: "Addis Ababa University,University of Toronto",
+    //     image: "https://africahealthcollaborative.org/wp-content/uploads/2023/11/Betty-Tefera-1-1056x1320.jpg",
+    //     eduLavel: "Master Scolar",
+    //   },
+    // ],
   },
 
   {
