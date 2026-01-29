@@ -65,6 +65,7 @@ export default function HealthEntrepreneurship() {
         {/* Hero Banner with AHC Health Symbol Decorations */}
         <section className="relative bg-white dark:bg-gray-900 overflow-hidden min-h-screen flex items-center">
           {/* Left Side Large Decorative Pattern */}
+          {/* 
           <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
             <img 
             {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -75,7 +76,7 @@ export default function HealthEntrepreneurship() {
             />
           </div>
           
-          {/* Right Side Large Decorative Pattern */}
+          Right Side Large Decorative Pattern
           <div className="absolute right-0 top-3/4 -translate-y-1/2 translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
             <img 
             {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -85,18 +86,20 @@ export default function HealthEntrepreneurship() {
               style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
             />
           </div>
-          
+          */}
+
+
           <div className="container mx-auto px-4 py-10 relative z-10">
             <div className="text-center max-w-5xl mx-auto">
               {/* Centered Top Logo */}
               <div className="flex justify-center mb-6">
-                <img 
-                  {...getImageWithFallback('images/ahc-health-symbol.png')} 
-                  alt="AHC Health Symbol" 
+                <img
+                  {...getImageWithFallback('images/ahc-health-symbol.png')}
+                  alt="AHC Health Symbol"
                   className="w-40 h-40 object-contain"
                 />
               </div>
-              
+
               <p className="text-ahc-green dark:text-ahc-green-light text-md font-semibold mb-4 uppercase tracking-wide">
                 Empowering innovation and entrepreneurship in healthcare
               </p>
@@ -106,7 +109,7 @@ export default function HealthEntrepreneurship() {
               <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
                 The HENT pillar focuses on building robust entrepreneurial ecosystems within Ethiopian universities to accelerate health innovation, strengthen primary health care, and create meaningful employment particularly for youth and women. By fostering health-focused start-ups, HENT aims to address critical gaps in accessibility, affordability, and quality of care across the country.
               </p>
-              
+
               {/* Keep Reading with Down Arrow */}
               <div className="flex flex-col items-center gap-4">
                 <a
@@ -123,36 +126,37 @@ export default function HealthEntrepreneurship() {
 
         {/* Image Gallery */}
         <section className="bg-white dark:bg-gray-900 max-w-screen overflow-x-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
-          <div className="aspect-square overflow-hidden">
-            <img 
-            {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_1.jpg')} 
-              alt="Health system building in Africa" 
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
+            <div className="aspect-square overflow-hidden">
+              <img
+                {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_1.jpg')}
+                alt="Health system building in Africa"
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div className="aspect-square overflow-hidden">
+              <img
+                {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_2.jpg')}
+                alt="Healthcare professionals collaborating"
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div className="aspect-square overflow-hidden">
+              <img
+                {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_3.jpg')}
+                alt="Community health workers"
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </div>
           </div>
-          <div className="aspect-square overflow-hidden">
-            <img 
-              {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_2.jpg')} 
-              alt="Healthcare professionals collaborating" 
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-            />
-          </div>
-          <div className="aspect-square overflow-hidden">
-            <img 
-              {...getImageWithFallback('images/pillars/health-entrepreneurship-galary_3.jpg')}
-              alt="Community health workers" 
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-            />
-          </div>
-        </div>
-      </section>
+        </section>
 
         {/* Impact of Entrepreneurship Section */}
         <section id="impact" className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large AHC Symbol - Top Left */}
+            {/* 
             <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
               <img 
                 {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -163,7 +167,7 @@ export default function HealthEntrepreneurship() {
               />
             </div>
             
-            {/* Large AHC Symbol - Bottom Right */}
+            Large AHC Symbol - Bottom Right
             <div className="absolute right-0 bottom-20 translate-x-1/4 w-96 h-96 opacity-[0.06]">
               <img 
                 {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -173,11 +177,13 @@ export default function HealthEntrepreneurship() {
                 style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
               />
             </div>
+            */}
+
 
             {/* Decorative Circles */}
             <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-40 left-20 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
-            
+
             {/* Decorative Triangles - Top */}
             <div className="absolute top-10 left-1/4 w-16 h-16 opacity-15" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
@@ -185,7 +191,7 @@ export default function HealthEntrepreneurship() {
             <div className="absolute top-32 right-1/3 w-12 h-12 opacity-15" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="w-full h-full bg-gradient-to-b from-green-400 to-teal-500"></div>
             </div>
-            
+
             {/* Decorative Triangles - Bottom */}
             <div className="absolute bottom-20 right-1/4 w-20 h-20 opacity-15" style={{ clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}>
               <div className="w-full h-full bg-gradient-to-t from-teal-400 to-green-500"></div>
@@ -195,14 +201,14 @@ export default function HealthEntrepreneurship() {
             </div>
 
             {/* Grid Pattern Overlay */}
-            <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]" 
-              style={{ 
+            <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]"
+              style={{
                 backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
                 backgroundSize: '60px 60px'
               }}>
             </div>
           </div>
-          
+
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               <div className="lg:col-span-2">
@@ -211,28 +217,28 @@ export default function HealthEntrepreneurship() {
                 </h3>
                 <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
                   <p>
-                    As African health sectors grow, health entrepreneurship has immense potential to accelerate that growth 
-                    and support better health outcomes by creating self-sustaining market solutions that close gaps in the 
-                    health sector, meet community needs, generate revenue, and provide resilience and stability, thereby 
+                    As African health sectors grow, health entrepreneurship has immense potential to accelerate that growth
+                    and support better health outcomes by creating self-sustaining market solutions that close gaps in the
+                    health sector, meet community needs, generate revenue, and provide resilience and stability, thereby
                     creating significant employment opportunities.
                   </p>
-                  
+
                   <p>As part of this initiative, AAU and its local implementing partner universities:</p>
-                <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
-                  <li className='pb-2'>Establish on-campus entrepreneurial training hubs/centers that offer advanced, innovative training programs in health entrepreneurship to equip students and professionals with the skills needed to develop impactful health solutions.</li>
-                  <li className='pb-2'>Develop innovation incubation hubs that provide mentorship, technical support, financial assistance, and charitable seed funding, enabling aspiring innovators to launch sustainable, community-based ventures.</li>
-                  <li className='pb-2'>Build a collaborative entrepreneurial network across partner universities to strengthen knowledge exchange, resource sharing, and joint innovation, creating a vibrant ecosystem that supports health-focused start-ups from ideation to implementation.</li>
-                </ul>
-                <p>Through these efforts, HENT drives a culture of innovation and empowers the next generation of health entrepreneurs to deliver solutions that improve primary healthcare services nationwide.</p>
-              
+                  <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
+                    <li className='pb-2'>Establish on-campus entrepreneurial training hubs/centers that offer advanced, innovative training programs in health entrepreneurship to equip students and professionals with the skills needed to develop impactful health solutions.</li>
+                    <li className='pb-2'>Develop innovation incubation hubs that provide mentorship, technical support, financial assistance, and charitable seed funding, enabling aspiring innovators to launch sustainable, community-based ventures.</li>
+                    <li className='pb-2'>Build a collaborative entrepreneurial network across partner universities to strengthen knowledge exchange, resource sharing, and joint innovation, creating a vibrant ecosystem that supports health-focused start-ups from ideation to implementation.</li>
+                  </ul>
+                  <p>Through these efforts, HENT drives a culture of innovation and empowers the next generation of health entrepreneurs to deliver solutions that improve primary healthcare services nationwide.</p>
+
                 </div>
-                </div>
-              
+              </div>
+
               <div className="lg:col-span-1">
                 <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
-                  <img 
-                    {...getImageWithFallback('images/pillars/health-entrepreneurship-mission.jpg')} 
-                    alt="HENT Cohort" 
+                  <img
+                    {...getImageWithFallback('images/pillars/health-entrepreneurship-mission.jpg')}
+                    alt="HENT Cohort"
                     className="w-full h-full object-cover"
                     style={{ aspectRatio: '3/4' }}
                   />
@@ -244,7 +250,7 @@ export default function HealthEntrepreneurship() {
             </div>
           </div>
         </section>
-        
+
         {/* Pillar News Section */}
         <PillarNewsSection
           pillar="health_entrepreneurship"
@@ -268,8 +274,8 @@ export default function HealthEntrepreneurship() {
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Open Innovation</h2>
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                  Bridge the gap between established healthcare organizations and innovative startups. 
-                  Our open innovation programs create collaborative ecosystems that drive breakthrough 
+                  Bridge the gap between established healthcare organizations and innovative startups.
+                  Our open innovation programs create collaborative ecosystems that drive breakthrough
                   solutions through strategic partnerships.
                 </p>
                 <div className="space-y-3 mb-6">
@@ -289,12 +295,12 @@ export default function HealthEntrepreneurship() {
               <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 border border-teal-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
                 {/* Gradient accent */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-green-400"></div>
-                
+
                 <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Transformation Story</h3>
                 <p className="text-sm text-teal-600 dark:text-teal-400 mb-3 font-semibold">From Idea to Impact</p>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Watch aspiring health innovators evolve from early concepts to market-ready solutions 
-                  through intensive mentorship, hands-on workshops, and strategic guidance that bridges 
+                  Watch aspiring health innovators evolve from early concepts to market-ready solutions
+                  through intensive mentorship, hands-on workshops, and strategic guidance that bridges
                   the gap between academic research and real-world healthcare delivery.
                 </p>
                 <div className="grid grid-cols-3 gap-4 pt-6 border-t border-teal-100 dark:border-gray-700">
@@ -327,6 +333,7 @@ export default function HealthEntrepreneurship() {
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large AHC Symbol - Top Right */}
+            {/* 
             <div className="absolute right-0 top-10 translate-x-1/4 w-80 h-80 opacity-[0.06]">
               <img 
                 {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -337,7 +344,7 @@ export default function HealthEntrepreneurship() {
               />
             </div>
             
-            {/* Large AHC Symbol - Bottom Left */}
+            Large AHC Symbol - Bottom Left
             <div className="absolute left-0 bottom-10 -translate-x-1/4 w-72 h-72 opacity-[0.05]">
               <img 
                 {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -347,11 +354,13 @@ export default function HealthEntrepreneurship() {
                 style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
               />
             </div>
+            */}
+
 
             {/* Decorative Circles */}
             <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
-            
+
             {/* Decorative Triangles */}
             <div className="absolute top-16 right-1/4 w-14 h-14 opacity-15" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
@@ -361,8 +370,8 @@ export default function HealthEntrepreneurship() {
             </div>
 
             {/* Grid Pattern Overlay */}
-            <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]" 
-              style={{ 
+            <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]"
+              style={{
                 backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
                 backgroundSize: '60px 60px'
               }}>
@@ -375,7 +384,7 @@ export default function HealthEntrepreneurship() {
               <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-300 order-2 lg:order-1 relative overflow-hidden">
                 {/* Gradient accent border */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
-                
+
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Cohort Overview</h3>
                 <p className="text-sm text-teal-600 dark:text-teal-400 mb-6 font-semibold">Our proven acceleration model</p>
                 <div className="space-y-6">
@@ -431,8 +440,8 @@ export default function HealthEntrepreneurship() {
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Accelerators</h2>
                 </div>
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Transform your healthcare startup from early-stage to investment-ready. Our 
-                  intensive accelerator program provides the funding, mentorship, and connections 
+                  Transform your healthcare startup from early-stage to investment-ready. Our
+                  intensive accelerator program provides the funding, mentorship, and connections
                   needed to scale rapidly.
                 </p>
                 <div className="space-y-3 mb-8">
@@ -453,6 +462,7 @@ export default function HealthEntrepreneurship() {
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large AHC Symbol - Top Left */}
+            {/* 
             <div className="absolute left-0 top-10 -translate-x-1/4 w-72 h-72 opacity-[0.04]">
               <img 
                 {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -463,7 +473,7 @@ export default function HealthEntrepreneurship() {
               />
             </div>
             
-            {/* Large AHC Symbol - Bottom Right */}
+            Large AHC Symbol - Bottom Right
             <div className="absolute right-0 bottom-10 translate-x-1/4 w-80 h-80 opacity-[0.03]">
               <img 
                 {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -473,11 +483,13 @@ export default function HealthEntrepreneurship() {
                 style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
               />
             </div>
+            */}
+
 
             {/* Decorative Circles */}
             <div className="absolute top-40 right-10 w-48 h-48 bg-gradient-to-br from-teal-100/30 to-green-100/30 dark:from-teal-600/5 dark:to-green-600/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-20 left-10 w-64 h-64 bg-gradient-to-br from-green-100/30 to-emerald-100/30 dark:from-green-600/5 dark:to-emerald-600/5 rounded-full blur-3xl"></div>
-            
+
             {/* Decorative Triangles */}
             <div className="absolute top-20 left-1/3 w-12 h-12 opacity-10" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
@@ -505,8 +517,8 @@ export default function HealthEntrepreneurship() {
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Consulting</h2>
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Strategic advisory services tailored to your unique challenges. Our experienced 
-                  consultants bring deep healthcare industry expertise to help you navigate 
+                  Strategic advisory services tailored to your unique challenges. Our experienced
+                  consultants bring deep healthcare industry expertise to help you navigate
                   complex decisions and achieve your business objectives.
                 </p>
                 <div className="space-y-3 mb-8">
@@ -557,10 +569,11 @@ export default function HealthEntrepreneurship() {
           </div>
         </section>
         {/* Key Contacts Section */}
-              <div className="relative py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-                {/* Decorative Background Elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  {/* Large AHC Symbols */}
+        <div className="relative py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Large AHC Symbols */}
+            {/* 
                   <div className="absolute left-0 -translate-x-1/3 w-70 h-70 opacity-[0.06]">
                     <img 
                       {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -579,170 +592,173 @@ export default function HealthEntrepreneurship() {
                       style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
                     />
                   </div>
-        
-                  {/* Floating Elements */}
-                  <div className="absolute top-20 right-20 w-8 h-8 opacity-10 animate-float" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
-                    <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
-                  </div>
-                  <div className="absolute bottom-20 left-20 w-6 h-6 opacity-10 animate-float" style={{ animationDelay: '1.5s', clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}>
-                    <div className="w-full h-full bg-gradient-to-t from-green-400 to-teal-500"></div>
-                  </div>
-        
-                  {/* Grid Pattern */}
-                  <div className="absolute inset-0 opacity-[0.012] dark:opacity-[0.018]" 
-                    style={{ 
-                      backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
-                      backgroundSize: '50px 50px'
-                    }}>
-                  </div>
-                </div>
-        
-                <div className="container mx-auto px-4 relative z-10">
-                  {/* Section Header */}
-                  <div className="text-center mb-16">
-                    <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                      Key Contacts
-                    </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                      Get in touch with our dedicated team members who are driving the Health Entrepreneurship pillar forward.
-                    </p>
-                  </div>
-        
-                  {/* Contacts Grid */}
-                  <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    {/* Contact Card 1 */}
-                    <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-                      {/* Gradient Border Effect */}
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-                      
-                      <div className="relative z-10">
-                        {/* Avatar Container */}
-                        <div className="relative mb-6">
-                          <div className="relative inline-block">
-                            <img 
-                              {...getImageWithFallback('images/pillars/kebede-wondu.jpg')} 
-                              alt="Kebede Wondu" 
-                              className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
-                            />
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
-                            {/* Status Indicator */}
-                            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
-                          </div>
-                        </div>
-        
-                        {/* Contact Info */}
-                        <div className="text-center">
-                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                            Kebede Wondu
-                          </h3>
-                          <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Health Entrepreneurship Pillar Lead</p>
-                          <p className="text-green-600 dark:text-green-400 font-medium mb-6">Health Entrepreneurship Pillar</p>
-        
-                          {/* Social Links */}
-                          <div className="flex justify-center space-x-4">
-                            <a 
-                              href="#" 
-                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                            >
-                              <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
-                            </a>
-                            <a 
-                              href="#" 
-                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                            >
-                              <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
-                            </a>
-                            <a 
-                              href="mailto:tak@example.com" 
-                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                            >
-                              <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-        
-                    {/* Contact Card 2 */}
-                    <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-                      {/* Gradient Border Effect */}
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-                      
-                      <div className="relative z-10">
-                        {/* Avatar Container */}
-                        <div className="relative mb-6">
-                          <div className="relative inline-block">
-                            <img 
-                              {...getImageWithFallback('images/pillars/buzeye-zegeye.jpg')} 
-                              alt="Buzeye Zegeye" 
-                              className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
-                            />
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
-                            {/* Status Indicator */}
-                            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
-                          </div>
-                        </div>
-        
-                        {/* Contact Info */}
-                        <div className="text-center">
-                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                            Buzeye Zegeye
-                          </h3>
-                          <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Entrepreneurship Expert</p>
-                          <p className="text-green-600 dark:text-green-400 font-medium mb-6">Health Entrepreneurship Pillar</p>
-        
-                          {/* Social Links */}
-                          <div className="flex justify-center space-x-4">
-                            <a 
-                              href="#" 
-                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                            >
-                              <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
-                            </a>
-                            <a 
-                              href="#" 
-                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                            >
-                              <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
-                            </a>
-                            <a 
-                              href="mailto:suying@example.com" 
-                              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
-                            >
-                              <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
+            */}
+
+
+            {/* Floating Elements */}
+            <div className="absolute top-20 right-20 w-8 h-8 opacity-10 animate-float" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+              <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
+            </div>
+            <div className="absolute bottom-20 left-20 w-6 h-6 opacity-10 animate-float" style={{ animationDelay: '1.5s', clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)' }}>
+              <div className="w-full h-full bg-gradient-to-t from-green-400 to-teal-500"></div>
+            </div>
+
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 opacity-[0.012] dark:opacity-[0.018]"
+              style={{
+                backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
+                backgroundSize: '50px 50px'
+              }}>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                Key Contacts
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Get in touch with our dedicated team members who are driving the Health Entrepreneurship pillar forward.
+              </p>
+            </div>
+
+            {/* Contacts Grid */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Contact Card 1 */}
+              <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                {/* Gradient Border Effect */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+
+                <div className="relative z-10">
+                  {/* Avatar Container */}
+                  <div className="relative mb-6">
+                    <div className="relative inline-block">
+                      <img
+                        {...getImageWithFallback('images/pillars/kebede-wondu.jpg')}
+                        alt="Kebede Wondu"
+                        className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
+                      {/* Status Indicator */}
+                      <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
                     </div>
                   </div>
-        
-                  {/* Additional CTA */}
-                  <div className="text-center mt-12">
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">Looking for someone else on our team?</p>
-                    <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
-                      <Link to={"/ahcleaders"} className='flex items-center'>
-                      View Full Team Directory
-                      <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                      </Link>
-                    </button>
+
+                  {/* Contact Info */}
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                      Kebede Wondu
+                    </h3>
+                    <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Health Entrepreneurship Pillar Lead</p>
+                    <p className="text-green-600 dark:text-green-400 font-medium mb-6">Health Entrepreneurship Pillar</p>
+
+                    {/* Social Links */}
+                    <div className="flex justify-center space-x-4">
+                      <a
+                        href="#"
+                        className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                      >
+                        <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                      </a>
+                      <a
+                        href="#"
+                        className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                      >
+                        <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                      </a>
+                      <a
+                        href="mailto:tak@example.com"
+                        className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                      >
+                        <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* Contact Card 2 */}
+              <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                {/* Gradient Border Effect */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+
+                <div className="relative z-10">
+                  {/* Avatar Container */}
+                  <div className="relative mb-6">
+                    <div className="relative inline-block">
+                      <img
+                        {...getImageWithFallback('images/pillars/buzeye-zegeye.jpg')}
+                        alt="Buzeye Zegeye"
+                        className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
+                      {/* Status Indicator */}
+                      <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Contact Info */}
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                      Buzeye Zegeye
+                    </h3>
+                    <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">Entrepreneurship Expert</p>
+                    <p className="text-green-600 dark:text-green-400 font-medium mb-6">Health Entrepreneurship Pillar</p>
+
+                    {/* Social Links */}
+                    <div className="flex justify-center space-x-4">
+                      <a
+                        href="#"
+                        className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                      >
+                        <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                      </a>
+                      <a
+                        href="#"
+                        className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                      >
+                        <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
+                      </a>
+                      <a
+                        href="mailto:suying@example.com"
+                        className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
+                      >
+                        <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional CTA */}
+            <div className="text-center mt-12">
+              <p className="text-gray-600 dark:text-gray-300 mb-6">Looking for someone else on our team?</p>
+              <button className="bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center group">
+                <Link to={"/ahcleaders"} className='flex items-center'>
+                  View Full Team Directory
+                  <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large AHC Symbol - Center Background */}
+            {/* 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
               <img 
                 {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -751,7 +767,9 @@ export default function HealthEntrepreneurship() {
                 className="w-full h-full object-contain"
               />
             </div>
-            
+            */}
+
+
             {/* Decorative Triangles */}
             <div className="absolute top-10 left-10 w-16 h-16 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
@@ -762,6 +780,6 @@ export default function HealthEntrepreneurship() {
           </div>
         </section>
       </div>
-      </>
+    </>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Hero.css";
-import {getImageWithFallback} from "../../utils/imageUtils";
+import { getImageWithFallback } from "../../utils/imageUtils";
 const Hero: React.FC = () => {
   return (
     <div className="ahehc-banner alignfull hero-aurora pl-8 ">
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
           </nav>
           <h1 className="ahehc-banner__title">Our Partners</h1>
           <p className="is-size-large">
-            AHC - AAU brings together a strong and diverse partnership ecosystem that spans universities, teaching hospitals, research institutions, public sector bodies, private sector actors, and development organizations.
+            AHC brings together a strong and diverse partnership ecosystem that spans universities, teaching hospitals, research institutions, public sector bodies, private sector actors, and development organizations.
           </p>
         </div>
       </div>

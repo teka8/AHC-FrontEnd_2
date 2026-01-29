@@ -56,6 +56,7 @@ const HealthEcosystems: React.FC = () => {
       {/* Hero Banner - Improved */}
       <section className="relative bg-white dark:bg-gray-900 overflow-hidden min-h-screen flex items-center">
         {/* Decorative Background Elements */}
+        {/* 
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
           <img
             {...getImageWithFallback("images/ahc-health-symbol.png")}
@@ -81,6 +82,8 @@ const HealthEcosystems: React.FC = () => {
             }}
           />
         </div>
+        */}
+
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-5xl mx-auto">
@@ -93,13 +96,13 @@ const HealthEcosystems: React.FC = () => {
             </div>
 
             <p className="text-ahc-green dark:text-ahc-green-light text-md font-semibold mb-4 uppercase tracking-wide">
-              Enabling national and continental growth and transformation of Africa’s health sector
+              Enabling national and continental growth and transformation of Ethiopia’s health sector
             </p>
             <h1 className="text-3xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
               Health Ecosystems (HECO)
             </h1>
             <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
-              HECO aims at developing a dynamic and sustainable health ecosystem network that integrates local knowledge, supports policy development, and equips actors with the skills needed for sustainable health sector growth, transformation, and job creation across Africa.
+              HECO aims at developing a dynamic and sustainable health ecosystem network that integrates local knowledge, supports policy development, and equips actors with the skills needed for sustainable health sector growth, transformation, and job creation across Ethiopia.
             </p>
             <div className="flex flex-col items-center gap-4">
               <a
@@ -147,6 +150,7 @@ const HealthEcosystems: React.FC = () => {
       <section id="impact" className="py-20 px-4 lg:px-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden min-h-screen">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* 
           <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
             <img
               {...getImageWithFallback("images/ahc-health-symbol.png")}
@@ -172,8 +176,10 @@ const HealthEcosystems: React.FC = () => {
               }}
             />
           </div>
+          */}
 
           {/* Decorative Circles */}
+
           <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-40 left-20 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
 
@@ -192,19 +198,19 @@ const HealthEcosystems: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <h3 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                Impact of Ecosystems on Africa
+                Impact of Ecosystems on Ethiopia
               </h3>
               <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
                 <p>
-                  To enhance the stability and growth of African health sectors, HECO focuses on increasing the number of primary
+                  To enhance the stability and growth of Ethiopian health sectors, HECO focuses on increasing the number of primary
                   healthcare workers with stable employment by assembling essential building blocks for these sectors.
                 </p>
                 <p>
                   The purpose of the Health Ecosystems Pillar is to train and prepare a new generation of talented health
-                  professionals with the broad sets of skills required to drive equitable and inclusive growth in Africa.
+                  professionals with the broad sets of skills required to drive equitable and inclusive growth in Ethiopia.
                 </p>
                 <p>
-                  The Health Collaborative develops these building blocks to ensure that there are always sufficient numbers of highly skilled, work-ready graduates across a spectrum of disciplines responding to Africa’s needs.
+                  The Health Collaborative develops these building blocks to ensure that there are always sufficient numbers of highly skilled, work-ready graduates across a spectrum of disciplines responding to Ethiopia’s needs.
                 </p>
                 <p>
                   Programs under the Health Ecosystem Pillar are tailored to equip young leaders with the perspective, skills, training, and credentials essential for developing innovative, sustainable, and equitable health sectors.
@@ -293,7 +299,7 @@ const HealthEcosystems: React.FC = () => {
                 <div className="flex-1">
                   <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">How HECO and Partners Work Together</h3>
                   <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Under the Health Ecosystems Pillar, Health Collaborative Partners work to co-create and train a new generation of talented health professionals with advanced skills required to drive equitable and inclusive growth in Africa.
+                    Under the Health Ecosystems Pillar, Health Collaborative Partners work to co-create and train a new generation of talented health professionals with advanced skills required to drive equitable and inclusive growth in Ethiopia.
                   </p>
                 </div>
               </div>
@@ -314,6 +320,7 @@ const HealthEcosystems: React.FC = () => {
       <div className="relative py-20 bg-gradient-to-br from-teal-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* 
           <div className="absolute left-0 top-1/3 -translate-x-1/3 w-70 h-70 opacity-[0.06]">
             <img
               {...getImageWithFallback("images/ahc-health-symbol.png")}
@@ -339,8 +346,10 @@ const HealthEcosystems: React.FC = () => {
               }}
             />
           </div>
+          */}
 
           {/* Gradient Orbs */}
+
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-teal-200/15 to-green-200/15 dark:from-teal-600/08 dark:to-green-600/08 rounded-full blur-4xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-88 h-88 bg-gradient-to-br from-green-200/15 to-emerald-200/15 dark:from-green-600/08 dark:to-emerald-600/08 rounded-full blur-4xl"></div>
         </div>

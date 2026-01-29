@@ -67,6 +67,7 @@ const HealthEmployment: React.FC = () => {
       {/* Hero Banner */}
       <section className="relative bg-white dark:bg-gray-900 overflow-hidden min-h-screen flex items-center">
         {/* Decorative Background Elements - Similar to HIHome */}
+        {/* 
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-70 h-70 opacity-20 pointer-events-none">
           <img 
             {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -85,13 +86,15 @@ const HealthEmployment: React.FC = () => {
             style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
           />
         </div>
-        
+        */}
+
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-5xl mx-auto">
             <div className="flex justify-center mb-6">
-              <img 
-                {...getImageWithFallback('images/ahc-health-symbol.png')} 
-                alt="AHC Health Symbol" 
+              <img
+                {...getImageWithFallback('images/ahc-health-symbol.png')}
+                alt="AHC Health Symbol"
                 className="w-40 h-40 object-contain"
               />
             </div>
@@ -102,7 +105,7 @@ const HealthEmployment: React.FC = () => {
               Health Employment (HEMP)
             </h1>
             <p className="text-2xl md:text-3xl mb-12 text-gray-700 dark:text-gray-300 leading-relaxed">
-HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevant skills that productively match the health and well-being needs of the Ethiopian population.</p>
+              HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevant skills that productively match the health and well-being needs of the Ethiopian population.</p>
             <div className="flex flex-col items-center gap-4">
               <a
                 href="#impact"
@@ -120,23 +123,23 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
       <section className="bg-white dark:bg-gray-900 max-w-screen overflow-x-hidden">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-x-hidden">
           <div className="aspect-square overflow-hidden">
-            <img 
-              {...getImageWithFallback('images/pillars/health_employment_1.jpg')} 
-              alt="Health worker training in Africa" 
+            <img
+              {...getImageWithFallback('images/pillars/health_employment_1.jpg')}
+              alt="Health worker training in Africa"
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
-            <img 
-              {...getImageWithFallback('images/pillars/health_employment_2.jpg')} 
-              alt="Medical professionals collaborating" 
+            <img
+              {...getImageWithFallback('images/pillars/health_employment_2.jpg')}
+              alt="Medical professionals collaborating"
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
           <div className="aspect-square overflow-hidden">
-            <img 
-              {...getImageWithFallback('images/pillars/health_employment_4.jpg')} 
-              alt="Graduating healthcare students" 
+            <img
+              {...getImageWithFallback('images/pillars/health_employment_4.jpg')}
+              alt="Graduating healthcare students"
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
           </div>
@@ -147,6 +150,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
       <section id="impact" className="py-20 px-4 lg:px-20 bg-white dark:bg-gray-900 relative overflow-hidden min-h-screen">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* 
           <div className="absolute left-0 top-20 -translate-x-1/4 w-80 h-80 opacity-[0.07]">
             <img 
               {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -165,10 +169,12 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
               style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
             />
           </div>
+          */}
+
           <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-indigo-200/20 dark:from-blue-600/10 dark:to-indigo-600/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-40 left-20 w-80 h-80 bg-gradient-to-br from-indigo-200/20 to-purple-200/20 dark:from-indigo-600/10 dark:to-purple-600/10 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
@@ -176,24 +182,24 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 Impact of Employment on Africa
               </h3>
               <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
-                
+
                 <p>
-                The diverse array of programs collaboratively created and implemented under HEMP 
-                plays a crucial role in cultivating an empowered and proficient health workforce, pivotal for responsive and efficient health systems.
+                  The diverse array of programs collaboratively created and implemented under HEMP
+                  plays a crucial role in cultivating an empowered and proficient health workforce, pivotal for responsive and efficient health systems.
                 </p>
                 <p> As part of this initiatives, AAU:</p>
               </div>
               <ul className='list-disc pl-20 text-lg text-gray-700 dark:text-gray-300 pt-6'>
-                  <li>Establishes scholarship development, health employment, and health and wellness program desks at AAU – CHS.</li>
-                  <li>Provides soft skills and leadership trainings to health sciences students to equip them with effective communication, empathy and teamwork abilities.</li>
-                  <li>Fosters academic collaboration of students and faculty members to co-teach and develop innovative health programs and curricula through faculty and student exchange programs with Moi University and KNUST.</li>
-                </ul>
+                <li>Establishes scholarship development, health employment, and health and wellness program desks at AAU – CHS.</li>
+                <li>Provides soft skills and leadership trainings to health sciences students to equip them with effective communication, empathy and teamwork abilities.</li>
+                <li>Fosters academic collaboration of students and faculty members to co-teach and develop innovative health programs and curricula through faculty and student exchange programs with Moi University and KNUST.</li>
+              </ul>
             </div>
             <div className="lg:col-span-1">
               <div className="rounded-lg overflow-hidden shadow-lg sticky top-8">
-                <img 
-                  {...getImageWithFallback('images/pillars/health-ecosystem-galery_3.jpg')} 
-                  alt="Healthcare workers in Africa" 
+                <img
+                  {...getImageWithFallback('images/pillars/health-ecosystem-galery_3.jpg')}
+                  alt="Healthcare workers in Africa"
                   className="w-full h-full object-cover"
                   style={{ aspectRatio: '3/4' }}
                 />
@@ -215,12 +221,12 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
         <div className="absolute left-0 top-0 w-96 h-96 opacity-20">
           <div className="absolute left-0 top-0 w-64 h-64 bg-green-600" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-gray-900 dark:text-white">
             The Power of Partnership
           </h2>
-          
+
           <div className="space-y-12 max-w-6xl mx-auto">
             {/* Our Goal Card */}
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -256,7 +262,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 <div className="flex-1">
                   <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">How HEMP and Partners work together</h3>
                   <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                    Through coordinated scholarship support, and academic exchange programs with partner institutions, 
+                    Through coordinated scholarship support, and academic exchange programs with partner institutions,
                     the partnership strengthens institutional capacity and equips health professionals with the competencies required for responsive and effective health systems.                  </p>
                 </div>
               </div>
@@ -278,6 +284,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Large AHC Symbol - Top Right */}
+          {/* 
           <div className="absolute right-0 top-10 translate-x-1/4 w-70 h-70 opacity-[0.07]">
             <img 
               {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -288,7 +295,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             />
           </div>
           
-          {/* Large AHC Symbol - Bottom Left */}
+          Large AHC Symbol - Bottom Left
           <div className="absolute left-0 bottom-10 -translate-x-1/4 w-80 h-80 opacity-[0.06]">
             <img 
               {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -298,11 +305,12 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
               style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
             />
           </div>
+          */}
 
           {/* Decorative Circles */}
           <div className="absolute top-20 left-1/4 w-60 h-60 bg-gradient-to-br from-teal-200/15 to-green-200/15 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-gradient-to-br from-green-200/15 to-emerald-200/15 dark:from-green-600/10 dark:to-emerald-600/10 rounded-full blur-3xl"></div>
-          
+
           {/* Decorative Triangles */}
           <div className="absolute top-16 left-16 w-12 h-12 opacity-10" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
             <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
@@ -312,8 +320,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
 
           {/* Grid Pattern Overlay */}
-          <div className="absolute inset-0 opacity-[0.01] dark:opacity-[0.015]" 
-            style={{ 
+          <div className="absolute inset-0 opacity-[0.01] dark:opacity-[0.015]"
+            style={{
               backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
               backgroundSize: '50px 50px'
             }}>
@@ -328,8 +336,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             </Link>
           </div>
           <div className="absolute top-1/2 -left-4 z-20">
-            <button 
-              onClick={() => scroll('left', scholarshipsScrollRef)} 
+            <button
+              onClick={() => scroll('left', scholarshipsScrollRef)}
               className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               aria-label="Scroll scholarships left"
             >
@@ -346,8 +354,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             ))}
           </div>
           <div className="absolute top-1/2 -right-4 z-20">
-            <button 
-              onClick={() => scroll('right', scholarshipsScrollRef)} 
+            <button
+              onClick={() => scroll('right', scholarshipsScrollRef)}
               className="bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               aria-label="Scroll scholarships right"
             >
@@ -362,6 +370,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Large AHC Symbols */}
+          {/* 
           <div className="absolute left-0 top-1/4 -translate-x-1/3 w-80 h-80 opacity-[0.05]">
             <img 
               {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -380,6 +389,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
               style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
             />
           </div>
+          */}
 
           {/* Gradient Orbs */}
           <div className="absolute top-10 left-1/4 w-96 h-96 bg-gradient-to-br from-teal-200/20 to-green-200/20 dark:from-teal-600/10 dark:to-green-600/10 rounded-full blur-4xl"></div>
@@ -397,8 +407,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
 
           {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]" 
-            style={{ 
+          <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]"
+            style={{
               backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
               backgroundSize: '60px 60px'
             }}>
@@ -419,21 +429,21 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           {/* Success Stories Grid */}
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {successStories.map((story, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2"
               >
                 {/* Card Gradient Border Effect */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                
+
                 {/* Content */}
                 <div className="relative z-10 flex flex-col sm:flex-row items-start gap-6">
                   {/* Avatar */}
                   <div className="relative flex-shrink-0">
                     <div className="relative">
-                      <img 
-                        {...getImageWithFallback('images/pillars/jesusmiracle-chiadika.jpeg')} 
-                        alt={story.name} 
+                      <img
+                        {...getImageWithFallback('images/pillars/jesusmiracle-chiadika.jpeg')}
+                        alt={story.name}
                         className="w-20 h-20 rounded-2xl object-cover shadow-lg"
                       />
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/20 to-green-500/20 group-hover:from-teal-400/30 group-hover:to-green-500/30 transition-all duration-300"></div>
@@ -446,7 +456,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                     <div className="mb-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-green-500 rounded-xl flex items-center justify-center">
                         <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
+                          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
                         </svg>
                       </div>
                     </div>
@@ -482,6 +492,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Large AHC Symbols */}
+          {/* 
           <div className="absolute left-0 -translate-x-1/3 w-70 h-70 opacity-[0.06]">
             <img 
               {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -500,6 +511,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
               style={{ filter: 'brightness(0) saturate(100%) invert(69%) sepia(45%) saturate(476%) hue-rotate(117deg) brightness(91%) contrast(87%)' }}
             />
           </div>
+          */}
 
           {/* Floating Elements */}
           <div className="absolute top-20 right-20 w-8 h-8 opacity-10 animate-float" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
@@ -510,8 +522,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
           </div>
 
           {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-[0.012] dark:opacity-[0.018]" 
-            style={{ 
+          <div className="absolute inset-0 opacity-[0.012] dark:opacity-[0.018]"
+            style={{
               backgroundImage: 'linear-gradient(to right, #10b981 1px, transparent 1px), linear-gradient(to bottom, #10b981 1px, transparent 1px)',
               backgroundSize: '50px 50px'
             }}>
@@ -535,14 +547,14 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
             <div className="group relative bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
               {/* Gradient Border Effect */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400 via-green-400 to-emerald-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-              
+
               <div className="relative z-10">
                 {/* Avatar Container */}
                 <div className="relative mb-6">
                   <div className="relative inline-block">
-                    <img 
-                      {...getImageWithFallback('images/pillars/Anteneh-Belete.jpg')} 
-                      alt="Prof. Anteneh Belete" 
+                    <img
+                      src='/images/pillars/pro.anteneh.jpg'
+                      alt="Prof. Anteneh Belete"
                       className="w-32 h-32 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-all duration-300"
                     />
                     {/* Gradient Overlay */}
@@ -562,20 +574,20 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
 
                   {/* Social Links */}
                   <div className="flex justify-center space-x-4">
-                    <a 
-                      href="#" 
+                    <a
+                      href="#"
                       className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
                     >
                       <Linkedin className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
                     </a>
-                    <a 
-                      href="#" 
+                    <a
+                      href="#"
                       className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
                     >
                       <Twitter className="w-5 h-5 group-hover/social:scale-110 transition-transform" />
                     </a>
-                    <a 
-                      href="mailto:tak@example.com" 
+                    <a
+                      href="mailto:tak@example.com"
                       className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 group/social"
                     >
                       <svg className="w-5 h-5 group-hover/social:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -587,7 +599,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
               </div>
             </div>
 
-           
+
           </div>
 
           {/* Additional CTA */}
@@ -601,7 +613,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
                 </svg>
               </button>
             </a>
-            
+
           </div>
         </div>
       </div>
@@ -611,6 +623,7 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Large AHC Symbol - Center Background */}
+          {/* 
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
             <img 
               {...getImageWithFallback('images/ahc-health-symbol.png')} 
@@ -619,7 +632,8 @@ HEMP aims at equipping the primary healthcare workforce in Ethiopia with relevan
               className="w-full h-full object-contain"
             />
           </div>
-          
+          */}
+
           {/* Decorative Triangles */}
           <div className="absolute top-10 left-10 w-16 h-16 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
             <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>

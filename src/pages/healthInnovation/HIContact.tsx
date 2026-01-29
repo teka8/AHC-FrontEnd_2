@@ -240,7 +240,7 @@ export default function HIContact() {
                       <div>
                         <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Phone</h3>
                         <p className="text-gray-700 dark:text-gray-300">{companyInfo?.company_phone || '+251 11 123 4567'}</p>
-                        <p className="text-gray-700 dark:text-gray-300">Mon-Fri: 9am - 5pm EAT</p>
+                        {/* <p className="text-gray-700 dark:text-gray-300">Mon-Fri: 9am - 5pm EAT</p> */}
                       </div>
                     </div>
 

@@ -14,8 +14,8 @@ export default function HIServices() {
   ]
 
   const acceleratorFeatures = [
-    '12-week intensive program',
-    'Seed funding up to $150K',
+    'Intensive program',
+    'Seed funding',
     'Expert mentorship network',
     'Product-market fit workshops',
     'Investor pitch preparation',
@@ -45,14 +45,14 @@ export default function HIServices() {
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
-              <img 
-                {...getImageWithFallback('images/ahc-health-symbol.png')} 
-                alt="" 
+              <img
+                {...getImageWithFallback('images/ahc-health-symbol.png')}
+                alt=""
                 aria-hidden="true"
                 className="w-full h-full object-contain"
               />
             </div>
-            
+
             {/* Decorative Triangles */}
             <div className="absolute top-10 left-10 w-16 h-16 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
@@ -68,12 +68,12 @@ export default function HIServices() {
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-green-500 mb-6 shadow-lg">
                 <Target className="w-10 h-10 text-white" />
               </div>
-              
+
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
                 Our Services
               </h1>
               <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                Comprehensive support solutions designed to accelerate healthcare innovation 
+                Comprehensive support solutions designed to accelerate healthcare innovation
                 from concept to market impact
               </p>
             </div>
@@ -95,8 +95,8 @@ export default function HIServices() {
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Open Innovation</h2>
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                  Bridge the gap between established healthcare organizations and innovative startups. 
-                  Our open innovation programs create collaborative ecosystems that drive breakthrough 
+                  Bridge the gap between established healthcare organizations and innovative startups.
+                  Our open innovation programs create collaborative ecosystems that drive breakthrough
                   solutions through strategic partnerships.
                 </p>
                 <div className="space-y-3 mb-6">
@@ -116,11 +116,11 @@ export default function HIServices() {
               <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 border border-teal-100 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
                 {/* Gradient accent */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-green-400 rounded-t-3xl"></div>
-                
+
                 <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Success Story</h3>
                 <p className="text-sm text-teal-600 dark:text-teal-400 mb-3 font-semibold">MedTech Innovation Challenge 2023</p>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Partnered with 5 major hospitals to identify and pilot 12 innovative solutions, 
+                  Partnered with 5 major hospitals to identify and pilot 12 innovative solutions,
                   resulting in 3 successful product deployments and $8M in follow-on funding.
                 </p>
                 <div className="grid grid-cols-3 gap-4 pt-6 border-t border-teal-100 dark:border-gray-700">
@@ -161,7 +161,7 @@ export default function HIServices() {
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
               <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300 order-2 lg:order-1">
                 {/* Gradient accent border */}
-                
+
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Cohort Overview</h3>
                 <p className="text-sm text-teal-600 dark:text-teal-400 mb-6 font-semibold">Our proven acceleration model</p>
                 <div className="space-y-6">
@@ -200,8 +200,8 @@ export default function HIServices() {
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Accelerators</h2>
                 </div>
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Transform your healthcare startup from early-stage to investment-ready. Our 
-                  intensive accelerator program provides the funding, mentorship, and connections 
+                  Transform your healthcare startup from early-stage to investment-ready. Our
+                  intensive accelerator program provides the funding, mentorship, and connections
                   needed to scale rapidly.
                 </p>
                 <div className="space-y-3 mb-8">
@@ -251,8 +251,8 @@ export default function HIServices() {
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Consulting</h2>
                 </div>
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Strategic advisory services tailored to your unique challenges. Our experienced 
-                  consultants bring deep healthcare industry expertise to help you navigate 
+                  Strategic advisory services tailored to your unique challenges. Our experienced
+                  consultants bring deep healthcare industry expertise to help you navigate
                   complex decisions and achieve your business objectives.
                 </p>
                 <div className="space-y-3 mb-8">
@@ -303,14 +303,14 @@ export default function HIServices() {
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large AHC Symbol - Center Background */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5">
-              <img 
-                {...getImageWithFallback('images/ahc-health-symbol.png')} 
-                alt="" 
+              <img
+                {...getImageWithFallback('images/ahc-health-symbol.png')}
+                alt=""
                 aria-hidden="true"
                 className="w-full h-full object-contain"
               />
             </div>
-            
+
             {/* Decorative Triangles */}
             <div className="absolute top-10 left-10 w-16 h-16 opacity-20" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="w-full h-full bg-gradient-to-b from-teal-400 to-green-500"></div>
@@ -326,12 +326,12 @@ export default function HIServices() {
               <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
                 {/* Gradient accent border */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-green-400 to-teal-500"></div>
-                
+
                 {/* Small decorative AHC Symbol - Top Right */}
                 <div className="absolute -top-6 -right-6 w-32 h-32 opacity-5">
-                  <img 
-                    {...getImageWithFallback('images/ahc-health-symbol.png')} 
-                    alt="" 
+                  <img
+                    {...getImageWithFallback('images/ahc-health-symbol.png')}
+                    alt=""
                     aria-hidden="true"
                     className="w-full h-full object-contain"
                   />
@@ -346,9 +346,9 @@ export default function HIServices() {
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
                     Ready to Get Started?
                   </h2>
-                  
+
                   <p className="text-base sm:text-lg lg:text-xl mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Let's discuss how our services can accelerate your healthcare innovation journey 
+                    Let's discuss how our services can accelerate your healthcare innovation journey
                     and transform your ideas into impactful solutions.
                   </p>
 
@@ -356,14 +356,14 @@ export default function HIServices() {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <Link to="/health-pillars/health-entrepreneurship/contact" className="w-full sm:w-auto">
                       <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center group">
-                        Contact Us 
+                        Contact Us
                         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </Link>
-                    
+
                     <Link to="/health-pillars/health-entrepreneurship/demo" className="w-full sm:w-auto">
                       <button className="w-full sm:w-auto bg-white dark:bg-gray-700 border-2 border-teal-500 text-teal-600 dark:text-teal-400 px-8 py-4 rounded-xl font-semibold hover:bg-teal-50 dark:hover:bg-gray-600 transition-all duration-300 inline-flex items-center justify-center group">
-                        Request Demo 
+                        Request Demo
                         <Rocket className="ml-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" />
                       </button>
                     </Link>
