@@ -30,8 +30,8 @@ export default function ChatbotWidget() {
     setIsLoading(true);
 
     try {
-      // Assuming backend is running on https://ahc.tewostech.com. Adjust URL if needed.
-      const response = await axios.post('https://ahc.tewostech.com/api/v1/public/chat', {
+      // Assuming backend is running on https://ahcadmin.aau.edu.et. Adjust URL if needed.
+      const response = await axios.post('https://ahcadmin.aau.edu.et/api/v1/public/chat', {
         message: userMessage
       });
 

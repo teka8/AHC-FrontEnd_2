@@ -24,7 +24,7 @@ const slides = [
     accent: "bg-ahc-green",
     textAccent: "text-ahc-green-dark",
     ctaText: "Join Our Network",
-    ctaLink: "https://www.ahc.tewostech.com/admin/login",
+    ctaLink: "https://ahcadmin.aau.edu.et/admin/login",
     secondaryCtaText: "View Programs",
     secondaryCtaLink: "/programs",
   },

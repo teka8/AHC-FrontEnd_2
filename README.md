@@ -211,7 +211,7 @@ Ensure Laravel backend allows frontend origin:
 // config/cors.php
 'allowed_origins' => [
     'http://localhost:5173',  // Development
-    'https://ahc.tewostech.com', // Production
+    'https://ahcadmin.aau.edu.et', // Production
 ],
 ```
 
