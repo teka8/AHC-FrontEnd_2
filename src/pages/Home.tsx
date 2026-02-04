@@ -335,86 +335,101 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 animate-page bg-white dark:bg-slate-900">
-        <div className="container">
+      <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
+        <div className="container px-4">
           <SectionHeader
             eyebrow="Stay Informed"
             title="Latest News & Updates"
             centerTitle={true}
           />
           {loadingNews ? (
-            <Loader />
+             <div className="flex justify-center py-20"><Loader /></div>
           ) : newsArray.length === 0 ? (
-            <div className="text-sm text-slate-600 dark:text-slate-400 text-center">
-              No news yet.
+            <div className="flex flex-col items-center justify-center py-12 text-slate-500 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
+              <span className="text-lg">No news available at the moment.</span>
             </div>
           ) : (
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div className="lg:col-span-1">
-                <Link to={`/news/${newsArray[0].id}`} className="group">
-                  <img
-                    src={
-                      newsArray[0].featured_image ||
-                      (newsArray[0].content.match(
-                        /<img[^>]+src=["']([^"']+)["']/
-                      )
-                        ? newsArray[0].content.match(
-                          /<img[^>]+src=["']([^"']+)["']/
-                        )[1]
-                        : "")
-                    }
-                    alt={newsArray[0].title}
-                    className="w-full aspect-video object-cover rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300"
-                  />
-                  <h3 className="mt-4 text-2xl font-bold font-display text-slate-900 dark:text-white group-hover:text-ahc-green-dark transition-colors">
-                    {newsArray[0].title}
-                  </h3>
-                  <p className="mt-2 text-slate-600 dark:text-slate-300 line-clamp-3">
-                    {newsArray[0].excerpt ??
-                      newsArray[0].content
-                        .replace(/<[^>]+>/g, "")
-                        .slice(0, 280)}
-                  </p>
-                </Link>
-              </div>
-              <div className="lg:col-span-1 grid gap-6">
-                {newsArray.slice(1, 4).map((n: any) => (
-                  <Link
-                    key={n.id}
-                    to={`/news/${n.id}`}
-                    className="group flex items-center gap-4"
-                  >
-                    <img
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              {/* Featured Article */}
+              <div className="lg:col-span-2">
+                <Link to={`/news/${newsArray[0].id}`} className="group relative block h-full min-h-[300px] md:min-h-[400px] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300">
+                  <div className="absolute inset-0">
+                     <img
                       src={
-                        n.featured_image ||
-                        (n.content.match(/<img[^>]+src=["']([^"']+)["']/)
-                          ? n.content.match(/<img[^>]+src=["']([^"']+)["']/)[1]
+                        newsArray[0].featured_image ||
+                        (newsArray[0].content?.match(/<img[^>]+src=["']([^"']+)["']/)
+                          ? newsArray[0].content.match(/<img[^>]+src=["']([^"']+)["']/)[1]
                           : "")
                       }
-                      alt={n.title}
-                      className="w-42 h-32 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300"
+                      alt={newsArray[0].title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div>
-                      <h4 className="font-semibold text-lg leading-tight text-slate-900 dark:text-white group-hover:text-ahc-green-dark transition-colors">
-                        {n.title}
-                      </h4>
-                      <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90 transition-opacity" />
+                  </div>
+                  
+                  <div className="absolute top-4 left-4">
+                      <span className="px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase bg-ahc-green rounded-full shadow-lg backdrop-blur-sm">
+                          Featured
+                      </span>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                      <div className="flex items-center gap-2 text-slate-300 text-sm mb-3">
+                          <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-xs text-white">
+                              {dayjs(newsArray[0].published_at).format("MMM DD, YYYY")}
+                          </span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold font-display text-white mb-3 leading-tight group-hover:text-ahc-green-light transition-colors">
+                          {newsArray[0].title}
+                      </h3>
+                      <p className="text-slate-200 line-clamp-2 md:line-clamp-3 text-sm md:text-base max-w-2xl">
+                           {newsArray[0].excerpt ??
+                              newsArray[0].content
+                                  ?.replace(/<[^>]+>/g, "")
+                                  .slice(0, 150)}...
+                      </p>
+                  </div>
+                </Link>
+              </div>
+
+              {/* Sidebar List */}
+              <div className="lg:col-span-1 flex flex-col gap-5">
+                 {newsArray.slice(1, 4).map((n: any) => (
+                   <Link
+                    key={n.id}
+                    to={`/news/${n.id}`}
+                    className="group bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 dark:border-slate-700 flex gap-4 items-center"
+                   >
+                    <div className="shrink-0 w-24 h-24 rounded-lg overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-300">
+                       <img
+                        src={
+                          n.featured_image ||
+                          (n.content?.match(/<img[^>]+src=["']([^"']+)["']/)
+                            ? n.content.match(/<img[^>]+src=["']([^"']+)["']/)[1]
+                            : "")
+                        }
+                        alt={n.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0 py-1">
+                      <div className="text-xs font-medium text-ahc-green mb-1">
                         {dayjs(n.published_at).format("MMM DD, YYYY")}
                       </div>
+                      <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-ahc-green transition-colors line-clamp-2 leading-snug">
+                        {n.title}
+                      </h4>
                     </div>
                   </Link>
-                ))}
+                 ))}
+
+                 <Link to="/news" className="mt-2 flex items-center justify-center p-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-ahc-green hover:text-white transition-all duration-300 group">
+                    View All News
+                    <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                 </Link>
               </div>
             </div>
           )}
-          <div className="flex justify-center mt-8">
-            <Link
-              to="/news"
-              className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
-            >
-              View all news
-            </Link>
-          </div>
         </div>
       </section>
 
