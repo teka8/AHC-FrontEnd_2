@@ -20,7 +20,7 @@ export default defineConfig({
       "/api": {
         target:
           process.env.NODE_ENV === "production"
-            ? "https://ahc.tewostech.com"
+            ? "https://ahcadmin.aau.edu.et"
             : "http://localhost:8000",
 
         // target: 'http://localhost:8000',  // Local Laravel backend

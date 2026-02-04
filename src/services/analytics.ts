@@ -37,7 +37,7 @@ class AnalyticsService {
    */
   private async performInitialization(): Promise<void> {
     if (this.isInitializing) return;
-    
+
     this.isInitializing = true;
 
     try {
@@ -94,12 +94,12 @@ class AnalyticsService {
       return cached;
     }
 
-    const apiBaseUrl = import.meta.env.DEV 
-      ? '/api/v1' 
-      : (import.meta.env.VITE_API_BASE_URL || 'https://ahc.tewostech.com/api/v1');
+    const apiBaseUrl = import.meta.env.DEV
+      ? '/api/v1'
+      : (import.meta.env.VITE_API_BASE_URL || 'https://ahcadmin.aau.edu.et/api/v1');
 
     const response = await fetch(`${apiBaseUrl}/public/google-analytics-config`);
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch analytics configuration');
     }
@@ -122,7 +122,7 @@ class AnalyticsService {
       if (!cached) return null;
 
       const { config, timestamp } = JSON.parse(cached);
-      
+
       // Check if cache is still valid (1 hour)
       if (Date.now() - timestamp < CONFIG_CACHE_DURATION) {
         return config;
@@ -161,7 +161,7 @@ class AnalyticsService {
           anonymizeIp: config.anonymize_ip,
         },
       });
-      
+
       this.initialized = true;
       console.log('[Analytics] Google Analytics 4 initialized successfully');
     } catch (error) {
@@ -183,24 +183,24 @@ class AnalyticsService {
     try {
       const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
       if (!stored) return null;
-      
+
       const consent: ConsentPreferences = JSON.parse(stored);
       const now = Date.now();
-      
+
       // Check if expired (12 months passed)
       if (consent.expiresAt && now > consent.expiresAt) {
         console.log('[Analytics] Consent expired after 12 months, removing...');
         localStorage.removeItem(CONSENT_STORAGE_KEY);
         return null; // Banner will show again
       }
-      
+
       // Handle old format (no expiresAt field) - migration
       if (!consent.expiresAt) {
         console.log('[Analytics] Old consent format detected, removing...');
         localStorage.removeItem(CONSENT_STORAGE_KEY);
         return null; // Banner will show again
       }
-      
+
       return consent;
     } catch (error) {
       console.error('[Analytics] Error reading consent:', error);
@@ -218,7 +218,7 @@ class AnalyticsService {
       timestamp: now,
       expiresAt: now + CONSENT_DURATION, // Expires in 12 months
     };
-    
+
     try {
       localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(preferences));
 
@@ -243,14 +243,14 @@ class AnalyticsService {
    */
   trackPageView(path: string, title?: string): void {
     if (!this.initialized) return;
-    
+
     try {
       ReactGA.send({
         hitType: 'pageview',
         page: path,
         title: title || document.title,
       });
-      
+
       console.log('[Analytics] Page view tracked:', path);
     } catch (error) {
       console.error('[Analytics] Failed to track page view:', error);
