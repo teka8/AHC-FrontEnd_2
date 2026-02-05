@@ -44,10 +44,15 @@ export default function ValuesandPrinciples() {
   ];
 
   const partners = [
-    { name: "AIMS", logo: "/images/partners/aims.png" },
-    { name: "ALU", logo: "/images/partners/alu.png" },
-    { name: "Amref", logo: "/images/partners/amref.png" },
-    { name: "Ashesi", logo: "/images/partners/moi-university.png" },
+    { name: "Addis Ababa University", logo: "/images/partners/addis-ababa-university.png" },
+    { name: "African Institute for Mathematical Sciences", logo: "/images/partners/aims.png" },
+    { name: "African Leadership University", logo: "/images/partners/alu.png" },
+    { name: "Amref International University (Amref Health Africa)", logo: "/images/partners/amref.png" },
+    { name: "Ashesi University", logo: "/images/partners/ashesi-university.png" },
+    { name: "Kwame Nkrumah University of Science and Technology", logo: "/images/partners/knust.png" },
+    { name: "Mastercard Foundation", logo: "/images/partners/mastercard-foundation.png" },
+    { name: "Moi University", logo: "/images/partners/moi-university.png" },
+    { name: "University of Cape Town", logo: "/images/partners/uct.png" },
     { name: "University of Toronto", logo: "/images/partners/utoronto.png" },
   ];
 
@@ -189,16 +194,16 @@ export default function ValuesandPrinciples() {
               collaboration and together co-creating programs to maximize impact
               in Ethiopia.{" "}
             </p>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-3 gap-4">
               {partners.map((p, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow hover:scale-105 transition transform"
+                  className="flex items-center justify-center p-3 bg-white dark:bg-gray-800 rounded-xl shadow hover:scale-105 transition transform"
                 >
                   <img
                     src={p.logo}
                     alt={p.name}
-                    className="h-16 object-contain"
+                    className="h-12 object-contain"
                   />
                 </div>
               ))}

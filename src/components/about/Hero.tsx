@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
           </nav>
           <h1 className="ahehc-banner__title">About Us</h1>
           <p className="is-size-large">
-            The Africa Health Collaborative (AHC) strengthens primary healthcare
+            The Africa Health Collaborative strengthens primary healthcare
             across Africa by empowering youth. AHC–AAU leads this work in
             Ethiopia, partnering with local universities to equip young people,
             especially women, to drive health sector transformation.
