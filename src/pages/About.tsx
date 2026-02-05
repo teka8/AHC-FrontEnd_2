@@ -68,31 +68,31 @@ export default function About() {
         <section className="py-12 md:py-16 animate-page bg-slate-50 dark:bg-slate-800">
           <div className="container">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
-                Advancing Primary Health Care in Ethiopia & Africa
+              Advancing Primary Health Care in Ethiopia & Africa
             </h2>
             <div className="grid gap-12 md:grid-cols-2 items-center">
 
               <div>
-                  <div className="prose max-w-none dark:prose-invert">
+                <div className="prose max-w-none dark:prose-invert">
 
-                    <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
-                      Africa Health Collaborative (AHC) is one of the flagship programs to transform primary healthcare service in Africa, in partnership with the Mastercard Foundation. The Collaborative is designed  within the plan of “preparing diverse young people, 
-                      for the meaningful work of transforming health and well-being in Africa 
-                      through contextually appropriate, equitable and sustainable primary healthcare”. 
-                    </p>
-                    <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
-                      The AHC is a multi-stakeholder partnership dedicated to transforming primary health care (PHC) systems across Africa. It brings together eight African higher education institutions 
-                      (AAU-Ethiopia; African Institute for Mathematical Sciences (AIMS)-Rwanda; African Leadership University (ALU)-Rwanda; Amref International University (AMIU)- Kenya; Ashesi University-Ghana; Kwame Nkrumah University of Science and Technology (KNUST)-Ghana; MOi University- Kenya; University of Cape Town (UCT)-South Africa); and the University of Toronto (U of T)-Canada, in partnership with the Mastercard Foundation. Through a networked, cross-border approach,
-                      AHC enables collaboration across institutions and sectors
-                        to collectively address the continent’s most pressing health-sector challenges.
-                    </p>
+                  <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
+                    Africa Health Collaborative (AHC) is one of the flagship programs to transform primary healthcare service in Africa, in partnership with the Mastercard Foundation. The Collaborative is designed  within the plan of “preparing diverse young people,
+                    for the meaningful work of transforming health and well-being in Africa
+                    through contextually appropriate, equitable and sustainable primary healthcare”.
+                  </p>
+                  <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
+                    The AHC is a multi-stakeholder partnership dedicated to transforming primary health care (PHC) systems across Africa. It brings together eight African higher education institutions
+                    (AAU-Ethiopia; African Institute for Mathematical Sciences (AIMS)-Rwanda; African Leadership University (ALU)-Rwanda; Amref International University (AMIU)- Kenya; Ashesi University-Ghana; Kwame Nkrumah University of Science and Technology (KNUST)-Ghana; MOi University- Kenya; University of Cape Town (UCT)-South Africa); and the University of Toronto (U of T)-Canada, in partnership with the Mastercard Foundation. Through a networked, cross-border approach,
+                    AHC enables collaboration across institutions and sectors
+                    to collectively address the continent’s most pressing health-sector challenges.
+                  </p>
 
-                    <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
-                      As part of the Collaborative, Africa Health Collaborative -Addis Ababa University (AHC-AAU) was formally launched on February 25, 
-                      2025 to advance health-sector transformation in Ethiopia. The Collaborative operates with three strategic pillars: 
-                      Health Employment (HEMP), Health Entrepreneurship (HENT), and Health Ecosystem (HECO).
-                    </p>
-                  </div>
+                  <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
+                    As part of the Collaborative, Africa Health Collaborative -Addis Ababa University (AHC-AAU) was formally launched on February 25,
+                    2025 to advance health-sector transformation in Ethiopia. The Collaborative operates with three strategic pillars:
+                    Health Employment (HEMP), Health Entrepreneurship (HENT), and Health Ecosystem (HECO).
+                  </p>
+                </div>
               </div>
 
               <div>
@@ -104,13 +104,13 @@ export default function About() {
               </div>
             </div>
             <div className="prose max-w-none dark:prose-invert mt-6">
-                <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
-                The three pillars work to drive meaningful change in primary healthcare by creating pathways that are relevant, equitable, and sustainable for Ethiopian and African youth. 
-                The Collaborative strategic objectives have been cascaded down through engagement of local implementing partners such as Wollo, Wolkite, and Debre Berhan Universities. 
+              <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
+                The three pillars work to drive meaningful change in primary healthcare by creating pathways that are relevant, equitable, and sustainable for Ethiopian and African youth.
+                The Collaborative strategic objectives have been cascaded down through engagement of local implementing partners such as Wollo, Wolkite, and Debre Berhan Universities.
                 In addition, Woldia University will participate in some of the Collaborative activities, for example, through the AHC-AAU faculty Scholarship Scheme, and regional faculty exchange programs.
-                </p>
+              </p>
             </div>
-            
+
           </div>
         </section>
 
@@ -129,10 +129,7 @@ export default function About() {
                 Our Value of <span className="text-ahc-green">Partnership</span>
               </h3>
               <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
-                Together, through core partners and strategic alliances of
-                ecosystem partners (corporations, government ministries,
-                industry, NGOs, and healthcare providers), we amplify our
-                potential and transform healthcare landscapes.
+                Grounded in national leadership and sustainable collaboration with core and ecosystem partners across the health sector and other stakeholders, we advance resilient health system transformation.
               </p>
               <Link
                 to="/valuesandprinciples"
@@ -152,25 +149,7 @@ export default function About() {
                 Goals and Methods
               </h3>
               <p className="text-md text-slate-600 dark:text-slate-300 mb-4">
-                Born from a commitment to fostering inclusive, sustainable, and
-                impactful health-focused initiatives, the Health Collaborative
-                represents a fusion of bright minds and leading institutions.
-              </p>
-              <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
-                Comprehensive training programs for healthcare
-                professionals, our collaborative efforts extend to
-                groundbreaking research and cultivating a vibrant network of
-                emerging young professionals. We champion local, indigenous
-                solutions to confronting Ethiopia’s primary health care and global
-                health challenges. Our vision is bold, our programs are diverse
-                but united to foster transformative change in health systems in
-                Ethiopia.
-              </p>
-              <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
-                Together, we are committed to and partnership invested in
-                co-creating diverse programs and initiatives paving the way
-                designed to foster innovative and sustainable health solutions
-                and growth in Ethiopia’s health sector.
+                The Africa Health Collaborative–Addis Ababa University (AHC-AAU) is driven by a commitment to inclusive, innovative, and sustainable health system transformation. Anchored in Addis Ababa University, AHC-AAU brings together scholars, practitioners, and strategic partners to design and implement context-responsive initiatives that address Ethiopia’s and Africa’s priority health challenges. Through integrated approaches that link education, research, innovation, and practice, AHC-AAU advances locally grounded solutions with the potential for national impact and continental relevance.
               </p>
             </div>
             <div>
@@ -294,8 +273,7 @@ export default function About() {
             </h2>
             <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-300 mb-8">
               Whether you are a student, an innovator, a potential partner, or
-              simply passionate about health equity in Ethiopia, there is a place
-              for you at AHC - AAU.
+              simply passionate about health equity in Ethiopia.
             </p>
             <a
               href="/contact"
