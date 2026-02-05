@@ -129,11 +129,11 @@ export default function Header() {
         <div className={`mx-auto max-w-7xl px-6 md:px-8 lg:px-12 flex items-center justify-between transition-all duration-700 ${scrolled ? 'h-14' : 'h-12 md:h-14'
           }`}>
           <Link to="/" className="flex items-center gap-3">
-            <img
+            {/* <img
               {...getImageWithFallback('images/ahc-logo.png')}
               alt="AHC Logo"
               className="h-10 w-10 object-contain"
-            />
+            /> */}
             <span className="font-display text-xl font-bold">
               AHC - AAU
             </span>
