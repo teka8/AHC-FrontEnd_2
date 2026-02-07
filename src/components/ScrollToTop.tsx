@@ -6,13 +6,22 @@ interface ScrollToTopProps {
 }
 
 const ScrollToTop = ({ topRef }: ScrollToTopProps) => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
+
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [pathname, topRef]);
+  }, [pathname, hash, topRef]);
 
   return null;
 };

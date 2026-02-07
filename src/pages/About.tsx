@@ -65,7 +65,7 @@ export default function About() {
       <div>
         <CollaborationSection />
 
-        <section className="py-12 md:py-16 animate-page bg-slate-50 dark:bg-slate-800">
+        <section id="advancing-primary-health-care" className="py-12 md:py-16 animate-page bg-slate-50 dark:bg-slate-800">
           <div className="container">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-ahc-dark dark:text-white mb-6">
               Advancing Primary Health Care in Ethiopia & Africa

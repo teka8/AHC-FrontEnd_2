@@ -119,12 +119,12 @@ export default function Home() {
             </p>
             </div> */}
             <div className="mt-8 text-right">
-              <a
-                href="/about"
+              <Link
+                to="/about#advancing-primary-health-care"
                 className="bg-ahc-green text-white py-2 px-4 rounded-md hover:bg-ahc-green-darker transition-colors"
               >
                 Learn more
-              </a>
+              </Link>
             </div>
           
           {/* <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
